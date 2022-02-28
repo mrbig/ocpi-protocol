@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Chargemap\OCPI\Versions\V2_2_1\Server\Emsp\Versions\Details\Get;
+namespace Chargemap\OCPI\Versions\V2_2_1\Server\Common\Versions\Details\Get;
 
 use Chargemap\OCPI\Common\Server\Models\VersionNumber;
 use Chargemap\OCPI\Common\Server\OcpiSuccessResponse;
@@ -10,7 +10,7 @@ use Chargemap\OCPI\Common\Server\StatusCodes\OcpiSuccessHttpCode;
 use Chargemap\OCPI\Versions\V2_2_1\Common\Models\Endpoint;
 use InvalidArgumentException;
 
-class OcpiEmspVersionDetailsGetResponse extends OcpiSuccessResponse
+class OcpiVersionDetailsGetResponse extends OcpiSuccessResponse
 {
     private VersionNumber $versionNumber;
 
