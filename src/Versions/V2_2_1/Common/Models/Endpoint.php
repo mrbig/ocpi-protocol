@@ -11,17 +11,25 @@ class Endpoint extends BaseEndpoint implements JsonSerializable
 {
     private ModuleId $moduleId;
 
+    private InterfaceRole $interfaceRole;
+
     private string $url;
 
-    public function __construct(ModuleId $moduleId, string $url)
+    public function __construct(ModuleId $moduleId, InterfaceRole $interfaceRole, string $url)
     {
         $this->moduleId = $moduleId;
+        $this->interfaceRole = $interfaceRole;
         $this->url = $url;
     }
 
     public function getModuleId(): ModuleId
     {
         return $this->moduleId;
+    }
+
+    public function getInterfaceRole(): InterfaceRole
+    {
+        return $this->interfaceRole;
     }
 
     public function getUrl(): string
@@ -33,6 +41,7 @@ class Endpoint extends BaseEndpoint implements JsonSerializable
     {
         return [
             'identifier' => $this->moduleId,
+            'role' => $this->interfaceRole,
             'url' => $this->url,
         ];
     }

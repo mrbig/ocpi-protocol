@@ -2,35 +2,42 @@
   "timestamp": "2021-03-25T08:44:58Z",
   "status_code": 1000,
   "data": {
-    "version": "2.1.1",
+    "version": "2.2.1",
     "endpoints": [
       {
         "identifier": "credentials",
-        "url": "https://example.com/ocpi/ocpi/cpo/2.1.1/credentials"
+        "role": "SENDER",
+        "url": "https://example.com/ocpi/ocpi/cpo/2.2.1/credentials"
       },
       {
         "identifier": "tokens",
-        "url": "https://example.com/ocpi/ocpi/cpo/2.1.1/tokens"
+        "role": "RECEIVER",
+        "url": "https://example.com/ocpi/ocpi/cpo/2.2.1/tokens"
       },
       {
         "identifier": "tariffs",
-        "url": "https://example.com/ocpi/ocpi/cpo/2.1.1/tariffs"
+        "role": "RECEIVER",
+        "url": "https://example.com/ocpi/ocpi/cpo/2.2.1/tariffs"
       },
       {
         "identifier": "cdrs",
-        "url": "https://example.com/ocpi/ocpi/cpo/2.1.1/cdrs"
+        "role": "RECEIVER",
+        "url": "https://example.com/ocpi/ocpi/cpo/2.2.1/cdrs"
       },
       {
         "identifier": "locations",
-        "url": "https://example.com/ocpi/ocpi/cpo/2.1.1/locations"
+        "role": "RECEIVER",
+        "url": "https://example.com/ocpi/ocpi/cpo/2.2.1/locations"
       },
       {
         "identifier": "sessions",
-        "url": "https://example.com/ocpi/ocpi/cpo/2.1.1/sessions"
+        "role": "RECEIVER",
+        "url": "https://example.com/ocpi/ocpi/cpo/2.2.1/sessions"
       },
       {
         "identifier": "commands",
-        "url": "https://example.com/ocpi/ocpi/cpo/2.1.1/commands"
+        "role": "SENDER",
+        "url": "https://example.com/ocpi/ocpi/cpo/2.2.1/commands"
       }
     ]
   }

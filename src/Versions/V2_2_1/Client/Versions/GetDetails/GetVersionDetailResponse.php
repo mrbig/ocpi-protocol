@@ -46,7 +46,7 @@ class GetVersionDetailResponse extends AbstractResponse
             throw new OcpiInvalidTokenClientError();
         }
 
-        $responseAsJson = self::toJson($response, 'V2_2_1/eMSP/Client/Versions/versionGetDetailResponse.schema.json');
+        $responseAsJson = self::toJson($response, 'V2_2_1/Common/Versions/versionGetDetailResponse.schema.json');
 
         if($responseAsJson->status_code === 2002) {
             throw new OcpiInvalidTokenClientError();

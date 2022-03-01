@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace Chargemap\OCPI\Versions\V2_2_1\Common\Factories;
 
 use Chargemap\OCPI\Versions\V2_2_1\Common\Models\Endpoint;
+use Chargemap\OCPI\Versions\V2_2_1\Common\Models\InterfaceRole;
 use Chargemap\OCPI\Versions\V2_2_1\Common\Models\ModuleId;
 use stdClass;
 
@@ -17,6 +18,7 @@ class EndpointFactory
 
         return new Endpoint(
             new ModuleId($json->identifier),
+            new InterfaceRole($json->role),
             $json->url
         );
     }
