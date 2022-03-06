@@ -1,8 +1,8 @@
 {
-    "title": "V2.2.1\\Emsp\\Client\\Locations\\Get",
+    "title": "V2.2.1\\Sender\\Locations\\Get",
     "properties": {
         "status_code": {
-            "$ref": "../../../Common/common.schema.json#/definitions/status_code"
+            "$ref": "../../Common/common.schema.json#/definitions/status_code"
         },
         "status_message": {
             "oneOf": [
@@ -10,7 +10,7 @@
                     "type": "null"
                 },
                 {
-                    "$ref": "../../../Common/common.schema.json#/definitions/status_message"
+                    "$ref": "../../Common/common.schema.json#/definitions/status_message"
                 }
             ]
         },
@@ -20,7 +20,7 @@
                     "type": "null"
                 },
                 {
-                    "$ref": "../../../Common/location.schema.json",
+                    "$ref": "../../Common/location.schema.json",
                     "required": [
                         "id",
                         "type",
@@ -36,7 +36,7 @@
             ]
         },
         "timestamp": {
-            "$ref": "../../../Common/common.schema.json#/definitions/timestamp"
+            "$ref": "../../Common/common.schema.json#/definitions/timestamp"
         }
     },
     "required": [

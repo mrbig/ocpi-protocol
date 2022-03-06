@@ -1,8 +1,8 @@
 {
-  "title": "V2.2.1\\Emsp\\Client\\Locations\\Location",
+  "title": "V2.2.1\\Sender\\Locations\\Location",
   "oneOf": [
     {
-      "$ref": "../../../Common/location.schema.json",
+      "$ref": "../../Common/location.schema.json",
       "required": [
         "id",
         "type",

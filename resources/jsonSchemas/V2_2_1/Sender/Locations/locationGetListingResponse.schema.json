@@ -1,8 +1,8 @@
 {
-    "title": "V2.2.1\\Emsp\\Client\\Locations\\GetListing",
+    "title": "V2.2.1\\Sender\\Locations\\GetListing",
     "properties": {
         "status_code": {
-            "$ref": "../../../Common/common.schema.json#/definitions/status_code"
+            "$ref": "../../Common/common.schema.json#/definitions/status_code"
         },
         "status_message": {
             "oneOf": [
@@ -10,7 +10,7 @@
                     "type": "null"
                 },
                 {
-                    "$ref": "../../../Common/common.schema.json#/definitions/status_message"
+                    "$ref": "../../Common/common.schema.json#/definitions/status_message"
                 }
             ]
         },
@@ -25,7 +25,7 @@
             "additionalProperties": false
         },
         "timestamp": {
-            "$ref": "../../../Common/common.schema.json#/definitions/timestamp"
+            "$ref": "../../Common/common.schema.json#/definitions/timestamp"
         }
     },
     "required": [
