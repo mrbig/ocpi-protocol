@@ -39,7 +39,7 @@ class PartialEVSEFactoryTest extends TestCase
     {
         $json = json_decode($payload, false, 512, JSON_THROW_ON_ERROR);
 
-        OcpiTestCase::coerce('V2_2_1/eMSP/Server/Locations/Evses/evsePatchRequest.schema.json', $json);
+        OcpiTestCase::coerce('V2_2_1/Receiver/Locations/Evses/evsePatchRequest.schema.json', $json);
 
         $evse = PartialEVSEFactory::fromJson($json);
 

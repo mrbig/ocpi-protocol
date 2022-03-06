@@ -1,8 +1,8 @@
 {
-    "title": "V2.2.1\\Emsp\\Server\\Locations\\Evses\\Connectors\\Get",
+    "title": "V2.2.1\\Receiver\\Locations\\Evses\\Connectors\\Get",
     "properties": {
         "data": {
-            "$ref": "../../../../../Common/connector.schema.json",
+            "$ref": "../../../../Common/connector.schema.json",
             "required": [
                 "id",
                 "standard",
@@ -14,7 +14,7 @@
             ]
         },
         "status_code": {
-            "$ref": "../../../../../Common/common.schema.json#/definitions/status_code"
+            "$ref": "../../../../Common/common.schema.json#/definitions/status_code"
         },
         "status_message": {
             "oneOf": [
@@ -22,12 +22,12 @@
                     "type": "null"
                 },
                 {
-                    "$ref": "../../../../../Common/common.schema.json#/definitions/status_message"
+                    "$ref": "../../../../Common/common.schema.json#/definitions/status_message"
                 }
             ]
         },
         "timestamp": {
-            "$ref": "../../../../../Common/common.schema.json#/definitions/timestamp"
+            "$ref": "../../../../Common/common.schema.json#/definitions/timestamp"
         }
     },
     "required": [

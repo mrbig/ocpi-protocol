@@ -1,0 +1,10 @@
+{
+    "title": "V2.2.1\\Receiver\\Locations\\Evses\\Connectors\\Patch",
+    "oneOf": [
+        {
+            "$ref": "../../../../Common/connector.schema.json",
+            "minProperties": 1,
+            "additionalProperties": false
+        }
+    ]
+}

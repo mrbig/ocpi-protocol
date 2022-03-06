@@ -36,7 +36,7 @@ class PartialConnectorFactoryTest extends TestCase
     {
         $json = json_decode($payload, false, 512, JSON_THROW_ON_ERROR);
 
-        OcpiTestCase::coerce('V2_2_1/eMSP/Server/Locations/Evses/Connectors/connectorPatchRequest.schema.json', $json);
+        OcpiTestCase::coerce('V2_2_1/Receiver/Locations/Evses/Connectors/connectorPatchRequest.schema.json', $json);
 
         $connector = PartialConnectorFactory::fromJson($json);
 

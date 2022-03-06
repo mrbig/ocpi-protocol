@@ -20,7 +20,7 @@ class OcpiEmspConnectorPatchRequest extends BaseConnectorUpdateRequest
     public function __construct(ServerRequestInterface $request, LocationRequestParams $params)
     {
         parent::__construct($request, $params);
-        PayloadValidation::coerce('V2_2_1/eMSP/Server/Locations/Evses/Connectors/connectorPatchRequest.schema.json', $this->jsonBody);
+        PayloadValidation::coerce('V2_2_1/Receiver/Locations/Evses/Connectors/connectorPatchRequest.schema.json', $this->jsonBody);
         $partialConnector = PartialConnectorFactory::fromJson($this->jsonBody);
         if ($partialConnector === null) {
             throw new UnexpectedValueException('PartialConnector cannot be null');

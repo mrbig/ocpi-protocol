@@ -1,8 +1,8 @@
 {
-    "title": "V2.2.1\\Emsp\\Server\\Locations\\Patch",
+    "title": "V2.2.1\\Receiver\\Locations\\Evses\\Patch",
     "oneOf": [
         {
-            "$ref": "../../../Common/location.schema.json",
+            "$ref": "../../../Common/evse.schema.json",
             "minProperties": 1,
             "additionalProperties": false
         }
