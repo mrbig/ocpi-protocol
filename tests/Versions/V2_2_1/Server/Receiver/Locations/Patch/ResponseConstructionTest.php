@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace Tests\Chargemap\OCPI\Versions\V2_2_1\Server\Emsp\Locations\Patch;
+namespace Tests\Chargemap\OCPI\Versions\V2_2_1\Server\Receiver\Locations\Patch;
 
 use Chargemap\OCPI\Versions\V2_2_1\Common\Models\PartialLocation;
-use Chargemap\OCPI\Versions\V2_2_1\Server\Emsp\Locations\Patch\OcpiEmspLocationPatchResponse;
+use Chargemap\OCPI\Versions\V2_2_1\Server\Receiver\Locations\Patch\ReceiverLocationPatchResponse;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \Chargemap\OCPI\Versions\V2_2_1\Server\Emsp\Locations\Patch\OcpiEmspLocationPatchResponse
+ * @covers \Chargemap\OCPI\Versions\V2_2_1\Server\Receiver\Locations\Patch\ReceiverLocationPatchResponse
  */
 class ResponseConstructionTest extends TestCase
 {
@@ -18,7 +18,7 @@ class ResponseConstructionTest extends TestCase
         $partialLocation = $this->createMock(PartialLocation::class);
 
         // Create response
-        $response = new OcpiEmspLocationPatchResponse($partialLocation);
+        $response = new ReceiverLocationPatchResponse($partialLocation);
         $responseInterface = $response->getResponseInterface();
         $data = json_decode($responseInterface->getBody()->getContents())->data;
         $this->assertNull($data);

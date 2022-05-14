@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Chargemap\OCPI\Versions\V2_2_1\Server\Emsp\Locations;
+namespace Chargemap\OCPI\Versions\V2_2_1\Server\Receiver\Locations;
 
 use Chargemap\OCPI\Common\Server\OcpiUpdateRequest;
 use Psr\Http\Message\ServerRequestInterface;
 
-abstract class OcpiLocationUpdateRequest extends OcpiUpdateRequest
+abstract class LocationUpdateRequest extends OcpiUpdateRequest
 {
     use LocationRequestTrait;
 

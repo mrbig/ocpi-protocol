@@ -7,7 +7,7 @@ namespace Chargemap\OCPI\Versions\V2_2_1\Server\Emsp\Sessions\Patch;
 use Chargemap\OCPI\Common\Utils\PayloadValidation;
 use Chargemap\OCPI\Versions\V2_2_1\Common\Factories\PartialSessionFactory;
 use Chargemap\OCPI\Versions\V2_2_1\Common\Models\PartialSession;
-use Chargemap\OCPI\Versions\V2_2_1\Server\Emsp\Locations\Patch\UnsupportedPatchException;
+use Chargemap\OCPI\Versions\V2_2_1\Server\Receiver\Locations\Patch\UnsupportedPatchException;
 use Chargemap\OCPI\Versions\V2_2_1\Server\Emsp\Sessions\OcpiSessionUpdateRequest;
 use Psr\Http\Message\ServerRequestInterface;
 use UnexpectedValueException;

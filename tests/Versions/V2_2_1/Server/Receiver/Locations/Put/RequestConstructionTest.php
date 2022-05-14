@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace Tests\Chargemap\OCPI\Versions\V2_2_1\Server\Emsp\Locations\Put;
+namespace Tests\Chargemap\OCPI\Versions\V2_2_1\Server\Receiver\Locations\Put;
 
-use Chargemap\OCPI\Versions\V2_2_1\Server\Emsp\Locations\LocationRequestParams;
-use Chargemap\OCPI\Versions\V2_2_1\Server\Emsp\Locations\Put\OcpiEmspLocationPutRequest;
+use Chargemap\OCPI\Versions\V2_2_1\Server\Receiver\Locations\LocationRequestParams;
+use Chargemap\OCPI\Versions\V2_2_1\Server\Receiver\Locations\Put\ReceiverLocationPutRequest;
 use JsonException;
 use Tests\Chargemap\OCPI\OcpiTestCase;
 use Tests\Chargemap\OCPI\Versions\V2_2_1\Common\Factories\LocationFactoryTest;
 
 /**
- * @covers \Chargemap\OCPI\Versions\V2_2_1\Server\Emsp\Locations\Put\OcpiEmspLocationPutRequest
+ * @covers \Chargemap\OCPI\Versions\V2_2_1\Server\Receiver\Locations\Put\ReceiverLocationPutRequest
  */
 class RequestConstructionTest extends OcpiTestCase
 {
@@ -35,7 +35,7 @@ class RequestConstructionTest extends OcpiTestCase
 
         $serverRequestInterface = $this->createServerRequestInterface($filename);
 
-        $request = new OcpiEmspLocationPutRequest($serverRequestInterface, new LocationRequestParams('FR', 'TNM', $payload->id));
+        $request = new ReceiverLocationPutRequest($serverRequestInterface, new LocationRequestParams('FR', 'TNM', $payload->id));
 
         $this->assertEquals('FR', $request->getCountryCode());
         $this->assertEquals('TNM', $request->getPartyId());

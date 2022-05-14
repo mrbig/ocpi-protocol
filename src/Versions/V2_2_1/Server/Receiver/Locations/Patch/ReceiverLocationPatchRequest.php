@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace Chargemap\OCPI\Versions\V2_2_1\Server\Emsp\Locations\Patch;
+namespace Chargemap\OCPI\Versions\V2_2_1\Server\Receiver\Locations\Patch;
 
 use Chargemap\OCPI\Common\Utils\PayloadValidation;
 use Chargemap\OCPI\Versions\V2_2_1\Common\Factories\PartialLocationFactory;
 use Chargemap\OCPI\Versions\V2_2_1\Common\Models\PartialLocation;
-use Chargemap\OCPI\Versions\V2_2_1\Server\Emsp\Locations\LocationRequestParams;
-use Chargemap\OCPI\Versions\V2_2_1\Server\Emsp\Locations\OcpiLocationUpdateRequest;
+use Chargemap\OCPI\Versions\V2_2_1\Server\Receiver\Locations\LocationRequestParams;
+use Chargemap\OCPI\Versions\V2_2_1\Server\Receiver\Locations\LocationUpdateRequest;
 use Psr\Http\Message\ServerRequestInterface;
 use UnexpectedValueException;
 
-class OcpiEmspLocationPatchRequest extends OcpiLocationUpdateRequest
+class ReceiverLocationPatchRequest extends LocationUpdateRequest
 {
     private PartialLocation $partialLocation;
 

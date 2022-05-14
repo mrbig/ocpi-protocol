@@ -8,7 +8,7 @@ use Chargemap\OCPI\Common\Utils\PayloadValidation;
 use Chargemap\OCPI\Versions\V2_2_1\Common\Factories\ConnectorFactory;
 use Chargemap\OCPI\Versions\V2_2_1\Common\Models\Connector;
 use Chargemap\OCPI\Versions\V2_2_1\Server\Emsp\Locations\Evses\Connectors\BaseConnectorUpdateRequest;
-use Chargemap\OCPI\Versions\V2_2_1\Server\Emsp\Locations\LocationRequestParams;
+use Chargemap\OCPI\Versions\V2_2_1\Server\Receiver\Locations\LocationRequestParams;
 use Psr\Http\Message\ServerRequestInterface;
 use UnexpectedValueException;
 

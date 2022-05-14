@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace Tests\Chargemap\OCPI\Versions\V2_2_1\Server\Emsp\Locations\Patch;
+namespace Tests\Chargemap\OCPI\Versions\V2_2_1\Server\Receiver\Locations\Patch;
 
-use Chargemap\OCPI\Versions\V2_2_1\Server\Emsp\Locations\LocationRequestParams;
-use Chargemap\OCPI\Versions\V2_2_1\Server\Emsp\Locations\Patch\OcpiEmspLocationPatchRequest;
-use Chargemap\OCPI\Versions\V2_2_1\Server\Emsp\Locations\Patch\UnsupportedPatchException;
+use Chargemap\OCPI\Versions\V2_2_1\Server\Receiver\Locations\LocationRequestParams;
+use Chargemap\OCPI\Versions\V2_2_1\Server\Receiver\Locations\Patch\ReceiverLocationPatchRequest;
+use Chargemap\OCPI\Versions\V2_2_1\Server\Receiver\Locations\Patch\UnsupportedPatchException;
 use Tests\Chargemap\OCPI\OcpiTestCase;
 use Tests\Chargemap\OCPI\Versions\V2_2_1\Common\Factories\PartialLocationFactoryTest;
 
 /**
- * @covers \Chargemap\OCPI\Versions\V2_2_1\Server\Emsp\Locations\Patch\OcpiEmspLocationPatchRequest
+ * @covers \Chargemap\OCPI\Versions\V2_2_1\Server\Receiver\Locations\Patch\OcpiReceiverLocationPatchRequest
  */
 class RequestConstructionTest extends OcpiTestCase
 {
@@ -47,7 +47,7 @@ class RequestConstructionTest extends OcpiTestCase
     {
         $serverRequestInterface = $this->createServerRequestInterface($filename);
 
-        $request = new OcpiEmspLocationPatchRequest($serverRequestInterface, new LocationRequestParams($countryCode, $partyId, $locationId));
+        $request = new ReceiverLocationPatchRequest($serverRequestInterface, new LocationRequestParams($countryCode, $partyId, $locationId));
 
         $this->assertSame($countryCode, $request->getCountryCode());
         $this->assertSame($partyId, $request->getPartyId());
@@ -63,6 +63,6 @@ class RequestConstructionTest extends OcpiTestCase
         $serverRequestInterface = $this->createServerRequestInterface(__DIR__ . '/payloads/LocationPatchFullPayload.json');
 
         $this->expectException(UnsupportedPatchException::class);
-        new OcpiEmspLocationPatchRequest($serverRequestInterface, new LocationRequestParams('FR', 'TNM', 'LOC2'));
+        new ReceiverLocationPatchRequest($serverRequestInterface, new LocationRequestParams('FR', 'TNM', 'LOC2'));
     }
 }

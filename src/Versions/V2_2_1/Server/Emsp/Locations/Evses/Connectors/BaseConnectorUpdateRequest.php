@@ -6,7 +6,7 @@ namespace Chargemap\OCPI\Versions\V2_2_1\Server\Emsp\Locations\Evses\Connectors;
 
 use Chargemap\OCPI\Common\Server\Errors\OcpiNotEnoughInformationClientError;
 use Chargemap\OCPI\Versions\V2_2_1\Server\Emsp\Locations\Evses\BaseEvseUpdateRequest;
-use Chargemap\OCPI\Versions\V2_2_1\Server\Emsp\Locations\LocationRequestParams;
+use Chargemap\OCPI\Versions\V2_2_1\Server\Receiver\Locations\LocationRequestParams;
 use Psr\Http\Message\ServerRequestInterface;
 
 abstract class BaseConnectorUpdateRequest extends BaseEvseUpdateRequest

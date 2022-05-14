@@ -8,8 +8,8 @@ use Chargemap\OCPI\Common\Utils\PayloadValidation;
 use Chargemap\OCPI\Versions\V2_2_1\Common\Factories\PartialEVSEFactory;
 use Chargemap\OCPI\Versions\V2_2_1\Common\Models\PartialEVSE;
 use Chargemap\OCPI\Versions\V2_2_1\Server\Emsp\Locations\Evses\BaseEvseUpdateRequest;
-use Chargemap\OCPI\Versions\V2_2_1\Server\Emsp\Locations\LocationRequestParams;
-use Chargemap\OCPI\Versions\V2_2_1\Server\Emsp\Locations\Patch\UnsupportedPatchException;
+use Chargemap\OCPI\Versions\V2_2_1\Server\Receiver\Locations\LocationRequestParams;
+use Chargemap\OCPI\Versions\V2_2_1\Server\Receiver\Locations\Patch\UnsupportedPatchException;
 use Psr\Http\Message\ServerRequestInterface;
 use UnexpectedValueException;
 

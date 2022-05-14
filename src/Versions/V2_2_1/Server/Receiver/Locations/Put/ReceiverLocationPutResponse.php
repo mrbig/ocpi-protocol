@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Chargemap\OCPI\Versions\V2_2_1\Server\Emsp\Locations\Put;
+namespace Chargemap\OCPI\Versions\V2_2_1\Server\Receiver\Locations\Put;
 
 use Chargemap\OCPI\Common\Server\OcpiCreateResponse;
 use Chargemap\OCPI\Versions\V2_2_1\Common\Models\Location;
 
-class OcpiEmspLocationPutResponse extends OcpiCreateResponse
+class ReceiverLocationPutResponse extends OcpiCreateResponse
 {
     private Location $location;
 

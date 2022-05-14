@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Chargemap\OCPI\Versions\V2_2_1\Server\Emsp\Locations;
+namespace Chargemap\OCPI\Versions\V2_2_1\Server\Receiver\Locations;
 
 trait LocationRequestTrait
 {
