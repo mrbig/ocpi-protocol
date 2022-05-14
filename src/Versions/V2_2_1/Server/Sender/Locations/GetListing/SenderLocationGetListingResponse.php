@@ -12,7 +12,7 @@ class SenderLocationGetListingResponse extends OcpiListingResponse
     /** @var Location[] */
     private array $locations = [];
 
-    public function addToken(Location $location): self
+    public function addLocation(Location $location): self
     {
         $this->locations[] = $location;
         return $this;

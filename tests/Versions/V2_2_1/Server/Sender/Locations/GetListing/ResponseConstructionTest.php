@@ -55,7 +55,7 @@ class ResponseConstructionTest extends TestCase
         foreach (json_decode($payload)->data as $index => $jsonLocation) {
             $location = LocationFactory::fromJson($jsonLocation);
             $locations[$index] = $location;
-            $response->addToken($location);
+            $response->addLocation($location);
         }
         $responseInterface = $response->getResponseInterface();
         $payload = json_decode($responseInterface->getBody()->getContents());
