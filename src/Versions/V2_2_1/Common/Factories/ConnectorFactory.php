@@ -24,8 +24,9 @@ class ConnectorFactory
             new ConnectorType($json->standard),
             new ConnectorFormat($json->format),
             new PowerType($json->power_type),
-            $json->voltage,
-            $json->amperage,
+            $json->max_voltage,
+            $json->max_amperage,
+            $json->max_electric_power ?? null,
             property_exists($json, 'tariff_id') ? $json->tariff_id : null,
             property_exists($json, 'terms_and_conditions') ? $json->terms_and_conditions : null,
             new DateTime($json->last_updated)

@@ -21,8 +21,9 @@ class ConnectorTest
             Assert::assertSame($connector->getStandard()->getValue(), $json->standard);
             Assert::assertSame($connector->getFormat()->getValue(), $json->format);
             Assert::assertSame($connector->getPowerType()->getValue(), $json->power_type);
-            Assert::assertSame($connector->getVoltage(), $json->voltage);
-            Assert::assertSame($connector->getAmperage(), $json->amperage);
+            Assert::assertSame($connector->getMaxVoltage(), $json->max_voltage);
+            Assert::assertSame($connector->getMaxAmperage(), $json->max_amperage);
+            Assert::assertSame($connector->getMaxElectricPower(), $json->max_electric_power ?? null);
             Assert::assertSame($connector->getTariffId(), $json->tariff_id ?? null);
             Assert::assertSame($connector->getTermsAndConditions(), $json->terms_and_conditions ?? null);
             Assert::assertEquals(DateTimeFormatter::format($connector->getLastUpdated()), $json->last_updated);

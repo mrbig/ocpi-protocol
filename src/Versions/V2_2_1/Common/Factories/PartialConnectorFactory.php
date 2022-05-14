@@ -33,11 +33,14 @@ class PartialConnectorFactory
         if (property_exists($json, 'power_type')) {
             $connector->withPowerType(new PowerType($json->power_type));
         }
-        if (property_exists($json, "voltage")) {
-            $connector->withVoltage($json->voltage);
+        if (property_exists($json, "max_voltage")) {
+            $connector->withMaxVoltage($json->max_voltage);
         }
-        if (property_exists($json, "amperage")) {
-            $connector->withAmperage($json->amperage);
+        if (property_exists($json, "max_amperage")) {
+            $connector->withMaxAmperage($json->max_amperage);
+        }
+        if (property_exists($json, "max_electric_power")) {
+            $connector->withMaxElectricPower($json->max_electric_power);
         }
         if (property_exists($json, "tariff_id")) {
             $connector->withTariffId($json->tariff_id);

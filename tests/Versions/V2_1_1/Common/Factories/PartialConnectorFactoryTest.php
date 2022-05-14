@@ -69,17 +69,23 @@ class PartialConnectorFactoryTest extends TestCase
         } else {
             self::assertFalse($connector->hasPowerType());
         }
-        if (property_exists($json, 'voltage')) {
-            self::assertTrue($connector->hasVoltage());
-            self::assertSame($json->voltage, $connector->getVoltage());
+        if (property_exists($json, 'max_voltage')) {
+            self::assertTrue($connector->hasMaxVoltage());
+            self::assertSame($json->max_voltage, $connector->getMaxVoltage());
         } else {
-            self::assertFalse($connector->hasVoltage());
+            self::assertFalse($connector->hasMaxVoltage());
         }
-        if (property_exists($json, 'amperage')) {
-            self::assertTrue($connector->hasAmperage());
-            self::assertSame($json->amperage, $connector->getAmperage());
+        if (property_exists($json, 'max_amperage')) {
+            self::assertTrue($connector->hasMaxAmperage());
+            self::assertSame($json->max_amperage, $connector->getMaxAmperage());
         } else {
-            self::assertFalse($connector->hasAmperage());
+            self::assertFalse($connector->hasMaxAmperage());
+        }
+        if (property_exists($json, 'max_electric_power')) {
+            self::assertTrue($connector->hasMaxElectricPower());
+            self::assertSame($json->max_electric_power, $connector->getMaxElectricPower());
+        } else {
+            self::assertFalse($connector->hasMaxElectricPower());
         }
         if (property_exists($json, 'tariff_id')) {
             self::assertTrue($connector->hasTariffId());

@@ -19,9 +19,11 @@ class Connector implements JsonSerializable
 
     private PowerType $powerType;
 
-    private int $voltage;
+    private int $maxVoltage;
 
-    private int $amperage;
+    private int $maxAmperage;
+
+    private ?int $maxElectricPower;
 
     private ?string $tariffId;
 
@@ -35,20 +37,22 @@ class Connector implements JsonSerializable
      * @param ConnectorType $standard
      * @param ConnectorFormat $format
      * @param PowerType $powerType
-     * @param int $voltage
-     * @param int $amperage
+     * @param int $maxVoltage
+     * @param int $maxAmperage
+     * @param int|null $max_electric_power
      * @param string|null $tariffId
      * @param string|null $termsAndConditions
      * @param DateTime $lastUpdated
      */
-    public function __construct(string $id, ConnectorType $standard, ConnectorFormat $format, PowerType $powerType, int $voltage, int $amperage, ?string $tariffId, ?string $termsAndConditions, DateTime $lastUpdated)
+    public function __construct(string $id, ConnectorType $standard, ConnectorFormat $format, PowerType $powerType, int $maxVoltage, int $maxAmperage, ?int $maxElectricPower, ?string $tariffId, ?string $termsAndConditions, DateTime $lastUpdated)
     {
         $this->id = $id;
         $this->standard = $standard;
         $this->format = $format;
         $this->powerType = $powerType;
-        $this->voltage = $voltage;
-        $this->amperage = $amperage;
+        $this->maxVoltage = $maxVoltage;
+        $this->maxAmperage = $maxAmperage;
+        $this->maxElectricPower = $maxElectricPower;
         $this->tariffId = $tariffId;
         $this->termsAndConditions = $termsAndConditions;
         $this->lastUpdated = $lastUpdated;
@@ -74,14 +78,19 @@ class Connector implements JsonSerializable
         return $this->powerType;
     }
 
-    public function getVoltage(): int
+    public function getMaxVoltage(): int
     {
-        return $this->voltage;
+        return $this->maxVoltage;
     }
 
-    public function getAmperage(): int
+    public function getMaxAmperage(): int
     {
-        return $this->amperage;
+        return $this->maxAmperage;
+    }
+
+    public function getMaxElectricPower(): ?int
+    {
+        return $this->maxElectricPower;
     }
 
     public function getTariffId(): ?string
@@ -106,10 +115,14 @@ class Connector implements JsonSerializable
             'standard' => $this->standard,
             'format' => $this->format,
             'power_type' => $this->powerType,
-            'voltage' => $this->voltage,
-            'amperage' => $this->amperage,
+            'max_voltage' => $this->maxVoltage,
+            'max_amperage' => $this->maxAmperage,
             'last_updated' => DateTimeFormatter::format($this->lastUpdated),
         ];
+
+        if ($this->maxElectricPower !== null) {
+            $return['max_electric_power'] = $this->maxElectricPower;
+        }
 
         if ($this->tariffId !== null) {
             $return['tariff_id'] = $this->tariffId;

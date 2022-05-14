@@ -23,6 +23,11 @@
                 "DOMESTIC_J",
                 "DOMESTIC_K",
                 "DOMESTIC_L",
+                "DOMESTIC_M",
+                "DOMESTIC_N",
+                "DOMESTIC_O",
+                "GBT_AC",
+                "GBT_DC",
                 "IEC_60309_2_single_16",
                 "IEC_60309_2_three_16",
                 "IEC_60309_2_three_32",
@@ -33,6 +38,12 @@
                 "IEC_62196_T2_COMBO",
                 "IEC_62196_T3A",
                 "IEC_62196_T3C",
+                "NEMA_5_20",
+                "NEMA_6_30",
+                "NEMA_10_30",
+                "NEMA_10_50",
+                "NEMA_14_30",
+                "NEMA_14_50",
                 "TESLA_R",
                 "TESLA_S"
             ]
@@ -48,15 +59,23 @@
             "type": "string",
             "enum": [
                 "AC_1_PHASE",
+                "AC_2_PHASE",
+                "AC_1_PHASE_SPLIT",
                 "AC_3_PHASE",
                 "DC"
             ]
         },
-        "voltage": {
+        "max_voltage": {
             "type": "integer"
         },
-        "amperage": {
+        "max_amperage": {
             "type": "integer"
+        },
+        "max_electric_power": {
+            "type": [
+                "integer",
+                "null"
+            ]
         },
         "tariff_id": {
             "type": [

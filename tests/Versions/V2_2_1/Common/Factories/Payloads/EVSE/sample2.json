@@ -41,8 +41,9 @@
       "standard": "IEC_62196_T2",
       "format": "CABLE",
       "power_type": "AC_3_PHASE",
-      "voltage": 220,
-      "amperage": 16,
+      "max_voltage": 220,
+      "max_amperage": 16,
+      "max_electric_power": 4400,
       "tariff_id": "11",
       "last_updated": "2015-03-16T10:10:02Z"
     },
@@ -51,8 +52,9 @@
       "standard": "IEC_62196_T2",
       "format": "SOCKET",
       "power_type": "AC_3_PHASE",
-      "voltage": 220,
-      "amperage": 16,
+      "max_voltage": 220,
+      "max_amperage": 16,
+      "max_electric_power": 4400,
       "tariff_id": "11",
       "last_updated": "2015-03-18T08:12:01Z"
     }

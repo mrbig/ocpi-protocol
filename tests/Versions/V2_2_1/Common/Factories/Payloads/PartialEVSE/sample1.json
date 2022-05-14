@@ -14,8 +14,8 @@
       "standard": "IEC_62196_T2",
       "format": "SOCKET",
       "power_type": "AC_3_PHASE",
-      "voltage": 230,
-      "amperage": 32,
+      "max_voltage": 230,
+      "max_amperage": 32,
       "tariff_id": "tariff_id",
       "terms_and_conditions": null,
       "last_updated": "2020-06-16T17:31:23Z"
@@ -25,8 +25,8 @@
       "standard": "DOMESTIC_E",
       "format": "SOCKET",
       "power_type": "AC_1_PHASE",
-      "voltage": 230,
-      "amperage": 13,
+      "max_voltage": 230,
+      "max_amperage": 13,
       "tariff_id": "tariff_id",
       "terms_and_conditions": null,
       "last_updated": "2020-06-16T17:31:23Z"

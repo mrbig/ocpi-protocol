@@ -14,8 +14,9 @@ use JsonSerializable;
  * @method bool hasStandard()
  * @method bool hasFormat()
  * @method bool hasPowerType()
- * @method bool hasVoltage()
- * @method bool hasAmperage()
+ * @method bool hasMaxVoltage()
+ * @method bool hasMaxAmperage()
+ * @method bool hasMaxElectricPower()
  * @method bool hasTariffId()
  * @method bool hasTermsAndConditions()
  * @method bool hasLastUpdated()
@@ -35,8 +36,9 @@ class PartialConnector extends PartialModel implements JsonSerializable
     private ?ConnectorType $standard = null;
     private ?ConnectorFormat $format = null;
     private ?PowerType $powerType = null;
-    private ?int $voltage = null;
-    private ?int $amperage = null;
+    private ?int $maxVoltage = null;
+    private ?int $maxAmperage = null;
+    private ?int $maxElectricPower = null;
     private ?string $tariffId = null;
     private ?string $termsAndConditions = null;
     private ?DateTime $lastUpdated = null;
@@ -65,15 +67,21 @@ class PartialConnector extends PartialModel implements JsonSerializable
         return $this;
     }
 
-    protected function _withVoltage(int $voltage): self
+    protected function _withMaxVoltage(int $maxVoltage): self
     {
-        $this->voltage = $voltage;
+        $this->maxVoltage = $maxVoltage;
         return $this;
     }
 
-    protected function _withAmperage(int $amperage): self
+    protected function _withMaxAmperage(int $maxAmperage): self
     {
-        $this->amperage = $amperage;
+        $this->maxAmperage = $maxAmperage;
+        return $this;
+    }
+
+    protected function _withMaxElectricPower(int $maxElectricPower): self
+    {
+        $this->maxElectricPower = $maxElectricPower;
         return $this;
     }
 
@@ -115,14 +123,19 @@ class PartialConnector extends PartialModel implements JsonSerializable
         return $this->powerType;
     }
 
-    public function getVoltage(): ?int
+    public function getMaxVoltage(): ?int
     {
-        return $this->voltage;
+        return $this->maxVoltage;
     }
 
-    public function getAmperage(): ?int
+    public function getMaxAmperage(): ?int
     {
-        return $this->amperage;
+        return $this->maxAmperage;
+    }
+
+    public function getMaxElectricPower(): ?int
+    {
+        return $this->maxElectricPower;
     }
 
     public function getTariffId(): ?string
@@ -156,11 +169,14 @@ class PartialConnector extends PartialModel implements JsonSerializable
         if ($this->hasPowerType()) {
             $return['power_type'] = $this->powerType;
         }
-        if ($this->hasVoltage()) {
-            $return['voltage'] = $this->voltage;
+        if ($this->hasMaxVoltage()) {
+            $return['max_voltage'] = $this->maxVoltage;
         }
-        if ($this->hasAmperage()) {
-            $return['amperage'] = $this->amperage;
+        if ($this->hasMaxAmperage()) {
+            $return['max_amperage'] = $this->maxAmperage;
+        }
+        if ($this->hasMaxElectricPower()) {
+            $return['max_electric_power'] = $this->max_electric_power;
         }
         if ($this->hasTariffId()) {
             $return['tariff_id'] = $this->tariffId;

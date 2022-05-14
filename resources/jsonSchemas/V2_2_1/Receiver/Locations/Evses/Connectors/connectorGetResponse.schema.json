@@ -8,8 +8,8 @@
                 "standard",
                 "format",
                 "power_type",
-                "voltage",
-                "amperage",
+                "max_voltage",
+                "max_amperage",
                 "last_updated"
             ]
         },
