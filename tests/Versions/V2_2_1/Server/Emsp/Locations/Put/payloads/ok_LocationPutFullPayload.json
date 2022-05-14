@@ -1,6 +1,8 @@
 {
+  "country_code": "FR",
+  "party_id": "FR1",
   "id": "LOC1",
-  "type": "ON_STREET",
+  "publish": true,
   "name": "Gent Zuid",
   "address": "F.Rooseveltlaan 3A",
   "city": "Gent",
@@ -28,6 +30,7 @@
       }
     }
   ],
+  "parking_type": "ON_STREET",
   "evses": [
     {
       "uid": "3256",

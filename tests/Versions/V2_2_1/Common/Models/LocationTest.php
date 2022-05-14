@@ -19,7 +19,10 @@ class LocationTest
         if ($location === null) {
             Assert::assertNull($json);
         } else {
+            Assert::assertSame($location->getCountryCode(), $json->country_code);
+            Assert::assertSame($location->getPartyId(), $json->party_id);
             Assert::assertSame($location->getId(), $json->id);
+            Assert::assertSame($location->getPublish(), $json->publish);
             Assert::assertSame($location->getName(), $json->name);
             BusinessDetailsTest::assertJsonSerialization($location->getOperator(), $json->operator ?? null);
             BusinessDetailsTest::assertJsonSerialization($location->getOwner(), $json->owner ?? null);
@@ -60,7 +63,7 @@ class LocationTest
             }
 
             Assert::assertSame(DateTimeFormatter::format($location->getLastUpdated()), $json->last_updated);
-            Assert::assertSame($location->getLocationType()->getValue(), $json->type);
+            Assert::assertSame($location->getParkingType()->getValue(), $json->parking_type);
             HoursTest::assertJsonSerialization($location->getOpeningTimes(), $json->opening_times);
             Assert::assertSame($location->getPostalCode(), $json->postal_code);
 

@@ -10,6 +10,8 @@
         "type": {
             "type": "string",
             "enum": [
+                "AD_HOC_USER",
+                "APP_USER",
                 "RFID",
                 "OTHER"
             ]

@@ -1,6 +1,9 @@
 {
+  "country_code": "FR",
+  "party_id": "FR1",
   "id": "XNGKVE",
-  "type": "UNKNOWN",
+  "publish": true,
+  "parking_type": "ON_STREET",
   "name": "Bessancourt, Verdun",
   "address": "Rue de Verdun",
   "city": "Bessancourt",

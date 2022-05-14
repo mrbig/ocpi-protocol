@@ -1,6 +1,8 @@
 {
+  "country_code": "FR",
+  "party_id": "FR1",
   "id": "FR*NIS*PFR*13100*N1SSAN*A1X",
-  "type": "PARKING_LOT",
+  "publish": true,
   "name": "NISSAN DEALER AIX - AIX EN PROVENCE - FRANCE",
   "address": "Route de Galice",
   "city": "Aix-en-Provence",
@@ -34,6 +36,7 @@
       "last_updated": "2020-12-03T14:51:14"
     }
   ],
+  "parking_type": "PARKING_LOT",
   "opening_times": {
     "regular_hours": [
       {

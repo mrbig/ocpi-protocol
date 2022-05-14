@@ -1,6 +1,8 @@
 {
+  "country_code": "FR",
+  "party_id": "FR1",
   "id": "XNGKVE",
-  "type": "UNKNOWN",
+  "publish": true,
   "name": "Bessancourt, Verdun",
   "address": "Rue de Verdun",
   "city": "Bessancourt",
@@ -10,6 +12,7 @@
     "latitude": "49.038100",
     "longitude": "2.211810"
   },
+  "parking_type": "UNDERGROUND_GARAGE",
   "evses": [
     {
       "uid": "ELCG1",

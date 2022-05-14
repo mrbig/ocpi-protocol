@@ -10,9 +10,16 @@ use JsonSerializable;
 
 class Location implements JsonSerializable
 {
+    private string $countryCode;
+
+    private string $partyId;
+
     private string $id;
 
-    private LocationType $locationType;
+    private bool $publish;
+
+    /** @var PublishTokenType[] */
+    private array $publishAllowedTo = [];
 
     private ?string $name;
 
@@ -20,7 +27,9 @@ class Location implements JsonSerializable
 
     private string $city;
 
-    private string $postalCode;
+    private ?string $postalCode;
+
+    private ?string $state;
 
     private string $country;
 
@@ -28,6 +37,8 @@ class Location implements JsonSerializable
 
     /** @var AdditionalGeoLocation[] */
     private array $relatedLocations = [];
+
+    private ?ParkingType $parkingType;
 
     /** @var EVSE[] */
     private array $evses = [];
@@ -58,14 +69,18 @@ class Location implements JsonSerializable
     private DateTime $lastUpdated;
 
     public function __construct(
+        string $countryCode,
+        string $partyId,
         string $id,
-        LocationType $locationType,
+        bool $publish,
         ?string $name,
         string $address,
         string $city,
-        string $postalCode,
+        ?string $postalCode,
+        ?string $state,
         string $country,
         GeoLocation $coordinates,
+        ?ParkingType $parkingType,
         ?BusinessDetails $operator,
         ?BusinessDetails $suboperator,
         ?BusinessDetails $owner,
@@ -76,14 +91,18 @@ class Location implements JsonSerializable
         DateTime $lastUpdated
     )
     {
+        $this->countryCode = $countryCode;
+        $this->partyId = $partyId;
         $this->id = $id;
-        $this->locationType = $locationType;
+        $this->publish = $publish;
         $this->name = $name;
         $this->address = $address;
         $this->city = $city;
         $this->postalCode = $postalCode;
+        $this->state = $state;
         $this->country = $country;
         $this->coordinates = $coordinates;
+        $this->parkingType = $parkingType;
         $this->operator = $operator;
         $this->suboperator = $suboperator;
         $this->owner = $owner;
@@ -92,6 +111,13 @@ class Location implements JsonSerializable
         $this->chargingWhenClosed = $chargingWhenClosed;
         $this->energyMix = $energyMix;
         $this->lastUpdated = $lastUpdated;
+    }
+    
+    public function addPublishAllowedTo(PublishTokenType $type): self
+    {
+        $this->publishAllowedTo[] = $type;
+
+        return $this;
     }
 
     public function addRelatedLocation(AdditionalGeoLocation $relatedLocation): self
@@ -129,14 +155,32 @@ class Location implements JsonSerializable
         return $this;
     }
 
+    public function getCountryCode(): string
+    {
+        return $this->countryCode;
+    }
+
+    public function getPartyId(): string
+    {
+        return $this->partyId;
+    }
+
     public function getId(): string
     {
         return $this->id;
     }
 
-    public function getLocationType(): LocationType
+    public function getPublish(): bool
     {
-        return $this->locationType;
+        return $this->publish;
+    }
+
+    /**
+     * @return PublishTokenType[] 
+     */
+    public function getPublishAllowedTo(): array
+    {
+        return $this->publishAllowedTo;
     }
 
     public function getName(): ?string
@@ -154,9 +198,14 @@ class Location implements JsonSerializable
         return $this->city;
     }
 
-    public function getPostalCode(): string
+    public function getPostalCode(): ?string
     {
         return $this->postalCode;
+    }
+
+    public function getState(): ?string
+    {
+        return $this->state;
     }
 
     public function getCountry(): string
@@ -175,6 +224,11 @@ class Location implements JsonSerializable
     public function getRelatedLocations(): array
     {
         return $this->relatedLocations;
+    }
+
+    public function getParkingType(): ParkingType
+    {
+        return $this->parkingType;
     }
 
     /**
@@ -252,16 +306,21 @@ class Location implements JsonSerializable
     public function jsonSerialize(): array
     {
         $return = [
+            'country_code' => $this->countryCode,
+            'party_id' => $this->partyId,
             'id' => $this->id,
-            'type' => $this->locationType,
+            'publish' => $this->publish,
             'address' => $this->address,
             'city' => $this->city,
-            'postal_code' => $this->postalCode,
             'country' => $this->country,
             'coordinates' => $this->coordinates,
             'evses' => $this->evses,
             'last_updated' => DateTimeFormatter::format($this->lastUpdated),
         ];
+
+        if (count($this->publishAllowedTo) > 0) {
+            $return['publish_allowed_to'] = $this->publishAllowedTo;
+        }
 
         if (count($this->relatedLocations) > 0) {
             $return['related_locations'] = $this->relatedLocations;
@@ -281,6 +340,18 @@ class Location implements JsonSerializable
 
         if ($this->name !== null) {
             $return['name'] = $this->name;
+        }
+
+        if ($this->postalCode !== null) {
+            $return['postal_code'] = $this->postalCode;
+        }
+
+        if ($this->state !== null) {
+            $return['state'] = $this->state;
+        }
+
+        if ($this->parkingType !== null) {
+            $return['parking_type'] = $this->parkingType;
         }
 
         if ($this->operator !== null) {

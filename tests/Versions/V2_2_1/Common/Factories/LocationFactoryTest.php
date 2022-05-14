@@ -5,7 +5,7 @@ namespace Tests\Chargemap\OCPI\Versions\V2_2_1\Common\Factories;
 
 use Chargemap\OCPI\Versions\V2_2_1\Common\Factories\LocationFactory;
 use Chargemap\OCPI\Versions\V2_2_1\Common\Models\Location;
-use Chargemap\OCPI\Versions\V2_2_1\Common\Models\LocationType;
+use Chargemap\OCPI\Versions\V2_2_1\Common\Models\ParkingType;
 use DateTime;
 use JsonException;
 use PHPUnit\Framework\Assert;
@@ -89,7 +89,7 @@ class LocationFactoryTest extends TestCase
             }
 
             Assert::assertEquals(new DateTime($json->last_updated), $location->getLastUpdated());
-            Assert::assertEquals(new LocationType($json->type), $location->getLocationType());
+            Assert::assertEquals(new ParkingType($json->parking_type), $location->getParkingType());
             HoursFactoryTest::assertHours($json->opening_times ?? null, $location->getOpeningTimes());
             Assert::assertSame($json->postal_code, $location->getPostalCode());
 

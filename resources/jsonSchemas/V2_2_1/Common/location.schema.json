@@ -2,21 +2,32 @@
     "title": "V2.2.1\\Location",
     "type": "object",
     "properties": {
+        "country_code": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 2
+        },
+        "party_id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 3
+        },
         "id": {
             "type": "string",
             "minLength": 1,
             "maxLength": 39
         },
-        "type": {
-            "type": "string",
-            "enum": [
-                "ON_STREET",
-                "PARKING_GARAGE",
-                "UNDERGROUND_GARAGE",
-                "PARKING_LOT",
-                "OTHER",
-                "UNKNOWN"
-            ]
+        "publish": {
+            "type": "boolean"
+        },
+        "publish_allowed_to": {
+            "type": [
+                "array",
+                "null"
+            ],
+            "items": {
+                "$ref": "common.schema.json#definitions/publish_token"
+            }
         },
         "name": {
             "type": [
@@ -37,9 +48,14 @@
             "maxLength": 45
         },
         "postal_code": {
-            "type": "string",
+            "type": ["null", "string"],
             "minLength": 1,
             "maxLength": 10
+        },
+        "state": {
+            "type": ["null", "string"],
+            "minLength": 1,
+            "maxLength": 20
         },
         "country": {
             "type": "string",
@@ -57,6 +73,17 @@
                 {
                     "$ref": "common.schema.json#/definitions/related_locations"
                 }
+            ]
+        },
+        "parking_type": {
+            "type": "string",
+            "enum": [
+                "ALONG_MOTORWAY",
+                "PARKING_GARAGE",
+                "PARKING_LOT",
+                "ON_DRIVEWAY",
+                "ON_STREET",
+                "UNDERGROUND_GARAGE"
             ]
         },
         "evses": {

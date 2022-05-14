@@ -1,10 +1,22 @@
 {
+  "country_code": "FR",
+  "party_id": "FR1",
   "id": "LOC1",
-  "type": "ON_STREET",
+  "publish": false,
+  "publish_allowed_to": [
+    {
+      "uid": "12345",
+      "type": "AD_HOC_USER",
+      "visual_number": "1234asb",
+      "issuer": "some company",
+      "group_id": "vip1"
+    }
+  ],
   "name": "Gent Zuid",
   "address": "F.Rooseveltlaan 3A",
   "city": "Gent",
   "postal_code": "9000",
+  "state": "CA",
   "country": "BEL",
   "coordinates": {
     "latitude": "3.729944",
@@ -28,6 +40,7 @@
       }
     }
   ],
+  "parking_type": "ON_STREET",
   "evses": [
     {
       "uid": "3256",

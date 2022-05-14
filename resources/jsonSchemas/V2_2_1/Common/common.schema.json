@@ -214,6 +214,47 @@
             },
             "additionalProperties": false
         },
+        "publish_token": {
+            "type": "object",
+            "properties": {
+                "uid": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "minLength": 1,
+                    "maxLength": 36
+                },
+                "type": {
+                    "$ref": "token.schema.json#/properties/type"
+                },
+                "visual_number": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "minLength": 1,
+                    "maxLength": 64
+                },
+                "issuer": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "minLength": 1,
+                    "maxLength": 64
+                },
+                "group_id": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "minLength": 1,
+                    "maxLength": 36
+                }
+            },
+            "additionalProperties": false
+        },
         "display_text": {
             "type": "object",
             "properties": {
