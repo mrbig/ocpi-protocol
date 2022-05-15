@@ -24,9 +24,16 @@ class ConnectorTest
             Assert::assertSame($connector->getMaxVoltage(), $json->max_voltage);
             Assert::assertSame($connector->getMaxAmperage(), $json->max_amperage);
             Assert::assertSame($connector->getMaxElectricPower(), $json->max_electric_power ?? null);
-            Assert::assertSame($connector->getTariffId(), $json->tariff_id ?? null);
             Assert::assertSame($connector->getTermsAndConditions(), $json->terms_and_conditions ?? null);
             Assert::assertEquals(DateTimeFormatter::format($connector->getLastUpdated()), $json->last_updated);
+
+            if (empty($connector->getTariffIds())) {
+                Assert::assertEmpty($json->tariff_ids ?? null);
+            } else {
+                foreach ($connector->getTariffIds() as $index => $tariffId) {
+                    Assert::assertEquals($tariffId, $json->tariff_ids[$index]);
+                }
+            }
         }
     }
 }

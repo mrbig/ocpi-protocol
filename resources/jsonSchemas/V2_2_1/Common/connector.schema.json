@@ -77,13 +77,16 @@
                 "null"
             ]
         },
-        "tariff_id": {
+        "tariff_ids": {
             "type": [
-                "string",
+                "array",
                 "null"
             ],
-            "minLength": 1,
-            "maxLength": 36
+            "items": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 36
+            }
         },
         "terms_and_conditions": {
             "type": [

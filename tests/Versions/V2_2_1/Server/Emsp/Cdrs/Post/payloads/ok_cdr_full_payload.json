@@ -29,7 +29,7 @@
             "power_type": "AC_1_PHASE",
             "voltage": 230,
             "amperage": 64,
-            "tariff_id": "11",
+            "tariff_ids": ["11"],
             "last_updated": "2015-06-29T21:39:01Z"
           }
         ],

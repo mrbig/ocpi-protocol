@@ -25,7 +25,8 @@ class Connector implements JsonSerializable
 
     private ?int $maxElectricPower;
 
-    private ?string $tariffId;
+    /** @var string[] */
+    private array $tariffIds = [];
 
     private ?string $termsAndConditions;
 
@@ -44,7 +45,17 @@ class Connector implements JsonSerializable
      * @param string|null $termsAndConditions
      * @param DateTime $lastUpdated
      */
-    public function __construct(string $id, ConnectorType $standard, ConnectorFormat $format, PowerType $powerType, int $maxVoltage, int $maxAmperage, ?int $maxElectricPower, ?string $tariffId, ?string $termsAndConditions, DateTime $lastUpdated)
+    public function __construct(
+        string $id,
+        ConnectorType $standard,
+        ConnectorFormat $format,
+        PowerType $powerType,
+        int $maxVoltage,
+        int $maxAmperage,
+        ?int $maxElectricPower,
+        ?string $termsAndConditions,
+        DateTime $lastUpdated
+    )
     {
         $this->id = $id;
         $this->standard = $standard;
@@ -53,9 +64,15 @@ class Connector implements JsonSerializable
         $this->maxVoltage = $maxVoltage;
         $this->maxAmperage = $maxAmperage;
         $this->maxElectricPower = $maxElectricPower;
-        $this->tariffId = $tariffId;
         $this->termsAndConditions = $termsAndConditions;
         $this->lastUpdated = $lastUpdated;
+    }
+
+    public function addTariffId(string $tariffId): self
+    {
+        $this->tariffIds[] = $tariffId;
+
+        return $this;
     }
 
     public function getId(): string
@@ -93,9 +110,9 @@ class Connector implements JsonSerializable
         return $this->maxElectricPower;
     }
 
-    public function getTariffId(): ?string
+    public function getTariffIds(): array
     {
-        return $this->tariffId;
+        return $this->tariffIds;
     }
 
     public function getTermsAndConditions(): ?string
@@ -124,8 +141,8 @@ class Connector implements JsonSerializable
             $return['max_electric_power'] = $this->maxElectricPower;
         }
 
-        if ($this->tariffId !== null) {
-            $return['tariff_id'] = $this->tariffId;
+        if (count($this->tariffIds) > 0) {
+            $return['tariff_ids'] = $this->tariffIds;
         }
 
         if ($this->termsAndConditions !== null) {

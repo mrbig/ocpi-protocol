@@ -32,7 +32,7 @@
           "power_type": "AC_3_PHASE",
           "max_voltage": 230,
           "max_amperage": 32,
-          "tariff_id": "valparisis",
+          "tariff_ids": ["valparisis"],
           "terms_and_conditions": null,
           "last_updated": "2020-06-16T17:31:23Z"
         },
@@ -43,7 +43,7 @@
           "power_type": "AC_1_PHASE",
           "max_voltage": 230,
           "max_amperage": 13,
-          "tariff_id": "valparisis",
+          "tariff_ids": ["valparisis"],
           "terms_and_conditions": null,
           "last_updated": "2020-06-16T17:31:23Z"
         }
@@ -77,7 +77,7 @@
           "power_type": "AC_3_PHASE",
           "max_voltage": 230,
           "max_amperage": 32,
-          "tariff_id": "valparisis",
+          "tariff_ids": ["valparisis"],
           "terms_and_conditions": null,
           "last_updated": "2020-06-16T17:31:23Z"
         },
@@ -88,7 +88,7 @@
           "power_type": "AC_1_PHASE",
           "max_voltage": 230,
           "max_amperage": 13,
-          "tariff_id": "valparisis",
+          "tariff_ids": ["valparisis"],
           "terms_and_conditions": null,
           "last_updated": "2020-06-16T17:31:23Z"
         }

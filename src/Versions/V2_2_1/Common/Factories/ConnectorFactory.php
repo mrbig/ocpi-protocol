@@ -19,7 +19,7 @@ class ConnectorFactory
             return null;
         }
 
-        return new Connector(
+        $connector = new Connector(
             $json->id,
             new ConnectorType($json->standard),
             new ConnectorFormat($json->format),
@@ -27,9 +27,16 @@ class ConnectorFactory
             $json->max_voltage,
             $json->max_amperage,
             $json->max_electric_power ?? null,
-            property_exists($json, 'tariff_id') ? $json->tariff_id : null,
             property_exists($json, 'terms_and_conditions') ? $json->terms_and_conditions : null,
             new DateTime($json->last_updated)
         );
+
+        if (property_exists($json, 'tariff_ids') && $json->tariff_ids !== null) {
+            foreach ($json->tariff_ids as $tariffId) {
+                $connector->addTariffId($tariffId);
+            }
+        }
+
+        return $connector;
     }
 }

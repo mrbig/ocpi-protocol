@@ -6,7 +6,7 @@
   "max_voltage": 230,
   "max_amperage": 32,
   "max_electric_power": 4400,
-  "tariff_id": "tariff_id",
+  "tariff_ids": ["tariff_id1", "tariff_2"],
   "terms_and_conditions": null,
   "last_updated": "2020-06-16T17:31:23Z"
 }

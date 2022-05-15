@@ -52,10 +52,18 @@ class ConnectorFactoryTest extends TestCase
             Assert::assertEquals(new ConnectorFormat($json->format), $connector->getFormat());
             Assert::assertEquals(new PowerType($json->power_type), $connector->getPowerType());
             Assert::assertEquals(new ConnectorType($json->standard), $connector->getStandard());
-            Assert::assertSame($json->tariff_id ?? null, $connector->getTariffId());
             Assert::assertSame($json->terms_and_conditions ?? null, $connector->getTermsAndConditions());
             Assert::assertSame($json->max_voltage, $connector->getMaxVoltage());
             Assert::assertSame($json->max_electric_power ?? null, $connector->getMaxElectricPower());
+
+
+            if(!property_exists($json, 'tariff_ids') || $json->tariff_ids === null) {
+                Assert::assertCount(0, $connector->getTariffIds());
+            } else {
+                foreach($json->tariff_ids as $index => $tariffId) {
+                    Assert::assertEquals($tariffId, $connector->getTariffIds()[$index]);
+                }
+            }
         }
     }
 }
