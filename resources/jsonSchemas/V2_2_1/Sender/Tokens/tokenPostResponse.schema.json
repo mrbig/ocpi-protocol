@@ -1,0 +1,35 @@
+{
+    "title": "V2.2.1\\Sender\\Tokens\\Post",
+    "properties": {
+        "data": {
+            "$ref": "../../Common/common.schema.json#definitions/authorization_info",
+            "required": [
+                "allowed",
+                "token"
+            ],
+            "additionalProperties": false
+        },
+        "status_code": {
+            "$ref": "../../../Common/common.schema.json#/definitions/status_code"
+        },
+        "status_message": {
+            "oneOf": [
+                {
+                    "type": "null"
+                },
+                {
+                    "$ref": "../../../Common/common.schema.json#/definitions/status_message"
+                }
+            ]
+        },
+        "timestamp": {
+            "$ref": "../../../Common/common.schema.json#/definitions/timestamp"
+        }
+    },
+    "required": [
+        "data",
+        "status_code",
+        "timestamp"
+    ],
+    "additionalProperties": false
+}
