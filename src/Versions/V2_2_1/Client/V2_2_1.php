@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace Chargemap\OCPI\Versions\V2_2_1\Client;
 
 use Chargemap\OCPI\Common\Client\Modules\AbstractFeatures;
+use Chargemap\OCPI\Versions\V2_2_1\Client\Reciever\Tokens as TokensReceiver;
+use Chargemap\OCPI\Versions\V2_2_1\Client\Sender\Tokens as TokensSender;
 
 class V2_2_1 extends AbstractFeatures
 {
@@ -12,7 +14,9 @@ class V2_2_1 extends AbstractFeatures
 
     private Locations $locations;
 
-    private Tokens $tokens;
+    private TokensReceiver $tokensReceiver;
+
+    private TokensSender $tokensSender;
 
     private Cdrs $cdrs;
 
@@ -36,13 +40,22 @@ class V2_2_1 extends AbstractFeatures
         return $this->locations;
     }
 
-    public function tokens(): Tokens
+    public function tokensReceiver(): TokensReceiver
     {
-        if (!isset($this->tokens)) {
-            $this->tokens = new Tokens($this->ocpiConfiguration);
+        if (!isset($this->tokensReceiver)) {
+            $this->tokensReceiver = new TokensReceiver($this->ocpiConfiguration);
         }
 
-        return $this->tokens;
+        return $this->tokensReceiver;
+    }
+
+    public function tokensSender(): TokensSender
+    {
+        if (!isset($this->tokensSender)) {
+            $this->tokensSender = new TokensSender($this->ocpiConfiguration);
+        }
+
+        return $this->tokensSender;
     }
 
     public function cdrs(): Cdrs
