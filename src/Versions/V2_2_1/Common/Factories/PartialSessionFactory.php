@@ -38,8 +38,8 @@ class PartialSessionFactory
         if (property_exists($json, 'auth_method')) {
             $session->withAuthMethod(new AuthenticationMethod($json->auth_method));
         }
-        if (property_exists($json, 'location')) {
-            $session->withLocation(LocationFactory::fromJson($json->location));
+        if (property_exists($json, 'location_id')) {
+            $session->withLocationId($json->location_id);
         }
         if (property_exists($json, 'meter_id')) {
             $session->withMeterId($json->meter_id);

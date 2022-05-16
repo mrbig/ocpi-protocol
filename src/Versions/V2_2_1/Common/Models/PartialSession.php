@@ -16,7 +16,7 @@ use JsonSerializable;
  * @method bool hasKwh()
  * @method bool hasAuthId()
  * @method bool hasAuthMethod()
- * @method bool hasLocation()
+ * @method bool hasLocationId()
  * @method bool hasMeterId()
  * @method bool hasCurrency()
  * @method bool hasChargingPeriods()
@@ -29,7 +29,7 @@ use JsonSerializable;
  * @method self withKwh(?float $kwh)
  * @method self withAuthId(?string $authId)
  * @method self withAuthMethod(?AuthenticationMethod $authMethod)
- * @method self withLocation(?Location $location)
+ * @method self withLocationId(?string $locationId)
  * @method self withMeterId(?string $meterId)
  * @method self withCurrency(?string $currency)
  * @method self withChargingPeriods()
@@ -45,7 +45,7 @@ class PartialSession extends PartialModel implements JsonSerializable
     private ?float $kwh = null;
     private ?string $authId = null;
     private ?AuthenticationMethod $authMethod = null;
-    private ?Location $location = null;
+    private ?string $locationId = null;
     private ?string $meterId = null;
     private ?string $currency = null;
     /** @var ChargingPeriod[]|null */
@@ -90,9 +90,9 @@ class PartialSession extends PartialModel implements JsonSerializable
         return $this;
     }
 
-    protected function _withLocation(?Location $location): self
+    protected function _withLocationId(?string $locationId): self
     {
-        $this->location = $location;
+        $this->locationId = $locationId;
         return $this;
     }
 
@@ -168,9 +168,9 @@ class PartialSession extends PartialModel implements JsonSerializable
         return $this->authMethod;
     }
 
-    public function getLocation(): ?Location
+    public function getLocationId(): ?string
     {
-        return $this->location;
+        return $this->locationId;
     }
 
     public function getCurrency(): ?string
@@ -222,8 +222,8 @@ class PartialSession extends PartialModel implements JsonSerializable
         if ($this->hasAuthMethod()) {
             $return['auth_method'] = $this->authMethod;
         }
-        if ($this->hasLocation()) {
-            $return['location'] = $this->location;
+        if ($this->hasLocationId()) {
+            $return['location_id'] = $this->locationId;
         }
         if ($this->hasCurrency()) {
             $return['currency'] = $this->currency;

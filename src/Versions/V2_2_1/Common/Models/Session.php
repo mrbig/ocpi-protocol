@@ -16,7 +16,7 @@ class Session implements JsonSerializable
     private float $kwh;
     private string $authId;
     private AuthenticationMethod $authMethod;
-    private Location $location;
+    private string $locationId;
     private ?string $meterId;
     private string $currency;
     /** @var ChargingPeriod[] */
@@ -32,7 +32,7 @@ class Session implements JsonSerializable
         float $kwh,
         string $authId,
         AuthenticationMethod $authMethod,
-        Location $location,
+        string $locationId,
         ?string $meterId,
         string $currency,
         ?float $totalCost,
@@ -45,7 +45,7 @@ class Session implements JsonSerializable
         $this->kwh = $kwh;
         $this->authId = $authId;
         $this->authMethod = $authMethod;
-        $this->location = $location;
+        $this->locationId = $locationId;
         $this->meterId = $meterId;
         $this->currency = $currency;
         $this->totalCost = $totalCost;
@@ -88,9 +88,9 @@ class Session implements JsonSerializable
         return $this->authMethod;
     }
 
-    public function getLocation(): Location
+    public function getLocationId(): string
     {
-        return $this->location;
+        return $this->locationId;
     }
 
     public function getCurrency(): string
@@ -132,7 +132,7 @@ class Session implements JsonSerializable
             $partialSession->hasKwh() ? $partialSession->getKwh() : $this->kwh,
             $partialSession->hasAuthId() ? $partialSession->getAuthId() : $this->authId,
             $partialSession->hasAuthMethod() ? $partialSession->getAuthMethod() : $this->authMethod,
-            $partialSession->hasLocation() ? $partialSession->getLocation() : $this->location,
+            $partialSession->hasLocationId() ? $partialSession->getLocationId() : $this->locationId,
             $partialSession->hasMeterId() ? $partialSession->getMeterId() : $this->meterId,
             $partialSession->hasCurrency() ? $partialSession->getCurrency() : $this->currency,
             $partialSession->hasTotalCost() ? $partialSession->getTotalCost() : $this->totalCost,
@@ -184,10 +184,9 @@ class Session implements JsonSerializable
             $diff = $diff ?? new PartialSession();
             $diff = $diff->withAuthMethod($other->authMethod);
         }
-        //TODO: replace by location "equals" method call
-        if ($this->location != $other->location) {
+        if ($this->locationId != $other->locationId) {
             $diff = $diff ?? new PartialSession();
-            $diff = $diff->withLocation($other->location);
+            $diff = $diff->withLocationId($other->locationId);
         }
         if ($this->meterId !== $other->meterId) {
             $diff = $diff ?? new PartialSession();
@@ -272,7 +271,7 @@ class Session implements JsonSerializable
             'kwh' => $this->kwh,
             'auth_id' => $this->authId,
             'auth_method' => $this->authMethod,
-            'location' => $this->location,
+            'location_id' => $this->locationId,
             'currency' => $this->currency,
             'charging_periods' => $this->chargingPeriods,
             'status' => $this->status,

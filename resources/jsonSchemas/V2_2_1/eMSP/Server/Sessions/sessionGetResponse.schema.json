@@ -9,7 +9,7 @@
                 "kwh",
                 "auth_id",
                 "auth_method",
-                "location",
+                "location_id",
                 "currency",
                 "status",
                 "last_updated"

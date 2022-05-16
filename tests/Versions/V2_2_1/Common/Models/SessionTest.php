@@ -42,7 +42,7 @@ class SessionTest extends TestCase
             Assert::assertEquals($session->getKwh(), $json->kwh);
             Assert::assertSame($session->getAuthId(), $json->auth_id);
             Assert::assertSame($session->getAuthMethod()->getValue(), $json->auth_method);
-            LocationTest::assertJsonSerialization($session->getLocation(), $json->location);
+            Assert::assertSame($session->getLocationId(), $json->location_id);
             Assert::assertSame($session->getMeterId(), $json->meter_id ?? null);
             Assert::assertSame($session->getCurrency(), $json->currency);
             Assert::assertCount(count($session->getChargingPeriods()), $json->charging_periods);
@@ -64,7 +64,7 @@ class SessionTest extends TestCase
             'kwh' => [__DIR__ . '/Payloads/Sessions/SessionPatchKwhPayload.json', 'getKwh'],
             'auth id' => [__DIR__ . '/Payloads/Sessions/SessionPatchAuthIdPayload.json', 'getAuthId'],
             'auth method' => [__DIR__ . '/Payloads/Sessions/SessionPatchAuthMethodPayload.json', 'getAuthMethod'],
-            'location' => [__DIR__ . '/Payloads/Sessions/SessionPatchLocationPayload.json', 'getLocation'],
+            'location_id' => [__DIR__ . '/Payloads/Sessions/SessionPatchLocationPayload.json', 'getLocationId'],
             'meter id' => [__DIR__ . '/Payloads/Sessions/SessionPatchMeterIdPayload.json', 'getMeterId'],
             'currency' => [__DIR__ . '/Payloads/Sessions/SessionPatchCurrencyPayload.json', 'getCurrency'],
             'total cost' => [__DIR__ . '/Payloads/Sessions/SessionPatchTotalCostPayload.json', 'getTotalCost'],
@@ -100,7 +100,7 @@ class SessionTest extends TestCase
             22.345,
             'authId1',
             AuthenticationMethod::AUTH_REQUEST(),
-            $this->createMock(Location::class),
+            'location1',
             'meterId1',
             'currency1',
             50.123,
@@ -243,8 +243,8 @@ class SessionTest extends TestCase
         $authId2 = 'authId2';
         $authMethod1 = AuthenticationMethod::AUTH_REQUEST();
         $authMethod2 = AuthenticationMethod::WHITELIST();
-        $location1 = LocationFactory::fromJson(json_decode(file_get_contents(__DIR__ . '/Payloads/Location/bessancourt.json')));
-        $location2 = LocationFactory::fromJson(json_decode(file_get_contents(__DIR__ . '/Payloads/Location/sample1.json')));
+        $location1 = 'location1';
+        $location2 = 'location2';
         $meterId1 = 'meterId1';
         $meterId2 = 'meterId2';
         $currency1 = 'EUR';
@@ -318,7 +318,7 @@ class SessionTest extends TestCase
                 'hasKwh' => true,
                 'hasAuthId' => true,
                 'hasAuthMethod' => true,
-                'hasLocation' => true,
+                'hasLocationId' => true,
                 'hasMeterId' => true,
                 'hasCurrency' => true,
                 'hasChargingPeriods' => true,
@@ -333,7 +333,7 @@ class SessionTest extends TestCase
                 'getKwh' => $session2->getKwh(),
                 'getAuthId' => $session2->getAuthId(),
                 'getAuthMethod' => $session2->getAuthMethod(),
-                'getLocation' => $session2->getLocation(),
+                'getLocationId' => $session2->getLocationId(),
                 'getMeterId' => $session2->getMeterId(),
                 'getCurrency' => $session2->getCurrency(),
                 'getTotalCost' => $session2->getTotalCost(),

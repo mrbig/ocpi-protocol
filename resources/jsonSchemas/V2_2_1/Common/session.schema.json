@@ -35,18 +35,10 @@
                 "WHITELIST"
             ]
         },
-        "location": {
-            "$ref": "location.schema.json",
-            "required": [
-                "id",
-                "type",
-                "address",
-                "city",
-                "postal_code",
-                "country",
-                "coordinates",
-                "last_updated"
-            ]
+        "location_id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 36
         },
         "meter_id": {
             "type": [

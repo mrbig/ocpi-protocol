@@ -68,7 +68,7 @@ class SessionFactoryTest extends TestCase
             Assert::assertEquals(new SessionStatus($json->status), $session->getStatus());
             Assert::assertSame((float)$json->kwh, $session->getKwh());
 
-            LocationFactoryTest::assertLocation($json->location, $session->getLocation());
+            Assert::assertSame($json->location_id, $session->getLocationId());
         }
     }
 }
