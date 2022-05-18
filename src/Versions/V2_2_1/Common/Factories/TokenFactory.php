@@ -20,14 +20,18 @@ class TokenFactory
         }
 
         $token = new Token(
+            $json->country_code,
+            $json->party_id,
             $json->uid,
             new TokenType($json->type),
-            $json->auth_id,
+            $json->contract_id,
             $json->visual_number ?? null,
             $json->issuer,
+            $json->group_id ?? null,
             $json->valid,
             new WhiteList($json->whitelist),
             $json->language ?? null,
+            EnergyContractFactory::fromJson($json->energy_contract ?? null),
             new DateTime($json->last_updated)
         );
 

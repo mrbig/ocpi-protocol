@@ -49,7 +49,7 @@ class GetTokenResponseTest extends TestCase
 
         $this->assertSame('012345678', $token->getUid());
         $this->assertSame('RFID', $token->getType()->getValue());
-        $this->assertSame('DE8ACC12E46L89', $token->getAuthId());
+        $this->assertSame('DE8ACC12E46L89', $token->getContractId());
         $this->assertSame('DF000-2001-8999', $token->getVisualNumber());
         $this->assertSame('TheNewMotion', $token->getIssuer());
         $this->assertTrue($token->isValid());

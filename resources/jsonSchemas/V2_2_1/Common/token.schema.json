@@ -2,6 +2,16 @@
     "title": "V2.2.1\\Token",
     "type": "object",
     "properties": {
+        "country_code": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 2
+        },
+        "party_id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 3
+        },
         "uid": {
             "type": "string",
             "minLength": 1,
@@ -16,13 +26,16 @@
                 "OTHER"
             ]
         },
-        "auth_id": {
+        "contract_id": {
             "type": "string",
             "minLength": 1,
             "maxLength": 36
         },
         "visual_number": {
-            "type": "string",
+            "type": [
+                "string",
+                "null"
+            ],
             "minLength": 1,
             "maxLength": 64
         },
@@ -30,6 +43,14 @@
             "type": "string",
             "minLength": 1,
             "maxLength": 64
+        },
+        "group_id": {
+            "type": [
+                "string",
+                "null"
+            ],
+            "minLength": 1,
+            "maxLength": 36
         },
         "valid": {
             "type": "boolean"
@@ -44,9 +65,37 @@
             ]
         },
         "language": {
-            "type": "string",
+            "type": [
+                "string",
+                "null"
+            ],
             "minLength": 1,
             "maxLength": 2
+        },
+        "energy_contract": {
+            "oneOf": [
+                {
+                    "type": "null"
+                },
+                {
+                    "type": "object",
+                    "properties": {
+                        "supplier_name": {
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 64
+                        },
+                        "contract_id": {
+                            "type": [
+                                "string",
+                                "null"
+                            ],
+                            "minLength": 1,
+                            "maxLength": 64
+                        }
+                    }
+                }
+            ]
         },
         "last_updated": {
             "$ref": "common.schema.json#/definitions/timestamp"

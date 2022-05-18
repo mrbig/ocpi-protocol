@@ -3,9 +3,11 @@
     "status_message": "Success",
     "timestamp": "2021-03-19T15:35:28Z",
     "data": {
+        "country_code": "FR",
+        "party_id": "FR1",
         "uid": "012345678",
         "type": "RFID",
-        "auth_id": "DE8ACC12E46L89",
+        "contract_id": "DE8ACC12E46L89",
         "issuer": "TheNewMotion",
         "valid": true,
         "whitelist": "ALWAYS",

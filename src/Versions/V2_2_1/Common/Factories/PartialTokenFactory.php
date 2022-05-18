@@ -19,14 +19,18 @@ class PartialTokenFactory
         }
 
         $token = new PartialToken(
+            $json->country_code ?? null,
+            $json->party_id ?? null,
             $json->uid ?? null,
             property_exists($json, 'type') ? new TokenType($json->type) : null,
-            $json->auth_id ?? null,
+            $json->contract_id ?? null,
             $json->visual_number ?? null,
             $json->issuer ?? null,
+            $json->group_id ?? null,
             $json->valid ?? null,
             property_exists($json, 'whitelist') ? new WhiteList($json->whitelist) : null,
             $json->language ?? null,
+            EnergyContractFactory::fromJson($json->energy_contract ?? null),
             property_exists($json, 'last_updated') ? new DateTime($json->last_updated) : null
         );
 

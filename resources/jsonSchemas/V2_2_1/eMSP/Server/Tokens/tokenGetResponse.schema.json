@@ -9,9 +9,11 @@
             "items": {
                 "$ref": "../../../Common/token.schema.json",
                 "required": [
+                    "country_code",
+                    "party_id",
                     "uid",
                     "type",
-                    "auth_id",
+                    "contract_id",
                     "issuer",
                     "valid",
                     "whitelist",

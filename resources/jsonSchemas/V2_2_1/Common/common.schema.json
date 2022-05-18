@@ -59,7 +59,18 @@
                     "$ref": "#/definitions/allowed_type"
                 },
                 "token": {
-                    "$ref": "token.schema.json"
+                    "$ref": "token.schema.json",
+                    "required": [
+                        "country_code",
+                        "party_id",
+                        "uid",
+                        "type",
+                        "contract_id",
+                        "issuer",
+                        "valid",
+                        "whitelist",
+                        "last_updated"
+                    ]
                 },
                 "location": {
                     "oneOf": [

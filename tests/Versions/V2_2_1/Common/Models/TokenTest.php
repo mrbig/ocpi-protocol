@@ -17,14 +17,18 @@ class TokenTest
         if ($token === null) {
             Assert::assertNull($json);
         } else {
+            Assert::assertSame($token->getCountryCode(), $json->country_code);
+            Assert::assertSame($token->getPartyId(), $json->party_id);
             Assert::assertSame($token->getUid(), $json->uid);
             Assert::assertSame($token->getType()->getValue(), $json->type);
-            Assert::assertSame($token->getAuthId(), $json->auth_id);
+            Assert::assertSame($token->getContractId(), $json->contract_id);
             Assert::assertSame($token->getVisualNumber(), $json->visual_number ?? null);
             Assert::assertSame($token->getIssuer(), $json->issuer);
+            Assert::assertSame($token->getGroupId(), $json->group_id ?? null);
             Assert::assertSame($token->isValid(), $json->valid);
             Assert::assertSame($token->getWhiteList()->getValue(), $json->whitelist);
             Assert::assertSame($token->getLanguage(), $json->language ?? null);
+            EnergyContractTest::assertJsonSerialization($token->getEnetryContract(), $json->energy_contract ?? null);
             Assert::assertSame(DateTimeFormatter::format($token->getLastUpdated()), $json->last_updated);
 
         }
