@@ -13,9 +13,6 @@ class LocationReferences implements JsonSerializable
     /** @var string[] */
     private array $evseUids = [];
 
-    /** @var string[] */
-    private array $connectorIds = [];
-
     public function __construct(string $locationId)
     {
         $this->locationId = $locationId;
@@ -24,11 +21,6 @@ class LocationReferences implements JsonSerializable
     public function addEvseUid(string $evseUid): void
     {
         $this->evseUids[] = $evseUid;
-    }
-
-    public function addConnectorId($connectorId): void
-    {
-        $this->connectorIds[] = $connectorId;
     }
 
     public function getLocationId(): string
@@ -41,17 +33,11 @@ class LocationReferences implements JsonSerializable
         return $this->evseUids;
     }
 
-    public function getConnectorIds(): array
-    {
-        return $this->connectorIds;
-    }
-
     public function jsonSerialize(): array
     {
         return [
             'location_id' => $this->locationId,
-            'evse_uids' => $this->evseUids,
-            'connector_ids' => $this->connectorIds
+            'evse_uids' => $this->evseUids
         ];
     }
 }

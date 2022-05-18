@@ -23,13 +23,6 @@ class LocationReferencesTest
                     Assert::assertSame($locationReferences->getEvseUids()[$index], $json->evse_uids[$index]);
                 }
             }
-            if (empty($locationReferences->getConnectorIds())) {
-                Assert::assertEmpty($json->connector_ids);
-            } else {
-                foreach ($locationReferences->getConnectorIds() as $index => $connectorId) {
-                    Assert::assertSame($locationReferences->getConnectorIds()[$index], $json->connector_ids[$index]);
-                }
-            }
         }
     }
 }

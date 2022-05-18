@@ -56,14 +56,6 @@ class LocationReferencesFactoryTest extends TestCase
                     Assert::assertSame($json->evse_uids[$index], $locationReferences->getEvseUids()[$index]);
                 }
             }
-
-            if(!property_exists($json, 'connector_ids') || $json->connector_ids === null) {
-                Assert::assertSame(0, count($locationReferences->getConnectorIds()));
-            } else {
-                foreach($json->connector_ids as $index => $connectorId ) {
-                    Assert::assertSame($json->connector_ids[$index], $locationReferences->getConnectorIds()[$index]);
-                }
-            }
         }
     }
 }

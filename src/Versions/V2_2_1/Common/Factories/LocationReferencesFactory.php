@@ -23,12 +23,6 @@ class LocationReferencesFactory
             }
         }
 
-        if (property_exists($json, 'connector_ids') && is_array($json->connector_ids)) {
-            foreach ($json->connector_ids as $connectorId) {
-                $result->addConnectorId($connectorId);
-            }
-        }
-
         return $result;
     }
 }
