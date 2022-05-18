@@ -9,6 +9,7 @@ use Chargemap\OCPI\Versions\V2_2_1\Client\VersionTrait;
 use Chargemap\OCPI\Versions\V2_2_1\Common\Models\LocationReferences;
 use Chargemap\OCPI\Versions\V2_2_1\Common\Models\ModuleId;
 use Chargemap\OCPI\Versions\V2_2_1\Common\Models\TokenType;
+use Http\Discovery\Psr17FactoryDiscovery;
 use InvalidArgumentException;
 use Psr\Http\Message\ServerRequestFactoryInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -40,13 +41,17 @@ class PostTokenRequest extends AbstractRequest
 
     public function getServerRequestInterface(ServerRequestFactoryInterface $serverRequestFactory, ?StreamFactoryInterface $streamFactory): ServerRequestInterface
     {
+        if ($streamFactory === null) {
+            $streamFactory = Psr17FactoryDiscovery::findStreamFactory();
+        }
+        
         $request = $serverRequestFactory->createServerRequest(
             'POST',
             '/' . urlencode($this->tokenUid) . '/authorize' . $this->getQueryString()
         );
 
         if ($this->location) {
-            $request->withHeader('Content-Type', 'application/json')
+            $request = $request->withHeader('Content-Type', 'application/json')
                 ->withBody($streamFactory->createStream(json_encode($this->location)));
         }
 

@@ -1,0 +1,12 @@
+{
+    "title": "V2.2.1\\Sender\\Client\\Token\\Post",
+    "oneOf": [
+        {
+            "$ref": "../../Common/common.schema.json#/definitions/location_references",
+            "required": [
+                "location_id"
+            ],
+            "additionalProperties": false
+        }
+    ]
+}
