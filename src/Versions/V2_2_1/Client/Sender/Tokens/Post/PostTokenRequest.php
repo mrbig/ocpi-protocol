@@ -6,6 +6,7 @@ namespace Chargemap\OCPI\Versions\V2_2_1\Client\Sender\Tokens\Post;
 
 use Chargemap\OCPI\Common\Client\Modules\AbstractRequest;
 use Chargemap\OCPI\Versions\V2_2_1\Client\VersionTrait;
+use Chargemap\OCPI\Versions\V2_2_1\Common\Models\LocationReferences;
 use Chargemap\OCPI\Versions\V2_2_1\Common\Models\ModuleId;
 use Chargemap\OCPI\Versions\V2_2_1\Common\Models\TokenType;
 use InvalidArgumentException;
@@ -19,8 +20,9 @@ class PostTokenRequest extends AbstractRequest
 
     private string $tokenUid;
     private ?TokenType $type;
+    private ?LocationReferences $location;
 
-    public function __construct(string $tokenUid, TokenType $type = null)
+    public function __construct(string $tokenUid, TokenType $type = null, ?LocationReferences $location = null)
     {
         if (strlen($tokenUid) > 36 || empty($tokenUid)) {
             throw new InvalidArgumentException("Length of tokenUid must be between 1 and 36");
@@ -28,6 +30,7 @@ class PostTokenRequest extends AbstractRequest
 
         $this->tokenUid = $tokenUid;
         $this->type = $type;
+        $this->location = $location;
     }
 
     public function getModule(): ModuleId
@@ -37,10 +40,17 @@ class PostTokenRequest extends AbstractRequest
 
     public function getServerRequestInterface(ServerRequestFactoryInterface $serverRequestFactory, ?StreamFactoryInterface $streamFactory): ServerRequestInterface
     {
-        return $serverRequestFactory->createServerRequest(
+        $request = $serverRequestFactory->createServerRequest(
             'POST',
             '/' . urlencode($this->tokenUid) . '/authorize' . $this->getQueryString()
         );
+
+        if ($this->location) {
+            $request->withHeader('Content-Type', 'application/json')
+                ->withBody($streamFactory->createStream(json_encode($this->location)));
+        }
+
+        return $request;
     }
 
     private function getQueryString(): string
