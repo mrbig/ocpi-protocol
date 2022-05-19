@@ -116,12 +116,12 @@ class SessionTest extends TestCase
         $startDate1 = (new DateTime())->setTimestamp(123456789);
         $startDate2 = (new DateTime())->setTimestamp(987654321);
 
-        $chargingPeriod = new ChargingPeriod($startDate1);
+        $chargingPeriod = new ChargingPeriod($startDate1, null);
         $chargingPeriod->addDimension(new CdrDimension(CdrDimensionType::TIME(), 0.5));
 
         yield 'both has same charging period with one dimension' => [[$chargingPeriod], [$chargingPeriod], null];
 
-        $chargingPeriod2 = new ChargingPeriod($startDate2);
+        $chargingPeriod2 = new ChargingPeriod($startDate2, null);
         $chargingPeriod2->addDimension(new CdrDimension(CdrDimensionType::ENERGY(), 1231.134));
 
         yield 'both has same charging periods with one dimension' => [
@@ -130,11 +130,11 @@ class SessionTest extends TestCase
             null
         ];
 
-        $chargingPeriod = new ChargingPeriod($startDate1);
+        $chargingPeriod = new ChargingPeriod($startDate1, "tariff#1");
         $chargingPeriod->addDimension(new CdrDimension(CdrDimensionType::TIME(), 0.5));
         $chargingPeriod->addDimension(new CdrDimension(CdrDimensionType::MAX_CURRENT(), 0.23423));
 
-        $chargingPeriod2 = new ChargingPeriod($startDate2);
+        $chargingPeriod2 = new ChargingPeriod($startDate2, "tariff2");
         $chargingPeriod2->addDimension(new CdrDimension(CdrDimensionType::ENERGY(), 1231.134));
         $chargingPeriod2->addDimension(new CdrDimension(CdrDimensionType::TIME(), 2342.234));
         yield 'both has same charging periods with multiple dimensions' => [
@@ -161,10 +161,10 @@ class SessionTest extends TestCase
             []
         ];
 
-        $chargingPeriod = new ChargingPeriod($startDate1);
+        $chargingPeriod = new ChargingPeriod($startDate1, null);
         $chargingPeriod->addDimension(new CdrDimension(CdrDimensionType::TIME(), 0.5));
 
-        $chargingPeriodModified = new ChargingPeriod($startDate1);
+        $chargingPeriodModified = new ChargingPeriod($startDate1, null);
         $chargingPeriodModified->addDimension(new CdrDimension(CdrDimensionType::TIME(), 1.0));
 
         yield 'second session has changed a dimension volume' => [
@@ -173,7 +173,7 @@ class SessionTest extends TestCase
             [$chargingPeriodModified]
         ];
 
-        $chargingPeriodModified = new ChargingPeriod($startDate1);
+        $chargingPeriodModified = new ChargingPeriod($startDate1, null);
         $chargingPeriodModified->addDimension(new CdrDimension(CdrDimensionType::TIME(), 0.5));
         $chargingPeriodModified->addDimension(new CdrDimension(CdrDimensionType::MAX_CURRENT(), 0.23423));
 
@@ -195,7 +195,7 @@ class SessionTest extends TestCase
             [$chargingPeriod2]
         ];
 
-        $chargingPeriod2 = new ChargingPeriod($startDate2);
+        $chargingPeriod2 = new ChargingPeriod($startDate2, null);
         $chargingPeriod2->addDimension(new CdrDimension(CdrDimensionType::TIME(), 1.0));
 
         yield 'second session has modified first period and added one more' => [
@@ -452,7 +452,7 @@ class SessionTest extends TestCase
             $lastUpdated1,
         );
 
-        $chargingPeriod = new ChargingPeriod($startDate1);
+        $chargingPeriod = new ChargingPeriod($startDate1, null);
         $chargingPeriod->addDimension(new CdrDimension(CdrDimensionType::TIME(), 0.5));
 
         $session1->addChargingPeriod($chargingPeriod);
@@ -472,9 +472,9 @@ class SessionTest extends TestCase
             $lastUpdated1,
         );
 
-        $chargingPeriodModified = new ChargingPeriod($startDate1);
+        $chargingPeriodModified = new ChargingPeriod($startDate1, null);
         $chargingPeriodModified->addDimension(new CdrDimension(CdrDimensionType::TIME(), 1.0));
-        $chargingPeriod2 = new ChargingPeriod($startDate2);
+        $chargingPeriod2 = new ChargingPeriod($startDate2, null);
         $chargingPeriod2->addDimension(new CdrDimension(CdrDimensionType::TIME(), 1.0));
 
         $session2->addChargingPeriod($chargingPeriodModified);

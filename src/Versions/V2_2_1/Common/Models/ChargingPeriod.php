@@ -15,9 +15,12 @@ class ChargingPeriod implements JsonSerializable
     /** @var CdrDimension[] */
     private array $cdrDimensions = [];
 
-    public function __construct(DateTime $startDate)
+    private ?string $tariffId;
+
+    public function __construct(DateTime $startDate, ?string $tariffId)
     {
         $this->startDate = $startDate;
+        $this->tariffId = $tariffId;
     }
 
     public function addDimension(CdrDimension $dimension): void
@@ -53,12 +56,21 @@ class ChargingPeriod implements JsonSerializable
         return $this->cdrDimensions[$index];
     }
 
+    public function getTariffId(): ?string
+    {
+        return $this->tariffId;
+    }
+
     public function jsonSerialize(): array
     {
-        return [
+        $return = [
             'start_date_time' => DateTimeFormatter::format($this->startDate),
-            'dimensions' => $this->cdrDimensions
+            'dimensions' => $this->cdrDimensions,
         ];
+        if ($this->tariffId) {
+            $return['tariff_id'] = $this->tariffId;
+        }
+        return $return;
     }
 
     private function searchCdrDimension(CdrDimensionType $dimensionType): ?int

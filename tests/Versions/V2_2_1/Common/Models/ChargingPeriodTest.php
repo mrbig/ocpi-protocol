@@ -38,7 +38,7 @@ class ChargingPeriodTest extends TestCase
      */
     public function testAddDimension(): void
     {
-        $chargingPeriod = new ChargingPeriod(new DateTime('2020-08-07 11:30:00'));
+        $chargingPeriod = new ChargingPeriod(new DateTime('2020-08-07 11:30:00'), "tariff#1");
 
         // Simple dimension add
         $chargingPeriod->addDimension(new CdrDimension(CdrDimensionType::TIME(), 45.));
@@ -61,7 +61,7 @@ class ChargingPeriodTest extends TestCase
 
     public function testGetDimension(): void
     {
-        $chargingPeriod = new ChargingPeriod(new DateTime('2020-08-07 11:30:00'));
+        $chargingPeriod = new ChargingPeriod(new DateTime('2020-08-07 11:30:00'), null);
 
         $chargingPeriod->addDimension(new CdrDimension(CdrDimensionType::TIME(), 45.));
 

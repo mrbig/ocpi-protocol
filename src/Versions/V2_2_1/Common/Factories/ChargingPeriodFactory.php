@@ -37,7 +37,10 @@ class ChargingPeriodFactory
             return null;
         }
 
-        $chargingPeriod = new ChargingPeriod(new DateTime($json->start_date_time));
+        $chargingPeriod = new ChargingPeriod(
+            new DateTime($json->start_date_time),
+            $json->tariff_id ?? null
+        );
 
         foreach ($json->dimensions as $jsonCdrDimension) {
             $chargingPeriod->addDimension(CdrDimensionFactory::fromJson($jsonCdrDimension));

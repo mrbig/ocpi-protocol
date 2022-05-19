@@ -505,6 +505,14 @@
                         ],
                         "additionalProperties": false
                     }
+                },
+                "tariff_id": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "minLength": 1,
+                    "maxLength": 36
                 }
             },
             "required": [
