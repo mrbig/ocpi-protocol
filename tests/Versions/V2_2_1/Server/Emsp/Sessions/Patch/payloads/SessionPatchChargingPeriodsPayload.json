@@ -8,7 +8,7 @@
           "volume": 123
         },
         {
-          "type": "FLAT",
+          "type": "TIME",
           "volume": 213
         }
       ]

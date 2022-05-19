@@ -15,8 +15,8 @@
                     "type": "ENERGY",
                     "volume": 123
                 },
-                "FLAT": {
-                    "type": "FLAT",
+                "TIME": {
+                    "type": "TIME",
                     "volume": 213
                 }
             }
