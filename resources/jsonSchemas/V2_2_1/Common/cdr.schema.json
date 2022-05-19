@@ -26,16 +26,86 @@
             ]
         },
         "location": {
-            "$ref": "location.schema.json",
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 39
+                },
+                "name": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "minLength": 1,
+                    "maxLength": 255
+                },
+                "address": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 45
+                },
+                "city": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 45
+                },
+                "postal_code": {
+                    "type": ["null", "string"],
+                    "minLength": 1,
+                    "maxLength": 10
+                },
+                "state": {
+                    "type": ["null", "string"],
+                    "minLength": 1,
+                    "maxLength": 20
+                },
+                "country": {
+                    "type": "string",
+                    "minLength": 3,
+                    "maxLength": 3
+                },
+                "coordinates": {
+                    "$ref": "common.schema.json#/definitions/geo_location"
+                },
+                "evse_uid": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 36
+                },
+                "evse_id": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 48
+                },
+                "connector_id": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 36
+                },
+                "connector_standard": {
+                    "$ref": "connector.schema.json#/properties/standard"
+                },
+                "connector_format": {
+                    "$ref": "connector.schema.json#/properties/format"
+                },
+                "connector_power_type": {
+                    "$ref": "connector.schema.json#/properties/power_type"
+                }
+            },
             "required": [
                 "id",
-                "type",
                 "address",
                 "city",
-                "postal_code",
                 "country",
                 "coordinates",
-                "last_updated"
+                "evse_uid",
+                "evse_id",
+                "connector_id",
+                "connector_standard",
+                "connector_format",
+                "connector_power_type"
             ]
         },
         "meter_id": {

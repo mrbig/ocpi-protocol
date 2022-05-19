@@ -1,0 +1,19 @@
+{
+    "id": "LOC1",
+    "name": "Gent Zuid",
+    "address": "F.Rooseveltlaan 3A",
+    "city": "Gent",
+    "postal_code": "9000",
+    "state": "CAL",
+    "country": "BEL",
+    "coordinates": {
+      "latitude": "3.729940",
+      "longitude": "51.047590"
+    },
+    "evse_uid": "3256",
+    "evse_id": "BE-BEC-E041503003",
+    "connector_id": "1",
+    "connector_standard": "IEC_62196_T2",
+    "connector_format": "SOCKET",
+    "connector_power_type": "AC_1_PHASE"
+}

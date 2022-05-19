@@ -6,37 +6,22 @@
   "auth_method": "WHITELIST",
   "location": {
     "id": "LOC1",
-    "type": "ON_STREET",
     "name": "Gent Zuid",
     "address": "F.Rooseveltlaan 3A",
     "city": "Gent",
     "postal_code": "9000",
+    "state": "CAL",
     "country": "BEL",
     "coordinates": {
       "latitude": "3.729940",
       "longitude": "51.047590"
     },
-    "evses": [
-      {
-        "uid": "3256",
-        "evse_id": "BE-BEC-E041503003",
-        "status": "AVAILABLE",
-        "connectors": [
-          {
-            "id": "1",
-            "standard": "IEC_62196_T2",
-            "format": "SOCKET",
-            "power_type": "AC_1_PHASE",
-            "voltage": 230,
-            "amperage": 64,
-            "tariff_ids": ["11"],
-            "last_updated": "2015-06-29T21:39:01Z"
-          }
-        ],
-        "last_updated": "2015-06-29T21:39:01Z"
-      }
-    ],
-    "last_updated": "2015-06-29T21:39:01Z"
+    "evse_uid": "3256",
+    "evse_id": "BE-BEC-E041503003",
+    "connector_id": "1",
+    "connector_standard": "IEC_62196_T2",
+    "connector_format": "SOCKET",
+    "connector_power_type": "AC_1_PHASE"
   },
   "currency": "EUR",
   "tariffs": [

@@ -66,7 +66,7 @@ class CdrFactoryTest extends TestCase
             }
 
             Assert::assertSame($json->currency, $cdr->getCurrency());
-            LocationFactoryTest::assertLocation($json->location, $cdr->getLocation());
+            CdrLocationFactoryTest::assertCdrLocation($json->location, $cdr->getLocation());
             Assert::assertSame($json->meter_id ?? null, $cdr->getMeterId());
             Assert::assertSame($json->remark ?? null, $cdr->getRemark());
             Assert::assertEquals(new DateTime($json->start_date_time), $cdr->getStartDateTime());

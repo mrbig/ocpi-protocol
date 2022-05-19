@@ -48,7 +48,10 @@ class LocationFactoryTest extends TestCase
         if($json === null ) {
             Assert::assertNull($location);
         } else {
+            Assert::assertSame($json->country_code, $location->getCountryCode());
+            Assert::assertSame($json->party_id, $location->getPartyId());
             Assert::assertSame($json->id, $location->getId());
+            Assert::assertSame($json->publish, $location->getPublish());
             Assert::assertSame($json->name, $location->getName());
             BusinessDetailsFactoryTest::assertBusinessDetails($json->operator ?? null, $location->getOperator());
             BusinessDetailsFactoryTest::assertBusinessDetails($json->owner ?? null, $location->getOwner());
