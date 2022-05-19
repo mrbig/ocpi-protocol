@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace Tests\Chargemap\OCPI\Versions\V2_2_1\Common\Factories;
 
 use Chargemap\OCPI\Versions\V2_2_1\Common\Factories\SessionFactory;
-use Chargemap\OCPI\Versions\V2_2_1\Common\Models\AuthenticationMethod;
+use Chargemap\OCPI\Versions\V2_2_1\Common\Models\AuthMethod;
 use Chargemap\OCPI\Versions\V2_2_1\Common\Models\Session;
 use Chargemap\OCPI\Versions\V2_2_1\Common\Models\SessionStatus;
 use DateTime;
@@ -48,7 +48,7 @@ class SessionFactoryTest extends TestCase
             Assert::assertEquals(new DateTime($json->start_datetime), $session->getStartDate());
             Assert::assertEquals(isset($json->end_datetime) ? new DateTime($json->end_datetime) : null, $session->getEndDate());
             Assert::assertSame($json->auth_id, $session->getAuthId());
-            Assert::assertEquals(new AuthenticationMethod($json->auth_method), $session->getAuthMethod()->getValue());
+            Assert::assertEquals(new AuthMethod($json->auth_method), $session->getAuthMethod()->getValue());
             Assert::assertSame(isset($json->total_cost) ? (float)$json->total_cost : null, $session->getTotalCost());
             Assert::assertSame($json->meter_id ?? null, $session->getMeterId());
             Assert::assertSame($json->currency, $session->getCurrency());

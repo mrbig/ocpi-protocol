@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Chargemap\OCPI\Versions\V2_2_1\Common\Factories;
 
-use Chargemap\OCPI\Versions\V2_2_1\Common\Models\AuthenticationMethod;
+use Chargemap\OCPI\Versions\V2_2_1\Common\Models\AuthMethod;
 use Chargemap\OCPI\Versions\V2_2_1\Common\Models\PartialSession;
 use Chargemap\OCPI\Versions\V2_2_1\Common\Models\SessionStatus;
 use DateTime;
@@ -36,7 +36,7 @@ class PartialSessionFactory
             $session->withAuthId($json->auth_id);
         }
         if (property_exists($json, 'auth_method')) {
-            $session->withAuthMethod(new AuthenticationMethod($json->auth_method));
+            $session->withAuthMethod(new AuthMethod($json->auth_method));
         }
         if (property_exists($json, 'location_id')) {
             $session->withLocationId($json->location_id);

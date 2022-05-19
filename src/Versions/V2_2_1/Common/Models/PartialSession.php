@@ -28,7 +28,7 @@ use JsonSerializable;
  * @method self withEndDate(?DateTime $endDate)
  * @method self withKwh(?float $kwh)
  * @method self withAuthId(?string $authId)
- * @method self withAuthMethod(?AuthenticationMethod $authMethod)
+ * @method self withAuthMethod(?AuthMethod $authMethod)
  * @method self withLocationId(?string $locationId)
  * @method self withMeterId(?string $meterId)
  * @method self withCurrency(?string $currency)
@@ -44,7 +44,7 @@ class PartialSession extends PartialModel implements JsonSerializable
     private ?DateTime $endDate = null;
     private ?float $kwh = null;
     private ?string $authId = null;
-    private ?AuthenticationMethod $authMethod = null;
+    private ?AuthMethod $authMethod = null;
     private ?string $locationId = null;
     private ?string $meterId = null;
     private ?string $currency = null;
@@ -84,7 +84,7 @@ class PartialSession extends PartialModel implements JsonSerializable
         return $this;
     }
 
-    protected function _withAuthMethod(?AuthenticationMethod $authMethod): self
+    protected function _withAuthMethod(?AuthMethod $authMethod): self
     {
         $this->authMethod = $authMethod;
         return $this;
@@ -163,7 +163,7 @@ class PartialSession extends PartialModel implements JsonSerializable
         return $this->authId;
     }
 
-    public function getAuthMethod(): ?AuthenticationMethod
+    public function getAuthMethod(): ?AuthMethod
     {
         return $this->authMethod;
     }

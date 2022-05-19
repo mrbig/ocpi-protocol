@@ -8,10 +8,12 @@ use MyCLabs\Enum\Enum;
 
 /**
  * @method static self AUTH_REQUEST()
+ * @method static self COMMAND()
  * @method static self WHITELIST()
  */
-class AuthenticationMethod extends Enum
+class AuthMethod extends Enum
 {
     public const AUTH_REQUEST = 'AUTH_REQUEST';
+    public const COMMAND = 'COMMAND';
     public const WHITELIST = 'WHITELIST';
 }

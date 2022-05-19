@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Tests\Chargemap\OCPI\Versions\V2_2_1\Common\Factories;
 
 use Chargemap\OCPI\Versions\V2_2_1\Common\Factories\CdrFactory;
-use Chargemap\OCPI\Versions\V2_2_1\Common\Models\AuthenticationMethod;
+use Chargemap\OCPI\Versions\V2_2_1\Common\Models\AuthMethod;
 use Chargemap\OCPI\Versions\V2_2_1\Common\Models\Cdr;
 use DateTime;
 use JsonException;
@@ -52,7 +52,7 @@ class CdrFactoryTest extends TestCase
             Assert::assertSame($json->id, $cdr->getId());
             Assert::assertEquals(new DateTime($json->last_updated), $cdr->getLastUpdated());
             Assert::assertSame($json->auth_id, $cdr->getAuthId());
-            Assert::assertEquals(new AuthenticationMethod($json->auth_method), $cdr->getAuthMethod());
+            Assert::assertEquals(new AuthMethod($json->auth_method), $cdr->getAuthMethod());
 
             Assert::assertSame(count($json->charging_periods), count($cdr->getChargingPeriods()));
 

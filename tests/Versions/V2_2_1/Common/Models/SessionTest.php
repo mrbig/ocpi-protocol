@@ -8,7 +8,7 @@ use Chargemap\OCPI\Common\Utils\DateTimeFormatter;
 use Chargemap\OCPI\Versions\V2_2_1\Common\Factories\LocationFactory;
 use Chargemap\OCPI\Versions\V2_2_1\Common\Factories\PartialSessionFactory;
 use Chargemap\OCPI\Versions\V2_2_1\Common\Factories\SessionFactory;
-use Chargemap\OCPI\Versions\V2_2_1\Common\Models\AuthenticationMethod;
+use Chargemap\OCPI\Versions\V2_2_1\Common\Models\AuthMethod;
 use Chargemap\OCPI\Versions\V2_2_1\Common\Models\CdrDimension;
 use Chargemap\OCPI\Versions\V2_2_1\Common\Models\CdrDimensionType;
 use Chargemap\OCPI\Versions\V2_2_1\Common\Models\ChargingPeriod;
@@ -99,7 +99,7 @@ class SessionTest extends TestCase
             (new DateTime())->setTimestamp(918273645),
             22.345,
             'authId1',
-            AuthenticationMethod::AUTH_REQUEST(),
+            AuthMethod::AUTH_REQUEST(),
             'location1',
             'meterId1',
             'currency1',
@@ -241,8 +241,8 @@ class SessionTest extends TestCase
         $kwh2 = 55.132;
         $authId1 = 'authId1';
         $authId2 = 'authId2';
-        $authMethod1 = AuthenticationMethod::AUTH_REQUEST();
-        $authMethod2 = AuthenticationMethod::WHITELIST();
+        $authMethod1 = AuthMethod::AUTH_REQUEST();
+        $authMethod2 = AuthMethod::WHITELIST();
         $location1 = 'location1';
         $location2 = 'location2';
         $meterId1 = 'meterId1';

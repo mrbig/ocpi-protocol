@@ -15,7 +15,7 @@ class Session implements JsonSerializable
     private ?DateTime $endDate;
     private float $kwh;
     private string $authId;
-    private AuthenticationMethod $authMethod;
+    private AuthMethod $authMethod;
     private string $locationId;
     private ?string $meterId;
     private string $currency;
@@ -31,7 +31,7 @@ class Session implements JsonSerializable
         ?DateTime $endDate,
         float $kwh,
         string $authId,
-        AuthenticationMethod $authMethod,
+        AuthMethod $authMethod,
         string $locationId,
         ?string $meterId,
         string $currency,
@@ -83,7 +83,7 @@ class Session implements JsonSerializable
         return $this->authId;
     }
 
-    public function getAuthMethod(): AuthenticationMethod
+    public function getAuthMethod(): AuthMethod
     {
         return $this->authMethod;
     }

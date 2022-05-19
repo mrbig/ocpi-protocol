@@ -22,6 +22,7 @@
             "type": "string",
             "enum": [
                 "AUTH_REQUEST",
+                "COMMAND",
                 "WHITELIST"
             ]
         },
