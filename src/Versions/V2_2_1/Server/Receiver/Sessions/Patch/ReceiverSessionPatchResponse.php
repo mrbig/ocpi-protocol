@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Chargemap\OCPI\Versions\V2_2_1\Server\Emsp\Sessions\Patch;
+namespace Chargemap\OCPI\Versions\V2_2_1\Server\Receiver\Sessions\Patch;
 
 use Chargemap\OCPI\Common\Server\OcpiUpdateResponse;
 use Chargemap\OCPI\Versions\V2_2_1\Common\Models\PartialSession;
 
-class OcpiEmspSessionPatchResponse extends OcpiUpdateResponse
+class ReceiverSessionPatchResponse extends OcpiUpdateResponse
 {
     private PartialSession $session;
 

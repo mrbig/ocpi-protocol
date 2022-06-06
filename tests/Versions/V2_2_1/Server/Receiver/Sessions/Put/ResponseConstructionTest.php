@@ -5,11 +5,11 @@ declare(strict_types=1);
 namespace Tests\Chargemap\OCPI\Versions\V2_2_1\Server\Emsp\Sessions\Put;
 
 use Chargemap\OCPI\Versions\V2_2_1\Common\Models\Session;
-use Chargemap\OCPI\Versions\V2_2_1\Server\Emsp\Sessions\Put\OcpiEmspSessionPutResponse;
+use Chargemap\OCPI\Versions\V2_2_1\Server\Receiver\Sessions\Put\ReceiverSessionPutResponse;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \Chargemap\OCPI\Versions\V2_2_1\Server\Emsp\Sessions\Put\OcpiEmspSessionPutResponse
+ * @covers \Chargemap\OCPI\Versions\V2_2_1\Server\Receiver\Sessions\Put\ReceiverSessionPutResponse
  */
 class ResponseConstructionTest extends TestCase
 {
@@ -18,7 +18,7 @@ class ResponseConstructionTest extends TestCase
         $session = $this->createMock(Session::class);
 
         // Create response
-        $response = new OcpiEmspSessionPutResponse($session);
+        $response = new ReceiverSessionPutResponse($session);
         $responseInterface = $response->getResponseInterface();
         $data = json_decode($responseInterface->getBody()->getContents())->data;
         $this->assertNull($data);

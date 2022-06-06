@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Chargemap\OCPI\Versions\V2_2_1\Server\Emsp\Sessions\Put;
+namespace Chargemap\OCPI\Versions\V2_2_1\Server\Receiver\Sessions\Put;
 
 use Chargemap\OCPI\Common\Server\OcpiCreateResponse;
 use Chargemap\OCPI\Versions\V2_2_1\Common\Models\Session;
 
-class OcpiEmspSessionPutResponse extends OcpiCreateResponse
+class ReceiverSessionPutResponse extends OcpiCreateResponse
 {
     private Session $session;
 

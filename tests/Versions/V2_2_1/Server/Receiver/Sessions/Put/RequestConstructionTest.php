@@ -5,13 +5,13 @@ declare(strict_types=1);
 namespace Tests\Chargemap\OCPI\Versions\V2_2_1\Server\Emsp\Sessions\Put;
 
 use Chargemap\OCPI\Common\Server\Errors\OcpiNotEnoughInformationClientError;
-use Chargemap\OCPI\Versions\V2_2_1\Server\Emsp\Sessions\Put\OcpiEmspSessionPutRequest;
+use Chargemap\OCPI\Versions\V2_2_1\Server\Receiver\Sessions\Put\ReceiverSessionPutRequest;
 use Http\Discovery\Psr17FactoryDiscovery;
 use Tests\Chargemap\OCPI\OcpiTestCase;
 use Tests\Chargemap\OCPI\Versions\V2_2_1\Common\Factories\SessionFactoryTest;
 
 /**
- * @covers \Chargemap\OCPI\Versions\V2_2_1\Server\Emsp\Sessions\Put\OcpiEmspSessionPutRequest
+ * @covers \Chargemap\OCPI\Versions\V2_2_1\Server\Receiver\Sessions\Put\ReceiverSessionPutRequest
  */
 class RequestConstructionTest extends OcpiTestCase
 {
@@ -49,7 +49,7 @@ class RequestConstructionTest extends OcpiTestCase
             ->withHeader('Authorization', 'Token IpbJOXxkxOAuKR92z0nEcmVF3Qw09VG7I7d/WCg0koM=')
             ->withBody(Psr17FactoryDiscovery::findStreamFactory()->createStream($payload));
 
-        $request = new OcpiEmspSessionPutRequest($serverRequestInterface, 'FR', 'TNM', '101');
+        $request = new ReceiverSessionPutRequest($serverRequestInterface, 'FR', 'TNM', '101');
 
         $this->assertEquals('FR', $request->getCountryCode());
         $this->assertEquals('TNM', $request->getPartyId());
@@ -71,6 +71,6 @@ class RequestConstructionTest extends OcpiTestCase
             ->withBody(Psr17FactoryDiscovery::findStreamFactory()->createStream($payload));
 
         $this->expectException(OcpiNotEnoughInformationClientError::class);
-        new OcpiEmspSessionPutRequest($serverRequestInterface, 'FR', 'TNM', '101');
+        new ReceiverSessionPutRequest($serverRequestInterface, 'FR', 'TNM', '101');
     }
 }

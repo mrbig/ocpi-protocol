@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Chargemap\OCPI\Versions\V2_2_1\Server\Emsp\Sessions;
+namespace Chargemap\OCPI\Versions\V2_2_1\Server\Receiver\Sessions;
 
 use Chargemap\OCPI\Common\Server\Errors\OcpiGenericClientError;
 

@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace Chargemap\OCPI\Versions\V2_2_1\Server\Emsp\Sessions\Patch;
+namespace Chargemap\OCPI\Versions\V2_2_1\Server\Receiver\Sessions\Patch;
 
 use Chargemap\OCPI\Common\Utils\PayloadValidation;
 use Chargemap\OCPI\Versions\V2_2_1\Common\Factories\PartialSessionFactory;
 use Chargemap\OCPI\Versions\V2_2_1\Common\Models\PartialSession;
 use Chargemap\OCPI\Versions\V2_2_1\Server\Receiver\Locations\Patch\UnsupportedPatchException;
-use Chargemap\OCPI\Versions\V2_2_1\Server\Emsp\Sessions\OcpiSessionUpdateRequest;
+use Chargemap\OCPI\Versions\V2_2_1\Server\Receiver\Sessions\OcpiSessionUpdateRequest;
 use Psr\Http\Message\ServerRequestInterface;
 use UnexpectedValueException;
 
-class OcpiEmspSessionPatchRequest extends OcpiSessionUpdateRequest
+class ReceiverSessionPatchRequest extends OcpiSessionUpdateRequest
 {
     private PartialSession $partialSession;
 
