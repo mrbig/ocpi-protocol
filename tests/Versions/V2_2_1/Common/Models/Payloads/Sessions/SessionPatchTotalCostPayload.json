@@ -1,3 +1,6 @@
 {
-    "total_cost": 50.4
+    "total_cost": {
+        "excl_vat": 50.4,
+        "incl_vat": 51.2
+    }
 }

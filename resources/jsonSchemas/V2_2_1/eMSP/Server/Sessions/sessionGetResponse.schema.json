@@ -4,12 +4,16 @@
         "data": {
             "$ref": "../../../Common/session.schema.json",
             "required": [
+                "country_code",
+                "party_id",
                 "id",
-                "start_datetime",
+                "start_date_time",
                 "kwh",
-                "auth_id",
+                "cdr_token",
                 "auth_method",
                 "location_id",
+                "evse_uid",
+                "connector_id",
                 "currency",
                 "status",
                 "last_updated"

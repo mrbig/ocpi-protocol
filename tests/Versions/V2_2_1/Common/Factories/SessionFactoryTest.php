@@ -44,12 +44,19 @@ class SessionFactoryTest extends TestCase
         if ($json === null) {
             Assert::assertNull($session);
         } else {
+            Assert::assertSame($json->country_code, $session->getCountryCode());
+            Assert::assertSame($json->party_id, $session->getPartyId());
             Assert::assertSame($json->id, $session->getId());
-            Assert::assertEquals(new DateTime($json->start_datetime), $session->getStartDate());
-            Assert::assertEquals(isset($json->end_datetime) ? new DateTime($json->end_datetime) : null, $session->getEndDate());
-            Assert::assertSame($json->auth_id, $session->getAuthId());
+            Assert::assertEquals(new DateTime($json->start_date_time), $session->getStartDateTime());
+            Assert::assertEquals(isset($json->end_date_time) ? new DateTime($json->end_date_time) : null, $session->getEndDateTime());
+            Assert::assertSame((float)$json->kwh, $session->getKwh());
+            CdrTokenFactoryTest::assertCdrToken($json->cdr_token, $session->getCdrToken());
             Assert::assertEquals(new AuthMethod($json->auth_method), $session->getAuthMethod()->getValue());
-            Assert::assertSame(isset($json->total_cost) ? (float)$json->total_cost : null, $session->getTotalCost());
+            Assert::assertSame($json->authorization_reference ?? null, $session->getAuthorizationReference());
+            Assert::assertSame($json->location_id, $session->getLocationId());
+            Assert::assertSame($json->evse_uid, $session->getEvseUid());
+            Assert::assertSame($json->connector_id, $session->getConnectorId());
+            PriceFactoryTest::assertPrice($json->total_cost ?? null, $session->getTotalCost());
             Assert::assertSame($json->meter_id ?? null, $session->getMeterId());
             Assert::assertSame($json->currency, $session->getCurrency());
 
@@ -66,9 +73,9 @@ class SessionFactoryTest extends TestCase
 
             Assert::assertEquals(new DateTime($json->last_updated), $session->getLastUpdated());
             Assert::assertEquals(new SessionStatus($json->status), $session->getStatus());
-            Assert::assertSame((float)$json->kwh, $session->getKwh());
+            
 
-            Assert::assertSame($json->location_id, $session->getLocationId());
+            
         }
     }
 }

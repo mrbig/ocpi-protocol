@@ -2,15 +2,25 @@
     "title": "V2.2.1\\Session",
     "type": "object",
     "properties": {
+        "country_code": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 2
+        },
+        "party_id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 3
+        },
         "id": {
             "type": "string",
             "minLength": 1,
             "maxLength": 36
         },
-        "start_datetime": {
+        "start_date_time": {
             "$ref": "common.schema.json#/definitions/timestamp"
         },
-        "end_datetime": {
+        "end_date_time": {
             "oneOf": [
                 {
                     "type": "null"
@@ -23,19 +33,36 @@
         "kwh": {
             "type": "number"
         },
-        "auth_id": {
-            "type": "string",
-            "minLength": 1,
-            "maxLength": 36
+        "cdr_token": {
+            "$ref": "common.schema.json#/definitions/cdr_token"
         },
         "auth_method": {
             "type": "string",
             "enum": [
                 "AUTH_REQUEST",
+                "COMMAND",
                 "WHITELIST"
             ]
         },
+        "authorization_reference": {
+            "type": [
+                "string",
+                "null"
+            ],
+            "minLength": 1,
+            "maxLength": 36
+        },
         "location_id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 36
+        },
+        "evse_uid": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 36
+        },
+        "connector_id": {
             "type": "string",
             "minLength": 1,
             "maxLength": 36
@@ -63,9 +90,13 @@
             }
         },
         "total_cost": {
-            "type": [
-                "number",
-                "null"
+            "oneOf": [
+                {
+                    "type": "null"
+                },
+                {
+                    "$ref": "common.schema.json#/definitions/price"
+                }
             ]
         },
         "status": {

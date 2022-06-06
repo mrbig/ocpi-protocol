@@ -8,7 +8,7 @@ use MyCLabs\Enum\Enum;
 
 /**
  * @method static self AD_HOC_USER()
- * @method static seld APP_USER()
+ * @method static self APP_USER()
  * @method static self RFID()
  * @method static self OTHER()
  */

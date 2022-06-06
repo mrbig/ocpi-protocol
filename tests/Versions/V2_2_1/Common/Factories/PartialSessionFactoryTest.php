@@ -9,6 +9,7 @@ use JsonException;
 use PHPUnit\Framework\TestCase;
 use Tests\Chargemap\OCPI\InvalidPayloadException;
 use Tests\Chargemap\OCPI\OcpiTestCase;
+use Tests\Chargemap\OCPI\Versions\V2_2_1\Common\Models\CdrTokenTest;
 
 /**
  * @covers \Chargemap\OCPI\Versions\V2_2_1\Common\Factories\PartialSessionFactory
@@ -44,23 +45,35 @@ class PartialSessionFactoryTest extends TestCase
 
     public static function assertPartialSession($json, PartialSession $session): void
     {
+        if (property_exists($json, 'country_code')) {
+            self::assertTrue($session->hasCountryCode());
+            self::assertSame($json->country_code, $session->getCountryCode());
+        } else {
+            self::assertFalse($session->hasCountryCode());
+        }
+        if (property_exists($json, 'party_id')) {
+            self::assertTrue($session->hasPartyId());
+            self::assertSame($json->party_id, $session->getPartyId());
+        } else {
+            self::assertFalse($session->hasPartyId());
+        }
         if (property_exists($json, 'id')) {
             self::assertTrue($session->hasId());
             self::assertSame($json->id, $session->getId());
         } else {
             self::assertFalse($session->hasId());
         }
-        if (property_exists($json, 'start_datetime')) {
-            self::assertTrue($session->hasStartDate());
-            self::assertEquals(new DateTime($json->start_datetime), $session->getStartDate());
+        if (property_exists($json, 'start_date_time')) {
+            self::assertTrue($session->hasStartDateTime());
+            self::assertEquals(new DateTime($json->start_date_time), $session->getStartDateTime());
         } else {
-            self::assertFalse($session->hasStartDate());
+            self::assertFalse($session->hasStartDateTime());
         }
-        if (property_exists($json, 'end_datetime')) {
-            self::assertTrue($session->hasEndDate());
-            self::assertEquals(new DateTime($json->end_datetime), $session->getEndDate());
+        if (property_exists($json, 'end_date_time')) {
+            self::assertTrue($session->hasEndDateTime());
+            self::assertEquals(new DateTime($json->end_date_time), $session->getEndDateTime());
         } else {
-            self::assertFalse($session->hasEndDate());
+            self::assertFalse($session->hasEndDateTime());
         }
         if (property_exists($json, 'kwh')) {
             self::assertTrue($session->hasKwh());
@@ -68,11 +81,11 @@ class PartialSessionFactoryTest extends TestCase
         } else {
             self::assertFalse($session->hasKwh());
         }
-        if (property_exists($json, 'auth_id')) {
-            self::assertTrue($session->hasAuthId());
-            self::assertSame($json->auth_id, $session->getAuthId());
+        if (property_exists($json, 'cdr_token')) {
+            self::assertTrue($session->hasCdrToken());
+            CdrTokenFactoryTest::assertCdrToken($json->cdr_token, $session->getCdrToken());
         } else {
-            self::assertFalse($session->hasAuthId());
+            self::assertFalse($session->hasCdrToken());
         }
         if (property_exists($json, 'auth_method')) {
             self::assertTrue($session->hasAuthMethod());
@@ -80,11 +93,29 @@ class PartialSessionFactoryTest extends TestCase
         } else {
             self::assertFalse($session->hasAuthMethod());
         }
+        if (property_exists($json, 'authorization_reference')) {
+            self::assertTrue($session->hasAuthorizationReference());
+            self::assertSame($json->authorization_reference, $session->getAuthorizationReference());
+        } else {
+            self::assertFalse($session->hasAuthorizationReference());
+        }
         if (property_exists($json, 'location')) {
             self::assertTrue($session->hasLocation());
             LocationFactoryTest::assertLocation($json->location, $session->getLocation());
         } else {
             self::assertFalse($session->hasLocation());
+        }
+        if (property_exists($json, 'evse_uid')) {
+            self::assertTrue($session->hasEvseUid());
+            self::assertSame($json->evse_uid, $session->getEvseUid());
+        } else {
+            self::assertFalse($session->hasEvseUid());
+        }
+        if (property_exists($json, 'connector_id')) {
+            self::assertTrue($session->hasConnectorId());
+            self::assertSame($json->connector_id, $session->getConnectorId());
+        } else {
+            self::assertFalse($session->hasConnectorId());
         }
         if (property_exists($json, 'meter_id')) {
             self::assertTrue($session->hasMeterId());
@@ -106,7 +137,8 @@ class PartialSessionFactoryTest extends TestCase
         }
         if (property_exists($json, 'total_cost')) {
             self::assertTrue($session->hasTotalCost());
-            self::assertSame($json->total_cost, $session->getTotalCost());
+            
+            PriceFactoryTest::assertPrice($json->total_cost, $session->getTotalCost());
         } else {
             self::assertFalse($session->hasTotalCost());
         }

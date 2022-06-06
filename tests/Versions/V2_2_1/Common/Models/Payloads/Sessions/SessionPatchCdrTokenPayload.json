@@ -1,0 +1,9 @@
+{
+    "cdr_token": {
+        "country_code": "BE",
+        "party_id": "BEL",
+        "uid": "belgianuser",
+        "type": "RFID",
+        "contract_id": "belgiancontract"
+    }
+}

@@ -19,16 +19,21 @@ class SessionFactory
         }
 
         $session = new Session(
+            $json->country_code,
+            $json->party_id,
             $json->id,
-            new DateTime($json->start_datetime),
-            property_exists($json, 'end_datetime') ? new DateTime($json->end_datetime) : null,
+            new DateTime($json->start_date_time),
+            property_exists($json, 'end_date_time') ? new DateTime($json->end_date_time) : null,
             $json->kwh,
-            $json->auth_id,
+            CdrTokenFactory::fromJson($json->cdr_token),
             new AuthMethod($json->auth_method),
+            $json->authorization_reference ?? null,
             $json->location_id,
+            $json->evse_uid,
+            $json->connector_id,
             $json->meter_id ?? null,
             $json->currency,
-            $json->total_cost ?? null,
+            PriceFactory::fromJson($json->total_cost ?? null),
             new SessionStatus($json->status),
             new DateTime($json->last_updated)
         );

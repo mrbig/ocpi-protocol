@@ -465,6 +465,48 @@
             ],
             "additionalProperties": false
         },
+        "cdr_token": {
+            "type": "object",
+            "properties": {
+                "country_code": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 2
+                },
+                "party_id": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 3
+                },
+                "uid": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 36
+                },
+                "type": {
+                    "type": "string",
+                    "enum": [
+                        "AD_HOC_USER",
+                        "APP_USER",
+                        "OTHER",
+                        "RFID"
+                    ]
+                },
+                "contract_id": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 36
+                }
+            },
+            "required": [
+                "country_code",
+                "party_id",
+                "uid",
+                "type",
+                "contract_id"
+            ],
+            "additionalProperties": false
+        },
         "charging_period": {
             "type": "object",
             "properties": {
@@ -544,6 +586,24 @@
             "required": [
                 "location_id"
             ]
+        },
+        "price": {
+            "type": "object",
+            "properties": {
+                "excl_vat": {
+                    "type": "number"
+                },
+                "incl_vat": {
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "excl_vat"
+            ],
+            "additionalProperties": false
         },
         "version": {
             "type": "string",
