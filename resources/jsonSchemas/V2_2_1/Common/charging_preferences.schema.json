@@ -1,0 +1,31 @@
+{
+    "title": "V2.2.1\\Common\\ChargingPreferences",
+    "type": "object",
+    "properties": {
+        "profile_type": {
+            "type": "string",
+            "enum": [
+                "CHEAP",
+                "FAST",
+                "GREEN",
+                "REGULAR"
+            ]
+        },
+        "departure_time": {
+            "$ref": "common.schema.json#/definitions/timestamp"
+        },
+        "energy_needed": {
+            "type": [
+                "number",
+                "null"
+            ]
+        },
+        "discharge_allowed": {
+            "type": [
+                "boolean",
+                "null"
+            ]
+        }
+    },
+    "additionalProperties": false
+}

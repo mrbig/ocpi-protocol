@@ -1,0 +1,12 @@
+{
+    "title": "V2.2.1\\Sender\\Sessions\\Put",
+    "oneOf": [
+        {
+            "$ref": "../../Common/charging_preferences.schema.json",
+            "required": [
+                "profile_type"
+            ],
+            "additionalProperties": false
+        }
+    ]
+}
