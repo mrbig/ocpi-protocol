@@ -55,7 +55,7 @@ class SessionTest extends TestCase
             foreach ($session->getChargingPeriods() as $index => $chargingPeriod) {
                 ChargingPeriodTest::assertJsonSerialization($chargingPeriod, $json->charging_periods[$index]);
             }
-            PriceTest::assertJsonSerialization($session->getTotalCost(), $json->total_cost);
+            PriceTest::assertJsonSerialization($session->getTotalCost(), $json->total_cost ?? null);
             Assert::assertSame($session->getStatus()->getValue(), $json->status);
             Assert::assertSame(DateTimeFormatter::format($session->getLastUpdated()), $json->last_updated);
         }
