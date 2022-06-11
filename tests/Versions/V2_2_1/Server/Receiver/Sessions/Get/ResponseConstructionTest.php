@@ -39,7 +39,7 @@ class ResponseConstructionTest extends TestCase
         $this->assertSame(OcpiSuccessHttpCode::HTTP_OK, $responseInterface->getStatusCode());
 
         $json = json_decode($responseInterface->getBody()->getContents());
-        OcpiTestCase::coerce('V2_2_1/eMSP/Server/Sessions/sessionGetResponse.schema.json', $json);
+        OcpiTestCase::coerce('V2_2_1/Receiver/Sessions/sessionGetResponse.schema.json', $json);
         SessionTest::assertJsonSerialization($session, $json->data);
     }
 }

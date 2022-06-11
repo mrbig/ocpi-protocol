@@ -18,7 +18,7 @@ class ReceiverSessionPutRequest extends OcpiSessionUpdateRequest
     public function __construct(ServerRequestInterface $request, string $countryCode, string $partyId, string $sessionId)
     {
         parent::__construct($request, $countryCode, $partyId, $sessionId);
-        PayloadValidation::coerce('V2_2_1/eMSP/Server/Sessions/sessionPutRequest.schema.json', $this->jsonBody);
+        PayloadValidation::coerce('V2_2_1/Receiver/Sessions/sessionPutRequest.schema.json', $this->jsonBody);
         $session = SessionFactory::fromJson($this->jsonBody);
         if ($session === null) {
             throw new UnexpectedValueException('Session cannot be null');

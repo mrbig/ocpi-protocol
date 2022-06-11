@@ -36,7 +36,7 @@ class PartialSessionFactoryTest extends TestCase
     {
         $json = json_decode($payload, false, 512, JSON_THROW_ON_ERROR);
 
-        OcpiTestCase::coerce('V2_2_1/eMSP/Server/Sessions/sessionPatchRequest.schema.json', $json);
+        OcpiTestCase::coerce('V2_2_1/Receiver/Sessions/sessionPatchRequest.schema.json', $json);
 
         $session = PartialSessionFactory::fromJson($json);
 

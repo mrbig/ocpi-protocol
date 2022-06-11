@@ -2,7 +2,7 @@
     "title": "V2.2.1\\Emsp\\Server\\Sessions\\Put",
     "oneOf": [
         {
-            "$ref": "../../../Common/session.schema.json",
+            "$ref": "../../Common/session.schema.json",
             "required": [
                 "country_code",
                 "party_id",

@@ -2,7 +2,7 @@
     "title": "V2.2.1\\Emsp\\Server\\Sessions\\Get",
     "properties": {
         "data": {
-            "$ref": "../../../Common/session.schema.json",
+            "$ref": "../../Common/session.schema.json",
             "required": [
                 "country_code",
                 "party_id",
@@ -20,7 +20,7 @@
             ]
         },
         "status_code": {
-            "$ref": "../../../Common/common.schema.json#/definitions/status_code"
+            "$ref": "../../Common/common.schema.json#/definitions/status_code"
         },
         "status_message": {
             "oneOf": [
@@ -28,12 +28,12 @@
                     "type": "null"
                 },
                 {
-                    "$ref": "../../../Common/common.schema.json#/definitions/status_message"
+                    "$ref": "../../Common/common.schema.json#/definitions/status_message"
                 }
             ]
         },
         "timestamp": {
-            "$ref": "../../../Common/common.schema.json#/definitions/timestamp"
+            "$ref": "../../Common/common.schema.json#/definitions/timestamp"
         }
     },
     "required": [
