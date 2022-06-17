@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Chargemap\OCPI\Versions\V2_2_1\Server\Emsp\Cdrs\Post;
+namespace Chargemap\OCPI\Versions\V2_2_1\Server\Receiver\Cdrs\Post;
 
 use Chargemap\OCPI\Common\Server\OcpiUpdateRequest;
 use Chargemap\OCPI\Common\Utils\PayloadValidation;
@@ -11,7 +11,7 @@ use Chargemap\OCPI\Versions\V2_2_1\Common\Models\Cdr;
 use Psr\Http\Message\ServerRequestInterface;
 use UnexpectedValueException;
 
-class OcpiEmspCdrPostRequest extends OcpiUpdateRequest
+class ReceiverCdrPostRequest extends OcpiUpdateRequest
 {
     private Cdr $cdr;
 

@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Chargemap\OCPI\Versions\V2_2_1\Server\Emsp\Cdrs\Get;
+namespace Chargemap\OCPI\Versions\V2_2_1\Server\Receiver\Cdrs\Get;
 
 use Chargemap\OCPI\Common\Server\OcpiBaseRequest;
 use Psr\Http\Message\ServerRequestInterface;
 
-class OcpiEmspCdrGetRequest extends OcpiBaseRequest
+class ReceiverCdrGetRequest extends OcpiBaseRequest
 {
     private string $cdrId;
 
