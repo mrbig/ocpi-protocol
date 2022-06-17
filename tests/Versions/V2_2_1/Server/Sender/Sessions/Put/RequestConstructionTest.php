@@ -4,12 +4,10 @@ declare(strict_types=1);
 
 namespace Tests\Chargemap\OCPI\Versions\V2_2_1\Server\Sender\Sessions\Put;
 
-use Chargemap\OCPI\Common\Server\Errors\OcpiNotEnoughInformationClientError;
 use Chargemap\OCPI\Versions\V2_2_1\Server\Sender\Sessions\Put\SenderSessionPutRequest;
 use Http\Discovery\Psr17FactoryDiscovery;
 use Tests\Chargemap\OCPI\OcpiTestCase;
 use Tests\Chargemap\OCPI\Versions\V2_2_1\Common\Factories\ChargingPreferencesFactoryTest;
-use Tests\Chargemap\OCPI\Versions\V2_2_1\Common\Factories\SessionFactoryTest;
 
 /**
  * @covers \Chargemap\OCPI\Versions\V2_2_1\Server\Sender\Sessions\Put\SenderSessionPutRequest

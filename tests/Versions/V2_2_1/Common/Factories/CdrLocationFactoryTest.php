@@ -37,7 +37,7 @@ class CdrLocationFactoryTest extends TestCase
     {
         $json = json_decode($payload, false, 512, JSON_THROW_ON_ERROR);
 
-        OcpiTestCase::coerce('V2_2_1/Common/cdr.schema.json#/properties/location', $json );
+        OcpiTestCase::coerce('V2_2_1/Common/cdr.schema.json#/properties/cdr_location', $json );
 
         $location = CdrLocationFactory::fromJson($json);
 

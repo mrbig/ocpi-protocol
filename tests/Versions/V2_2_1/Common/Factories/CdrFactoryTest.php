@@ -14,6 +14,7 @@ use PHPUnit\Framework\TestCase;
 use stdClass;
 use Tests\Chargemap\OCPI\InvalidPayloadException;
 use Tests\Chargemap\OCPI\OcpiTestCase;
+use Tests\Chargemap\OCPI\Versions\V2_2_1\Common\Models\CdrTokenTest;
 
 class CdrFactoryTest extends TestCase
 {
@@ -49,36 +50,51 @@ class CdrFactoryTest extends TestCase
         if ($json === null) {
             Assert::assertNull($cdr);
         } else {
+            Assert::assertSame($json->country_code, $cdr->getCountryCode());
+            Assert::assertSame($json->party_id, $cdr->getPartyId());
             Assert::assertSame($json->id, $cdr->getId());
-            Assert::assertEquals(new DateTime($json->last_updated), $cdr->getLastUpdated());
-            Assert::assertSame($json->auth_id, $cdr->getAuthId());
+            Assert::assertEquals(new DateTime($json->start_date_time), $cdr->getStartDateTime());
+            Assert::assertEquals(new DateTime($json->end_date_time), $cdr->getEndDateTime());
+            Assert::assertSame($json->session_id ?? null, $cdr->getSessionId());
+            CdrTokenFactoryTest::assertCdrToken($json->cdr_token, $cdr->getCdrToken());
             Assert::assertEquals(new AuthMethod($json->auth_method), $cdr->getAuthMethod());
+            Assert::assertSame($json->authorization_reference ?? null, $cdr->getAuthorizationReference());
+            CdrLocationFactoryTest::assertCdrLocation($json->cdr_location, $cdr->getCdrLocation());
 
-            Assert::assertSame(count($json->charging_periods), count($cdr->getChargingPeriods()));
-
-            foreach ($cdr->getChargingPeriods() as $index => $chargingPeriod) {
-                ChargingPeriodFactoryTest::assertChargingPeriod($json->charging_periods[$index], $chargingPeriod);
-            }
-
-            Assert::assertCount(count($json->tariffs ?? []), $cdr->getTariffs());
+            Assert::assertSame($json->meter_id ?? null, $cdr->getMeterId());
+            Assert::assertSame($json->currency, $cdr->getCurrency());
             foreach ($cdr->getTariffs() as $index => $tariff) {
                 TariffFactoryTest::assertTariff($json->tariffs[$index], $tariff);
             }
+            Assert::assertCount(count($json->tariffs ?? []), $cdr->getTariffs());
+            foreach ($cdr->getChargingPeriods() as $index => $chargingPeriod) {
+                ChargingPeriodFactoryTest::assertChargingPeriod($json->charging_periods[$index], $chargingPeriod);
+            }
+            Assert::assertSame(count($json->charging_periods), count($cdr->getChargingPeriods()));
 
-            Assert::assertSame($json->currency, $cdr->getCurrency());
-            CdrLocationFactoryTest::assertCdrLocation($json->location, $cdr->getLocation());
-            Assert::assertSame($json->meter_id ?? null, $cdr->getMeterId());
-            Assert::assertSame($json->remark ?? null, $cdr->getRemark());
-            Assert::assertEquals(new DateTime($json->start_date_time), $cdr->getStartDateTime());
-            Assert::assertEquals(new DateTime($json->stop_date_time), $cdr->getStopDateTime());
-            Assert::assertSame((float)$json->total_cost, $cdr->getTotalCost());
+            SignedDataFactoryTest::assertSignedData($json->signed_data ?? null, $cdr->getSignedData());
+
+            PriceFactoryTest::assertPrice($json->total_cost, $cdr->getTotalCost());
+            PriceFactoryTest::assertPrice($json->total_fixed_cost ?? null, $cdr->getTotalFixedCost());
             Assert::assertSame((float)$json->total_energy, $cdr->getTotalEnergy());
+            PriceFactoryTest::assertPrice($json->total_energy_cost ?? null, $cdr->getTotalEnergyCost());
+            Assert::assertSame((float)$json->total_time, $cdr->getTotalTime());
+            PriceFactoryTest::assertPrice($json->total_time_cost ?? null, $cdr->getTotalTimeCost());
             if (property_exists($json, 'total_parking_time')) {
                 Assert::assertSame((float)$json->total_parking_time, $cdr->getTotalParkingTime());
             } else {
                 Assert::assertNull($cdr->getTotalParkingTime());
             }
-            Assert::assertSame((float)$json->total_time, $cdr->getTotalTime());
+            PriceFactoryTest::assertPrice($json->total_parking_cost ?? null, $cdr->getTotalParkingCost());
+            PriceFactoryTest::assertPrice($json->total_reservation_cost ?? null, $cdr->getTotalReservationCost());
+            
+            Assert::assertSame($json->remark ?? null, $cdr->getRemark());
+            Assert::assertSame($json->invoice_reference_id ?? null, $cdr->getInvoiceReferenceId());
+            Assert::assertSame($json->credit ?? null, $cdr->getCredit());
+            Assert::assertSame($json->credit_reference_id ?? null, $cdr->getCreditReferenceId());
+            Assert::assertSame($json->homecharging_compensation ?? null, $cdr->getHomechargingCompensation());
+            
+            Assert::assertEquals(new DateTime($json->last_updated), $cdr->getLastUpdated());
         }
     }
 }

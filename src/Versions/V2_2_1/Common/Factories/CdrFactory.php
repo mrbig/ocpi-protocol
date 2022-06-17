@@ -18,19 +18,35 @@ class CdrFactory
         }
 
         $cdr = new Cdr(
+            $json->country_code,
+            $json->party_id,
             $json->id,
             new DateTime($json->start_date_time),
-            new DateTime($json->stop_date_time),
-            $json->auth_id,
+            new DateTime($json->end_date_time),
+            $json->session_id ?? null,
+            CdrTokenFactory::fromJson($json->cdr_token),
             new AuthMethod($json->auth_method),
-            CdrLocationFactory::fromJson($json->location),
+            $json->authorization_reference ?? null,
+            CdrLocationFactory::fromJson($json->cdr_location),
+
             $json->meter_id ?? null,
             $json->currency,
-            $json->total_cost,
+            SignedDataFactory::fromJson($json->signed_data ?? null),
+            PriceFactory::fromJson($json->total_cost),
+            PriceFactory::fromJson($json->total_fixed_cost ?? null),
             $json->total_energy,
+            PriceFactory::fromJson($json->total_energy_cost ?? null),
             $json->total_time,
+            PriceFactory::fromJson($json->total_time_cost ?? null),
             $json->total_parking_time ?? null,
+
+            PriceFactory::fromJson($json->total_parking_cost ?? null),
+            PriceFactory::fromJson($json->total_reservation_cost ?? null),
             $json->remark ?? null,
+            $json->invoice_reference_id ?? null,
+            $json->credit ?? null,
+            $json->credit_reference_id ?? null,
+            $json->home_charging_compensation ?? null,
             new DateTime($json->last_updated)
         );
 

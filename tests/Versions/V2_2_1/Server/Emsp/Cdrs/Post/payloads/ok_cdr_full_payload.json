@@ -1,10 +1,20 @@
 {
+  "country_code": "FR",
+  "party_id": "FRA",
   "id": "12345",
   "start_date_time": "2015-06-29T21:39:09Z",
-  "stop_date_time": "2015-06-29T23:37:32Z",
-  "auth_id": "DE8ACC12E46L89",
+  "end_date_time": "2015-06-29T23:37:32Z",
+  "session_id": "session-1234",
+  "cdr_token": {
+    "country_code": "FR",
+    "party_id": "FRA",
+    "uid": "012345678",
+    "type": "RFID",
+    "contract_id": "DE8ACC12E46L89"
+  },
   "auth_method": "WHITELIST",
-  "location": {
+  "authorization_reference": "auth-ref-1234",
+  "cdr_location": {
     "id": "LOC1",
     "name": "Gent Zuid",
     "address": "F.Rooseveltlaan 3A",
@@ -23,6 +33,7 @@
     "connector_format": "SOCKET",
     "connector_power_type": "AC_1_PHASE"
   },
+  "meter_id": "meter-1234",
   "currency": "EUR",
   "tariffs": [
     {
@@ -102,8 +113,33 @@
       ]
     }
   ],
-  "total_cost": 4.00,
+  "signed_data": {
+    "encoding_method": "encodingmethod",
+    "encoding_method_version": 2,
+    "public_key": "rsa-public-key",
+    "signed_values": [
+      {
+        "nature": "start",
+        "plain_data": "lorem ipsum",
+        "signed_data": "encoded lorem ipsum"
+      },
+      {
+        "nature": "end",
+        "plain_data": "lorem ipsum",
+        "signed_data": "encoded lorem ipsum"
+      }
+    ],
+    "url": "http://example.com"
+  },
+  "total_cost": {
+    "excl_vat": 4.00,
+    "incl_vat": 4.40
+  },
   "total_energy": 15.342,
   "total_time": 1.973,
+  "total_time_cost": {
+    "excl_vat": 4.00,
+    "incl_vat": 4.40
+  },
   "last_updated": "2015-06-29T22:01:13Z"
 }

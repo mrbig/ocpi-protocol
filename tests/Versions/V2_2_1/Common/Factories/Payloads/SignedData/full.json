@@ -1,0 +1,18 @@
+{
+    "encoding_method": "encodingmethod",
+    "encoding_method_version": 2,
+    "public_key": "rsa-public-key",
+    "signed_values": [
+      {
+        "nature": "start",
+        "plain_data": "lorem ipsum",
+        "signed_data": "encoded lorem ipsum"
+      },
+      {
+        "nature": "end",
+        "plain_data": "lorem ipsum",
+        "signed_data": "encoded lorem ipsum"
+      }
+    ],
+    "url": "http://example.com"
+  }

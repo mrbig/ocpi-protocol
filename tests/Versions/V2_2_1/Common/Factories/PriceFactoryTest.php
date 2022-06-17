@@ -33,9 +33,9 @@ class PriceFactoryTest extends TestCase
     {
         $json = json_decode($payload, false, 512, JSON_THROW_ON_ERROR);
 
-        $connector = PriceFactory::fromJson($json);
+        $price = PriceFactory::fromJson($json);
 
-        self::assertPrice($json, $connector);
+        self::assertPrice($json, $price);
     }
 
     public static function assertPrice(?stdClass $json, ?Price $price): void
