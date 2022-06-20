@@ -14,7 +14,6 @@ use PHPUnit\Framework\TestCase;
 use stdClass;
 use Tests\Chargemap\OCPI\InvalidPayloadException;
 use Tests\Chargemap\OCPI\OcpiTestCase;
-use Tests\Chargemap\OCPI\Versions\V2_2_1\Common\Models\CdrTokenTest;
 
 class CdrFactoryTest extends TestCase
 {
@@ -38,7 +37,7 @@ class CdrFactoryTest extends TestCase
     {
         $json = json_decode($payload, false, 512, JSON_THROW_ON_ERROR);
 
-        OcpiTestCase::coerce('V2_2_1/eMSP/Server/CDRs/cdrPostRequest.schema.json', $json);
+        OcpiTestCase::coerce('V2_2_1/Receiver/CDRs/cdrPostRequest.schema.json', $json);
 
         $cdr = CdrFactory::fromJson($json);
 

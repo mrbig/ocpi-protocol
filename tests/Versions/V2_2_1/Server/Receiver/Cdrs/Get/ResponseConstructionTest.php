@@ -45,7 +45,7 @@ class ResponseConstructionTest extends TestCase
         $this->assertSame(OcpiSuccessHttpCode::HTTP_OK, $responseInterface->getStatusCode());
 
         $json = json_decode($responseInterface->getBody()->getContents());
-        OcpiTestCase::coerce('V2_2_1/eMSP/Server/CDRs/cdrGetResponse.schema.json', $json);
+        OcpiTestCase::coerce('V2_2_1/Receiver/CDRs/cdrGetResponse.schema.json', $json);
         //TODO: use CdrTest::assertJsonSerialization($cdr, $jsonCdr) instead
         CdrFactoryTest::assertCdr($json->data, $cdr);
     }
