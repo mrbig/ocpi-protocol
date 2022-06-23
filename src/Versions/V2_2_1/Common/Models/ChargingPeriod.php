@@ -23,7 +23,7 @@ class ChargingPeriod implements JsonSerializable
         $this->tariffId = $tariffId;
     }
 
-    public function addDimension(CdrDimension $dimension): void
+    public function addDimension(CdrDimension $dimension): self
     {
         $previousIndex = $this->searchCdrDimension($dimension->getType());
 
@@ -32,6 +32,7 @@ class ChargingPeriod implements JsonSerializable
         } else {
             $this->cdrDimensions[] = $dimension;
         }
+        return $this;
     }
 
     public function getStartDate(): DateTime

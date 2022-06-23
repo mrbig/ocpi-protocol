@@ -68,9 +68,10 @@ class Session implements JsonSerializable
         $this->lastUpdated = $lastUpdated;
     }
 
-    public function addChargingPeriod(ChargingPeriod $period): void
+    public function addChargingPeriod(ChargingPeriod $period): self
     {
         $this->chargingPeriods[] = $period;
+        return $this;
     }
 
     public function getCountryCode(): string {
