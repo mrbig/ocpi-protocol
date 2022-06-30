@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Chargemap\OCPI\Versions\V2_2_1\Server\Emsp\Tokens\Post;
+namespace Chargemap\OCPI\Versions\V2_2_1\Server\Sender\Tokens\Post;
 
 use Chargemap\OCPI\Common\Server\OcpiBaseRequest;
 use Chargemap\OCPI\Common\Utils\PayloadValidation;
@@ -12,7 +12,7 @@ use Chargemap\OCPI\Versions\V2_2_1\Common\Models\TokenType;
 use Psr\Http\Message\ServerRequestInterface;
 use stdClass;
 
-class OcpiEmspTokenPostRequest extends OcpiBaseRequest
+class SenderTokenPostRequest extends OcpiBaseRequest
 {
     private ?stdClass $jsonBody;
 

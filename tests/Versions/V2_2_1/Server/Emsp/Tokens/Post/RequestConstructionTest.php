@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace Tests\Chargemap\OCPI\Versions\V2_2_1\Server\Emsp\Tokens\Post;
+namespace Tests\Chargemap\OCPI\Versions\V2_2_1\Server\Sender\Tokens\Post;
 
 use Chargemap\OCPI\Common\Server\Errors\OcpiInvalidPayloadClientError;
 use Chargemap\OCPI\Versions\V2_2_1\Common\Models\TokenType;
-use Chargemap\OCPI\Versions\V2_2_1\Server\Emsp\Tokens\Post\OcpiEmspTokenPostRequest;
+use Chargemap\OCPI\Versions\V2_2_1\Server\Sender\Tokens\Post\SenderTokenPostRequest;
 use Http\Discovery\Psr17FactoryDiscovery;
 use Tests\Chargemap\OCPI\OcpiTestCase;
 use Tests\Chargemap\OCPI\Versions\V2_2_1\Common\Factories\LocationReferencesFactoryTest;
 
 /**
- * @covers \Chargemap\OCPI\Versions\V2_2_1\Server\Emsp\Tokens\Post\OcpiEmspTokenPostRequest
+ * @covers \Chargemap\OCPI\Versions\V2_2_1\Server\Sender\Tokens\Post\OcpiEmspTokenPostRequest
  */
 class RequestConstructionTest extends OcpiTestCase
 {
@@ -56,7 +56,7 @@ class RequestConstructionTest extends OcpiTestCase
             $serverRequestInterface = $serverRequestInterface->withBody(Psr17FactoryDiscovery::findStreamFactory()->createStream($payload));
         }
 
-        $request = new OcpiEmspTokenPostRequest($serverRequestInterface, '4050933D');
+        $request = new SenderTokenPostRequest($serverRequestInterface, '4050933D');
 
         $this->assertEquals('4050933D', $request->getTokenId());
         $this->assertEquals(TokenType::RFID, $request->getTokenType()->getValue());
@@ -82,7 +82,7 @@ class RequestConstructionTest extends OcpiTestCase
             $serverRequestInterface = $serverRequestInterface->withBody(Psr17FactoryDiscovery::findStreamFactory()->createStream($payload));
         }
 
-        $request = new OcpiEmspTokenPostRequest($serverRequestInterface, '12345');
+        $request = new SenderTokenPostRequest($serverRequestInterface, '12345');
 
         $this->assertEquals('12345', $request->getTokenId());
         $this->assertEquals(TokenType::OTHER, $request->getTokenType()->getValue());
@@ -107,7 +107,7 @@ class RequestConstructionTest extends OcpiTestCase
             $serverRequestInterface = $serverRequestInterface->withBody(Psr17FactoryDiscovery::findStreamFactory()->createStream($payload));
         }
 
-        $request = new OcpiEmspTokenPostRequest($serverRequestInterface, '12345');
+        $request = new SenderTokenPostRequest($serverRequestInterface, '12345');
 
         $this->assertEquals('12345', $request->getTokenId());
         $this->assertEquals(TokenType::RFID, $request->getTokenType()->getValue());
@@ -134,6 +134,6 @@ class RequestConstructionTest extends OcpiTestCase
             $serverRequestInterface = $serverRequestInterface->withBody(Psr17FactoryDiscovery::findStreamFactory()->createStream($payload));
         }
 
-        new OcpiEmspTokenPostRequest($serverRequestInterface, '4050933D');
+        new SenderTokenPostRequest($serverRequestInterface, '4050933D');
     }
 }

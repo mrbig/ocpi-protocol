@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace Tests\Chargemap\OCPI\Versions\V2_2_1\Server\Emsp\Tokens\Get;
+namespace Tests\Chargemap\OCPI\Versions\V2_2_1\Server\Sender\Tokens\Get;
 
 use Chargemap\OCPI\Common\Utils\DateTimeFormatter;
-use Chargemap\OCPI\Versions\V2_2_1\Server\Emsp\Tokens\Get\OcpiEmspTokenGetRequest;
+use Chargemap\OCPI\Versions\V2_2_1\Server\Sender\Tokens\Get\SenderTokenGetRequest;
 use DateTime;
 use InvalidArgumentException;
 use Tests\Chargemap\OCPI\OcpiTestCase;
 
 /**
- * @covers \Chargemap\OCPI\Versions\V2_2_1\Server\Emsp\Tokens\Get\OcpiEmspTokenGetRequest
+ * @covers \Chargemap\OCPI\Versions\V2_2_1\Server\Sender\Tokens\Get\OcpiEmspTokenGetRequest
  */
 class RequestConstructionTest extends OcpiTestCase
 {
@@ -20,7 +20,7 @@ class RequestConstructionTest extends OcpiTestCase
         $serverRequestInterface = $this->createServerRequestInterface()
             ->withQueryParams(['offset' => '0', 'limit' => '10']);
 
-        $request = new OcpiEmspTokenGetRequest($serverRequestInterface);
+        $request = new SenderTokenGetRequest($serverRequestInterface);
         $this->assertNull($request->getDateTo());
         $this->assertNull($request->getDateFrom());
     }
@@ -30,7 +30,7 @@ class RequestConstructionTest extends OcpiTestCase
         $serverRequestInterface = $this->createServerRequestInterface()
             ->withQueryParams(['offset' => '0', 'limit' => '10', 'date_from' => '2020-05-25']);
 
-        $request = new OcpiEmspTokenGetRequest($serverRequestInterface);
+        $request = new SenderTokenGetRequest($serverRequestInterface);
         $this->assertSame(DateTimeFormatter::format((new DateTime('25-05-2020'))), DateTimeFormatter::format($request->getDateFrom()));
         $this->assertNull($request->getDateTo());
     }
@@ -40,7 +40,7 @@ class RequestConstructionTest extends OcpiTestCase
         $serverRequestInterface = $this->createServerRequestInterface()
             ->withQueryParams(['offset' => '0', 'limit' => '10', 'date_to' => '25-05-2020']);
 
-        $request = new OcpiEmspTokenGetRequest($serverRequestInterface);
+        $request = new SenderTokenGetRequest($serverRequestInterface);
         $this->assertSame(DateTimeFormatter::format((new DateTime('25-05-2020'))), DateTimeFormatter::format($request->getDateTo()));
         $this->assertNull($request->getDateFrom());
     }
@@ -50,7 +50,7 @@ class RequestConstructionTest extends OcpiTestCase
         $serverRequestInterface = $this->createServerRequestInterface()
             ->withQueryParams(['offset' => '0', 'limit' => '10', 'date_from' => '25-05-2020', 'date_to' => '26-05-2020']);
 
-        $request = new OcpiEmspTokenGetRequest($serverRequestInterface);
+        $request = new SenderTokenGetRequest($serverRequestInterface);
         $this->assertSame(DateTimeFormatter::format((new DateTime('25-05-2020'))), DateTimeFormatter::format($request->getDateFrom()));
         $this->assertSame(DateTimeFormatter::format((new DateTime('26-05-2020'))), DateTimeFormatter::format($request->getDateTo()));
     }
@@ -61,6 +61,6 @@ class RequestConstructionTest extends OcpiTestCase
             ->withQueryParams(['offset' => '0', 'limit' => '10', 'date_from' => '26-05-2020', 'date_to' => '25-05-2020']);
 
         $this->expectException(InvalidArgumentException::class);
-        new OcpiEmspTokenGetRequest($serverRequestInterface);
+        new SenderTokenGetRequest($serverRequestInterface);
     }
 }

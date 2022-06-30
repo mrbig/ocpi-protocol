@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace Chargemap\OCPI\Versions\V2_2_1\Server\Emsp\Tokens\Post;
+namespace Chargemap\OCPI\Versions\V2_2_1\Server\Sender\Tokens\Post;
 
 use Chargemap\OCPI\Common\Server\OcpiCreateResponse;
 use Chargemap\OCPI\Versions\V2_2_1\Common\Models\AllowedType;
 use Chargemap\OCPI\Versions\V2_2_1\Common\Models\DisplayText;
 use Chargemap\OCPI\Versions\V2_2_1\Common\Models\LocationReferences;
 
-class OcpiEmspTokenPostResponse extends OcpiCreateResponse
+class SenderTokenPostResponse extends OcpiCreateResponse
 {
     private AllowedType $allowed;
 

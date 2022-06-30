@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace Tests\Chargemap\OCPI\Versions\V2_2_1\Server\Emsp\Tokens\Post;
+namespace Tests\Chargemap\OCPI\Versions\V2_2_1\Server\Sender\Tokens\Post;
 
 use Chargemap\OCPI\Versions\V2_2_1\Common\Factories\DisplayTextFactory;
 use Chargemap\OCPI\Versions\V2_2_1\Common\Factories\LocationReferencesFactory;
 use Chargemap\OCPI\Versions\V2_2_1\Common\Models\AllowedType;
 use Chargemap\OCPI\Versions\V2_2_1\Common\Models\DisplayText;
 use Chargemap\OCPI\Versions\V2_2_1\Common\Models\LocationReferences;
-use Chargemap\OCPI\Versions\V2_2_1\Server\Emsp\Tokens\Post\OcpiEmspTokenPostResponse;
+use Chargemap\OCPI\Versions\V2_2_1\Server\Sender\Tokens\Post\SenderTokenPostResponse;
 use PHPUnit\Framework\TestCase;
 use Tests\Chargemap\OCPI\InvalidPayloadException;
 use Tests\Chargemap\OCPI\OcpiTestCase;
@@ -17,7 +17,7 @@ use Tests\Chargemap\OCPI\Versions\V2_2_1\Common\Models\DisplayTextTest;
 use Tests\Chargemap\OCPI\Versions\V2_2_1\Common\Models\LocationReferencesTest;
 
 /**
- * @covers \Chargemap\OCPI\Versions\V2_2_1\Server\Emsp\Tokens\Post\OcpiEmspTokenPostResponse
+ * @covers \Chargemap\OCPI\Versions\V2_2_1\Server\Sender\Tokens\Post\OcpiEmspTokenPostResponse
  */
 class ResponseConstructionTest extends TestCase
 {
@@ -47,7 +47,7 @@ class ResponseConstructionTest extends TestCase
         ?LocationReferences $locationReferences,
         ?DisplayText $info
     ): void {
-        $response = new OcpiEmspTokenPostResponse($allowedType, $locationReferences, $info);
+        $response = new SenderTokenPostResponse($allowedType, $locationReferences, $info);
         $responseInterface = $response->getResponseInterface();
 
         $jsonPayload = json_decode($responseInterface->getBody()->getContents());
