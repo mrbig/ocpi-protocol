@@ -9,12 +9,12 @@ use Chargemap\OCPI\Versions\V2_2_1\Common\Models\TokenType;
 use Chargemap\OCPI\Versions\V2_2_1\Server\Receiver\Tokens\TokenRequestTrait;
 use Psr\Http\Message\ServerRequestInterface;
 
-class ReceiverTokensGetRequest extends OcpiBaseRequest
+class ReceiverTokenGetRequest extends OcpiBaseRequest
 {
 
     use TokenRequestTrait;
 
-    public function __construct(ServerRequestInterface $request, string $countryCode, string $partyId, string $tokenId, string $type)
+    public function __construct(ServerRequestInterface $request, string $countryCode, string $partyId, string $tokenId, ?string $type)
     {
         parent::__construct($request);
         $this->dispatchParams($countryCode, $partyId, $tokenId, TokenType::from($type));
