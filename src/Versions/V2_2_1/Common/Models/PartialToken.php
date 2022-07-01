@@ -5,10 +5,11 @@ declare(strict_types=1);
 namespace Chargemap\OCPI\Versions\V2_2_1\Common\Models;
 
 use Chargemap\OCPI\Common\Utils\DateTimeFormatter;
+use Chargemap\OCPI\Common\Utils\PartialModel;
 use DateTime;
 use JsonSerializable;
 
-class PartialToken implements JsonSerializable
+class PartialToken extends PartialModel implements JsonSerializable
 {
     private ?string $countryCode;
 
