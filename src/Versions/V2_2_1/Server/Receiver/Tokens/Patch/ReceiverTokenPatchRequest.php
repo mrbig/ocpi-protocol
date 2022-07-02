@@ -22,6 +22,7 @@ class ReceiverTokenPatchRequest extends OcpiBaseRequest
 
     public function __construct(ServerRequestInterface $request, string $countryCode, string $partyId, string $tokenUid, ?string $type)
     {
+        parent::__construct($request);
         $this->dispatchParams($countryCode, $partyId, $tokenUid, $type);
         PayloadValidation::coerce('V2_2_1/Receiver/Tokens/tokenPatchRequest.schema.json', $this->jsonBody);
 

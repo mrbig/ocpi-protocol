@@ -1,0 +1,19 @@
+{
+    "title": "V2.2.1\\Emsp\\Server\\Sessions\\Put",
+    "oneOf": [
+        {
+            "$ref": "../../Common/token.schema.json",
+            "required": [
+                "country_code",
+                "party_id",
+                "uid",
+                "type",
+                "issuer",
+                "valid",
+                "whitelist",
+                "last_updated"
+            ],
+            "additionalProperties": false
+        }
+    ]
+}
