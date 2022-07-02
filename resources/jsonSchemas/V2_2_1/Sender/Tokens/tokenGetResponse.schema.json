@@ -7,7 +7,7 @@
                 "null"
             ],
             "items": {
-                "$ref": "../../../Common/token.schema.json",
+                "$ref": "../../Common/token.schema.json",
                 "required": [
                     "country_code",
                     "party_id",
@@ -24,7 +24,7 @@
             "additionalProperties": false
         },
         "status_code": {
-            "$ref": "../../../Common/common.schema.json#/definitions/status_code"
+            "$ref": "../../Common/common.schema.json#/definitions/status_code"
         },
         "status_message": {
             "oneOf": [
@@ -32,12 +32,12 @@
                     "type": "null"
                 },
                 {
-                    "$ref": "../../../Common/common.schema.json#/definitions/status_message"
+                    "$ref": "../../Common/common.schema.json#/definitions/status_message"
                 }
             ]
         },
         "timestamp": {
-            "$ref": "../../../Common/common.schema.json#/definitions/timestamp"
+            "$ref": "../../Common/common.schema.json#/definitions/timestamp"
         }
     },
     "required": [

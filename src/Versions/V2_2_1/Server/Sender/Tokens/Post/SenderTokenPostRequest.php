@@ -37,7 +37,7 @@ class SenderTokenPostRequest extends OcpiBaseRequest
 
         if (!empty($request->getBody()->__toString())) {
             $this->jsonBody = json_decode($request->getBody()->__toString());
-            PayloadValidation::coerce('V2_2_1/eMSP/Server/Tokens/tokenPostRequest.schema.json', $this->jsonBody);
+            PayloadValidation::coerce('V2_2_1/Sender/Tokens/tokenPostRequest.schema.json', $this->jsonBody);
 
             $this->locationReferences = LocationReferencesFactory::fromJson($this->jsonBody);
         }

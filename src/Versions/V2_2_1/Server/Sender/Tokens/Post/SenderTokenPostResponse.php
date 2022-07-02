@@ -8,24 +8,33 @@ use Chargemap\OCPI\Common\Server\OcpiCreateResponse;
 use Chargemap\OCPI\Versions\V2_2_1\Common\Models\AllowedType;
 use Chargemap\OCPI\Versions\V2_2_1\Common\Models\DisplayText;
 use Chargemap\OCPI\Versions\V2_2_1\Common\Models\LocationReferences;
+use Chargemap\OCPI\Versions\V2_2_1\Common\Models\Token;
 
 class SenderTokenPostResponse extends OcpiCreateResponse
 {
     private AllowedType $allowed;
 
+    private Token $token;
+
     private ?LocationReferences $location;
+
+    private ?string $authorizationReference;
 
     private ?DisplayText $info;
 
     public function __construct(
         AllowedType $allowed,
+        Token $token,
         ?LocationReferences $location,
+        ?string $authorizationReference,
         ?DisplayText $info,
         string $statusMessage = 'Token successfully created.'
     ) {
         parent::__construct($statusMessage);
         $this->allowed = $allowed;
+        $this->token = $token;
         $this->location = $location;
+        $this->authorizationReference = $authorizationReference;
         $this->info = $info;
     }
 
@@ -34,9 +43,19 @@ class SenderTokenPostResponse extends OcpiCreateResponse
         return $this->allowed;
     }
 
+    public function getToken(): Token
+    {
+        return $this->token;
+    }
+
     public function getLocationReferences(): ?LocationReferences
     {
         return $this->location;
+    }
+
+    public function getAuthorizationReference(): ?string
+    {
+        return $this->authorizationReference;
     }
 
     public function getInfo(): ?DisplayText
@@ -48,8 +67,10 @@ class SenderTokenPostResponse extends OcpiCreateResponse
     {
         return [
             'allowed' => $this->allowed,
+            'token' => $this->token,
             'location' => $this->location,
-            'info' => $this->info
+            'authorization_reference' => $this->authorizationReference,
+            'info' => $this->info,
         ];
     }
 }
