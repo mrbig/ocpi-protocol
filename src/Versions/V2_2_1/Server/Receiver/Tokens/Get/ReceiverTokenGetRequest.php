@@ -17,6 +17,6 @@ class ReceiverTokenGetRequest extends OcpiBaseRequest
     public function __construct(ServerRequestInterface $request, string $countryCode, string $partyId, string $tokenId, ?string $type)
     {
         parent::__construct($request);
-        $this->dispatchParams($countryCode, $partyId, $tokenId, TokenType::from($type));
+        $this->dispatchParams($countryCode, $partyId, $tokenId, $type ? TokenType::from($type) : null);
     }
 }

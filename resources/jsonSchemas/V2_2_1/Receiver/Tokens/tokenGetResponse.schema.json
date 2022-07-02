@@ -1,0 +1,40 @@
+{
+    "title": "V2.2.1\\Sender\\Tokens\\Get",
+    "properties": {
+        "data": {
+            "$ref": "../../Common/token.schema.json",
+            "required": [
+                "country_code",
+                "party_id",
+                "uid",
+                "type",
+                "issuer",
+                "valid",
+                "whitelist",
+                "last_updated"
+            ]
+        },
+        "status_code": {
+            "$ref": "../../Common/common.schema.json#/definitions/status_code"
+        },
+        "status_message": {
+            "oneOf": [
+                {
+                    "type": "null"
+                },
+                {
+                    "$ref": "../../Common/common.schema.json#/definitions/status_message"
+                }
+            ]
+        },
+        "timestamp": {
+            "$ref": "../../Common/common.schema.json#/definitions/timestamp"
+        }
+    },
+    "required": [
+        "data",
+        "status_code",
+        "timestamp"
+    ],
+    "additionalProperties": false
+}

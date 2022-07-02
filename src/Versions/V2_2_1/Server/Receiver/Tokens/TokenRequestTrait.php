@@ -29,10 +29,10 @@ trait TokenRequestTrait
 
     public function getTokenUid(): string
     {
-        return $this->tokeUid;
+        return $this->tokenUid;
     }
 
-    public function getType(): TokenType
+    public function getType(): ?TokenType
     {
         return $this->type;
     }
