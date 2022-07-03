@@ -28,7 +28,7 @@ class Token implements JsonSerializable
 
     private bool $valid;
 
-    private WhiteList $whiteList;
+    private WhiteListType $whiteList;
 
     private ?string $language;
 
@@ -46,7 +46,7 @@ class Token implements JsonSerializable
         string $issuer,
         ?string $groupId,
         bool $valid,
-        WhiteList $whiteList,
+        WhiteListType $whiteList,
         ?string $language,
         ?EnergyContract $energyContract,
         DateTime $lastUpdated)
@@ -109,7 +109,7 @@ class Token implements JsonSerializable
         return $this->valid;
     }
 
-    public function getWhiteList(): WhiteList
+    public function getWhiteList(): WhiteListType
     {
         return $this->whiteList;
     }

@@ -12,7 +12,7 @@ use MyCLabs\Enum\Enum;
  * @method static self ALLOWED_OFFLINE()
  * @method static self NEVER()
  */
-class WhiteList extends Enum
+class WhiteListType extends Enum
 {
     public const ALWAYS = 'ALWAYS';
     public const ALLOWED = 'ALLOWED';

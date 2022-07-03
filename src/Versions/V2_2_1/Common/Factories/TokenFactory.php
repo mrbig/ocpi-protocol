@@ -7,7 +7,7 @@ namespace Chargemap\OCPI\Versions\V2_2_1\Common\Factories;
 
 use Chargemap\OCPI\Versions\V2_2_1\Common\Models\Token;
 use Chargemap\OCPI\Versions\V2_2_1\Common\Models\TokenType;
-use Chargemap\OCPI\Versions\V2_2_1\Common\Models\WhiteList;
+use Chargemap\OCPI\Versions\V2_2_1\Common\Models\WhiteListType;
 use DateTime;
 use stdClass;
 
@@ -29,7 +29,7 @@ class TokenFactory
             $json->issuer,
             $json->group_id ?? null,
             $json->valid,
-            new WhiteList($json->whitelist),
+            new WhiteListType($json->whitelist),
             $json->language ?? null,
             EnergyContractFactory::fromJson($json->energy_contract ?? null),
             new DateTime($json->last_updated)

@@ -29,7 +29,7 @@ class PartialToken extends PartialModel implements JsonSerializable
 
     private ?string $groupId;
 
-    private ?WhiteList $whiteList;
+    private ?WhiteListType $whiteList;
 
     private ?string $language;
 
@@ -47,7 +47,7 @@ class PartialToken extends PartialModel implements JsonSerializable
         ?string $issuer,
         ?string $groupId,
         ?bool $valid,
-        ?WhiteList $whiteList,
+        ?WhiteListType $whiteList,
         ?string $language,
         ?EnergyContract $energyContract,
         ?DateTime $lastUpdated
@@ -111,7 +111,7 @@ class PartialToken extends PartialModel implements JsonSerializable
         return $this->valid;
     }
 
-    public function getWhiteList(): ?WhiteList
+    public function getWhiteList(): ?WhiteListType
     {
         return $this->whiteList;
     }
