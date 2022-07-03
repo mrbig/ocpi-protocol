@@ -51,7 +51,7 @@ class PatchTokenRequestTest extends TestCase
         $this->assertSame('PATCH', $requestInterface->getMethod());
         $requestBody = json_decode($requestInterface->getBody()->getContents());
         $this->assertEquals($payload, $requestBody);
-        OcpiTestCase::coerce('V2_2_1/eMSP/Client/Tokens/tokenPatchRequest.schema.json', $requestBody);
+        OcpiTestCase::coerce('V2_2_1/Receiver/Tokens/tokenPatchRequest.schema.json', $requestBody);
     }
 
     public function invalidParametersProvider(): iterable

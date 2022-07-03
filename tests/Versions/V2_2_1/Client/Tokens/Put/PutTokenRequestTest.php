@@ -59,7 +59,7 @@ class PutTokenRequestTest extends TestCase
         $this->assertSame('PUT', $requestInterface->getMethod());
         $requestBody = json_decode($requestInterface->getBody()->getContents());
         $this->assertEquals($payload, $requestBody);
-        OcpiTestCase::coerce('V2_2_1/eMSP/Client/Tokens/tokenPutRequest.schema.json', $requestBody);
+        OcpiTestCase::coerce('V2_2_1/Receiver/Tokens/tokenPutRequest.schema.json', $requestBody);
     }
 
     public function invalidParametersProvider(): iterable
