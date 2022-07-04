@@ -32,6 +32,8 @@ class Token implements JsonSerializable
 
     private ?string $language;
 
+    private ?ProfileType $defaultProfileType;
+
     private ?EnergyContract $energyContract;
 
     private DateTime $lastUpdated;
@@ -48,6 +50,7 @@ class Token implements JsonSerializable
         bool $valid,
         WhiteListType $whiteList,
         ?string $language,
+        ?ProfileType $defaultProfileType,
         ?EnergyContract $energyContract,
         DateTime $lastUpdated)
     {
@@ -62,6 +65,7 @@ class Token implements JsonSerializable
         $this->valid = $valid;
         $this->whiteList = $whiteList;
         $this->language = $language;
+        $this->defaultProfileType = $defaultProfileType;
         $this->energyContract = $energyContract;
         $this->lastUpdated = $lastUpdated;
     }
@@ -119,7 +123,12 @@ class Token implements JsonSerializable
         return $this->language;
     }
 
-    public function getEnetryContract(): ?EnergyContract
+    public function getDefaultProfileType(): ?ProfileType
+    {
+        return $this->defaultProfileType;
+    }
+
+    public function getEnergyContract(): ?EnergyContract
     {
         return $this->energyContract;
     }
@@ -153,6 +162,10 @@ class Token implements JsonSerializable
 
         if ($this->language !== null) {
             $return['language'] = $this->language;
+        }
+
+        if ($this->defaultProfileType !== null) {
+            $return['default_profile_type'] = $this->defaultProfileType;
         }
 
         if ($this->energyContract !== null) {

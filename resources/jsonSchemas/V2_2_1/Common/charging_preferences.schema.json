@@ -3,13 +3,7 @@
     "type": "object",
     "properties": {
         "profile_type": {
-            "type": "string",
-            "enum": [
-                "CHEAP",
-                "FAST",
-                "GREEN",
-                "REGULAR"
-            ]
+            "$ref": "common.schema.json#/definitions/profile_type"
         },
         "departure_time": {
             "$ref": "common.schema.json#/definitions/timestamp"

@@ -9,6 +9,11 @@
   "issuer": "TheNewMotion",
   "valid": true,
   "whitelist": "ALWAYS",
+  "default_profile_type": "GREEN",
+  "energy_contract": {
+    "supplier_name": "Green Energy Ltd",
+    "contract_id": "contract1"
+  },
   "language": "EN",
   "last_updated": "2015-06-29T22:39:09Z"
 }

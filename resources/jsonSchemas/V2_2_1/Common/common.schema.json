@@ -377,6 +377,15 @@
                 }
             }
         },
+        "profile_type": {
+            "type": "string",
+            "enum": [
+                "CHEAP",
+                "FAST",
+                "GREEN",
+                "REGULAR"
+            ]
+        },
         "energy_mix": {
             "type": "object",
             "properties": {

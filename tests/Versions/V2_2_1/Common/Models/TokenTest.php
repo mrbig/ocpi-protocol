@@ -28,7 +28,8 @@ class TokenTest
             Assert::assertSame($token->isValid(), $json->valid);
             Assert::assertSame($token->getWhiteList()->getValue(), $json->whitelist);
             Assert::assertSame($token->getLanguage(), $json->language ?? null);
-            EnergyContractTest::assertJsonSerialization($token->getEnetryContract(), $json->energy_contract ?? null);
+            Assert::assertSame($token->getDefaultProfileType() ? $token->getDefaultProfileType()->getValue() : null, $json->default_profile_type ?? null);
+            EnergyContractTest::assertJsonSerialization($token->getEnergyContract(), $json->energy_contract ?? null);
             Assert::assertSame(DateTimeFormatter::format($token->getLastUpdated()), $json->last_updated);
 
         }

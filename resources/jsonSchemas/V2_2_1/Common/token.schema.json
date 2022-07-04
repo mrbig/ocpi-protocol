@@ -72,6 +72,9 @@
             "minLength": 1,
             "maxLength": 2
         },
+        "default_profile_type": {
+            "$ref": "common.schema.json#/definitions/profile_type"
+        },
         "energy_contract": {
             "oneOf": [
                 {
