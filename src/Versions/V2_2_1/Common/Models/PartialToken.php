@@ -33,6 +33,8 @@ class PartialToken extends PartialModel implements JsonSerializable
 
     private ?string $language;
 
+    private ?ProfileType $defaultProfileType;
+
     private ?EnergyContract $energyContract;
 
     private ?DateTime $lastUpdated;
@@ -49,6 +51,7 @@ class PartialToken extends PartialModel implements JsonSerializable
         ?bool $valid,
         ?WhiteListType $whiteList,
         ?string $language,
+        ?ProfileType $defaultProfileType,
         ?EnergyContract $energyContract,
         ?DateTime $lastUpdated
     )
@@ -64,6 +67,7 @@ class PartialToken extends PartialModel implements JsonSerializable
         $this->valid = $valid;
         $this->whiteList = $whiteList;
         $this->language = $language;
+        $this->defaultProfileType = $defaultProfileType;
         $this->energyContract = $energyContract;
         $this->lastUpdated = $lastUpdated;
     }

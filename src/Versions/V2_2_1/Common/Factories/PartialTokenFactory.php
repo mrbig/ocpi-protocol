@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Chargemap\OCPI\Versions\V2_2_1\Common\Factories;
 
 use Chargemap\OCPI\Versions\V2_2_1\Common\Models\PartialToken;
+use Chargemap\OCPI\Versions\V2_2_1\Common\Models\ProfileType;
 use Chargemap\OCPI\Versions\V2_2_1\Common\Models\TokenType;
 use Chargemap\OCPI\Versions\V2_2_1\Common\Models\WhiteListType;
 use DateTime;
@@ -30,6 +31,7 @@ class PartialTokenFactory
             $json->valid ?? null,
             property_exists($json, 'whitelist') ? new WhiteListType($json->whitelist) : null,
             $json->language ?? null,
+            isset($json->default_profile_type) ? new ProfileType($json->default_profile_type) : null,
             EnergyContractFactory::fromJson($json->energy_contract ?? null),
             property_exists($json, 'last_updated') ? new DateTime($json->last_updated) : null
         );
