@@ -39,36 +39,59 @@ class PartialToken extends PartialModel implements JsonSerializable
 
     private ?DateTime $lastUpdated;
 
-    public function __construct(
-        ?string $countryCode,
-        ?string $partyId,
-        ?string $uid,
-        ?TokenType $type,
-        ?string $contractId,
-        ?string $visualNumber,
-        ?string $issuer,
-        ?string $groupId,
-        ?bool $valid,
-        ?WhiteListType $whiteList,
-        ?string $language,
-        ?ProfileType $defaultProfileType,
-        ?EnergyContract $energyContract,
-        ?DateTime $lastUpdated
-    )
-    {
+    public function _withCountryCode(string $countryCode) {
         $this->countryCode = $countryCode;
+    }
+
+    public function _withPartyId(string $partyId) {
         $this->partyId = $partyId;
+    }
+
+    public function _withUid(string $uid) {
         $this->uid = $uid;
+    }
+
+    public function _withType(TokenType $type) {
         $this->type = $type;
+    }
+
+    public function _withContractId(string $contractId) {
         $this->contractId = $contractId;
+    }
+
+    public function _withVisualNumber(?string $visualNumber) {
         $this->visualNumber = $visualNumber;
+    }
+
+    public function _withIssuer(string $issuer) {
         $this->issuer = $issuer;
+    }
+
+    public function _withGroupId(?string $groupId) {
         $this->groupId = $groupId;
+    }
+
+    public function _withValid(bool $valid) {
         $this->valid = $valid;
+    }
+
+    public function _withWhiteList(WhiteListType $whiteList) {
         $this->whiteList = $whiteList;
+    }
+
+    public function _withLanguage(?string $language) {
         $this->language = $language;
+    }
+
+    public function _withDefaultProfileType(?ProfileType $defaultProfileType) {
         $this->defaultProfileType = $defaultProfileType;
+    }
+
+    public function _withEnergyContract(?EnergyContract $energyContract) {
         $this->energyContract = $energyContract;
+    }
+
+    public function _withLastUpdated(\DateTime $lastUpdated) {
         $this->lastUpdated = $lastUpdated;
     }
 
@@ -125,6 +148,11 @@ class PartialToken extends PartialModel implements JsonSerializable
         return $this->language;
     }
 
+    public function getDefaultProfileType(): ?ProfileType
+    {
+        return $this->defaultProfileType;
+    }
+
     public function getEnergyContract(): EnergyContract
     {
         return $this->energyContract;
@@ -139,54 +167,54 @@ class PartialToken extends PartialModel implements JsonSerializable
     {
         $return = [];
         
-        if($this->countryCode !== null){
+        if($this->hasCountryCode()){
             $return['country_code'] = $this->countryCode;
         }
 
-        if($this->partyId !== null){
+        if($this->hasPartyId()){
             $return['party_id'] = $this->partyId;
         }
 
-        if($this->uid !== null){
+        if($this->hasUid()){
             $return['uid'] = $this->uid;
         }
         
-        if($this->type !== null){
+        if($this->hasType()){
             $return['type'] = $this->type;
         }
 
-        if($this->contractId !== null){
+        if($this->hasContractId()){
             $return['contract_id'] = $this->contractId;
         }
         
-        if($this->issuer !== null){
+        if($this->hasIssuer()){
             $return['issuer'] = $this->issuer;
         }
 
-        if($this->groupId !== null){
+        if($this->hasGroupId()){
             $return['group_id'] = $this->groupId;
         }
         
-        if($this->valid !== null){
+        if($this->hasValid()){
             $return['valid'] = $this->valid;
         }
-        if($this->whiteList !== null){
+        if($this->hasWhiteList()){
             $return['whitelist'] = $this->whiteList;
         }
         
-        if($this->lastUpdated !== null){
+        if($this->hasLastUpdated()){
             $return['last_updated'] = DateTimeFormatter::format($this->lastUpdated);
         }
         
-        if ($this->visualNumber !== null) {
+        if ($this->hasVisualNumber()) {
             $return['visual_number'] = $this->visualNumber;
         }
 
-        if ($this->energyContract !== null){
+        if ($this->hasEnergyContract()){
             $return['energy_contract'] = $this->energyContract;
         }
 
-        if ($this->language !== null) {
+        if ($this->hasLanguage()) {
             $return['language'] = $this->language;
         }
 
