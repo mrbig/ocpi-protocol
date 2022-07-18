@@ -6,7 +6,6 @@ namespace Tests\Chargemap\OCPI\Versions\V2_2_1\Common\Factories;
 
 use Chargemap\OCPI\Versions\V2_2_1\Common\Factories\PriceFactory;
 use Chargemap\OCPI\Versions\V2_2_1\Common\Models\Price;
-use DateTime;
 use PHPUnit\Framework\Assert;
 use PHPUnit\Framework\TestCase;
 use stdClass;

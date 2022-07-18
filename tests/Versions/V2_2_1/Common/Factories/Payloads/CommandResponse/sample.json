@@ -1,0 +1,8 @@
+{
+    "result": "ACCEPTED",
+    "timeout": 25,
+    "message": [
+        {"language": "EN", "text": "All ok"},
+        {"language": "DE", "text": "Alles gut"}
+    ]
+}
