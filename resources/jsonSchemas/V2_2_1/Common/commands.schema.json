@@ -165,6 +165,69 @@
                 "connector_id"
             ],
             "additionalProperties": false
+        },
+        "command_resPONSE": {
+            "type": "object",
+            "properties": {
+                "result": {
+                    "type": "string",
+                    "enum": [
+                        "NOT_SUPPORTED",
+                        "REJECTED",
+                        "ACCEPTED",
+                        "UNKOWN_SESSION"
+                    ]
+                },
+                "timeout": {
+                    "type": "integer"
+                },
+                "message": {
+                    "type": [
+                        "array",
+                        "null"
+                    ],
+                    "items": {
+                        "$ref": "common.schema.json#/definitions/display_text"
+                    }
+                }
+            },
+            "required": [
+                "result",
+                "timeout"
+            ],
+            "additionalProperties": false
+        },
+        "command_result": {
+            "type": "object",
+            "properties": {
+                "result": {
+                    "type": "string",
+                    "enum": [
+                        "ACCEPTED",
+                        "CANCELED_RESERVATION",
+                        "EVSE_OCCUPIED",
+                        "EVSE_INOPERATIVE",
+                        "FAILED",
+                        "NOT_SUPPORTED",
+                        "REJECTED",
+                        "TIMEOUT",
+                        "UNKNOWN_RESERVATION"
+                    ]
+                },
+                "message": {
+                    "type": [
+                        "array",
+                        "null"
+                    ],
+                    "items": {
+                        "$ref": "common.schema.json#/definitions/display_text"
+                    }
+                }
+            },
+            "required": [
+                "result"
+            ],
+            "additionalProperties": false
         }
     }
 }

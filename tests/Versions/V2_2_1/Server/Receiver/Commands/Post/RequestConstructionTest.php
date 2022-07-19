@@ -67,7 +67,7 @@ class RequestConstructionTest extends OcpiTestCase
      */
     public function testCancelReservation(string $command, string $payload): void
     {
-        $serverRequestInterface = $this->createRequest($command, $payload);
+        $serverRequestInterface = $this->createRequest($payload);
         $request = new CancelReservationRequest($serverRequestInterface, "CANCEL_RESERVATION");
 
         CancelReservationFactoryTest::assertCancelReservation($request->getJsonBody(), $request->getCommand());
@@ -79,7 +79,7 @@ class RequestConstructionTest extends OcpiTestCase
      */
     public function testReserveNow(string $command, string $payload): void
     {
-        $serverRequestInterface = $this->createRequest($command, $payload);
+        $serverRequestInterface = $this->createRequest($payload);
         $request = new ReserveNowRequest($serverRequestInterface, "RESERVE_NOW");
 
         ReserveNowFactoryTest::assertReserveNow($request->getJsonBody(), $request->getCommand());
@@ -91,7 +91,7 @@ class RequestConstructionTest extends OcpiTestCase
      */
     public function testStartSession(string $command, string $payload): void
     {
-        $serverRequestInterface = $this->createRequest($command, $payload);
+        $serverRequestInterface = $this->createRequest($payload);
         $request = new StartSessionRequest($serverRequestInterface, "START_SESSION");
 
         StartSessionFactoryTest::assertStartSession($request->getJsonBody(), $request->getCommand());
@@ -103,7 +103,7 @@ class RequestConstructionTest extends OcpiTestCase
      */
     public function testStopSession(string $command, string $payload): void
     {
-        $serverRequestInterface = $this->createRequest($command, $payload);
+        $serverRequestInterface = $this->createRequest($payload);
         $request = new StopSessionRequest($serverRequestInterface, "STOP_SESSION");
 
         StopSessionFactoryTest::assertStopSession($request->getJsonBody(), $request->getCommand());
@@ -115,17 +115,16 @@ class RequestConstructionTest extends OcpiTestCase
      */
     public function testUnlockConnector(string $command, string $payload): void
     {
-        $serverRequestInterface = $this->createRequest($command, $payload);
+        $serverRequestInterface = $this->createRequest($payload);
         $request = new UnlockConnectorRequest($serverRequestInterface, "UNLOCK_CONNECTOR");
 
         UnlockConnectorFactoryTest::assertUnlockConnetor($request->getJsonBody(), $request->getCommand());
     }
 
-    private function createRequest(string $command, string $payload): ServerRequestInterface
+    private function createRequest(string $payload): ServerRequestInterface
     {
         return Psr17FactoryDiscovery::findServerRequestFactory()
             ->createServerRequest('GET', 'randomUrl')
-            ->withQueryParams(['command' => $command])
             ->withHeader('Authorization', 'Token IpbJOXxkxOAuKR92z0nEcmVF3Qw09VG7I7d/WCg0koM=')
             ->withBody(Psr17FactoryDiscovery::findStreamFactory()->createStream($payload));
     }

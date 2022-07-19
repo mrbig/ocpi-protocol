@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Chargemap\OCPI\Versions\V2_2_1\Server\Receiver\Command\Post;
+namespace Chargemap\OCPI\Versions\V2_2_1\Server\Receiver\Commands\Post;
 
 use Chargemap\OCPI\Common\Server\OcpiSuccessResponse;
 use Chargemap\OCPI\Common\Server\StatusCodes\OcpiSuccessHttpCode;
