@@ -13,7 +13,7 @@ use MyCLabs\Enum\Enum;
  * @method static self STOP_SESSION()
  * @method static self UNLOCK_CONNECTOR()
  */
-class CommandResponseType extends Enum
+class CommandType extends Enum
 {
     public const CANCEL_RESERVATION = 'CANCEL_RESERVATION';
     public const RESERVE_NOW = 'RESERVE_NOW';

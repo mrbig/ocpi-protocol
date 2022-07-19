@@ -1,0 +1,170 @@
+{
+    "title": "V2.2.1\\Common",
+    "definitions": {
+        "cancel_reservation": {
+            "type": "object",
+            "properties": {
+                "response_url": {
+                    "type": "string",
+                    "format": "uri"
+                },
+                "reservation_id": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 36
+                }
+            },
+            "required": [
+                "response_url",
+                "reservation_id"
+            ],
+            "additionalProperties": false
+        },
+        "reserve_now": {
+            "type": "object",
+            "properties": {
+                "response_url": {
+                    "type": "string",
+                    "format": "uri"
+                },
+                "token": {
+                    "$ref": "token.schema.json"
+                },
+                "expiry_date": {
+                    "$ref": "common.schema.json#/definitions/timestamp"
+                },
+                "reservation_id": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 36
+                },
+                "location_id": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 36
+                },
+                "evse_uid": {
+                    "type": [
+                        "null",
+                        "string"
+                    ],
+                    "minLength": 1,
+                    "maxLength": 36
+                },
+                "authorization_reference": {
+                    "type": [
+                        "null",
+                        "string"
+                    ],
+                    "minLength": 1,
+                    "maxLength": 36
+                }
+            },
+            "required": [
+                "response_url",
+                "token",
+                "expiry_date",
+                "reservation_id",
+                "location_id"
+            ],
+            "additionalProperties": false
+        },
+        "start_session": {
+            "type": "object",
+            "properties": {
+                "response_url": {
+                    "type": "string",
+                    "format": "uri"
+                },
+                "token": {
+                    "$ref": "token.schema.json"
+                },
+                "location_id": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 36
+                },
+                "evse_uid": {
+                    "type": [
+                        "null",
+                        "string"
+                    ],
+                    "minLength": 1,
+                    "maxLength": 36
+                },
+                "connector_id": {
+                    "type": [
+                        "null",
+                        "string"
+                    ],
+                    "minLength": 1,
+                    "maxLength": 36
+                },
+                "authorization_reference": {
+                    "type": [
+                        "null",
+                        "string"
+                    ],
+                    "minLength": 1,
+                    "maxLength": 36
+                }
+            },
+            "required": [
+                "response_url",
+                "token",
+                "location_id"
+            ],
+            "additionalProperties": false
+        },
+        "stop_session": {
+            "type": "object",
+            "properties": {
+                "response_url": {
+                    "type": "string",
+                    "format": "uri"
+                },
+                "session_id": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 36
+                }
+            },
+            "required": [
+                "response_url",
+                "session_id"
+            ],
+            "additionalProperties": false
+        },
+        "unlock_connector": {
+            "type": "object",
+            "properties": {
+                "response_url": {
+                    "type": "string",
+                    "format": "uri"
+                },
+                "location_id": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 36
+                },
+                "evse_uid": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 36
+                },
+                "connector_id": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 36
+                }
+            },
+            "required": [
+                "response_url",
+                "location_id",
+                "evse_uid",
+                "connector_id"
+            ],
+            "additionalProperties": false
+        }
+    }
+}

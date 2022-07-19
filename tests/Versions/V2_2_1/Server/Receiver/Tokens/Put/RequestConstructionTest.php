@@ -9,6 +9,7 @@ use Chargemap\OCPI\Common\Server\Errors\OcpiNotEnoughInformationClientError;
 use Chargemap\OCPI\Versions\V2_2_1\Server\Receiver\Tokens\Put\ReceiverTokenPutRequest;
 use Http\Discovery\Psr17FactoryDiscovery;
 use Tests\Chargemap\OCPI\OcpiTestCase;
+use Tests\Chargemap\OCPI\Versions\V2_2_1\Common\Factories\TokenFactoryTest;
 
 /**
  * @covers \Chargemap\OCPI\Versions\V2_2_1\Server\Receiver\Tokens\Put\ReceiverTokenPutRequest
@@ -56,7 +57,7 @@ class RequestConstructionTest extends OcpiTestCase
         $this->assertEquals('101', $request->getTokenUid());
         $this->assertEquals(null, $request->getType());
 
-        //TokenFactoryTest::assertToken($request->getJsonBody(), $request->getToken());
+        TokenFactoryTest::assertToken($request->getJsonBody(), $request->getToken());
     }
 
     /**

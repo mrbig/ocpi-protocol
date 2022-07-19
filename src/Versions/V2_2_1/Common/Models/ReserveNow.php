@@ -6,9 +6,8 @@ namespace Chargemap\OCPI\Versions\V2_2_1\Common\Models;
 
 use Chargemap\OCPI\Common\Utils\DateTimeFormatter;
 use DateTime;
-use JsonSerializable;
 
-class ReserveNow implements JsonSerializable
+class ReserveNow extends Command
 {
     private string $responseUrl;
     private Token $token;

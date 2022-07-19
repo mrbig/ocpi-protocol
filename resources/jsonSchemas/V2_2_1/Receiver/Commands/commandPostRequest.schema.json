@@ -1,0 +1,20 @@
+{
+    "title": "V2.2.1\\Emsp\\Server\\Cdrs\\Post",
+    "oneOf": [
+        {
+            "$ref": "../../Common/commands.schema.json#/definitions/cancel_reservation"
+        },
+        {
+            "$ref": "../../Common/commands.schema.json#/definitions/reserve_now"
+        },
+        {
+            "$ref": "../../Common/commands.schema.json#/definitions/start_session"
+        },
+        {
+            "$ref": "../../Common/commands.schema.json#/definitions/stop_session"
+        },
+        {
+            "$ref": "../../Common/commands.schema.json#/definitions/unlock_connector"
+        }
+    ]
+}
