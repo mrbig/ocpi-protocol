@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Tests\Chargemap\OCPI\Versions\V2_2_1\Server\Receiver\Commands\Post;
 
 
+use Chargemap\OCPI\Common\Server\Errors\OcpiInvalidPayloadClientError;
 use Chargemap\OCPI\Versions\V2_2_1\Server\Receiver\Commands\Post\CancelReservationRequest;
 use Chargemap\OCPI\Versions\V2_2_1\Server\Receiver\Commands\Post\ReserveNowRequest;
 use Chargemap\OCPI\Versions\V2_2_1\Server\Receiver\Commands\Post\StartSessionRequest;
@@ -19,18 +20,18 @@ use Tests\Chargemap\OCPI\Versions\V2_2_1\Common\Factories\StartSessionFactoryTes
 use Tests\Chargemap\OCPI\Versions\V2_2_1\Common\Factories\StopSessionFactoryTest;
 use Tests\Chargemap\OCPI\Versions\V2_2_1\Common\Factories\UnlockConnectorFactoryTest;
 
+
 /**
  * @covers \Chargemap\OCPI\Versions\V2_2_1\Server\Receiver\Tokens\Put\ReceiverTokenPutRequest
  */
 class RequestConstructionTest extends OcpiTestCase
 {
-    public function validParametersProvider(string $command): iterable
+    public function parametersProvider(string $type, string $command): iterable
     {
-        foreach (scandir(__DIR__ . '/payloads/valid/' . $command . '/') as $filename) {
+        foreach (scandir(__DIR__ . '/payloads/' . $type . '/' . $command . '/') as $filename) {
             if( $filename !== '.' && $filename !== '..') {
                 yield basename($filename, '.json') => [
-                    'command' => $command,
-                    'payload' => file_get_contents( __DIR__ . '/payloads/valid/' . $command . '/' . $filename ),
+                    'payload' => file_get_contents( __DIR__ . '/payloads/' . $type . '/' . $command . '/' . $filename ),
                 ];
             }
         }
@@ -38,34 +39,39 @@ class RequestConstructionTest extends OcpiTestCase
 
     public function cancelReservationParametersProvider(): iterable
     {
-        return $this->validParametersProvider('CancelReservation');
+        return $this->parametersProvider('valid', 'CancelReservation');
     }
 
     public function ReserveNowParametersProvider(): iterable
     {
-        return $this->validParametersProvider('ReserveNow');
+        return $this->parametersProvider('valid', 'ReserveNow');
     }
 
     public function startSessionParametersProvider(): iterable
     {
-        return $this->validParametersProvider('StartSession');
+        return $this->parametersProvider('valid', 'StartSession');
+    }
+
+    public function invalidStartSessionParametersProvider(): iterable
+    {
+        return $this->parametersProvider('invalid', 'StartSession');
     }
 
     public function stopSessionParametersProvider(): iterable
     {
-        return $this->validParametersProvider('StopSession');
+        return $this->parametersProvider('valid', 'StopSession');
     }
 
     public function unlockConnectorParametersProvider(): iterable
     {
-        return $this->validParametersProvider('UnlockConnector');
+        return $this->parametersProvider('valid', 'UnlockConnector');
     }
 
     /**
      * @param string $payload
      * @dataProvider cancelReservationParametersProvider()
      */
-    public function testCancelReservation(string $command, string $payload): void
+    public function testCancelReservation(string $payload): void
     {
         $serverRequestInterface = $this->createRequest($payload);
         $request = new CancelReservationRequest($serverRequestInterface, "CANCEL_RESERVATION");
@@ -77,7 +83,7 @@ class RequestConstructionTest extends OcpiTestCase
      * @param string $payload
      * @dataProvider reserveNowParametersProvider()
      */
-    public function testReserveNow(string $command, string $payload): void
+    public function testReserveNow(string $payload): void
     {
         $serverRequestInterface = $this->createRequest($payload);
         $request = new ReserveNowRequest($serverRequestInterface, "RESERVE_NOW");
@@ -89,7 +95,7 @@ class RequestConstructionTest extends OcpiTestCase
      * @param string $payload
      * @dataProvider startSessionParametersProvider()
      */
-    public function testStartSession(string $command, string $payload): void
+    public function testStartSession(string $payload): void
     {
         $serverRequestInterface = $this->createRequest($payload);
         $request = new StartSessionRequest($serverRequestInterface, "START_SESSION");
@@ -99,9 +105,20 @@ class RequestConstructionTest extends OcpiTestCase
 
     /**
      * @param string $payload
+     * @dataProvider invalidStartSessionParametersProvider()
+     */
+    public function testInvalidStartSession(string $payload): void
+    {
+        $this->expectException(OcpiInvalidPayloadClientError::class);
+        $serverRequestInterface = $this->createRequest($payload);
+        new StartSessionRequest($serverRequestInterface, "START_SESSION");
+    }
+
+    /**
+     * @param string $payload
      * @dataProvider stopSessionParametersProvider()
      */
-    public function testStopSession(string $command, string $payload): void
+    public function testStopSession(string $payload): void
     {
         $serverRequestInterface = $this->createRequest($payload);
         $request = new StopSessionRequest($serverRequestInterface, "STOP_SESSION");
@@ -113,7 +130,7 @@ class RequestConstructionTest extends OcpiTestCase
      * @param string $payload
      * @dataProvider unlockConnectorParametersProvider()
      */
-    public function testUnlockConnector(string $command, string $payload): void
+    public function testUnlockConnector($payload): void
     {
         $serverRequestInterface = $this->createRequest($payload);
         $request = new UnlockConnectorRequest($serverRequestInterface, "UNLOCK_CONNECTOR");
