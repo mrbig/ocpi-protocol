@@ -19,6 +19,7 @@ class PostCommandResultResponse extends AbstractResponse
      */
     public static function from(ResponseInterface $response): self
     {
+        self::checkStatusCode($response);
         return new self;
     }
 }
