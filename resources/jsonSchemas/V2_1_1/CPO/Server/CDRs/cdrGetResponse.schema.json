@@ -1,8 +1,8 @@
 {
-    "title": "V2.2.1\\Sender\\CDRs\\Get",
+    "title": "V2.1.1\\CPO\\Server\\Cdrs\\Get",
     "properties": {
         "status_code": {
-            "$ref": "../../Common/common.schema.json#/definitions/status_code"
+            "$ref": "../../../Common/common.schema.json#/definitions/status_code"
         },
         "status_message": {
             "oneOf": [
@@ -10,7 +10,7 @@
                     "type": "null"
                 },
                 {
-                    "$ref": "../../Common/common.schema.json#/definitions/status_message"
+                    "$ref": "../../../Common/common.schema.json#/definitions/status_message"
                 }
             ]
         },
@@ -20,12 +20,12 @@
                 "null"
             ],
             "items": {
-                "$ref": "../../Common/cdr.schema.json",
+                "$ref": "../../../Common/cdr.schema.json",
                 "additionalProperties": false
             }
         },
         "timestamp": {
-            "$ref": "../../Common/common.schema.json#/definitions/timestamp"
+            "$ref": "../../../Common/common.schema.json#/definitions/timestamp"
         }
     },
     "required": [

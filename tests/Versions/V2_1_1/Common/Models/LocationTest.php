@@ -61,7 +61,7 @@ class LocationTest
 
             Assert::assertSame(DateTimeFormatter::format($location->getLastUpdated()), $json->last_updated);
             Assert::assertSame($location->getLocationType()->getValue(), $json->type);
-            HoursTest::assertJsonSerialization($location->getOpeningTimes(), $json->opening_times);
+            HoursTest::assertJsonSerialization($location->getOpeningTimes(), $json->opening_times ?? null);
             Assert::assertSame($location->getPostalCode(), $json->postal_code);
 
             if (empty($location->getRelatedLocations())) {
