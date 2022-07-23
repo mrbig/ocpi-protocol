@@ -2,13 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Tests\Chargemap\OCPI\Versions\V2_1_1\Server\Emsp\Versions\Details\Get;
+namespace Tests\Chargemap\OCPI\Versions\V2_1_1\Server\Common\Versions\Details\Get;
 
-use Chargemap\OCPI\Common\Models\BaseModuleId;
 use Chargemap\OCPI\Common\Server\Models\VersionNumber;
 use Chargemap\OCPI\Versions\V2_1_1\Common\Models\Endpoint;
 use Chargemap\OCPI\Versions\V2_1_1\Common\Models\ModuleId;
-use Chargemap\OCPI\Versions\V2_1_1\Server\Emsp\Versions\Details\Get\OcpiEmspVersionDetailsGetResponse;
+use Chargemap\OCPI\Versions\V2_1_1\Server\Common\Versions\Details\Get\OcpiVersionDetailsGetResponse;
 use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
 
@@ -16,7 +15,7 @@ class ResponseConstructionTest extends TestCase
 {
     public function testShouldFailWithoutEndpoints()
     {
-        $response = new OcpiEmspVersionDetailsGetResponse(VersionNumber::VERSION_2_1_1(), 'Message!');
+        $response = new OcpiVersionDetailsGetResponse(VersionNumber::VERSION_2_1_1(), 'Message!');
 
         $this->expectException(InvalidArgumentException::class);
         $response->getResponseInterface();
@@ -24,7 +23,7 @@ class ResponseConstructionTest extends TestCase
 
     public function testShouldConstructWithEndpoint()
     {
-        $response = new OcpiEmspVersionDetailsGetResponse(VersionNumber::VERSION_2_1_1(), 'Message!');
+        $response = new OcpiVersionDetailsGetResponse(VersionNumber::VERSION_2_1_1(), 'Message!');
         $response->addEndpoint(new Endpoint(
             ModuleId::CDRS(),
             'versionurl/2.1.1/cdrs'
@@ -43,7 +42,7 @@ class ResponseConstructionTest extends TestCase
 
     public function testShouldConstructWithMultipleEndpoints()
     {
-        $response = new OcpiEmspVersionDetailsGetResponse(VersionNumber::VERSION_2_1_1(), 'Message!');
+        $response = new OcpiVersionDetailsGetResponse(VersionNumber::VERSION_2_1_1(), 'Message!');
         $response
             ->addEndpoint(new Endpoint(
                 ModuleId::CDRS(),
