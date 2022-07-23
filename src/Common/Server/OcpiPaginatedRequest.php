@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Chargemap\OCPI\Versions\V2_2_1\Server\Common;
+namespace Chargemap\OCPI\Common\Server;
 
 use Chargemap\OCPI\Common\Server\OcpiListingRequest;
 use DateTime;
