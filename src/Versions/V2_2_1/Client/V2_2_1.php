@@ -7,6 +7,7 @@ namespace Chargemap\OCPI\Versions\V2_2_1\Client;
 use Chargemap\OCPI\Common\Client\Modules\AbstractFeatures;
 use Chargemap\OCPI\Versions\V2_2_1\Client\Reciever\Tokens as TokensReceiver;
 use Chargemap\OCPI\Versions\V2_2_1\Client\Sender\Tokens as TokensSender;
+use Chargemap\OCPI\Versions\V2_2_1\Client\Sender\Commands;
 
 class V2_2_1 extends AbstractFeatures
 {
@@ -74,5 +75,14 @@ class V2_2_1 extends AbstractFeatures
         }
 
         return $this->versions;
+    }
+
+    public function commandsSender(): Commands
+    {
+        if (!isset($this->commandsSender)) {
+            $this->commandsSender = new Commands($this->ocpiConfiguration);
+        }
+
+        return $this->commandsSender;
     }
 }
