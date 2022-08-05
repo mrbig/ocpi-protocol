@@ -5,10 +5,12 @@ declare(strict_types=1);
 namespace Chargemap\OCPI\Versions\V2_1_1\Common\Models;
 
 use Chargemap\OCPI\Common\Utils\DateTimeFormatter;
+use Chargemap\OCPI\Common\Utils\PartialModel;
+
 use DateTime;
 use JsonSerializable;
 
-class PartialToken implements JsonSerializable
+class PartialToken extends PartialModel implements JsonSerializable
 {
     private ?string $uid;
 
@@ -28,26 +30,39 @@ class PartialToken implements JsonSerializable
 
     private ?DateTime $lastUpdated;
 
-    public function __construct(
-        ?string $uid,
-        ?TokenType $type,
-        ?string $authId,
-        ?string $visualNumber,
-        ?string $issuer,
-        ?bool $valid,
-        ?WhiteList $whiteList,
-        ?string $language,
-        ?DateTime $lastUpdated
-    )
-    {
+    public function _withUid(string $uid) {
         $this->uid = $uid;
+    }
+
+    public function _withType(TokenType $type) {
         $this->type = $type;
+    }
+
+    public function _withAuthId(string $authId) {
         $this->authId = $authId;
+    }
+
+    public function _withVisualNumber(?string $visualNumber) {
         $this->visualNumber = $visualNumber;
+    }
+
+    public function _withIssuer(string $issuer) {
         $this->issuer = $issuer;
+    }
+
+    public function _withValid(bool $valid) {
         $this->valid = $valid;
+    }
+
+    public function _withWhiteList(WhiteList $whiteList) {
         $this->whiteList = $whiteList;
+    }
+
+    public function _withLanguage(?string $language) {
         $this->language = $language;
+    }
+
+    public function _withLastUpdated(\DateTime $lastUpdated) {
         $this->lastUpdated = $lastUpdated;
     }
 
@@ -100,39 +115,39 @@ class PartialToken implements JsonSerializable
     {
         $return = [];
         
-        if($this->uid !== null){
+        if($this->hasUid()){
             $return['uid'] = $this->uid;
         }
         
-        if($this->type !== null){
+        if($this->hasType()){
             $return['type'] = $this->type;
         }
 
-        if($this->authId !== null){
+        if($this->hasAuthId()){
             $return['auth_id'] = $this->authId;
         }
         
-        if($this->issuer !== null){
+        if($this->hasIssuer()){
             $return['issuer'] = $this->issuer;
         }
-        
-        if($this->valid !== null){
+
+        if($this->hasValid()){
             $return['valid'] = $this->valid;
         }
-        if($this->whiteList !== null){
+        if($this->hasWhiteList()){
             $return['whitelist'] = $this->whiteList;
         }
         
-        if($this->lastUpdated !== null){
+        if ($this->hasLanguage()) {
+            $return['language'] = $this->language;
+        }
+
+        if($this->hasLastUpdated()){
             $return['last_updated'] = DateTimeFormatter::format($this->lastUpdated);
         }
         
-        if ($this->visualNumber !== null) {
+        if ($this->hasVisualNumber()) {
             $return['visual_number'] = $this->visualNumber;
-        }
-
-        if ($this->language !== null) {
-            $return['language'] = $this->language;
         }
 
         return $return;

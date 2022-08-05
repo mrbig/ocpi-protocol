@@ -30,7 +30,7 @@ class OcpiCpoTokenPatchRequest extends OcpiUpdateRequest
             throw new UnexpectedValueException('PartialToken cannot be null');
         }
 
-        if ($partialToken->getUid() && $partialToken->getUid() !== $tokenUid) {
+        if ($partialToken->hasUid() && $partialToken->getUid() !== $tokenUid) {
             throw new UnsupportedPatchException('Property id can not be patched at the moment');
         }
 

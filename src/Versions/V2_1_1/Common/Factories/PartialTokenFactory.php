@@ -18,17 +18,36 @@ class PartialTokenFactory
             return null;
         }
 
-        $token = new PartialToken(
-            $json->uid ?? null,
-            property_exists($json, 'type') ? new TokenType($json->type) : null,
-            $json->auth_id ?? null,
-            $json->visual_number ?? null,
-            $json->issuer ?? null,
-            $json->valid ?? null,
-            property_exists($json, 'whitelist') ? new WhiteList($json->whitelist) : null,
-            $json->language ?? null,
-            property_exists($json, 'last_updated') ? new DateTime($json->last_updated) : null
-        );
+        $token = new PartialToken();
+
+        if (property_exists($json, 'uid')) {
+            $token->withUid($json->uid);
+        }
+        if (property_exists($json, 'type')) {
+            $token->withType(new TokenType($json->type));
+        }
+        if (property_exists($json, 'auth_id')) {
+            $token->withAuthId($json->auth_id);
+        }
+        if (property_exists($json, 'visual_number')) {
+            $token->withVisualNumber($json->visual_number);
+        }
+        if (property_exists($json, 'issuer')) {
+            $token->withIssuer($json->issuer);
+        }
+        if (property_exists($json, 'valid')) {
+            $token->withValid($json->valid);
+        }
+        if (property_exists($json, 'whitelist')) {
+            $token->withWhiteList(new WhiteList($json->whitelist));
+        }
+        if (property_exists($json, 'language')) {
+            $token->withLanguage($json->language);
+        }
+        if (property_exists($json, 'last_updated')) {
+            $token->withLastUpdated($json->last_updated ? new DateTime($json->last_updated) : null);
+        }
+
 
         return $token;
     }
