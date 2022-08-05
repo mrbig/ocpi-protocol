@@ -1,13 +1,12 @@
 {
-    "title": "V2.2.1\\Receiver\\Tokens\\Get",
+    "title": "V2.1.1\\CPO\\Server\\Tokens\\Get",
     "properties": {
         "data": {
-            "$ref": "../../Common/token.schema.json",
+            "$ref": "../../../Common/token.schema.json",
             "required": [
-                "country_code",
-                "party_id",
                 "uid",
                 "type",
+                "auth_id",
                 "issuer",
                 "valid",
                 "whitelist",
@@ -15,7 +14,7 @@
             ]
         },
         "status_code": {
-            "$ref": "../../Common/common.schema.json#/definitions/status_code"
+            "$ref": "../../../Common/common.schema.json#/definitions/status_code"
         },
         "status_message": {
             "oneOf": [
@@ -23,12 +22,12 @@
                     "type": "null"
                 },
                 {
-                    "$ref": "../../Common/common.schema.json#/definitions/status_message"
+                    "$ref": "../../../Common/common.schema.json#/definitions/status_message"
                 }
             ]
         },
         "timestamp": {
-            "$ref": "../../Common/common.schema.json#/definitions/timestamp"
+            "$ref": "../../../Common/common.schema.json#/definitions/timestamp"
         }
     },
     "required": [

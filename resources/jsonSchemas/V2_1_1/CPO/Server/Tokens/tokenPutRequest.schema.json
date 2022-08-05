@@ -1,13 +1,12 @@
 {
-    "title": "V2.2.1\\Receiver\\Tokens\\Put",
+    "title": "V2.2.1\\CPO\\Server\\Tokens\\Put",
     "oneOf": [
         {
-            "$ref": "../../Common/token.schema.json",
+            "$ref": "../../../Common/token.schema.json",
             "required": [
-                "country_code",
-                "party_id",
                 "uid",
                 "type",
+                "auth_id",
                 "issuer",
                 "valid",
                 "whitelist",
