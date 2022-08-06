@@ -1,0 +1,6 @@
+{
+    "response_url": "https://example.net",
+    "location_id": "DE-TST#LOC1",
+    "evse_uid": "DE-TST#EVSE1",
+    "connector_id": "DE-TST#EVSE1#CONN1"
+}

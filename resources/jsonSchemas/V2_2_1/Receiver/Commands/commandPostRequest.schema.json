@@ -1,5 +1,5 @@
 {
-    "title": "V2.2.1\\Emsp\\Server\\Cdrs\\Post",
+    "title": "V2.2.1\\Receiver\\Commands\\Post",
     "oneOf": [
         {
             "$ref": "../../Common/commands.schema.json#/definitions/cancel_reservation"
