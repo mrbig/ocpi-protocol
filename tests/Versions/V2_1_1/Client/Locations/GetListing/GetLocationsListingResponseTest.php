@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace Tests\Chargemap\OCPI\Versions\V2_1_1\Client\Locations\GetListing;
 
 use Chargemap\OCPI\Common\Client\OcpiUnauthorizedException;
-use Chargemap\OCPI\Versions\V2_1_1\Client\Locations\GetListing\GetLocationsListingRequest;
-use Chargemap\OCPI\Versions\V2_1_1\Client\Locations\GetListing\GetLocationsListingResponse;
+use Chargemap\OCPI\Versions\V2_1_1\Client\Cpo\Locations\GetListing\GetLocationsListingRequest;
+use Chargemap\OCPI\Versions\V2_1_1\Client\Cpo\Locations\GetListing\GetLocationsListingResponse;
 use Http\Discovery\Psr17FactoryDiscovery;
 use PHPUnit\Framework\TestCase;
 use Tests\Chargemap\OCPI\Versions\V2_1_1\Common\Factories\LocationFactoryTest;

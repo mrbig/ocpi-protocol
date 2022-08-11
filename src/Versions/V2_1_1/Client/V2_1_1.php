@@ -5,6 +5,11 @@ declare(strict_types=1);
 namespace Chargemap\OCPI\Versions\V2_1_1\Client;
 
 use Chargemap\OCPI\Common\Client\Modules\AbstractFeatures;
+use Chargemap\OCPI\Versions\V2_1_1\Client\Cpo\Cdrs;
+use Chargemap\OCPI\Versions\V2_1_1\Client\Cpo\Credentials;
+use Chargemap\OCPI\Versions\V2_1_1\Client\Cpo\Locations;
+use Chargemap\OCPI\Versions\V2_1_1\Client\Cpo\Tokens;
+use Chargemap\OCPI\Versions\V2_1_1\Client\Versions;
 
 class V2_1_1 extends AbstractFeatures
 {

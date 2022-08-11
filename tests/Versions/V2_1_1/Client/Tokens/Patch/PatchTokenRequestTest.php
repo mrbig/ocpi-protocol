@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Tests\Chargemap\OCPI\Versions\V2_1_1\Client\Tokens\Patch;
 
-use Chargemap\OCPI\Versions\V2_1_1\Client\Tokens\Patch\PatchTokenRequest;
+use Chargemap\OCPI\Versions\V2_1_1\Client\Cpo\Tokens\Patch\PatchTokenRequest;
 use Chargemap\OCPI\Versions\V2_1_1\Common\Factories\PartialTokenFactory;
 use Http\Discovery\Psr17FactoryDiscovery;
 use InvalidArgumentException;

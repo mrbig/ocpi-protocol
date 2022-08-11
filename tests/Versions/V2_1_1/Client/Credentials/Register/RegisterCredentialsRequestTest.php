@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace Tests\Chargemap\OCPI\Versions\V2_1_1\Client\Credentials\Register;
 
-use Chargemap\OCPI\Versions\V2_1_1\Client\Credentials\Register\RegisterCredentialsRequest;
+use Chargemap\OCPI\Versions\V2_1_1\Client\Cpo\Credentials\Register\RegisterCredentialsRequest;
 use Chargemap\OCPI\Versions\V2_1_1\Common\Models\Credentials;
 use Http\Discovery\Psr17FactoryDiscovery;
 use JsonException;
@@ -13,7 +13,7 @@ use Tests\Chargemap\OCPI\InvalidPayloadException;
 use Tests\Chargemap\OCPI\OcpiTestCase;
 
 /**
- * @covers \Chargemap\OCPI\Versions\V2_1_1\Client\Credentials\Register\RegisterCredentialsRequest
+ * @covers \Chargemap\OCPI\Versions\V2_1_1\Client\Cpo\Credentials\Register\RegisterCredentialsRequest
  */
 class RegisterCredentialsRequestTest extends TestCase
 {

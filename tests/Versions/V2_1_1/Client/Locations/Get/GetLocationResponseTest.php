@@ -5,14 +5,14 @@ declare(strict_types=1);
 namespace Tests\Chargemap\OCPI\Versions\V2_1_1\Client\Locations\Get;
 
 use Chargemap\OCPI\Common\Client\OcpiUnauthorizedException;
-use Chargemap\OCPI\Versions\V2_1_1\Client\Locations\Get\GetLocationResponse;
+use Chargemap\OCPI\Versions\V2_1_1\Client\Cpo\Locations\Get\GetLocationResponse;
 use Http\Discovery\Psr17FactoryDiscovery;
 use JsonException;
 use PHPUnit\Framework\TestCase;
 use Tests\Chargemap\OCPI\Versions\V2_1_1\Common\Factories\LocationFactoryTest;
 
 /**
- * @covers \Chargemap\OCPI\Versions\V2_1_1\Client\Locations\Get\GetLocationResponse
+ * @covers \Chargemap\OCPI\Versions\V2_1_1\Client\Cpo\Locations\Get\GetLocationResponse
  */
 class GetLocationResponseTest extends TestCase
 {

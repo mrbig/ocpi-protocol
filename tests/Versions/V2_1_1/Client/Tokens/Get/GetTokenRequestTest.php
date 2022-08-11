@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Tests\Chargemap\OCPI\Versions\V2_1_1\Client\Tokens\Get;
 
-use Chargemap\OCPI\Versions\V2_1_1\Client\Tokens\Get\GetTokenRequest;
+use Chargemap\OCPI\Versions\V2_1_1\Client\Cpo\Tokens\Get\GetTokenRequest;
 use Http\Discovery\Psr17FactoryDiscovery;
 use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Tests\Chargemap\OCPI\Versions\V2_1_1\Client\Tokens\Put;
 
-use Chargemap\OCPI\Versions\V2_1_1\Client\Tokens\Put\PutTokenRequest;
+use Chargemap\OCPI\Versions\V2_1_1\Client\Cpo\Tokens\Put\PutTokenRequest;
 use Chargemap\OCPI\Versions\V2_1_1\Common\Factories\TokenFactory;
 use Http\Discovery\Psr17FactoryDiscovery;
 use InvalidArgumentException;

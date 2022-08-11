@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Tests\Chargemap\OCPI\Versions\V2_1_1\Client\Tokens\Put;
 
-use Chargemap\OCPI\Versions\V2_1_1\Client\Tokens\Put\PutTokenResponse;
+use Chargemap\OCPI\Versions\V2_1_1\Client\Cpo\Tokens\Put\PutTokenResponse;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\ResponseInterface;
 

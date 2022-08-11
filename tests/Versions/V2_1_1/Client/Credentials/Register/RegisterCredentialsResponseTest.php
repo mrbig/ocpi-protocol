@@ -5,13 +5,13 @@ namespace Tests\Chargemap\OCPI\Versions\V2_1_1\Client\Credentials\Register;
 
 use Chargemap\OCPI\Common\Client\Modules\Credentials\Register\ClientAlreadyRegisteredException;
 use Chargemap\OCPI\Common\Server\Errors\OcpiInvalidPayloadClientError;
-use Chargemap\OCPI\Versions\V2_1_1\Client\Credentials\Register\RegisterCredentialsResponse;
+use Chargemap\OCPI\Versions\V2_1_1\Client\Cpo\Credentials\Register\RegisterCredentialsResponse;
 use JsonException;
 use Tests\Chargemap\OCPI\OcpiResponseTestCase;
 use Tests\Chargemap\OCPI\Versions\V2_1_1\Common\Factories\CredentialsFactoryTest;
 
 /**
- * @covers \Chargemap\OCPI\Versions\V2_1_1\Client\Credentials\Register\RegisterCredentialsResponse
+ * @covers \Chargemap\OCPI\Versions\V2_1_1\Client\Cpo\Credentials\Register\RegisterCredentialsResponse
  */
 class RegisterCredentialsResponseTest extends OcpiResponseTestCase
 {
