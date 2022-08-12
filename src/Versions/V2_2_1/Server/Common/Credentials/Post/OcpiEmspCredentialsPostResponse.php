@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Chargemap\OCPI\Versions\V2_2_1\Server\Emsp\Credentials\Put;
+namespace Chargemap\OCPI\Versions\V2_2_1\Server\Common\Credentials\Post;
 
-use Chargemap\OCPI\Common\Server\OcpiUpdateResponse;
+use Chargemap\OCPI\Common\Server\OcpiCreateResponse;
 use Chargemap\OCPI\Versions\V2_2_1\Common\Models\Credentials;
 
-class OcpiEmspCredentialsPutResponse extends OcpiUpdateResponse
+class OcpiEmspCredentialsPostResponse extends OcpiCreateResponse
 {
     private Credentials $credentials;
 

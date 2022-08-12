@@ -2,18 +2,19 @@
 
 declare(strict_types=1);
 
-namespace Chargemap\OCPI\Versions\V2_2_1\Server\Emsp\Credentials\Post;
+namespace Chargemap\OCPI\Versions\V2_2_1\Server\Common\Credentials\Get;
 
-use Chargemap\OCPI\Common\Server\OcpiCreateResponse;
+use Chargemap\OCPI\Common\Server\OcpiSuccessResponse;
+use Chargemap\OCPI\Common\Server\StatusCodes\OcpiSuccessHttpCode;
 use Chargemap\OCPI\Versions\V2_2_1\Common\Models\Credentials;
 
-class OcpiEmspCredentialsPostResponse extends OcpiCreateResponse
+class OcpiEmspCredentialsGetResponse extends OcpiSuccessResponse
 {
     private Credentials $credentials;
 
     public function __construct(Credentials $credentials, string $statusMessage = null)
     {
-        parent::__construct($statusMessage);
+        parent::__construct(OcpiSuccessHttpCode::HTTP_OK(), $statusMessage);
         $this->credentials = $credentials;
     }
 

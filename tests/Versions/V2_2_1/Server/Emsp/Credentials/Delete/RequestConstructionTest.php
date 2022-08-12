@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Tests\Chargemap\OCPI\Versions\V2_2_1\Server\Emsp\Credentials\Delete;
+namespace Tests\Chargemap\OCPI\Versions\V2_2_1\Server\Common\Credentials\Delete;
 
-use Chargemap\OCPI\Versions\V2_2_1\Server\Emsp\Credentials\Delete\OcpiEmspCredentialsDeleteRequest;
+use Chargemap\OCPI\Versions\V2_2_1\Server\Common\Credentials\Delete\OcpiEmspCredentialsDeleteRequest;
 use Tests\Chargemap\OCPI\OcpiTestCase;
 
 /**
- * @covers \Chargemap\OCPI\Versions\V2_2_1\Server\Emsp\Credentials\Delete\OcpiEmspCredentialsDeleteRequest
+ * @covers \Chargemap\OCPI\Versions\V2_2_1\Server\Common\Credentials\Delete\OcpiEmspCredentialsDeleteRequest
  */
 class RequestConstructionTest extends OcpiTestCase
 {

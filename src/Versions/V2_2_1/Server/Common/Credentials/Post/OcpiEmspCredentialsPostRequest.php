@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Chargemap\OCPI\Versions\V2_2_1\Server\Emsp\Credentials\Put;
+namespace Chargemap\OCPI\Versions\V2_2_1\Server\Common\Credentials\Post;
 
 use Chargemap\OCPI\Common\Server\OcpiUpdateRequest;
 use Chargemap\OCPI\Common\Utils\PayloadValidation;
@@ -11,14 +11,14 @@ use Chargemap\OCPI\Versions\V2_2_1\Common\Models\Credentials;
 use Psr\Http\Message\ServerRequestInterface;
 use UnexpectedValueException;
 
-class OcpiEmspCredentialsPutRequest extends OcpiUpdateRequest
+class OcpiEmspCredentialsPostRequest extends OcpiUpdateRequest
 {
     private Credentials $credentials;
 
     public function __construct(ServerRequestInterface $request)
     {
         parent::__construct($request);
-        PayloadValidation::coerce('V2_2_1/eMSP/Server/Credentials/credentialsPutRequest.schema.json', $this->jsonBody);
+        PayloadValidation::coerce('V2_2_1/eMSP/Server/Credentials/credentialsPostRequest.schema.json', $this->jsonBody);
         $credentials = CredentialsFactory::fromJson($this->jsonBody);
         if ($credentials === null) {
             throw new UnexpectedValueException('Credentials cannot be null');
