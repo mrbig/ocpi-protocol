@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Tests\Chargemap\OCPI\Versions\V2_1_1\Server\Emsp\Credentials\Get;
+namespace Tests\Chargemap\OCPI\Versions\V2_1_1\Server\Common\Credentials\Get;
 
-use Chargemap\OCPI\Versions\V2_1_1\Server\Emsp\Credentials\Get\OcpiEmspCredentialsGetRequest;
+use Chargemap\OCPI\Versions\V2_1_1\Server\Common\Credentials\Get\OcpiEmspCredentialsGetRequest;
 use Tests\Chargemap\OCPI\OcpiTestCase;
 
 /**
- * @covers \Chargemap\OCPI\Versions\V2_1_1\Server\Emsp\Credentials\Get\OcpiEmspCredentialsGetRequest
+ * @covers \Chargemap\OCPI\Versions\V2_1_1\Server\Common\Credentials\Get\OcpiEmspCredentialsGetRequest
  */
 class RequestConstructionTest extends OcpiTestCase
 {

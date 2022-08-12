@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Chargemap\OCPI\Versions\V2_1_1\Server\Emsp\Credentials\Put;
+namespace Chargemap\OCPI\Versions\V2_1_1\Server\Common\Credentials\Put;
 
 use Chargemap\OCPI\Common\Server\OcpiUpdateRequest;
 use Chargemap\OCPI\Common\Utils\PayloadValidation;

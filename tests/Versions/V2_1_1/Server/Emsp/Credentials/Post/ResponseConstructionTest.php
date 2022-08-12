@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace Tests\Chargemap\OCPI\Versions\V2_1_1\Server\Emsp\Credentials\Post;
+namespace Tests\Chargemap\OCPI\Versions\V2_1_1\Server\Common\Credentials\Post;
 
 use Chargemap\OCPI\Versions\V2_1_1\Common\Factories\CredentialsFactory;
-use Chargemap\OCPI\Versions\V2_1_1\Server\Emsp\Credentials\Post\OcpiEmspCredentialsPostResponse;
+use Chargemap\OCPI\Versions\V2_1_1\Server\Common\Credentials\Post\OcpiEmspCredentialsPostResponse;
 use PHPUnit\Framework\TestCase;
 use Tests\Chargemap\OCPI\OcpiTestCase;
 use Tests\Chargemap\OCPI\Versions\V2_1_1\Common\Models\CredentialsTest;
 
 /**
- * @covers \Chargemap\OCPI\Versions\V2_1_1\Server\Emsp\Credentials\Post\OcpiEmspCredentialsPostResponse
+ * @covers \Chargemap\OCPI\Versions\V2_1_1\Server\Common\Credentials\Post\OcpiEmspCredentialsPostResponse
  */
 class ResponseConstructionTest extends TestCase
 {

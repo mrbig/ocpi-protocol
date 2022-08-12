@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Tests\Chargemap\OCPI\Versions\V2_1_1\Server\Emsp\Credentials\Delete;
+namespace Tests\Chargemap\OCPI\Versions\V2_1_1\Server\Common\Credentials\Delete;
 
-use Chargemap\OCPI\Versions\V2_1_1\Server\Emsp\Credentials\Delete\OcpiEmspCredentialsDeleteResponse;
+use Chargemap\OCPI\Versions\V2_1_1\Server\Common\Credentials\Delete\OcpiEmspCredentialsDeleteResponse;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \Chargemap\OCPI\Versions\V2_1_1\Server\Emsp\Credentials\Delete\OcpiEmspCredentialsDeleteResponse
+ * @covers \Chargemap\OCPI\Versions\V2_1_1\Server\Common\Credentials\Delete\OcpiEmspCredentialsDeleteResponse
  */
 class ResponseConstructionTest extends TestCase
 {
