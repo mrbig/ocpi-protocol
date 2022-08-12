@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace Tests\Chargemap\OCPI\Versions\V2_1_1\Server\Common\Credentials\Post;
 
-use Chargemap\OCPI\Versions\V2_1_1\Server\Common\Credentials\Post\OcpiEmspCredentialsPostRequest;
+use Chargemap\OCPI\Versions\V2_1_1\Server\Common\Credentials\Post\OcpiCredentialsPostRequest;
 use Tests\Chargemap\OCPI\OcpiTestCase;
 use Tests\Chargemap\OCPI\Versions\V2_1_1\Common\Factories\CredentialsFactoryTest;
 
 /**
- * @covers \Chargemap\OCPI\Versions\V2_1_1\Server\Common\Credentials\Post\OcpiEmspCredentialsPostRequest
+ * @covers \Chargemap\OCPI\Versions\V2_1_1\Server\Common\Credentials\Post\OcpiCredentialsPostRequest
  */
 class RequestConstructionTest extends OcpiTestCase
 {
@@ -30,7 +30,7 @@ class RequestConstructionTest extends OcpiTestCase
     {
         $serverRequestInterface = $this->createServerRequestInterface($filename);
 
-        $request = new OcpiEmspCredentialsPostRequest($serverRequestInterface);
+        $request = new OcpiCredentialsPostRequest($serverRequestInterface);
 
         CredentialsFactoryTest::assertCredentials($request->getJsonBody(), $request->getCredentials());
     }

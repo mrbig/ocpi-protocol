@@ -6,6 +6,6 @@ namespace Chargemap\OCPI\Versions\V2_1_1\Server\Common\Credentials\Delete;
 
 use Chargemap\OCPI\Common\Server\OcpiBaseRequest;
 
-class OcpiEmspCredentialsDeleteRequest extends OcpiBaseRequest
+class OcpiCredentialsDeleteRequest extends OcpiBaseRequest
 {
 }

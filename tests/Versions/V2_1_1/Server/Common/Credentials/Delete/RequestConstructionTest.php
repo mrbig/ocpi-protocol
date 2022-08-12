@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Tests\Chargemap\OCPI\Versions\V2_1_1\Server\Common\Credentials\Delete;
 
-use Chargemap\OCPI\Versions\V2_1_1\Server\Common\Credentials\Delete\OcpiEmspCredentialsDeleteRequest;
+use Chargemap\OCPI\Versions\V2_1_1\Server\Common\Credentials\Delete\OcpiCredentialsDeleteRequest;
 use Tests\Chargemap\OCPI\OcpiTestCase;
 
 /**
@@ -17,7 +17,7 @@ class RequestConstructionTest extends OcpiTestCase
         $serverRequestInterface = $this->createServerRequestInterface()
             ->withQueryParams(['offset' => '10', 'limit' => '10']);
 
-        $request = new OcpiEmspCredentialsDeleteRequest($serverRequestInterface);
-        $this->assertInstanceOf(OcpiEmspCredentialsDeleteRequest::class, $request);
+        $request = new OcpiCredentialsDeleteRequest($serverRequestInterface);
+        $this->assertInstanceOf(OcpiCredentialsDeleteRequest::class, $request);
     }
 }

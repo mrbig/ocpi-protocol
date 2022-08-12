@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace Tests\Chargemap\OCPI\Versions\V2_1_1\Server\Common\Credentials\Get;
 
-use Chargemap\OCPI\Versions\V2_1_1\Server\Common\Credentials\Get\OcpiEmspCredentialsGetRequest;
+use Chargemap\OCPI\Versions\V2_1_1\Server\Common\Credentials\Get\OcpiCredentialsGetRequest;
 use Tests\Chargemap\OCPI\OcpiTestCase;
 
 /**
- * @covers \Chargemap\OCPI\Versions\V2_1_1\Server\Common\Credentials\Get\OcpiEmspCredentialsGetRequest
+ * @covers \Chargemap\OCPI\Versions\V2_1_1\Server\Common\Credentials\Get\OcpiCredentialsGetRequest
  */
 class RequestConstructionTest extends OcpiTestCase
 {
@@ -17,7 +17,7 @@ class RequestConstructionTest extends OcpiTestCase
         $serverRequestInterface = $this->createServerRequestInterface()
             ->withQueryParams(['offset' => '0', 'limit' => '10']);
 
-        $request = new OcpiEmspCredentialsGetRequest($serverRequestInterface);
-        $this->assertInstanceOf(OcpiEmspCredentialsGetRequest::class, $request);
+        $request = new OcpiCredentialsGetRequest($serverRequestInterface);
+        $this->assertInstanceOf(OcpiCredentialsGetRequest::class, $request);
     }
 }

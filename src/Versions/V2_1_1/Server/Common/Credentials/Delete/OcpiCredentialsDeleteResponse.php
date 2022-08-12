@@ -7,7 +7,7 @@ namespace Chargemap\OCPI\Versions\V2_1_1\Server\Common\Credentials\Delete;
 use Chargemap\OCPI\Common\Server\OcpiSuccessResponse;
 use Chargemap\OCPI\Common\Server\StatusCodes\OcpiSuccessHttpCode;
 
-class OcpiEmspCredentialsDeleteResponse extends OcpiSuccessResponse
+class OcpiCredentialsDeleteResponse extends OcpiSuccessResponse
 {
     public function __construct(string $statusMessage = null)
     {
