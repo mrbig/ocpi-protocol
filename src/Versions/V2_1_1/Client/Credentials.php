@@ -1,12 +1,12 @@
 <?php
 declare(strict_types=1);
 
-namespace Chargemap\OCPI\Versions\V2_1_1\Client\Cpo;
+namespace Chargemap\OCPI\Versions\V2_1_1\Client;
 
 use Chargemap\OCPI\Common\Client\Modules\AbstractFeatures;
-use Chargemap\OCPI\Versions\V2_1_1\Client\Cpo\Credentials\Register\RegisterCredentialsRequest;
-use Chargemap\OCPI\Versions\V2_1_1\Client\Cpo\Credentials\Register\RegisterCredentialsResponse;
-use Chargemap\OCPI\Versions\V2_1_1\Client\Cpo\Credentials\Register\RegisterCredentialsService;
+use Chargemap\OCPI\Versions\V2_1_1\Client\Credentials\Register\RegisterCredentialsRequest;
+use Chargemap\OCPI\Versions\V2_1_1\Client\Credentials\Register\RegisterCredentialsResponse;
+use Chargemap\OCPI\Versions\V2_1_1\Client\Credentials\Register\RegisterCredentialsService;
 
 class Credentials extends AbstractFeatures
 {

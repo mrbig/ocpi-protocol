@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace Tests\Chargemap\OCPI\Versions\V2_1_1\Client\Credentials\Register;
 
 use Chargemap\OCPI\Common\Client\OcpiConfiguration;
-use Chargemap\OCPI\Versions\V2_1_1\Client\Cpo\Credentials\Register\RegisterCredentialsRequest;
-use Chargemap\OCPI\Versions\V2_1_1\Client\Cpo\Credentials\Register\RegisterCredentialsService;
+use Chargemap\OCPI\Versions\V2_1_1\Client\Credentials\Register\RegisterCredentialsRequest;
+use Chargemap\OCPI\Versions\V2_1_1\Client\Credentials\Register\RegisterCredentialsService;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Tests\Chargemap\OCPI\OcpiResponseTestCase;

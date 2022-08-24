@@ -13,6 +13,15 @@ class Emsp extends AbstractFeatures
     private Commands $commands;
     private Versions $versions;
 
+    public function credentials(): Credentials
+    {
+        if (!isset($this->credentials)) {
+            $this->credentials = new Credentials($this->ocpiConfiguration);
+        }
+
+        return $this->credentials;
+    }
+
     public function commands(): Commands
     {
         if(!isset($this->commands)) {
