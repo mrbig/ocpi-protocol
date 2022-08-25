@@ -6,11 +6,13 @@ namespace Chargemap\OCPI\Versions\V2_1_1\Client;
 
 use Chargemap\OCPI\Common\Client\Modules\AbstractFeatures;
 use Chargemap\OCPI\Versions\V2_1_1\Client\Emsp\Commands;
+use Chargemap\OCPI\Versions\V2_1_1\Client\Emsp\Locations;
 use Chargemap\OCPI\Versions\V2_1_1\Client\Versions;
 
 class Emsp extends AbstractFeatures
 {
     private Commands $commands;
+    private Locations $locations;
     private Versions $versions;
 
     public function credentials(): Credentials
@@ -20,6 +22,15 @@ class Emsp extends AbstractFeatures
         }
 
         return $this->credentials;
+    }
+
+    public function locations(): Locations
+    {
+        if (!isset($this->locations)) {
+            $this->locations = new Locations($this->ocpiConfiguration);
+        }
+
+        return $this->locations;
     }
 
     public function commands(): Commands

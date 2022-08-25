@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Chargemap\OCPI\Versions\V2_1_1\Client\Emsp\Locations\Evses\Connectors\Put;
+namespace Chargemap\OCPI\Versions\V2_1_1\Client\Emsp\Locations\Patch;
 
 use Chargemap\OCPI\Common\Client\Modules\AbstractResponse;
 use Psr\Http\Message\ResponseInterface;
 
-class PutConnectorResponse extends AbstractResponse
+class PatchLocationResponse extends AbstractResponse
 {
     private ResponseInterface $responseInterface;
 

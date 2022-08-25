@@ -13,6 +13,7 @@ class PutEvseResponse extends AbstractResponse
 
     public function __construct(ResponseInterface $response)
     {
+        self::checkStatusCode($response);
         $this->responseInterface = $response;
     }
 
