@@ -4,9 +4,13 @@ declare(strict_types=1);
 
 namespace Chargemap\OCPI\Common\Client\Modules;
 
+use Chargemap\OCPI\Common\Server\Errors\OcpiClientError;
 use Chargemap\OCPI\Common\Server\Errors\OcpiGenericClientError;
 use Chargemap\OCPI\Common\Server\Errors\OcpiInvalidPayloadClientError;
 use Chargemap\OCPI\Common\Server\Errors\OcpiInvalidTokenClientError;
+use Chargemap\OCPI\Common\Server\Errors\OcpiServerError;
+use Chargemap\OCPI\Common\Server\StatusCodes\OcpiClientErrorStatusCode;
+use Chargemap\OCPI\Common\Server\StatusCodes\OcpiServerErrorStatusCode;
 use Chargemap\OCPI\Common\Utils\PayloadValidation;
 use JsonException;
 use Psr\Http\Message\ResponseInterface;
@@ -46,6 +50,22 @@ abstract class AbstractResponse
             $jsonObject = json_decode($response->getBody()->__toString(), false, 512, JSON_THROW_ON_ERROR);
         } catch (JsonException $exception) {
             throw new OcpiInvalidPayloadClientError('Received payload is not valid JSON');
+        }
+        if (!$jsonObject->status_code) {
+            throw new OcpiInvalidPayloadClientError('Received payload is missing a status code');
+        }
+        // Check for 1000+ status codes
+        if ($jsonObject->status_code >= 3000) {
+            throw new OcpiServerError(
+                OcpiServerErrorStatusCode::from($jsonObject->status_code),
+                $jsonObject->status_message ?? 'Server error'
+            );
+        }
+        if ($jsonObject->status_code >= 2000) {
+            throw new OcpiClientError(
+                OcpiClientErrorStatusCode::from($jsonObject->status_code),
+                $jsonObject->status_message ?? 'Client error'
+            );
         }
         if ($schemaPath !== null) {
             PayloadValidation::coerce($schemaPath, $jsonObject);
