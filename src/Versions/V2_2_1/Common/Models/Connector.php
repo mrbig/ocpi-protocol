@@ -41,7 +41,6 @@ class Connector implements JsonSerializable
      * @param int $maxVoltage
      * @param int $maxAmperage
      * @param int|null $max_electric_power
-     * @param string|null $tariffId
      * @param string|null $termsAndConditions
      * @param DateTime $lastUpdated
      */
