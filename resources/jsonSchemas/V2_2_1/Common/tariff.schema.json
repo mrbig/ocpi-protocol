@@ -2,6 +2,16 @@
     "title": "V2.2.1\\Tariff",
     "type": "object",
     "properties": {
+        "country_code": {
+            "type": "string",
+            "minLength": 1,
+            "max_length": 2
+        },
+        "party_id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 3
+        },
         "id": {
             "type": "string",
             "minLength": 1,
@@ -11,6 +21,16 @@
             "type": "string",
             "minLength": 3,
             "maxLength": 3
+        },
+        "type": {
+            "oneOf": [
+                {
+                    "type": "null"
+                },
+                {
+                    "$ref": "common.schema.json#/definitions/tariff_type"
+                }
+            ]
         },
         "tariff_alt_text": {
             "type": [
@@ -28,12 +48,52 @@
             ],
             "format": "uri"
         },
+        "min_price": {
+            "oneOf": [
+                {
+                    "type": "null"
+                },
+                {
+                    "$ref": "common.schema.json#/definitions/price"
+                }
+            ]
+        },
+        "max_price": {
+            "oneOf": [
+                {
+                    "type": "null"
+                },
+                {
+                    "$ref": "common.schema.json#/definitions/price"
+                }
+            ]
+        },
         "elements": {
             "type": "array",
             "minItems": 1,
             "items": {
                 "$ref": "#/definitions/tariff_element"
             }
+        },
+        "start_date_time": {
+            "oneOf": [
+                {
+                    "type": "null"
+                },
+                {
+                    "$ref": "common.schema.json#/definitions/timestamp"
+                }
+            ]
+        },
+        "end_date_time": {
+            "oneOf": [
+                {
+                    "type": "null"
+                },
+                {
+                    "$ref": "common.schema.json#/definitions/timestamp"
+                }
+            ]
         },
         "energy_mix": {
             "oneOf": [

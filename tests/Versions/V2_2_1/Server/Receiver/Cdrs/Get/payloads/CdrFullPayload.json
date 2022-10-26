@@ -37,8 +37,11 @@
   "currency": "EUR",
   "tariffs": [
     {
+      "country_code": "BE",
+      "party_id": "FRA",
       "id": "12",
       "currency": "EUR",
+      "type": "PROFILE_GREEN",
       "tariff_alt_text": [
         {
           "language": "FR",
@@ -86,6 +89,8 @@
       "last_updated": "2015-02-02T14:15:01Z"
     },
     {
+      "country_code": "BE",
+      "party_id": "FRA",
       "id": "12",
       "currency": "EUR",
       "elements": [

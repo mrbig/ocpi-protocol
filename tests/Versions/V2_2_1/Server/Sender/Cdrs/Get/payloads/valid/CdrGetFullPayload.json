@@ -40,8 +40,21 @@
       "currency": "EUR",
       "tariffs": [
         {
+          "country_code": "BE",
+          "party_id": "FRA",
           "id": "12",
           "currency": "EUR",
+          "type": "REGULAR",
+          "min_price": {
+            "excl_vat": 10,
+            "incl_vat": 11.9
+          },
+          "max_price": {
+            "excl_vat": 100,
+            "incl_vat": 119
+          },
+          "start_date_time": "2015-02-01T14:15:01Z",
+          "end_date_time": "2015-02-01T14:15:01Z",
           "tariff_alt_text": [
             {
               "language": "FR",
@@ -89,6 +102,8 @@
           "last_updated": "2015-02-02T14:15:01Z"
         },
         {
+          "country_code":"BE",
+          "party_id":"FRA",
           "id": "12",
           "currency": "EUR",
           "elements": [
