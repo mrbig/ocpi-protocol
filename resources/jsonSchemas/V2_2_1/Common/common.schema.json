@@ -386,6 +386,16 @@
                 "REGULAR"
             ]
         },
+        "tariff_type": {
+            "type": "string",
+            "enum": [
+                "AD_HOC_PAYMENT",
+                "PROFILE_CHEAP",
+                "PROFILE_FAST",
+                "PROFILE_GREEN",
+                "REGULAR"
+            ]
+        },
         "energy_mix": {
             "type": "object",
             "properties": {
