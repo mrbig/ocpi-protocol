@@ -20,6 +20,10 @@ class TariffRestrictions implements JsonSerializable
 
     private ?float $maxKwh;
 
+    private ?float $minCurrent;
+
+    private ?float $maxCurrent;
+
     private ?float $minPower;
 
     private ?float $maxPower;
@@ -27,6 +31,8 @@ class TariffRestrictions implements JsonSerializable
     private ?int $minDuration;
 
     private ?int $maxDuration;
+
+    private ?ReservationRestrictionType $reservation;
 
     /** @var DayOfWeek[] */
     private array $daysOfWeek = [];
@@ -38,10 +44,13 @@ class TariffRestrictions implements JsonSerializable
         ?string $endDate,
         ?float $minKwh,
         ?float $maxKwh,
+        ?float $minCurrent,
+        ?float $maxCurrent,
         ?float $minPower,
         ?float $maxPower,
         ?int $minDuration,
-        ?int $maxDuration
+        ?int $maxDuration,
+        ?ReservationRestrictionType $reservation
     )
     {
         $this->startTime = $startTime;
@@ -50,10 +59,13 @@ class TariffRestrictions implements JsonSerializable
         $this->endDate = $endDate;
         $this->minKwh = $minKwh;
         $this->maxKwh = $maxKwh;
+        $this->minCurrent = $minCurrent;
+        $this->maxCurrent = $maxCurrent;
         $this->minPower = $minPower;
         $this->maxPower = $maxPower;
         $this->minDuration = $minDuration;
         $this->maxDuration = $maxDuration;
+        $this->reservation = $reservation;
     }
 
     public function getStartTime(): ?string
@@ -84,6 +96,16 @@ class TariffRestrictions implements JsonSerializable
     public function getMaxKwh(): ?float
     {
         return $this->maxKwh;
+    }
+
+    public function getMinCurrent(): ?float
+    {
+        return $this->minCurrent;
+    }
+
+    public function getMaxCurrent(): ?float
+    {
+        return $this->maxCurrent;
     }
 
     public function getMinPower(): ?float
@@ -121,6 +143,11 @@ class TariffRestrictions implements JsonSerializable
         return $this;
     }
 
+    public function getReservation(): ?ReservationRestrictionType
+    {
+        return $this->reservation;
+    }
+
     public function jsonSerialize(): array
     {
         $return = [
@@ -145,6 +172,12 @@ class TariffRestrictions implements JsonSerializable
         if ($this->maxKwh !== null) {
             $return['max_kwh'] = $this->maxKwh;
         }
+        if ($this->minCurrent !== null) {
+            $return['min_kwh'] = $this->minCurrent;
+        }
+        if ($this->maxCurrent !== null) {
+            $return['max_kwh'] = $this->maxCurrent;
+        }
         if ($this->minPower !== null) {
             $return['min_power'] = $this->minPower;
         }
@@ -156,6 +189,9 @@ class TariffRestrictions implements JsonSerializable
         }
         if ($this->maxDuration !== null) {
             $return['max_duration'] = $this->maxDuration;
+        }
+        if ($this->reservation !== null) {
+            $return['reservation'] = $this->reservation;
         }
 
         return $return;

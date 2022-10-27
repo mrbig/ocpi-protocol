@@ -175,6 +175,20 @@
                             ],
                             "minimum": 0
                         },
+                        "min_current": {
+                            "type": [
+                                "number",
+                                "null"
+                            ],
+                            "minimum": 0
+                        },
+                        "max_current": {
+                            "type": [
+                                "number",
+                                "null"
+                            ],
+                            "minimum": 0
+                        },
                         "min_power": {
                             "type": [
                                 "number",
@@ -220,6 +234,13 @@
                                     "SUNDAY"
                                 ]
                             }
+                        },
+                        "reservation": {
+                            "type": "string",
+                            "enum": [
+                                "RESERVATION",
+                                "RESERVATION_EXPIRES"
+                            ]
                         }
                     },
                     "additionalProperties": false
@@ -243,6 +264,10 @@
                             ]
                         },
                         "price": {
+                            "type": "number",
+                            "minimum": 0
+                        },
+                        "vat": {
                             "type": "number",
                             "minimum": 0
                         },
