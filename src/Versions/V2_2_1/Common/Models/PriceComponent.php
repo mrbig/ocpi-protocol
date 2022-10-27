@@ -12,12 +12,15 @@ class PriceComponent implements JsonSerializable
 
     private float $price;
 
+    private ?float $vat;
+
     private int $stepSize;
 
-    public function __construct(TariffDimensionType $type, float $price, int $stepSize)
+    public function __construct(TariffDimensionType $type, float $price, ?float $vat, int $stepSize)
     {
         $this->type = $type;
         $this->price = $price;
+        $this->vat = $vat;
         $this->stepSize = $stepSize;
     }
 
@@ -31,6 +34,11 @@ class PriceComponent implements JsonSerializable
         return $this->price;
     }
 
+    public function getVat(): ?float
+    {
+        return $this->vat;
+    }
+
     public function getStepSize(): int
     {
         return $this->stepSize;
@@ -38,10 +46,14 @@ class PriceComponent implements JsonSerializable
 
     public function jsonSerialize(): array
     {
-        return [
+        $return = [
             'type' => $this->type,
             'price' => $this->price,
             'step_size' => $this->stepSize
         ];
+        if ($this->vat !== null) {
+            $return['vat'] = $this->vat;
+        }
+        return $return;
     }
 }

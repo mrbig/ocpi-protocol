@@ -19,6 +19,8 @@ class TariffRestrictionsFactoryTest
             Assert::assertSame($json->end_date ?? null, $tariffRestrictions->getEndDate());
             Assert::assertSame(($json->min_kwh ?? null) === null ? null : (float)$json->min_kwh, $tariffRestrictions->getMinKwh());
             Assert::assertSame(($json->max_kwh ?? null) === null ? null : (float)$json->max_kwh, $tariffRestrictions->getMaxKwh());
+            Assert::assertSame(($json->min_current ?? null) === null ? null : (float)$json->min_kwh, $tariffRestrictions->getMinCurrent());
+            Assert::assertSame(($json->max_current ?? null) === null ? null : (float)$json->max_kwh, $tariffRestrictions->getMaxCurrent());
             Assert::assertSame(($json->min_power ?? null) === null ? null : (float)$json->min_power, $tariffRestrictions->getMinPower());
             Assert::assertSame(($json->max_power ?? null) === null ? null : (float)$json->max_power, $tariffRestrictions->getMaxPower());
             Assert::assertSame(($json->min_duration ?? null) === null ? null : (int)$json->min_duration, $tariffRestrictions->getMinDuration());
@@ -29,7 +31,12 @@ class TariffRestrictionsFactoryTest
                     Assert::assertSame($json->day_of_week[$index], $dayOfWeek->getValue());
                 }
             } else {
-                Assert::assertNull($tariffRestrictions->getDaysOfWeek());
+                Assert::assertEquals([], $tariffRestrictions->getDaysOfWeek());
+            }
+            if (property_exists($json, 'reservation')) {
+                Assert::assertSame($json->reservation ?? null, $tariffRestrictions->getReservation()->getValue());
+            } else {
+                Assert::assertNull($tariffRestrictions->getReservation());
             }
         }
     }
