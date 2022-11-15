@@ -15,12 +15,17 @@ class CredentialsFactory
             return null;
         }
 
-        return new Credentials(
+        $credentials = new Credentials(
             $json->token,
             $json->url,
-            BusinessDetailsFactory::fromJson($json->business_details),
-            $json->party_id,
-            $json->country_code
         );
+		
+		if (property_exists($json, 'roles') && $json->roles !== null) {
+			foreach ($json->roles as $role) {
+				$credentials->addRole(CredentialsRoleFactory::fromJson($role));
+			}
+		}
+		
+		return $credentials;
     }
 }

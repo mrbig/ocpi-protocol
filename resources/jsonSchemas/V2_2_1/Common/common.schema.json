@@ -13,6 +13,30 @@
                     "type": "string",
                     "format": "uri"
                 },
+                "roles": {
+                    "type": "array",
+                    "minItems": 1,
+                    "items": {
+                        "$ref": "common.schema.json#/definitions/credentials_role"
+                    }
+                }
+            },
+            "additionalProperties": false
+        },
+        "credentials_role": {
+            "type": "object",
+            "properties": {
+                "role": {
+                    "type": "string",
+                    "enum": [
+                        "CPO",
+                        "EMSP",
+                        "HUB",
+                        "NAP",
+                        "OTHER",
+                        "SCSP"
+                    ]
+                },
                 "business_details": {
                     "$ref": "common.schema.json#/definitions/business_details"
                 },

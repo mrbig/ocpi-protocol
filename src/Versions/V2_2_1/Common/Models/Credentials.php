@@ -12,20 +12,21 @@ class Credentials implements JsonSerializable
 
     private string $url;
 
-    private BusinessDetails $businessDetails;
+	/** @var CredentialsRole[]  */
+    private array $roles = [];
 
-    private string $partyId;
-
-    private string $countryCode;
-
-    public function __construct(string $token, string $url, BusinessDetails $businessDetails, string $partyId, string $countryCode)
+    public function __construct(string $token, string $url)
     {
         $this->token = $token;
         $this->url = $url;
-        $this->businessDetails = $businessDetails;
-        $this->partyId = $partyId;
-        $this->countryCode = $countryCode;
     }
+
+	public function addRole(Role $role): self
+	{
+		$this->roles[] = $role;
+
+		return $this;
+	}
 
     public function getToken(): string
     {
@@ -37,19 +38,12 @@ class Credentials implements JsonSerializable
         return $this->url;
     }
 
-    public function getBusinessDetails(): BusinessDetails
+	/**
+	 * @return CredentialsRole[]
+	 */
+    public function getRoles(): array
     {
-        return $this->businessDetails;
-    }
-
-    public function getPartyId(): string
-    {
-        return $this->partyId;
-    }
-
-    public function getCountryCode(): string
-    {
-        return $this->countryCode;
+        return $this->roles;
     }
 
     public function jsonSerialize(): array
@@ -57,9 +51,7 @@ class Credentials implements JsonSerializable
         return [
             'token' => $this->token,
             'url' => $this->url,
-            'business_details' => $this->businessDetails,
-            'party_id' => $this->partyId,
-            'country_code' => $this->countryCode,
+            'roles' => $this->roles,
         ];
     }
 }
