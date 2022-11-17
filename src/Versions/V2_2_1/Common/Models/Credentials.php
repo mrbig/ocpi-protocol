@@ -21,7 +21,7 @@ class Credentials implements JsonSerializable
         $this->url = $url;
     }
 
-	public function addRole(Role $role): self
+	public function addRole(CredentialsRole $role): self
 	{
 		$this->roles[] = $role;
 
