@@ -48,7 +48,7 @@ class CredentialsRole implements JsonSerializable
 	{
 		return [
 			'role' => (string) $this->role,
-			'business_details' => $this->businessDetails,
+			'business_details' => (object) $this->businessDetails->jsonSerialize(),
 			'party_id' => $this->partyId,
 			'country_code' => $this->countryCode,
 		];

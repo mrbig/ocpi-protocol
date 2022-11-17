@@ -51,7 +51,7 @@ class Credentials implements JsonSerializable
         return [
             'token' => $this->token,
             'url' => $this->url,
-            'roles' => $this->roles,
+			'roles' => array_map(function ($role) {return (object) $role->jsonSerialize();}, $this->roles)
         ];
     }
 }
