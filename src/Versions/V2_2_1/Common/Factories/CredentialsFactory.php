@@ -19,13 +19,13 @@ class CredentialsFactory
             $json->token,
             $json->url,
         );
-		
-		if (property_exists($json, 'roles') && $json->roles !== null) {
-			foreach ($json->roles as $role) {
-				$credentials->addRole(CredentialsRoleFactory::fromJson($role));
-			}
-		}
-		
-		return $credentials;
+
+        if (property_exists($json, 'roles') && $json->roles !== null) {
+            foreach ($json->roles as $role) {
+                $credentials->addRole(CredentialsRoleFactory::fromJson($role));
+            }
+        }
+
+        return $credentials;
     }
 }

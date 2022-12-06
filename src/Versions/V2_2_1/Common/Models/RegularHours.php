@@ -39,7 +39,7 @@ class RegularHours implements JsonSerializable
     public function jsonSerialize(): array
     {
         return [
-			'weekday' => (int) (string) $this->weekday,
+            'weekday' => (int)(string) $this->weekday,
             'period_begin' => $this->periodBegin,
             'period_end' => $this->periodEnd,
         ];

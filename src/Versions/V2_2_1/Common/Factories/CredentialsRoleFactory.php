@@ -10,17 +10,17 @@ use stdClass;
 
 class CredentialsRoleFactory
 {
-	public static function fromJson(?stdClass $json): ?CredentialsRole
-	{
-		if ($json === null) {
-			return null;
-		}
+    public static function fromJson(?stdClass $json): ?CredentialsRole
+    {
+        if ($json === null) {
+            return null;
+        }
 
-		return new CredentialsRole(
-			new Role($json->role),
-			BusinessDetailsFactory::fromJson($json->business_details),
-			$json->party_id,
-			$json->country_code
-		);
-	}
+        return new CredentialsRole(
+            new Role($json->role),
+            BusinessDetailsFactory::fromJson($json->business_details),
+            $json->party_id,
+            $json->country_code
+        );
+    }
 }

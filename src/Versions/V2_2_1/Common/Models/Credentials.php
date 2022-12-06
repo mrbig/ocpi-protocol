@@ -12,7 +12,7 @@ class Credentials implements JsonSerializable
 
     private string $url;
 
-	/** @var CredentialsRole[]  */
+    /** @var CredentialsRole[] */
     private array $roles = [];
 
     public function __construct(string $token, string $url)
@@ -21,12 +21,12 @@ class Credentials implements JsonSerializable
         $this->url = $url;
     }
 
-	public function addRole(CredentialsRole $role): self
-	{
-		$this->roles[] = $role;
+    public function addRole(CredentialsRole $role): self
+    {
+        $this->roles[] = $role;
 
-		return $this;
-	}
+        return $this;
+    }
 
     public function getToken(): string
     {
@@ -38,9 +38,9 @@ class Credentials implements JsonSerializable
         return $this->url;
     }
 
-	/**
-	 * @return CredentialsRole[]
-	 */
+    /**
+     * @return CredentialsRole[]
+     */
     public function getRoles(): array
     {
         return $this->roles;
@@ -51,7 +51,9 @@ class Credentials implements JsonSerializable
         return [
             'token' => $this->token,
             'url' => $this->url,
-			'roles' => array_map(function ($role) {return (object) $role->jsonSerialize();}, $this->roles)
+            'roles' => array_map(function ($role) {
+                return (object)$role->jsonSerialize();
+            }, $this->roles)
         ];
     }
 }

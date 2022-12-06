@@ -22,7 +22,7 @@ class ReceiverTokenPutRequest extends OcpiUpdateRequest
     public function __construct(ServerRequestInterface $request, string $countryCode, string $partyId, string $tokenUid, ?string $type)
     {
         parent::__construct($request);
-        $this->dispatchParams($countryCode, $partyId, $tokenUid,  $type ? TokenType::from($type) : null);
+        $this->dispatchParams($countryCode, $partyId, $tokenUid, $type ? TokenType::from($type) : null);
         PayloadValidation::coerce('V2_2_1/Receiver/Tokens/tokenPutRequest.schema.json', $this->jsonBody);
         $token = TokenFactory::fromJson($this->jsonBody);
         if ($token === null) {
