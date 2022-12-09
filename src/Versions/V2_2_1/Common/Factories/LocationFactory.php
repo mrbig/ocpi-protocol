@@ -32,7 +32,7 @@ class LocationFactory
             $json->state ?? null,
             $json->country,
             GeoLocationFactory::fromJson($json->coordinates),
-            new ParkingType($json->parking_type ?? null),
+            isset($json->parking_type) ? new ParkingType($json->parking_type) : null,
             BusinessDetailsFactory::fromJson($json->operator ?? null),
             BusinessDetailsFactory::fromJson($json->suboperator ?? null),
             BusinessDetailsFactory::fromJson($json->owner ?? null),

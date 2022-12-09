@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Chargemap\OCPI\Versions\V2_2_1\Client\Reciever;
+namespace Chargemap\OCPI\Versions\V2_2_1\Client\Receiver;
 
 use Chargemap\OCPI\Common\Client\Modules\AbstractFeatures;
 use Chargemap\OCPI\Versions\V2_2_1\Client\Receiver\Tokens\Get\GetTokenRequest;

@@ -277,7 +277,7 @@ class PartialSession extends PartialModel implements JsonSerializable
     {
         $return = [];
 
-        if ($this->hasCountryCode()()) {
+        if ($this->hasCountryCode()) {
             $return['country_code'] = $this->countryCode;
         }
         if ($this->hasPartyId()) {
