@@ -18,9 +18,9 @@ class CredentialsTest
         } else {
             Assert::assertSame($credentials->getUrl(), $json->url);
             Assert::assertSame($credentials->getToken(), $json->token);
-            Assert::assertSame($credentials->getPartyId(), $json->party_id);
-            Assert::assertSame($credentials->getCountryCode(), $json->country_code);
-            BusinessDetailsTest::assertJsonSerialization($credentials->getBusinessDetails(), $json->business_details);
+            foreach($credentials->getRoles() as $idx => $role) {
+                CredentialsRoleTest::assertJsonSerialize($role, $json->roles[$idx]);
+            }
         }
     }
 }

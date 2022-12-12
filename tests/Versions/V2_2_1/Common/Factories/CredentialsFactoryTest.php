@@ -47,9 +47,9 @@ class CredentialsFactoryTest extends TestCase
         } else {
             Assert::assertSame($json->url, $credentials->getUrl());
             Assert::assertSame($json->token, $credentials->getToken());
-            Assert::assertSame($json->party_id, $credentials->getPartyId());
-            Assert::assertSame($json->country_code, $credentials->getCountryCode());
-            BusinessDetailsFactoryTest::assertBusinessDetails($json->business_details, $credentials->getBusinessDetails());
+            foreach ($json->roles as $idx => $role) {
+                CredentialsRoleFactoryTest::assertCredentialRole($role, $credentials->getRoles()[$idx]);
+            }
         }
     }
 }
