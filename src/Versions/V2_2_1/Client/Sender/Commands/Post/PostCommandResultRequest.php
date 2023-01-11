@@ -21,8 +21,11 @@ class PostCommandResultRequest extends AbstractRequest
 
     private CommandResult $result;
 
-    public function __construct(string $responseUrl, CommandResult $result)
+    public function __construct(string $responseUrl, CommandResult $result, string $correlationId = null)
     {
+        if (!empty($correlationId)) {
+            $this->setCorrelationId($correlationId);
+        }
         $this->responseUrl = $responseUrl;
         $this->result = $result;
     }

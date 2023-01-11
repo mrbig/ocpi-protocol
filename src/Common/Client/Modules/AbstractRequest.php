@@ -12,6 +12,31 @@ use Psr\Http\Message\StreamFactoryInterface;
 
 abstract class AbstractRequest
 {
+    protected string $requestId;
+    protected string $correlationId;
+    
+    public function getRequestId(): string
+    {
+        $this->requestId = $this->requestId ?? uniqid('rq-', true);
+        return $this->requestId;
+    }
+
+    public function getCorrelationId(): string
+    {
+        $this->correlationId = $this->correlationId ?? uniqid('co-', true);
+        return $this->correlationId;
+    }
+
+    public function setRequestId(string $requestId): void
+    {
+        $this->requestId = $requestId;
+    }
+
+    public function setCorrelationId(string $correlationId): void
+    {
+        $this->correlationId = $correlationId;
+    }
+    
     abstract public function getModule(): BaseModuleId;
 
     abstract public function getVersion(): OcpiVersion;
