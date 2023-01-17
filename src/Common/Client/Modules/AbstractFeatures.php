@@ -46,8 +46,8 @@ class AbstractFeatures
 
         $uri = self::forgeUri($endpointUri, $serverRequestInterface->getUri());
 
-        return $this->addMessageIds($serverRequestInterface, $request)
-            ->addAuthorization($serverRequestInterface->withUri($uri));
+        $serverRequestInterface = $this->addMessageIds($serverRequestInterface, $request);
+        return $this->addAuthorization($serverRequestInterface->withUri($uri));
     }
 
     protected function addAuthorization(ServerRequestInterface $request): ServerRequestInterface
