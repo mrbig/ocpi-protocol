@@ -31,7 +31,7 @@ class UnlockConnector extends Command
             'response_url' => $this->responseUrl,
             'location_id' => $this->locationId,
             'evse_uid' => $this->evseUid,
-            'connectorId' => $this->connectorId,
+            'connector_id' => $this->connectorId,
         ];
 
         return $return;
