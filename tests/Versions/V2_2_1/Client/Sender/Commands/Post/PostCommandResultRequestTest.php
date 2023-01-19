@@ -19,6 +19,7 @@ class PostCommandResultRequestTest extends TestCase
     public function validParametersProvider(): iterable
     {
         yield ['http://example.com', new CommandResult(CommandResultType::ACCEPTED())];
+        yield ['http://example.com', new CommandResult(CommandResultType::ACCEPTED()), 'correlationId-test'];
         yield [
             'https://example.com/ocpi/emsp/RESERVE_NOW/1234',
             (new CommandResult(CommandResultType::REJECTED()))
@@ -32,9 +33,9 @@ class PostCommandResultRequestTest extends TestCase
      * @param string $responseUrl
      * @param CommandResult $response
      */
-    public function testShouldConstructCorrectQuery(string $responseUrl, CommandResult $response): void
+    public function testShouldConstructCorrectQuery(string $responseUrl, CommandResult $response, ?string $correlationId = null): void
     {
-        $request = new PostCommandResultRequest($responseUrl, $response);
+        $request = new PostCommandResultRequest($responseUrl, $response, $correlationId);
         $requestInterface = $request->getServerRequestInterface(
             Psr17FactoryDiscovery::findServerRequestFactory(),
             null
@@ -47,6 +48,12 @@ class PostCommandResultRequestTest extends TestCase
         $this->assertSame('POST', $requestInterface->getMethod());
         $requestBody = json_decode($requestInterface->getBody()->getContents());
         $this->assertEquals(json_encode($response), json_encode($requestBody));
+
+        $this->assertNotEmpty($request->getCorrelationId());
+        if (!empty($correlationId)) {
+            $this->assertSame($correlationId, $request->getCorrelationId());
+        }
+        
         OcpiTestCase::coerce('V2_2_1/Sender/Commands/commandResultPostRequest.schema.json', $requestBody);
     }
 

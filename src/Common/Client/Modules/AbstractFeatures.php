@@ -46,7 +46,8 @@ class AbstractFeatures
 
         $uri = self::forgeUri($endpointUri, $serverRequestInterface->getUri());
 
-        return $this->addAuthorization($serverRequestInterface->withUri($uri));
+        return $this->addMessageIds($serverRequestInterface, $request)
+            ->addAuthorization($serverRequestInterface->withUri($uri));
     }
 
     protected function addAuthorization(ServerRequestInterface $request): ServerRequestInterface
@@ -70,5 +71,12 @@ class AbstractFeatures
         }
 
         return $uri;
+    }
+
+    protected function addMessageIds(ServerRequestInterface $serverRequestInterface, AbstractRequest $request): ServerRequestInterface
+    {
+        return $serverRequestInterface
+            ->withHeader('X-Request-ID', $request->getRequestId())
+            ->withHeader('X-Correlation-ID', $request->getCorrelationId());
     }
 }
