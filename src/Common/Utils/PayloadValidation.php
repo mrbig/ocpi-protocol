@@ -37,10 +37,13 @@ final class PayloadValidation
     private static function validator(string $schemaPath, stdClass $json): Validator
     {
         $jsonSchemaValidation = new Validator();
-        $schemasPath = __DIR__ . '/../../../resources/jsonSchemas/';
+        if ($schemaPath[0] <> '/') {
+            $schemasPath = realpath(__DIR__ . '/../../../resources/jsonSchemas/');
+            $schemaPath = $schemasPath . DIRECTORY_SEPARATOR . $schemaPath;
+        }
         $jsonSchemaValidation->coerce(
             $json,
-            (object)['$ref' => 'file://' . realpath($schemasPath) . DIRECTORY_SEPARATOR . $schemaPath]
+            (object)['$ref' => 'file://' . $schemaPath]
         );
         return $jsonSchemaValidation;
     }
