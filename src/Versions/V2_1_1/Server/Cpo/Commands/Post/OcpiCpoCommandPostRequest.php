@@ -46,7 +46,7 @@ abstract class OcpiCpoCommandPostRequest extends OcpiBaseRequest
 
     public function getCommandType(): CommandType
     {
-        return $this->commandTyoe;
+        return $this->commandType;
     }
 
     public function getCommand(): Command
