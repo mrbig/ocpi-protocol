@@ -1,8 +1,8 @@
 {
-    "title": "V2.2.1\\CPO\\Server\\Tokens\\Put",
+    "title": "V2.2.1\\CPO\\Tokens\\Put",
     "oneOf": [
         {
-            "$ref": "../../../Common/token.schema.json",
+            "$ref": "../../Common/token.schema.json",
             "required": [
                 "uid",
                 "type",

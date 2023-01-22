@@ -23,7 +23,7 @@ class OcpiCpoTokenPatchRequest extends OcpiUpdateRequest
     {
         parent::__construct($request);
         $this->dispatchParams($countryCode, $partyId, $tokenUid);
-        PayloadValidation::coerce('V2_1_1/CPO/Server/Tokens/tokenPatchRequest.schema.json', $this->jsonBody);
+        PayloadValidation::coerce('V2_1_1/CPO/Tokens/tokenPatchRequest.schema.json', $this->jsonBody);
 
         $partialToken = PartialTokenFactory::fromJson($this->jsonBody);
         if ($partialToken === null) {

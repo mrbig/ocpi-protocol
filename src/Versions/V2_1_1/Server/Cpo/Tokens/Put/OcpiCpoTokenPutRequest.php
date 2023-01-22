@@ -22,7 +22,7 @@ class OcpiCpoTokenPutRequest extends OcpiUpdateRequest
     {
         parent::__construct($request);
         $this->dispatchParams($countryCode, $partyId, $tokenUid);
-        PayloadValidation::coerce('V2_1_1/CPO/Server/Tokens/tokenPutRequest.schema.json', $this->jsonBody);
+        PayloadValidation::coerce('V2_1_1/CPO/Tokens/tokenPutRequest.schema.json', $this->jsonBody);
         $token = TokenFactory::fromJson($this->jsonBody);
         if ($token === null) {
             throw new UnexpectedValueException('Token cannot be null');
