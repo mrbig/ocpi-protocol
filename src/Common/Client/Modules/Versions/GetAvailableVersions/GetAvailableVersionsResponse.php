@@ -34,7 +34,7 @@ class GetAvailableVersionsResponse extends AbstractResponse
             throw new OcpiInvalidTokenClientError();
         }
 
-        $responseAsJson = self::toJson($response, 'eMSP/Client/Versions/versionGetAvailableResponse.schema.json');
+        $responseAsJson = self::toJson($response, 'Common/Versions/versionGetAvailableResponse.schema.json');
 
         if($responseAsJson->status_code === 2002) {
             //TODO reorganize namespace
