@@ -1,8 +1,8 @@
 {
-    "title": "V2.1.1\\Emsp\\Client\\Version\\Get",
+    "title": "V2.1.1\\Common\\Version\\Get",
     "properties": {
         "data": {
-            "$ref": "../../../Common/version.schema.json",
+            "$ref": "../version.schema.json",
             "required": [
                 "version",
                 "endpoints"
@@ -10,13 +10,13 @@
             "additionalProperties": false
         },
         "status_code": {
-            "$ref": "../../../Common/common.schema.json#/definitions/status_code"
+            "$ref": "../common.schema.json#/definitions/status_code"
         },
         "status_message": {
-            "$ref": "../../../Common/common.schema.json#/definitions/status_message"
+            "$ref": "../common.schema.json#/definitions/status_message"
         },
         "timestamp": {
-            "$ref": "../../../Common/common.schema.json#/definitions/timestamp"
+            "$ref": "../common.schema.json#/definitions/timestamp"
         }
     },
     "required": [
