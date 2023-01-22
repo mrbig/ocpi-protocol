@@ -31,7 +31,7 @@ class GetCdrsListingResponse extends AbstractResponse
             throw new OcpiUnauthorizedException();
         }
 
-        $json = self::toJson($response, 'V2_1_1/eMSP/Client/CDRs/cdrGetResponse.schema.json');
+        $json = self::toJson($response, 'V2_1_1/CPO/CDRs/cdrGetResponse.schema.json');
 
         $return = new self();
         foreach ($json->data ?? [] as $item) {
