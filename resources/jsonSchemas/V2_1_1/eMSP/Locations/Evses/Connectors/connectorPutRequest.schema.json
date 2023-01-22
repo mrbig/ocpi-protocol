@@ -1,8 +1,8 @@
 {
-    "title": "V2.1.1\\Emsp\\Server\\Locations\\Evses\\Connectors\\Put",
+    "title": "V2.1.1\\Emsp\\Locations\\Evses\\Connectors\\Put",
     "oneOf": [
         {
-            "$ref": "../../../../../Common/connector.schema.json",
+            "$ref": "../../../../Common/connector.schema.json",
             "required": [
                 "id",
                 "standard",

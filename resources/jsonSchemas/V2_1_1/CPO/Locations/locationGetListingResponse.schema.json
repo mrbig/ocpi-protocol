@@ -1,5 +1,5 @@
 {
-    "title": "V2.2.1\\Sender\\Locations\\GetListing",
+    "title": "V2.1.1\\CPO\\Locations\\GetListing",
     "properties": {
         "status_code": {
             "$ref": "../../Common/common.schema.json#/definitions/status_code"

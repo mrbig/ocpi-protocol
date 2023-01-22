@@ -59,7 +59,7 @@ class ResponseConstructionTest extends TestCase
         }
         $responseInterface = $response->getResponseInterface();
         $payload = json_decode($responseInterface->getBody()->getContents());
-        OcpiTestCase::coerce('V2_2_1/Sender/Locations/locationGetListingResponse.schema.json', $payload);
+        OcpiTestCase::coerce('V2_1_1/CPO/Locations/locationGetListingResponse.schema.json', $payload);
         foreach ($payload->data as $index => $jsonLocation) {
             LocationTest::assertJsonSerialization($locations[$index], $jsonLocation);
         }

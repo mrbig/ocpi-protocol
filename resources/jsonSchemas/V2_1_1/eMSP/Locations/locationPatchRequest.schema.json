@@ -1,8 +1,8 @@
 {
-    "title": "V2.1.1\\Emsp\\Server\\Locations\\Patch",
+    "title": "V2.1.1\\Emsp\\Locations\\Patch",
     "oneOf": [
         {
-            "$ref": "../../../Common/location.schema.json",
+            "$ref": "../../Common/location.schema.json",
             "minProperties": 1,
             "additionalProperties": false
         }

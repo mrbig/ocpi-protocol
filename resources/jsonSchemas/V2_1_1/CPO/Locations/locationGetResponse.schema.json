@@ -1,6 +1,19 @@
 {
-    "title": "V2.2.1\\Sender\\Locations\\GetListing",
+    "title": "V2.1.1\\CPO\\Locations\\Get",
     "properties": {
+        "data": {
+            "$ref": "../../Common/location.schema.json",
+            "required": [
+                "id",
+                "type",
+                "address",
+                "city",
+                "postal_code",
+                "country",
+                "coordinates",
+                "last_updated"
+            ]
+        },
         "status_code": {
             "$ref": "../../Common/common.schema.json#/definitions/status_code"
         },
@@ -14,22 +27,12 @@
                 }
             ]
         },
-        "data": {
-            "type": [
-                "array",
-                "null"
-            ],
-            "items": {
-                "$comment": "This should support partially valid Locations so validation is done in the client for each object independently",
-                "type": "object"
-            },
-            "additionalProperties": false
-        },
         "timestamp": {
             "$ref": "../../Common/common.schema.json#/definitions/timestamp"
         }
     },
     "required": [
+        "data",
         "status_code",
         "timestamp"
     ],

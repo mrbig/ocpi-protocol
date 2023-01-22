@@ -1,8 +1,8 @@
 {
-    "title": "V2.1.1\\Emsp\\Server\\Locations\\Evses\\Get",
+    "title": "V2.1.1\\Emsp\\Locations\\Evses\\Get",
     "properties": {
         "data": {
-            "$ref": "../../../../Common/evse.schema.json",
+            "$ref": "../../../Common/evse.schema.json",
             "required": [
                 "uid",
                 "status",
@@ -11,7 +11,7 @@
             ]
         },
         "status_code": {
-            "$ref": "../../../../Common/common.schema.json#/definitions/status_code"
+            "$ref": "../../../Common/common.schema.json#/definitions/status_code"
         },
         "status_message": {
             "oneOf": [
@@ -19,12 +19,12 @@
                     "type": "null"
                 },
                 {
-                    "$ref": "../../../../Common/common.schema.json#/definitions/status_message"
+                    "$ref": "../../../Common/common.schema.json#/definitions/status_message"
                 }
             ]
         },
         "timestamp": {
-            "$ref": "../../../../Common/common.schema.json#/definitions/timestamp"
+            "$ref": "../../../Common/common.schema.json#/definitions/timestamp"
         }
     },
     "required": [
