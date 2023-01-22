@@ -29,7 +29,7 @@ class GetTokenResponse extends BaseResponse
      */
     public static function from(ResponseInterface $response): GetTokenResponse
     {
-        $json = self::toJson($response, 'V2_1_1/eMSP/Client/Tokens/tokenGetResponse.schema.json');
+        $json = self::toJson($response, 'V2_1_1/CPO/Tokens/tokenGetResponse.schema.json');
 
         $token = TokenFactory::fromJson($json->data);
 

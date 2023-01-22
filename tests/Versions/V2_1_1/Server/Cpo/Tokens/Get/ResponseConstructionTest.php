@@ -39,7 +39,7 @@ class ResponseConstructionTest extends TestCase
         $this->assertSame(OcpiSuccessHttpCode::HTTP_OK, $responseInterface->getStatusCode());
 
         $json = json_decode($responseInterface->getBody()->getContents());
-        OcpiTestCase::coerce('V2_1_1/CPO/Server/Tokens/tokenGetResponse.schema.json', $json);
+        OcpiTestCase::coerce('V2_1_1/CPO/Tokens/tokenGetResponse.schema.json', $json);
         TokenTest::assertJsonSerialization($token, $json->data);
     }
 }

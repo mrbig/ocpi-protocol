@@ -1,5 +1,5 @@
 {
-    "title": "V2.1.1\\Emsp\\Server\\Token\\Get",
+    "title": "V2.1.1\\Emsp\\oken\\Get",
     "properties": {
         "data": {
             "type": [
@@ -7,7 +7,7 @@
                 "null"
             ],
             "items": {
-                "$ref": "../../../Common/token.schema.json",
+                "$ref": "../../Common/token.schema.json",
                 "required": [
                     "uid",
                     "type",
@@ -22,7 +22,7 @@
             "additionalProperties": false
         },
         "status_code": {
-            "$ref": "../../../Common/common.schema.json#/definitions/status_code"
+            "$ref": "../../Common/common.schema.json#/definitions/status_code"
         },
         "status_message": {
             "oneOf": [
@@ -30,12 +30,12 @@
                     "type": "null"
                 },
                 {
-                    "$ref": "../../../Common/common.schema.json#/definitions/status_message"
+                    "$ref": "../../Common/common.schema.json#/definitions/status_message"
                 }
             ]
         },
         "timestamp": {
-            "$ref": "../../../Common/common.schema.json#/definitions/timestamp"
+            "$ref": "../../Common/common.schema.json#/definitions/timestamp"
         }
     },
     "required": [
