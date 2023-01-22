@@ -32,11 +32,11 @@ class GetLocationsListingResponse extends BaseResponse
             throw new OcpiUnauthorizedException();
         }
 
-        $json = self::toJson($response, 'V2_1_1/eMSP/Client/Locations/locationGetListingResponse.schema.json');
+        $json = self::toJson($response, 'V2_1_1/CPO/Locations/locationGetListingResponse.schema.json');
 
         $return = new self();
         foreach ($json->data ?? [] as $item) {
-            if (PayloadValidation::isValidJson('V2_1_1/eMSP/Client/Locations/location.schema.json', $item)) {
+            if (PayloadValidation::isValidJson('V2_1_1/CPO/Locations/location.schema.json', $item)) {
                 $return->locations[] = LocationFactory::fromJson($item);
             }
             //TODO throw validator errors at the end of the function
