@@ -20,7 +20,7 @@
                             "type": "null"
                         },
                         {
-                            "$ref": "../../../Common/common.schema.json#/definitions/location_references"
+                            "$ref": "../../Common/common.schema.json#/definitions/location_references"
                         }
                     ]
                 },
@@ -30,7 +30,7 @@
                             "type": "null"
                         },
                         {
-                            "$ref": "../../../Common/common.schema.json#/definitions/display_text"
+                            "$ref": "../../Common/common.schema.json#/definitions/display_text"
                         }
                     ]
                 }
@@ -41,7 +41,7 @@
             "additionalProperties": false
         },
         "status_code": {
-            "$ref": "../../../Common/common.schema.json#/definitions/status_code"
+            "$ref": "../../Common/common.schema.json#/definitions/status_code"
         },
         "status_message": {
             "oneOf": [
@@ -49,12 +49,12 @@
                     "type": "null"
                 },
                 {
-                    "$ref": "../../../Common/common.schema.json#/definitions/status_message"
+                    "$ref": "../../Common/common.schema.json#/definitions/status_message"
                 }
             ]
         },
         "timestamp": {
-            "$ref": "../../../Common/common.schema.json#/definitions/timestamp"
+            "$ref": "../../Common/common.schema.json#/definitions/timestamp"
         }
     },
     "required": [
