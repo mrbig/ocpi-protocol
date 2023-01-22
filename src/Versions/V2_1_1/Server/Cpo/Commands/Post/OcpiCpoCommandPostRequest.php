@@ -39,7 +39,7 @@ abstract class OcpiCpoCommandPostRequest extends OcpiBaseRequest
 
     protected function validatePayload()
     {
-        PayloadValidation::coerce('V2_1_1/CPO/Server/Commands/commandPostRequest.schema.json', $this->jsonBody);
+        PayloadValidation::coerce('V2_1_1/CPO/Commands/commandPostRequest.schema.json', $this->jsonBody);
     }
 
     abstract protected function buildCommand(stdClass $jsonBody): Command;

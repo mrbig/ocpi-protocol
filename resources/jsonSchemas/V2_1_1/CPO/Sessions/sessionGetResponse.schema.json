@@ -1,8 +1,8 @@
 {
-    "title": "V2.1.1\\CPO\\Server\\Sessions\\Get",
+    "title": "V2.1.1\\CPO\\Sessions\\Get",
     "properties": {
         "status_code": {
-            "$ref": "../../../Common/common.schema.json#/definitions/status_code"
+            "$ref": "../../Common/common.schema.json#/definitions/status_code"
         },
         "status_message": {
             "oneOf": [
@@ -10,7 +10,7 @@
                     "type": "null"
                 },
                 {
-                    "$ref": "../../../Common/common.schema.json#/definitions/status_message"
+                    "$ref": "../../Common/common.schema.json#/definitions/status_message"
                 }
             ]
         },
@@ -20,7 +20,7 @@
                 "null"
             ],
             "items": {
-                "$ref": "../../../Common/session.schema.json",
+                "$ref": "../../Common/session.schema.json",
                 "required": [
                     "id",
                     "start_datetime",
@@ -36,7 +36,7 @@
             }
         },
         "timestamp": {
-            "$ref": "../../../Common/common.schema.json#/definitions/timestamp"
+            "$ref": "../../Common/common.schema.json#/definitions/timestamp"
         }
     },
     "required": [

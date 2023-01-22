@@ -13,7 +13,7 @@ use Tests\Chargemap\OCPI\OcpiTestCase;
 use Tests\Chargemap\OCPI\Versions\V2_1_1\Common\Models\CdrTest;
 
 /**
- * @covers \Chargemap\OCPI\Versions\V2_1_1\Server\CdrssessionGetResponse.schema.json\OcpiCpoCdrGetListingResponse
+ * @covers \Chargemap\OCPI\Versions\V2_1_1\CPO\CDRs\sessionGetResponse.schema.json\OcpiCpoCdrGetListingResponse
  */
 class ResponseConstructionTest extends TestCase
 {
@@ -59,7 +59,7 @@ class ResponseConstructionTest extends TestCase
         }
         $responseInterface = $response->getResponseInterface();
         $payload = json_decode($responseInterface->getBody()->getContents());
-        OcpiTestCase::coerce('V2_1_1/CPO/Server/CDRs/cdrGetResponse.schema.json', $payload);
+        OcpiTestCase::coerce('V2_1_1/CPO/CDRs/cdrGetResponse.schema.json', $payload);
         foreach ($payload->data as $index => $jsonCdr) {
             CdrTest::assertJsonSerialization($cdrs[$index], $jsonCdr);
         }

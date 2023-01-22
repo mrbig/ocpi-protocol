@@ -59,7 +59,7 @@ class ResponseConstructionTest extends TestCase
         }
         $responseInterface = $response->getResponseInterface();
         $payload = json_decode($responseInterface->getBody()->getContents());
-        OcpiTestCase::coerce('V2_1_1/CPO/Server/Sessions/sessionGetResponse.schema.json', $payload);
+        OcpiTestCase::coerce('V2_1_1/CPO/Sessions/sessionGetResponse.schema.json', $payload);
         foreach ($payload->data as $index => $jsonSession) {
             SessionTest::assertJsonSerialization($sessions[$index], $jsonSession);
         }
