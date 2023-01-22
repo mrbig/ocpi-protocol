@@ -43,7 +43,7 @@ class AuthorizationInfo implements JsonSerializable
         return $this->token;
     }
 
-    public function getLocation(): LocationReferences
+    public function getLocation(): ?LocationReferences
     {
         return $this->location;
     }
@@ -53,7 +53,7 @@ class AuthorizationInfo implements JsonSerializable
         return $this->authorizationReference;
     }
 
-    public function getInfo(): DisplayText
+    public function getInfo(): ?DisplayText
     {
         return $this->info;
     }
