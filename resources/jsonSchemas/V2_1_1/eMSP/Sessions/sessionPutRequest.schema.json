@@ -1,8 +1,8 @@
 {
-    "title": "V2.1.1\\Emsp\\Server\\Sessions\\Put",
+    "title": "V2.1.1\\Emsp\\Sessions\\Put",
     "oneOf": [
         {
-            "$ref": "../../../Common/session.schema.json",
+            "$ref": "../../Common/session.schema.json",
             "required": [
                 "id",
                 "start_datetime",
