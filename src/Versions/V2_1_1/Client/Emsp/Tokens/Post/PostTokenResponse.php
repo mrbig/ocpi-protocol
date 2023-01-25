@@ -13,7 +13,7 @@ class PostTokenResponse extends AbstractResponse
 {
     private AuthorizationInfo $authorizationInfo;
 
-    private function __construct(AuthorizationInfo $authorizationInfo)
+    protected function __construct(AuthorizationInfo $authorizationInfo)
     {
         $this->authorizationInfo = $authorizationInfo;
     }
