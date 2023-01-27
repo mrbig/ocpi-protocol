@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Chargemap\OCPI\Versions\V2_1_1\Client;
 
 use Chargemap\OCPI\Common\Client\Modules\AbstractFeatures;
+use Chargemap\OCPI\Versions\V2_1_1\Client\Emsp\Cdrs;
 use Chargemap\OCPI\Versions\V2_1_1\Client\Emsp\Commands;
 use Chargemap\OCPI\Versions\V2_1_1\Client\Emsp\Locations;
 use Chargemap\OCPI\Versions\V2_1_1\Client\Emsp\Tokens;
@@ -13,6 +14,7 @@ use Chargemap\OCPI\Versions\V2_1_1\Client\Versions;
 
 class Emsp extends AbstractFeatures
 {
+    private Cdrs $cdrs;
     private Credentials $credentials;
     private Commands $commands;
     private Locations $locations;
@@ -63,6 +65,15 @@ class Emsp extends AbstractFeatures
         }
 
         return $this->sessions;
+    }
+
+    public function cdrs(): Cdrs
+    {
+        if (!isset($this->cdrs)) {
+            $this->cdrs = new Cdrs($this->ocpiConfiguration);
+        }
+
+        return $this->cdrs;
     }
 
     public function versions(): Versions
