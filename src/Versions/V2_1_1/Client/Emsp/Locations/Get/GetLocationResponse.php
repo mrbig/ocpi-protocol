@@ -30,7 +30,7 @@ class GetLocationResponse extends BaseResponse
         if ($response->getStatusCode() === 404 || $response->getBody()->__toString() === "") {
             return $return;
         }
-        $json = self::toJson($response, 'V2_1_1/eMSP/Client/Locations/locationGetResponse.schema.json');
+        $json = self::toJson($response, 'V2_1_1/eMSP/Locations/locationGetResponse.schema.json');
         if (empty($json->data)) {
             return $return;
         }

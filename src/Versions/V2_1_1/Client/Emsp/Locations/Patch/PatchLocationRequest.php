@@ -7,7 +7,6 @@ namespace Chargemap\OCPI\Versions\V2_1_1\Client\Emsp\Locations\Patch;
 use Chargemap\OCPI\Common\Client\Modules\AbstractRequest;
 
 use Chargemap\OCPI\Versions\V2_1_1\Client\VersionTrait;
-use Chargemap\OCPI\Versions\V2_1_1\Common\Models\Location;
 use Chargemap\OCPI\Versions\V2_1_1\Common\Models\ModuleId;
 use Chargemap\OCPI\Versions\V2_1_1\Common\Models\PartialLocation;
 use Http\Discovery\Psr17FactoryDiscovery;

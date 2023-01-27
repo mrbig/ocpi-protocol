@@ -30,7 +30,7 @@ class GetEvseResponse extends BaseResponse
         if ($response->getStatusCode() === 404 || $response->getBody()->__toString() === "") {
             return $return;
         }
-        $json = self::toJson($response, 'V2_1_1/eMSP/Client/Locations/evseGetResponse.schema.json');
+        $json = self::toJson($response, 'V2_1_1/eMSP/Locations/Evses/evseGetResponse.schema.json');
         if (empty($json->data)) {
             return $return;
         }
