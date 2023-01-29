@@ -17,17 +17,17 @@ use Chargemap\OCPI\Versions\V2_1_1\Client\Emsp\Sessions\Put\PutSessionService;
 
 class Sessions extends AbstractFeatures
 {  
-    public function getSession(GetSessionRequest $request): GetSessionResponse
+    public function get(GetSessionRequest $request): GetSessionResponse
     {
         return (new GetSessionService($this->ocpiConfiguration))->handle($request);
     }
 
-    public function putSession(PutSessionRequest $request): PutSessionResponse
+    public function put(PutSessionRequest $request): PutSessionResponse
     {
         return (new PutSessionService($this->ocpiConfiguration))->handle($request);
     }
 
-    public function patchSession(PatchSessionRequest $request): PatchSessionResponse
+    public function patch(PatchSessionRequest $request): PatchSessionResponse
     {
         return (new PatchSessionService($this->ocpiConfiguration))->handle($request);
     }

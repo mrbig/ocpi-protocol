@@ -11,7 +11,7 @@ use Chargemap\OCPI\Versions\V2_1_1\Client\Emsp\Cdrs\Post\PostCdrService;
 
 class Cdrs extends AbstractFeatures
 {  
-    public function postCdr(PostCdrRequest $request): PostCdrResponse
+    public function post(PostCdrRequest $request): PostCdrResponse
     {
         return (new PostCdrService($this->ocpiConfiguration))->handle($request);
     }
