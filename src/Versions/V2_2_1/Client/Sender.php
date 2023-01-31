@@ -8,6 +8,7 @@ use Chargemap\OCPI\Common\Client\Modules\AbstractFeatures;
 use Chargemap\OCPI\Versions\V2_2_1\Client\Sender\Cdrs;
 use Chargemap\OCPI\Versions\V2_2_1\Client\Sender\Commands;
 use Chargemap\OCPI\Versions\V2_2_1\Client\Sender\Locations;
+use Chargemap\OCPI\Versions\V2_2_1\Client\Sender\Sessions;
 use Chargemap\OCPI\Versions\V2_2_1\Client\Sender\Tokens;
 
 class Sender extends AbstractFeatures
@@ -24,6 +25,8 @@ class Sender extends AbstractFeatures
     private Cdrs $cdrs;
 
     private Versions $versions;
+    
+    private Sessions $sessions;
 
     public function credentials(): Credentials
     {
@@ -77,5 +80,14 @@ class Sender extends AbstractFeatures
         }
 
         return $this->versions;
+    }
+
+    public function sessions(): Sessions
+    {
+        if(!isset($this->sessions)) {
+            $this->sessions = new Sessions($this->ocpiConfiguration);
+        }
+
+        return $this->sessions;
     }
 }
