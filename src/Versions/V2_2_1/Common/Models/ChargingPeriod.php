@@ -66,7 +66,9 @@ class ChargingPeriod implements JsonSerializable
     {
         $return = [
             'start_date_time' => DateTimeFormatter::format($this->startDate),
-            'dimensions' => $this->cdrDimensions,
+            'dimensions' => array_map(function ($cdrDimension) {
+                return (object) $cdrDimension->jsonSerialize();
+            }, $this->cdrDimensions),
         ];
         if ($this->tariffId) {
             $return['tariff_id'] = $this->tariffId;
