@@ -173,10 +173,10 @@ class TariffRestrictions implements JsonSerializable
             $return['max_kwh'] = $this->maxKwh;
         }
         if ($this->minCurrent !== null) {
-            $return['min_kwh'] = $this->minCurrent;
+            $return['min_current'] = $this->minCurrent;
         }
         if ($this->maxCurrent !== null) {
-            $return['max_kwh'] = $this->maxCurrent;
+            $return['max_current'] = $this->maxCurrent;
         }
         if ($this->minPower !== null) {
             $return['min_power'] = $this->minPower;
