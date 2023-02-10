@@ -18,9 +18,10 @@ class LocationReferences implements JsonSerializable
         $this->locationId = $locationId;
     }
 
-    public function addEvseUid(string $evseUid): void
+    public function addEvseUid(string $evseUid): self
     {
         $this->evseUids[] = $evseUid;
+        return $this;
     }
 
     public function getLocationId(): string
