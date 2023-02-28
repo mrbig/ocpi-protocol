@@ -5,30 +5,26 @@ declare(strict_types=1);
 namespace Chargemap\OCPI\Versions\V2_2_1\Client\Sender;
 
 use Chargemap\OCPI\Common\Client\Modules\AbstractFeatures;
-use Chargemap\OCPI\Versions\V2_2_1\Client\Sender\Sessions\Get\GetSessionRequest;
-use Chargemap\OCPI\Versions\V2_2_1\Client\Sender\Sessions\Get\GetSessionResponse;
-use Chargemap\OCPI\Versions\V2_2_1\Client\Sender\Sessions\Get\GetSessionService;
-use Chargemap\OCPI\Versions\V2_2_1\Client\Sender\Sessions\Patch\PatchSessionRequest;
-use Chargemap\OCPI\Versions\V2_2_1\Client\Sender\Sessions\Patch\PatchSessionResponse;
-use Chargemap\OCPI\Versions\V2_2_1\Client\Sender\Sessions\Patch\PatchSessionService;
-use Chargemap\OCPI\Versions\V2_2_1\Client\Sender\Sessions\Put\PutSessionRequest;
-use Chargemap\OCPI\Versions\V2_2_1\Client\Sender\Sessions\Put\PutSessionResponse;
-use Chargemap\OCPI\Versions\V2_2_1\Client\Sender\Sessions\Put\PutSessionService;
+use Chargemap\OCPI\Versions\V2_2_1\Client\Sender\Sessions\GetListing\GetSessionsListingRequest;
+use Chargemap\OCPI\Versions\V2_2_1\Client\Sender\Sessions\GetListing\GetSessionsListingResponse;
+use Chargemap\OCPI\Versions\V2_2_1\Client\Sender\Sessions\GetListing\GetSessionsListingService;
 
 class Sessions extends AbstractFeatures
 {
-    public function get(GetSessionRequest $request): GetSessionResponse
+    /**
+     * @param GetSessionsListingRequest|null $listingRequest
+     * @return GetSessionsListingResponse
+     * @throws \Chargemap\OCPI\Common\Client\OcpiEndpointNotFoundException
+     * @throws \Chargemap\OCPI\Common\Client\OcpiUnauthorizedException
+     * @throws \Chargemap\OCPI\Common\Server\Errors\OcpiInvalidPayloadClientError
+     * @throws \Psr\Http\Client\ClientExceptionInterface
+     */
+    public function getListing(?GetSessionsListingRequest $listingRequest = null): GetSessionsListingResponse
     {
-        return (new GetSessionService($this->ocpiConfiguration))->handle($request);
-    }
+        if ($listingRequest === null) {
+            $listingRequest = new GetSessionsListingRequest();
+        }
 
-    public function patch(PatchSessionRequest $request): PatchSessionResponse
-    {
-        return (new PatchSessionService($this->ocpiConfiguration))->handle($request);
-    }
-
-    public function put(PutSessionRequest $request): PutSessionResponse
-    {
-        return (new PutSessionService($this->ocpiConfiguration))->handle($request);
+        return (new GetSessionsListingService($this->ocpiConfiguration))->handle($listingRequest);
     }
 }

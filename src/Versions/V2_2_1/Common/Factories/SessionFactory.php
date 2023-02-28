@@ -39,7 +39,7 @@ class SessionFactory
         );
 
         if (property_exists($json, 'charging_periods')) {
-            foreach (ChargingPeriodFactory::arrayFromJsonArray($json->charging_periods) as $chargingPeriod) {
+            foreach ((array)ChargingPeriodFactory::arrayFromJsonArray($json->charging_periods) as $chargingPeriod) {
                 $session->addChargingPeriod($chargingPeriod);
             }
         }

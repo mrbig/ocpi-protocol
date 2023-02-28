@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\Chargemap\OCPI\Versions\V2_2_1\Server\Sender\Sessions\Get;
+namespace Tests\Chargemap\OCPI\Versions\V2_2_1\Server\Sender\Sessions\GetListing;
 
 use Chargemap\OCPI\Versions\V2_2_1\Common\Factories\SessionFactory;
 use Chargemap\OCPI\Versions\V2_2_1\Server\Sender\Sessions\GetListing\SenderSessionGetListingRequest;
@@ -13,7 +13,7 @@ use Tests\Chargemap\OCPI\OcpiTestCase;
 use Tests\Chargemap\OCPI\Versions\V2_2_1\Common\Models\SessionTest;
 
 /**
- * @covers \Chargemap\OCPI\Versions\V2_2_1\Server\Sessions\SenderSessionGetListingResponse
+ * @covers \Chargemap\OCPI\Versions\V2_2_1\Server\SenderSessionsGetListing\SenderSessionGetListingResponse
  */
 class ResponseConstructionTest extends TestCase
 {
@@ -51,17 +51,17 @@ class ResponseConstructionTest extends TestCase
     public function testShouldReturnDataWithSessions(string $payload): void
     {
         $response = new SenderSessionGetListingResponse(self::getRequest(), 0, 10);
-        $sessions = [];
+        $locations = [];
         foreach (json_decode($payload)->data as $index => $jsonSession) {
-            $session = SessionFactory::fromJson($jsonSession);
-            $sessions[$index] = $session;
-            $response->addSession($session);
+            $location = SessionFactory::fromJson($jsonSession);
+            $locations[$index] = $location;
+            $response->addSession($location);
         }
         $responseInterface = $response->getResponseInterface();
         $payload = json_decode($responseInterface->getBody()->getContents());
-        OcpiTestCase::coerce('V2_2_1/Sender/Sessions/sessionGetResponse.schema.json', $payload);
+        OcpiTestCase::coerce('V2_2_1/Sender/Sessions/sessionGetListingResponse.schema.json', $payload);
         foreach ($payload->data as $index => $jsonSession) {
-            SessionTest::assertJsonSerialization($sessions[$index], $jsonSession);
+            SessionTest::assertJsonSerialization($locations[$index], $jsonSession);
         }
     }
 }
