@@ -18,7 +18,7 @@ class ReceiverTariffPutRequest extends OcpiTariffUpdateRequest
     public function __construct(ServerRequestInterface $request, string $countryCode, string $partyId, string $tariffId)
     {
         parent::__construct($request, $countryCode, $partyId, $tariffId);
-        PayloadValidation::coerce('V2_2_1/Receiver/Tariff/tariffPutRequest.schema.json', $this->jsonBody);
+        PayloadValidation::coerce('V2_2_1/Receiver/Tariffs/tariffPutRequest.schema.json', $this->jsonBody);
         $tariff = TariffFactory::fromJson($this->jsonBody);
         if ($tariff === null) {
             throw new UnexpectedValueException('Tariff cannot be null');

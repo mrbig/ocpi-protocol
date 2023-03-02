@@ -52,7 +52,7 @@ class TariffFactory
         );
 
         if (property_exists($json, 'tariff_alt_text')) {
-            foreach (DisplayTextFactory::arrayFromJsonArray($json->tariff_alt_text) as $displayText) {
+            foreach ((array)DisplayTextFactory::arrayFromJsonArray($json->tariff_alt_text) as $displayText) {
                 $tariff->addTariffAltText($displayText);
             }
         }
