@@ -23,7 +23,7 @@ class CommandResponseFactory
         );
 
         if (property_exists($json, 'message')) {
-            foreach (DisplayTextFactory::arrayFromJsonArray($json->message) as $message) {
+            foreach ((array)DisplayTextFactory::arrayFromJsonArray($json->message) as $message) {
                 $response->addMessage($message);
             }
         }
