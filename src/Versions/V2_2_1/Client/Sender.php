@@ -26,8 +26,6 @@ class Sender extends AbstractFeatures
 
     private Versions $versions;
     
-    private Sessions $sessions;
-
     public function credentials(): Credentials
     {
         if (!isset($this->credentials)) {

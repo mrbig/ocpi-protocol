@@ -2,28 +2,28 @@
 
 declare(strict_types=1);
 
-namespace Chargemap\OCPI\Versions\V2_2_1\Client\Sender\Sessions\Patch;
+namespace Chargemap\OCPI\Versions\V2_2_1\Client\Receiver\Sessions\Put;
 
 use Chargemap\OCPI\Common\Client\Modules\AbstractRequest;
 use Chargemap\OCPI\Versions\V2_2_1\Client\VersionTrait;
 use Chargemap\OCPI\Versions\V2_2_1\Common\Models\ModuleId;
-use Chargemap\OCPI\Versions\V2_2_1\Common\Models\PartialSession;
+use Chargemap\OCPI\Versions\V2_2_1\Common\Models\Session;
 use Http\Discovery\Psr17FactoryDiscovery;
 use InvalidArgumentException;
 use Psr\Http\Message\ServerRequestFactoryInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\StreamFactoryInterface;
 
-class PatchSessionRequest extends AbstractRequest
+class PutSessionRequest extends AbstractRequest
 {
     use VersionTrait;
 
     private string $countryCode;
     private string $partyId;
     private string $sessionId;
-    private PartialSession $partialSession;
+    private Session $session;
 
-    public function __construct(string $countryCode, string $partyId, string $sessionId, PartialSession $partialSession)
+    public function __construct(string $countryCode, string $partyId, string $sessionId, Session $session)
     {
         if (strlen($countryCode) !== 2) {
             throw new InvalidArgumentException("Length of countryCode must be 2");
@@ -34,17 +34,13 @@ class PatchSessionRequest extends AbstractRequest
         }
 
         if (strlen($sessionId) > 36 || empty($sessionId)) {
-            throw new InvalidArgumentException("Length of Session ID must be between 1 and 36");
-        }
-
-        if (!$partialSession->hasLastUpdated()) {
-            throw new InvalidArgumentException("Any request to the PATCH method SHALL contain the last_updated field.");
+            throw new InvalidArgumentException("Length of session ID must be between 1 and 36");
         }
 
         $this->partyId = $partyId;
         $this->sessionId = $sessionId;
         $this->countryCode = $countryCode;
-        $this->partialSession = $partialSession;
+        $this->session = $session;
     }
 
     public function getModule(): ModuleId
@@ -58,9 +54,9 @@ class PatchSessionRequest extends AbstractRequest
             $streamFactory = Psr17FactoryDiscovery::findStreamFactory();
         }
 
-        return $serverRequestFactory->createServerRequest('PATCH',
+        return $serverRequestFactory->createServerRequest('PUT',
             '/' . $this->countryCode . '/' . $this->partyId . '/' . $this->sessionId)
             ->withHeader('Content-Type', 'application/json')
-            ->withBody($streamFactory->createStream(json_encode($this->partialSession)));
+            ->withBody($streamFactory->createStream(json_encode($this->session)));
     }
 }

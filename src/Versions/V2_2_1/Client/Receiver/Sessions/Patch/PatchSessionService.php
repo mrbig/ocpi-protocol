@@ -2,19 +2,19 @@
 
 declare(strict_types=1);
 
-namespace Chargemap\OCPI\Versions\V2_2_1\Client\Sender\Sessions\Put;
+namespace Chargemap\OCPI\Versions\V2_2_1\Client\Receiver\Sessions\Patch;
 
 use Chargemap\OCPI\Common\Client\Modules\AbstractFeatures;
 
-class PutSessionService extends AbstractFeatures
+class PatchSessionService extends AbstractFeatures
 {
     /**
      * @throws \Chargemap\OCPI\Common\Client\OcpiEndpointNotFoundException
      * @throws \Psr\Http\Client\ClientExceptionInterface
      */
-    public function handle(PutSessionRequest $request): PutSessionResponse
+    public function handle(PatchSessionRequest $request): PatchSessionResponse
     {
         $responseInterface = $this->sendRequest($request);
-        return new PutSessionResponse($responseInterface);
+        return new PatchSessionResponse($responseInterface);
     }
 }

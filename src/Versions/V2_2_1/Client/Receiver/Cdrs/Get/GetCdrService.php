@@ -2,20 +2,20 @@
 
 declare(strict_types=1);
 
-namespace Chargemap\OCPI\Versions\V2_2_1\Client\Sender\Sessions\Get;
+namespace Chargemap\OCPI\Versions\V2_2_1\Client\Receiver\Cdrs\Get;
 
 use Chargemap\OCPI\Common\Client\Modules\AbstractFeatures;
 
-class GetSessionService extends AbstractFeatures
+class GetCdrService extends AbstractFeatures
 {
     /**
      * @throws \Chargemap\OCPI\Common\Server\Errors\OcpiInvalidPayloadClientError
      * @throws \Chargemap\OCPI\Common\Client\OcpiEndpointNotFoundException
      * @throws \Psr\Http\Client\ClientExceptionInterface
      */
-    public function handle(GetSessionRequest $request): GetSessionResponse
+    public function handle(GetCdrRequest $request): GetCdrResponse
     {
         $responseInterface = $this->sendRequest($request);
-        return GetSessionResponse::from($responseInterface);
+        return GetCdrResponse::from($responseInterface);
     }
 }
