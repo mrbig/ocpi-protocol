@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\Chargemap\OCPI\Versions\V2_2_1\Server\Sender\Sessions\Get;
+namespace Tests\Chargemap\OCPI\Versions\V2_2_1\Server\Sender\Sessions\GetListing;
 
 use Chargemap\OCPI\Common\Utils\DateTimeFormatter;
 use Chargemap\OCPI\Versions\V2_2_1\Server\Sender\Sessions\GetListing\SenderSessionGetListingRequest;
@@ -11,7 +11,7 @@ use InvalidArgumentException;
 use Tests\Chargemap\OCPI\OcpiTestCase;
 
 /**
- * @covers \Chargemap\OCPI\Versions\V2_2_1\Server\Sender\Sessions\Get\SenderSessionGetListingRequest
+ * @covers \Chargemap\OCPI\Versions\V2_2_1\Server\Sender\Sessions\GetListing\SenderSessionGetListingRequest
  */
 class RequestConstructionTest extends OcpiTestCase
 {

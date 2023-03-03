@@ -23,10 +23,10 @@ class V2_2_1 extends AbstractFeatures
 
     public function receiver(): Receiver
     {
-        if (!isset($this->sender)) {
-            $this->sender = new Receiver($this->ocpiConfiguration);
+        if (!isset($this->receiver)) {
+            $this->receiver = new Receiver($this->ocpiConfiguration);
         }
 
-        return $this->sender;
+        return $this->receiver;
     }
 }

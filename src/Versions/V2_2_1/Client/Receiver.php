@@ -5,11 +5,14 @@ declare(strict_types=1);
 namespace Chargemap\OCPI\Versions\V2_2_1\Client;
 
 use Chargemap\OCPI\Common\Client\Modules\AbstractFeatures;
-use Chargemap\OCPI\Versions\V2_2_1\Client\Reciever\Tokens;
+use Chargemap\OCPI\Versions\V2_2_1\Client\Receiver\Sessions;
+use Chargemap\OCPI\Versions\V2_2_1\Client\Receiver\Tokens;
 
 class Receiver extends AbstractFeatures
 {
     private Credentials $credentials;
+
+    private Sessions $sessions;
 
     private Tokens $tokens;
 
@@ -31,6 +34,15 @@ class Receiver extends AbstractFeatures
         }
 
         return $this->tokens;
+    }
+
+    public function sessions(): Sessions
+    {
+        if (!isset($this->sessions)) {
+            $this->sessions = new Sessions($this->ocpiConfiguration);
+        }
+
+        return $this->sessions;
     }
 
     public function versions(): Versions
