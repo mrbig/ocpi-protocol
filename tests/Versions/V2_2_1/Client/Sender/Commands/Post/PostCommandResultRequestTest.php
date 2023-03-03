@@ -4,14 +4,12 @@ declare(strict_types=1);
 
 namespace Tests\Chargemap\OCPI\Versions\V2_2_1\Client\Sender\Commands\Post;
 
-use Chargemap\OCPI\Versions\V2_2_1\Client\Sender\Commands\Post\PostCommandResultRequest;
-use Chargemap\OCPI\Versions\V2_2_1\Client\Sender\Commands\Post\PostCommandResultService;
+use Chargemap\OCPI\Versions\V2_2_1\Client\Receiver\Commands\Post\PostCommandResultRequest;
 use Chargemap\OCPI\Versions\V2_2_1\Common\Models\CommandResult;
 use Chargemap\OCPI\Versions\V2_2_1\Common\Models\CommandResultType;
 use Chargemap\OCPI\Versions\V2_2_1\Common\Models\DisplayText;
 use Http\Discovery\Psr17FactoryDiscovery;
 use PHPUnit\Framework\TestCase;
-use Psr\Http\Message\ServerRequestInterface;
 use Tests\Chargemap\OCPI\OcpiTestCase;
 
 class PostCommandResultRequestTest extends TestCase

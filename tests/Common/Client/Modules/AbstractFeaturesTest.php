@@ -5,7 +5,7 @@ namespace Tests\Chargemap\OCPI\Common\Client\Modules;
 use Chargemap\OCPI\Common\Client\Modules\AbstractFeatures;
 use Chargemap\OCPI\Common\Client\OcpiConfiguration;
 use Chargemap\OCPI\Common\Client\OcpiVersion;
-use Chargemap\OCPI\Versions\V2_2_1\Client\Sender\Commands\Post\PostCommandResultRequest;
+use Chargemap\OCPI\Versions\V2_2_1\Client\Receiver\Commands\Post\PostCommandResultRequest;
 use Chargemap\OCPI\Versions\V2_2_1\Common\Models\CommandResult;
 use Chargemap\OCPI\Versions\V2_2_1\Common\Models\CommandResultType;
 use Chargemap\OCPI\Versions\V2_2_1\Common\Models\Endpoint;

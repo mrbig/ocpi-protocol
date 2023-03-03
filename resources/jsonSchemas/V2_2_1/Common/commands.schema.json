@@ -166,7 +166,7 @@
             ],
             "additionalProperties": false
         },
-        "command_resPONSE": {
+        "command_response": {
             "type": "object",
             "properties": {
                 "result": {

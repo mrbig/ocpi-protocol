@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Tests\Chargemap\OCPI\Versions\V2_2_1\Server\Sender\Commands\Post;
 
-use Chargemap\OCPI\Versions\V2_2_1\Server\Sender\Commands\Post\CommandResultRequest;
+use Chargemap\OCPI\Versions\V2_2_1\Server\Sender\Commands\Post\CommandResultPostRequest;
 use Http\Discovery\Psr17FactoryDiscovery;
 use Psr\Http\Message\ServerRequestInterface;
 use Tests\Chargemap\OCPI\OcpiTestCase;
@@ -34,7 +34,7 @@ class RequestConstructionTest extends OcpiTestCase
     public function testValidRequest(string $payload): void
     {
         $serverRequestInterface = $this->createRequest($payload);
-        $request = new CommandResultRequest($serverRequestInterface);
+        $request = new CommandResultPostRequest($serverRequestInterface);
 
         CommandResultFactoryTest::assertCommandResult($request->getJsonBody(), $request->getResult());
     }

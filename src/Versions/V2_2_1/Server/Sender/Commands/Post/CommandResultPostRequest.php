@@ -12,7 +12,7 @@ use Chargemap\OCPI\Versions\V2_2_1\Common\Models\CommandResult;
 use Psr\Http\Message\ServerRequestInterface;
 use stdClass;
 
-class CommandResultRequest extends OcpiBaseRequest
+class CommandResultPostRequest extends OcpiBaseRequest
 {
     private stdClass $jsonBody;
 

@@ -2,10 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Chargemap\OCPI\Versions\V2_2_1\Client\Sender\Commands\Post;
+namespace Chargemap\OCPI\Versions\V2_2_1\Client\Receiver\Commands\Post;
 
 use Chargemap\OCPI\Common\Client\Modules\AbstractFeatures;
 use Chargemap\OCPI\Common\Client\Modules\AbstractRequest;
+use Chargemap\OCPI\Common\Client\OcpiEndpointNotFoundException;
 use Http\Discovery\Psr17FactoryDiscovery;
 use Psr\Http\Client\ClientExceptionInterface;
 use Psr\Http\Message\ResponseInterface;
@@ -49,5 +50,4 @@ class PostCommandResultService extends AbstractFeatures
         $serverRequestInterface = $this->addMessageIds($serverRequestInterface, $request);
         return $this->addAuthorization($serverRequestInterface->withUri($endpointUri));
     }
-    
 }
