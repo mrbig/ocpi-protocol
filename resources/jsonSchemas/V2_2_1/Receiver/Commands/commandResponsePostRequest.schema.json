@@ -1,5 +1,5 @@
 {
-    "title": "V2.2.1\\Sender\\Commands\\CommandResponse",
+    "title": "V2.2.1\\Receiver\\Commands\\CommandResponse",
     "properties": {
         "status_code": {
             "$ref": "../../Common/common.schema.json#/definitions/status_code"

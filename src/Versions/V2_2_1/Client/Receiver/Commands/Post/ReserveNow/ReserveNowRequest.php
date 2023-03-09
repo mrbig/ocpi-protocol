@@ -2,26 +2,26 @@
 
 declare(strict_types=1);
 
-namespace Chargemap\OCPI\Versions\V2_2_1\Client\Sender\Commands\Post\StartSession;
+namespace Chargemap\OCPI\Versions\V2_2_1\Client\Receiver\Commands\Post\ReserveNow;
 
 use Chargemap\OCPI\Common\Client\Modules\AbstractRequest;
 use Chargemap\OCPI\Versions\V2_2_1\Client\VersionTrait;
 use Chargemap\OCPI\Versions\V2_2_1\Common\Models\ModuleId;
-use Chargemap\OCPI\Versions\V2_2_1\Common\Models\StartSession;
+use Chargemap\OCPI\Versions\V2_2_1\Common\Models\ReserveNow;
 use Http\Discovery\Psr17FactoryDiscovery;
 use Psr\Http\Message\ServerRequestFactoryInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\StreamFactoryInterface;
 
-class StartSessionRequest extends AbstractRequest
+class ReserveNowRequest extends AbstractRequest
 {
     use VersionTrait;
 
-    private ?StartSession $startSession;
+    private ?ReserveNow $stopSession;
 
-    public function __construct(StartSession $startSession)
+    public function __construct(ReserveNow $stopSession)
     {
-        $this->startSession = $startSession;
+        $this->stopSession = $stopSession;
     }
 
     public function getModule(): ModuleId
@@ -35,11 +35,11 @@ class StartSessionRequest extends AbstractRequest
             $streamFactory = Psr17FactoryDiscovery::findStreamFactory();
         }
 
-        $request = $serverRequestFactory->createServerRequest('POST', '/START_SESSION');
+        $request = $serverRequestFactory->createServerRequest('POST', '/RESERVE_NOW');
 
-        if ($this->startSession) {
+        if ($this->stopSession) {
             $request = $request->withHeader('Content-Type', 'application/json')
-                ->withBody($streamFactory->createStream(json_encode($this->startSession)));
+                ->withBody($streamFactory->createStream(json_encode($this->stopSession)));
         }
 
         return $request;

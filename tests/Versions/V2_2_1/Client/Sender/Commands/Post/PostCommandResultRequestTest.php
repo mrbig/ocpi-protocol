@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Tests\Chargemap\OCPI\Versions\V2_2_1\Client\Sender\Commands\Post;
 
-use Chargemap\OCPI\Versions\V2_2_1\Client\Receiver\Commands\Post\PostCommandResultRequest;
+use Chargemap\OCPI\Versions\V2_2_1\Client\Sender\Commands\Post\PostCommandResultRequest;
 use Chargemap\OCPI\Versions\V2_2_1\Common\Models\CommandResult;
 use Chargemap\OCPI\Versions\V2_2_1\Common\Models\CommandResultType;
 use Chargemap\OCPI\Versions\V2_2_1\Common\Models\DisplayText;
@@ -52,7 +52,7 @@ class PostCommandResultRequestTest extends TestCase
             $this->assertSame($correlationId, $request->getCorrelationId());
         }
         
-        OcpiTestCase::coerce('V2_2_1/Sender/Commands/commandResultPostRequest.schema.json', $requestBody);
+        OcpiTestCase::coerce('V2_2_1/Receiver/Commands/commandResultPostRequest.schema.json', $requestBody);
     }
 
 }

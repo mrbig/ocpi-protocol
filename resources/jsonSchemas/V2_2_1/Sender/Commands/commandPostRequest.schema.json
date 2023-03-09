@@ -1,5 +1,5 @@
 {
-    "title": "V2.2.1\\Receiver\\Commands\\Post",
+    "title": "V2.2.1\\Sender\\Commands\\Post",
     "oneOf": [
         {
             "$ref": "../../Common/commands.schema.json#/definitions/cancel_reservation"
