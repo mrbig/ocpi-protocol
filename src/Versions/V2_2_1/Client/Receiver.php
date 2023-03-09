@@ -8,6 +8,7 @@ use Chargemap\OCPI\Common\Client\Modules\AbstractFeatures;
 use Chargemap\OCPI\Versions\V2_2_1\Client\Receiver\Cdrs;
 use Chargemap\OCPI\Versions\V2_2_1\Client\Receiver\Tokens;
 use Chargemap\OCPI\Versions\V2_2_1\Client\Receiver\Sessions;
+use Chargemap\OCPI\Versions\V2_2_1\Client\Receiver\Commands;
 
 class Receiver extends AbstractFeatures
 {
@@ -20,7 +21,9 @@ class Receiver extends AbstractFeatures
     private Versions $versions;
 
     private Cdrs $cdrs;
-    
+
+    private Commands $commands;
+
     public function credentials(): Credentials
     {
         if (!isset($this->credentials)) {
@@ -64,5 +67,14 @@ class Receiver extends AbstractFeatures
         }
 
         return $this->cdrs;
+    }
+
+    public function commands(): Commands
+    {
+        if (!isset($this->commands)) {
+            $this->commands = new Commands($this->ocpiConfiguration);
+        }
+
+        return $this->commands;
     }
 }

@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Chargemap\OCPI\Versions\V2_2_1\Client\Sender\Commands\Post\ReserveNow;
+namespace Chargemap\OCPI\Versions\V2_2_1\Client\Receiver\Commands\Post\ReserveNow;
 
 use Chargemap\OCPI\Common\Client\Modules\AbstractFeatures;
-use Chargemap\OCPI\Versions\V2_2_1\Client\Sender\Commands\Post\CommandResponseResponse;
+use Chargemap\OCPI\Versions\V2_2_1\Client\Receiver\Commands\Post\CommandResponseResponse;
 
 class ReserveNowService extends AbstractFeatures
 {

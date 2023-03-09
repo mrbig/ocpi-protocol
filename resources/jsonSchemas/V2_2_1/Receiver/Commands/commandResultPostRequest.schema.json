@@ -1,5 +1,5 @@
 {
-    "title": "V2.2.1\\Sender\\Commands\\CommandResult",
+    "title": "V2.2.1\\Receiver\\Commands\\CommandResult",
     "oneOf": [
         {
             "$ref": "../../Common/commands.schema.json#/definitions/command_result"

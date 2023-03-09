@@ -28,7 +28,7 @@ class CommandResultPostRequest extends OcpiBaseRequest
         parent::__construct($request);
 
         $this->jsonBody = json_decode($request->getBody()->__toString());
-        PayloadValidation::coerce('V2_2_1/Sender/Commands/commandResultPostRequest.schema.json', $this->jsonBody);
+        PayloadValidation::coerce('V2_2_1/Receiver/Commands/commandResultPostRequest.schema.json', $this->jsonBody);
 
         $this->result = CommandResultFactory::fromJson($this->jsonBody);
     }
