@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Chargemap\OCPI\Versions\V2_2_1\Client\Receiver\Commands\Post;
+namespace Chargemap\OCPI\Versions\V2_2_1\Client\Sender\Commands\Post;
 
 use Chargemap\OCPI\Common\Client\Modules\AbstractRequest;
 use Chargemap\OCPI\Versions\V2_2_1\Client\VersionTrait;

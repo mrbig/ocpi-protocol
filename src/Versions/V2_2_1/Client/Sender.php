@@ -6,7 +6,6 @@ namespace Chargemap\OCPI\Versions\V2_2_1\Client;
 
 use Chargemap\OCPI\Common\Client\Modules\AbstractFeatures;
 use Chargemap\OCPI\Versions\V2_2_1\Client\Sender\Cdrs;
-use Chargemap\OCPI\Versions\V2_2_1\Client\Sender\Commands;
 use Chargemap\OCPI\Versions\V2_2_1\Client\Sender\Locations;
 use Chargemap\OCPI\Versions\V2_2_1\Client\Sender\Sessions;
 use Chargemap\OCPI\Versions\V2_2_1\Client\Sender\Tariffs;
@@ -14,8 +13,6 @@ use Chargemap\OCPI\Versions\V2_2_1\Client\Sender\Tokens;
 
 class Sender extends AbstractFeatures
 {
-
-    private Commands $commands;
 
     private Credentials $credentials;
 
@@ -74,15 +71,6 @@ class Sender extends AbstractFeatures
         }
 
         return $this->tariffs;
-    }
-
-    public function commands(): Commands
-    {
-        if (!isset($this->commands)) {
-            $this->commands = new Commands($this->ocpiConfiguration);
-        }
-
-        return $this->commands;
     }
 
     public function versions(): Versions

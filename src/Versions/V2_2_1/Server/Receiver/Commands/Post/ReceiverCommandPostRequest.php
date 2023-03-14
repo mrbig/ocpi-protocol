@@ -32,7 +32,7 @@ abstract class ReceiverCommandPostRequest extends OcpiBaseRequest
 
         $this->jsonBody = json_decode($request->getBody()->__toString());
         
-        PayloadValidation::coerce('V2_2_1/Receiver/Commands/commandPostRequest.schema.json', $this->jsonBody);
+        PayloadValidation::coerce('V2_2_1/Sender/Commands/commandPostRequest.schema.json', $this->jsonBody);
 
         $this->command = $this->buildCommand($this->jsonBody);
     }

@@ -2,26 +2,26 @@
 
 declare(strict_types=1);
 
-namespace Chargemap\OCPI\Versions\V2_2_1\Client\Sender\Commands\Post\CancelReservation;
+namespace Chargemap\OCPI\Versions\V2_2_1\Client\Receiver\Commands\Post\StartSession;
 
 use Chargemap\OCPI\Common\Client\Modules\AbstractRequest;
 use Chargemap\OCPI\Versions\V2_2_1\Client\VersionTrait;
 use Chargemap\OCPI\Versions\V2_2_1\Common\Models\ModuleId;
-use Chargemap\OCPI\Versions\V2_2_1\Common\Models\CancelReservation;
+use Chargemap\OCPI\Versions\V2_2_1\Common\Models\StartSession;
 use Http\Discovery\Psr17FactoryDiscovery;
 use Psr\Http\Message\ServerRequestFactoryInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\StreamFactoryInterface;
 
-class CancelReservationRequest extends AbstractRequest
+class StartSessionRequest extends AbstractRequest
 {
     use VersionTrait;
 
-    private ?CancelReservation $cancelReservation;
+    private ?StartSession $startSession;
 
-    public function __construct(CancelReservation $cancelReservation)
+    public function __construct(StartSession $startSession)
     {
-        $this->cancelReservation = $cancelReservation;
+        $this->startSession = $startSession;
     }
 
     public function getModule(): ModuleId
@@ -35,11 +35,11 @@ class CancelReservationRequest extends AbstractRequest
             $streamFactory = Psr17FactoryDiscovery::findStreamFactory();
         }
 
-        $request = $serverRequestFactory->createServerRequest('POST', '/CANCEL_RESERVATION');
+        $request = $serverRequestFactory->createServerRequest('POST', '/START_SESSION');
 
-        if ($this->cancelReservation) {
+        if ($this->startSession) {
             $request = $request->withHeader('Content-Type', 'application/json')
-                ->withBody($streamFactory->createStream(json_encode($this->cancelReservation)));
+                ->withBody($streamFactory->createStream(json_encode($this->startSession)));
         }
 
         return $request;

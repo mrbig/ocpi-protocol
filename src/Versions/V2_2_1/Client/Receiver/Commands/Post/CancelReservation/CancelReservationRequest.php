@@ -2,26 +2,26 @@
 
 declare(strict_types=1);
 
-namespace Chargemap\OCPI\Versions\V2_2_1\Client\Sender\Commands\Post\UnlockConnector;
+namespace Chargemap\OCPI\Versions\V2_2_1\Client\Receiver\Commands\Post\CancelReservation;
 
 use Chargemap\OCPI\Common\Client\Modules\AbstractRequest;
 use Chargemap\OCPI\Versions\V2_2_1\Client\VersionTrait;
+use Chargemap\OCPI\Versions\V2_2_1\Common\Models\CancelReservation;
 use Chargemap\OCPI\Versions\V2_2_1\Common\Models\ModuleId;
-use Chargemap\OCPI\Versions\V2_2_1\Common\Models\UnlockConnector;
 use Http\Discovery\Psr17FactoryDiscovery;
 use Psr\Http\Message\ServerRequestFactoryInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\StreamFactoryInterface;
 
-class UnlockConnectorRequest extends AbstractRequest
+class CancelReservationRequest extends AbstractRequest
 {
     use VersionTrait;
 
-    private ?UnlockConnector $unlockConnector;
+    private ?CancelReservation $cancelReservation;
 
-    public function __construct(UnlockConnector $unlockConnector)
+    public function __construct(CancelReservation $cancelReservation)
     {
-        $this->unlockConnector = $unlockConnector;
+        $this->cancelReservation = $cancelReservation;
     }
 
     public function getModule(): ModuleId
@@ -35,11 +35,11 @@ class UnlockConnectorRequest extends AbstractRequest
             $streamFactory = Psr17FactoryDiscovery::findStreamFactory();
         }
 
-        $request = $serverRequestFactory->createServerRequest('POST', '/UNLOCK_CONNECTOR');
+        $request = $serverRequestFactory->createServerRequest('POST', '/CANCEL_RESERVATION');
 
-        if ($this->unlockConnector) {
+        if ($this->cancelReservation) {
             $request = $request->withHeader('Content-Type', 'application/json')
-                ->withBody($streamFactory->createStream(json_encode($this->unlockConnector)));
+                ->withBody($streamFactory->createStream(json_encode($this->cancelReservation)));
         }
 
         return $request;
