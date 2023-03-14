@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Chargemap\OCPI\Versions\V2_1_1\Client\Emsp\Commands\Post;
 
 use Chargemap\OCPI\Common\Client\Modules\AbstractRequest;
-use Chargemap\OCPI\Versions\V2_1_1\Common\Models\CommandResponseType;
+use Chargemap\OCPI\Versions\V2_1_1\Common\Models\CommandResponse;
 use Chargemap\OCPI\Versions\V2_1_1\Client\VersionTrait;
 use Chargemap\OCPI\Versions\V2_1_1\Common\Models\ModuleId;
 use Http\Discovery\Psr17FactoryDiscovery;
@@ -19,9 +19,9 @@ class PostCommandResultRequest extends AbstractRequest
 
     private string $responseUrl;
 
-    private CommandResponseType $result;
+    private CommandResponse $result;
 
-    public function __construct(string $responseUrl, CommandResponseType $result)
+    public function __construct(string $responseUrl, CommandResponse $result)
     {
         $this->responseUrl = $responseUrl;
         $this->result = $result;
