@@ -44,6 +44,8 @@
                 "NEMA_10_50",
                 "NEMA_14_30",
                 "NEMA_14_50",
+                "PANTOGRAPH_BOTTOM_UP",
+                "PANTOGRAPH_TOP_DOWN",
                 "TESLA_R",
                 "TESLA_S"
             ]
