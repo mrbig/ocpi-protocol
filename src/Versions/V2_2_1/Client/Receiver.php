@@ -6,6 +6,7 @@ namespace Chargemap\OCPI\Versions\V2_2_1\Client;
 
 use Chargemap\OCPI\Common\Client\Modules\AbstractFeatures;
 use Chargemap\OCPI\Versions\V2_2_1\Client\Receiver\Cdrs;
+use Chargemap\OCPI\Versions\V2_2_1\Client\Receiver\Locations;
 use Chargemap\OCPI\Versions\V2_2_1\Client\Receiver\Tokens;
 use Chargemap\OCPI\Versions\V2_2_1\Client\Receiver\Sessions;
 use Chargemap\OCPI\Versions\V2_2_1\Client\Receiver\Commands;
@@ -67,6 +68,15 @@ class Receiver extends AbstractFeatures
         }
 
         return $this->cdrs;
+    }
+    
+    public function locations(): Locations
+    {
+        if(!isset($this->locations)) {
+            $this->locations = new Locations($this->ocpiConfiguration);
+        }
+
+        return $this->locations;
     }
 
     public function commands(): Commands
