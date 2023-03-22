@@ -20,6 +20,12 @@ class PartialLocationFactory
 
         $location = new PartialLocation();
 
+        if (property_exists($json, 'country_code')) {
+            $location->withCountryCode($json->country_code);
+        }
+        if (property_exists($json, 'party_id')) {
+            $location->withPartyId($json->party_id);
+        }
         if (property_exists($json, 'id')) {
             $location->withId($json->id);
         }
