@@ -15,6 +15,8 @@ use Chargemap\OCPI\Versions\V2_2_1\Client\Sender\Tokens;
 class Sender extends AbstractFeatures
 {
 
+    private Commands $commands;
+
     private Credentials $credentials;
 
     private Locations $locations;
