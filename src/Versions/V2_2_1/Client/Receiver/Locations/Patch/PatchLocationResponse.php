@@ -13,6 +13,7 @@ class PatchLocationResponse extends AbstractResponse
 
     public function __construct(ResponseInterface $response)
     {
+        self::checkStatusCode($response);
         $this->responseInterface = $response;
     }
 
