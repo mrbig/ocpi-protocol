@@ -387,7 +387,7 @@ class Cdr implements JsonSerializable
         }
 
         if ($this->homeChargingCompensation !== null) {
-            $return['home_charging_compensatin'] = $this->homeChargingCompensation;
+            $return['home_charging_compensation'] = $this->homeChargingCompensation;
 
         }
 
