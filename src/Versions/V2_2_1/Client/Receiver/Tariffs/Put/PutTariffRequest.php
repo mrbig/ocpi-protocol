@@ -45,7 +45,7 @@ class PutTariffRequest extends AbstractRequest
 
     public function getModule(): ModuleId
     {
-        return ModuleId::SESSIONS();
+        return ModuleId::TARIFFS();
     }
 
     public function getServerRequestInterface(ServerRequestFactoryInterface $serverRequestFactory, ?StreamFactoryInterface $streamFactory): ServerRequestInterface
