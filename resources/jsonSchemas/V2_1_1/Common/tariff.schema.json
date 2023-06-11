@@ -49,12 +49,6 @@
             "$ref": "common.schema.json#/definitions/timestamp"
         }
     },
-    "required": [
-        "id",
-        "currency",
-        "elements",
-        "last_updated"
-    ],
     "additionalProperties": false,
     "definitions": {
         "tariff_element": {

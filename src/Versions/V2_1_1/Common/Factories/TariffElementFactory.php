@@ -11,6 +11,27 @@ use stdClass;
 
 class TariffElementFactory
 {
+
+        /**
+     * @param stdClass[]|null $json
+     * @return TariffElement[]
+     */
+    public static function arrayFromJsonArray(?array $json): ?array
+    {
+        if ($json === null) {
+            return null;
+        }
+
+        $elements = [];
+
+        foreach ($json as $jsonElement) {
+            $elements[] = self::fromJson($jsonElement);
+        }
+
+        return $elements;
+    }
+
+
     public static function fromJson(?stdClass $json): ?TariffElement
     {
         if ($json === null) {
