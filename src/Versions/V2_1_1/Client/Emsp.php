@@ -8,6 +8,7 @@ use Chargemap\OCPI\Common\Client\Modules\AbstractFeatures;
 use Chargemap\OCPI\Versions\V2_1_1\Client\Emsp\Cdrs;
 use Chargemap\OCPI\Versions\V2_1_1\Client\Emsp\Commands;
 use Chargemap\OCPI\Versions\V2_1_1\Client\Emsp\Locations;
+use Chargemap\OCPI\Versions\V2_1_1\Client\Emsp\Tariffs;
 use Chargemap\OCPI\Versions\V2_1_1\Client\Emsp\Tokens;
 use Chargemap\OCPI\Versions\V2_1_1\Client\Emsp\Sessions;
 use Chargemap\OCPI\Versions\V2_1_1\Client\Versions;
@@ -18,6 +19,7 @@ class Emsp extends AbstractFeatures
     private Credentials $credentials;
     private Commands $commands;
     private Locations $locations;
+    private Tariffs $tariffs;
     private Tokens $tokens;
     private Sessions $sessions;
     private Versions $versions;
@@ -47,6 +49,15 @@ class Emsp extends AbstractFeatures
         }
 
         return $this->commands;
+    }
+
+    public function tariffs(): Tariffs
+    {
+        if(!isset($this->tariffs)) {
+            $this->tariffs = new Tariffs($this->ocpiConfiguration);
+        }
+
+        return $this->tariffs;
     }
 
     public function tokens(): Tokens

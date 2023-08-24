@@ -1,0 +1,14 @@
+{
+    "id": "12",
+    "currency": "USD",
+    "elements": [
+        {
+            "price_components": [{
+                "type": "TIME",
+                "price": "2.0",
+                "step_size": 300
+            }]
+        }
+    ],
+    "last_updated": "2019-01-01T00:00:00Z"
+}
