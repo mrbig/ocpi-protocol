@@ -45,6 +45,8 @@ class PostCommandResultService extends AbstractFeatures
 
         $serverRequestInterface = $request->getServerRequestInterface($this->ocpiConfiguration->getServerRequestFactory(),
             $this->ocpiConfiguration->getStreamFactory());
+        
+        $serverRequestInterface = $this->addMessageIds($serverRequestInterface, $request);
 
         return $this->addAuthorization($serverRequestInterface->withUri($endpointUri));
     }
