@@ -73,7 +73,7 @@ class AbstractFeatures
         return $uri;
     }
 
-    protected function addMessageIds(ServerRequestInterface $serverRequestInterface, AbstractRequest $request): ServerRequestInterface
+    protected function addMessageIds(ServerRequestInterface $serverRequestInterface, MessageIdInterface $request): ServerRequestInterface
     {
         return $serverRequestInterface
             ->withHeader('X-Request-ID', $request->getRequestId())

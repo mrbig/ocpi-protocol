@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace Chargemap\OCPI\Common\Client\Modules\Versions\GetAvailableVersions;
 
 use Chargemap\OCPI\Common\Client\Modules\AbstractFeatures;
+use Chargemap\OCPI\Common\Client\Modules\AbstractRequest;
+use Psr\Http\Message\ServerRequestInterface;
 
 class GetAvailableVersionsService extends AbstractFeatures
 {
@@ -17,6 +19,7 @@ class GetAvailableVersionsService extends AbstractFeatures
     public function get(GetAvailableVersionsRequest $request): GetAvailableVersionsResponse
     {
         $serverRequestInterface = $request->getServerRequestInterface($this->ocpiConfiguration->getServerRequestFactory());
+        $serverRequestInterface = $this->addMessageIds($serverRequestInterface, $request);
         $serverRequestInterface = $this->addAuthorization($serverRequestInterface);
         $responseInterface = $this->ocpiConfiguration->getHttpClient()->sendRequest($serverRequestInterface);
         return GetAvailableVersionsResponse::fromResponseInterface($responseInterface);
