@@ -18,8 +18,10 @@ use Chargemap\OCPI\Common\Models\BaseModuleId;
 class ModuleId extends BaseModuleId
 {
     public const CDRS = 'cdrs';
+    public const CHARGING_PROFILES = 'chargingprofiles';
     public const COMMANDS = 'commands';
     public const CRED_AND_REG = 'credentials';
+    public const HUB_CLIENT_INFO = 'hubclientinfo';
     public const LOCATIONS = 'locations';
     public const SESSIONS = 'sessions';
     public const TARIFFS = 'tariffs';
