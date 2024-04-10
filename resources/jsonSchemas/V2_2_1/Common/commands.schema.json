@@ -28,7 +28,18 @@
                     "format": "uri"
                 },
                 "token": {
-                    "$ref": "token.schema.json"
+                    "$ref": "token.schema.json",
+                    "required": [
+                        "country_code",
+                        "party_id",
+                        "uid",
+                        "type",
+                        "contract_id",
+                        "issuer",
+                        "valid",
+                        "whitelist",
+                        "last_updated"
+                    ]
                 },
                 "expiry_date": {
                     "$ref": "common.schema.json#/definitions/timestamp"
@@ -77,7 +88,18 @@
                     "format": "uri"
                 },
                 "token": {
-                    "$ref": "token.schema.json"
+                    "$ref": "token.schema.json",
+                    "required": [
+                        "country_code",
+                        "party_id",
+                        "uid",
+                        "type",
+                        "contract_id",
+                        "issuer",
+                        "valid",
+                        "whitelist",
+                        "last_updated"
+                    ]
                 },
                 "location_id": {
                     "type": "string",

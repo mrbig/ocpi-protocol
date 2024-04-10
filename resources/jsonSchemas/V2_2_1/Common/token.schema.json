@@ -36,7 +36,7 @@
                 "string",
                 "null"
             ],
-            "minLength": 1,
+            "minLength": 0,
             "maxLength": 64
         },
         "issuer": {
@@ -49,7 +49,7 @@
                 "string",
                 "null"
             ],
-            "minLength": 1,
+            "minLength": 0,
             "maxLength": 36
         },
         "valid": {
@@ -69,7 +69,7 @@
                 "string",
                 "null"
             ],
-            "minLength": 1,
+            "minLength": 0,
             "maxLength": 2
         },
         "default_profile_type": {
