@@ -44,10 +44,11 @@ class GetLocationsListingResponseTest extends TestCase
                 Psr17FactoryDiscovery::findStreamFactory()->createStream($payload)
             );
 
-        $locations = GetLocationsListingResponse::from((new GetLocationsListingRequest())
+        $response = GetLocationsListingResponse::from((new GetLocationsListingRequest())
             ->withOffset(0)
-            ->withLimit(10), $serverResponse)
-            ->getLocations();
+            ->withLimit(10), $serverResponse);
+        $locations = $response->getLocations();
+        $this->assertEquals(count($json->data), $response->getTotalCount());
 
         foreach ($json->data as $index => $jsonLocation) {
             LocationFactoryTest::assertLocation($jsonLocation, $locations[$index]);

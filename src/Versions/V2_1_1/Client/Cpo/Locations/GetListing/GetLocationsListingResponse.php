@@ -15,6 +15,8 @@ use Psr\Http\Message\ResponseInterface;
 
 class GetLocationsListingResponse extends BaseResponse
 {
+    use ListingResponse;
+
     private ?GetLocationsListingRequest $nextRequest;
 
     /** @var Location[] */
@@ -46,6 +48,8 @@ class GetLocationsListingResponse extends BaseResponse
                 $return->errors[] = $errors;
             }
         }
+
+        $return->parseTotalCount($response);
 
         $nextRequest = null;
 
