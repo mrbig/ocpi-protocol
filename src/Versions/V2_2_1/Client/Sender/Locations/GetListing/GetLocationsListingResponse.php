@@ -19,6 +19,9 @@ class GetLocationsListingResponse extends BaseResponse
     /** @var Location[] */
     private array $locations = [];
 
+    /** @var string[] */
+    private array $errors = [];
+
     /**
      * @param GetLocationsListingRequest $request
      * @param ResponseInterface $response
@@ -36,10 +39,11 @@ class GetLocationsListingResponse extends BaseResponse
 
         $return = new self();
         foreach ($json->data ?? [] as $item) {
-            if (PayloadValidation::isValidJson('V2_2_1/Sender/Locations/location.schema.json', $item)) {
+            if (PayloadValidation::isValidJson('V2_2_1/Sender/Locations/location.schema.json', $item, $errors)) {
                 $return->locations[] = LocationFactory::fromJson($item);
+            } else {
+                $return->errors[] = $errors;
             }
-            //TODO throw validator errors at the end of the function
         }
 
         $nextRequest = null;
@@ -69,5 +73,11 @@ class GetLocationsListingResponse extends BaseResponse
     public function getNextRequest(): ?GetLocationsListingRequest
     {
         return $this->nextRequest;
+    }
+
+    /** @return string[] */
+    public function getErrors(): array
+    {
+        return $this->errors;
     }
 }

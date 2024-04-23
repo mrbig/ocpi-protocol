@@ -28,9 +28,16 @@ final class PayloadValidation
         }
     }
 
-    public static function isValidJson(string $schemaPath,stdClass $json): bool
+    public static function isValidJson(string $schemaPath,stdClass $json, ?array &$errors = null): bool
     {
         $jsonSchemaValidation = self::validator($schemaPath,$json);
+        $valid = $jsonSchemaValidation->isValid();
+        if (!$valid) {
+            $errors = [];
+            foreach ($jsonSchemaValidation->getErrors() as $error) {
+                $errors[] = "property: " . $error['property'] . ', error: ' . $error['message'] . '. ';
+            }
+        }
         return $jsonSchemaValidation->isValid();
     }
 

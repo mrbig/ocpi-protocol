@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Chargemap\OCPI\Versions\V2_1_1\Client\Cpo\Locations\GetListing;
 
+use Chargemap\OCPI\Common\Client\Modules\ListingResponse;
 use Chargemap\OCPI\Common\Client\Modules\Locations\GetListing\GetLocationsListingResponse as BaseResponse;
 use Chargemap\OCPI\Common\Client\OcpiUnauthorizedException;
 use Chargemap\OCPI\Common\Server\Errors\OcpiInvalidPayloadClientError;
@@ -18,6 +19,9 @@ class GetLocationsListingResponse extends BaseResponse
 
     /** @var Location[] */
     private array $locations = [];
+
+    /** @var string[] */
+    private array $errors = [];
 
     /**
      * @param GetLocationsListingRequest $request
@@ -36,10 +40,11 @@ class GetLocationsListingResponse extends BaseResponse
 
         $return = new self();
         foreach ($json->data ?? [] as $item) {
-            if (PayloadValidation::isValidJson('V2_1_1/CPO/Locations/location.schema.json', $item)) {
+            if (PayloadValidation::isValidJson('V2_1_1/CPO/Locations/location.schema.json', $item, $errors)) {
                 $return->locations[] = LocationFactory::fromJson($item);
+            } else {
+                $return->errors[] = $errors;
             }
-            //TODO throw validator errors at the end of the function
         }
 
         $nextRequest = null;
@@ -69,5 +74,11 @@ class GetLocationsListingResponse extends BaseResponse
     public function getNextRequest(): ?GetLocationsListingRequest
     {
         return $this->nextRequest;
+    }
+
+    /** @return string[] */
+    public function getErrors(): array
+    {
+        return $this->errors;
     }
 }
