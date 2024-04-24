@@ -40,7 +40,11 @@ class GetLocationsListingResponse extends BaseResponse
         $return = new self();
         foreach ($json->data ?? [] as $item) {
             if (PayloadValidation::isValidJson('V2_2_1/Sender/Locations/location.schema.json', $item, $errors)) {
-                $return->locations[] = LocationFactory::fromJson($item);
+                try {
+                    $return->locations[] = LocationFactory::fromJson($item);
+                } catch (OcpiInvalidPayloadClientError $e) {
+                    $return->errors[] = $e->getMessage();
+                }
             } else {
                 $return->errors[] = $errors;
             }
