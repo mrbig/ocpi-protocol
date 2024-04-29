@@ -7,6 +7,7 @@ namespace Chargemap\OCPI\Versions\V2_1_1\Client;
 use Chargemap\OCPI\Common\Client\Modules\AbstractFeatures;
 use Chargemap\OCPI\Versions\V2_1_1\Client\Cpo\Cdrs;
 use Chargemap\OCPI\Versions\V2_1_1\Client\Cpo\Locations;
+use Chargemap\OCPI\Versions\V2_1_1\Client\Cpo\Tariffs;
 use Chargemap\OCPI\Versions\V2_1_1\Client\Cpo\Tokens;
 
 class Cpo extends AbstractFeatures
@@ -14,6 +15,8 @@ class Cpo extends AbstractFeatures
     private Credentials $credentials;
 
     private Locations $locations;
+
+    private Tariffs $tariffs;
 
     private Tokens $tokens;
 
@@ -37,6 +40,15 @@ class Cpo extends AbstractFeatures
         }
 
         return $this->locations;
+    }
+
+    public function tariffs(): Tariffs
+    {
+        if (!isset($this->tariffs)) {
+            $this->tariffs = new Tariffs($this->ocpiConfiguration);
+        }
+
+        return $this->tariffs;
     }
 
     public function tokens(): Tokens
