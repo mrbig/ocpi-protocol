@@ -17,8 +17,6 @@ class GetLocationsListingResponse extends BaseResponse
 {
     use ListingResponse;
 
-    private ?GetLocationsListingRequest $nextRequest;
-
     /** @var Location[] */
     private array $locations = [];
 
@@ -55,20 +53,7 @@ class GetLocationsListingResponse extends BaseResponse
 
         $return->parseTotalCount($response);
 
-        $nextRequest = null;
-
-        $nextOffset = $request->getNextOffset($response);
-        $nextLimit = $request->getNextLimit($response);
-
-        if ($nextOffset !== null) {
-            $nextRequest = (clone $request)->withOffset($nextOffset);
-
-            if ($nextLimit !== null) {
-                $nextRequest = $nextRequest->withLimit($nextLimit);
-            }
-        }
-
-        $return->nextRequest = $nextRequest;
+        $return->generateNextRequest($request, $response);
 
         return $return;
     }
@@ -81,7 +66,7 @@ class GetLocationsListingResponse extends BaseResponse
 
     public function getNextRequest(): ?GetLocationsListingRequest
     {
-        return $this->nextRequest;
+        return $this->getStoredNextRequest();
     }
 
     /** @return string[] */

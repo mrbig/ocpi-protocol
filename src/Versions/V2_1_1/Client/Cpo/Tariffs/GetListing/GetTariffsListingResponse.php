@@ -5,18 +5,19 @@ declare(strict_types=1);
 namespace Chargemap\OCPI\Versions\V2_1_1\Client\Cpo\Tariffs\GetListing;
 
 use Chargemap\OCPI\Common\Client\Modules\AbstractResponse;
+use Chargemap\OCPI\Common\Client\Modules\ListingResponse;
 use Chargemap\OCPI\Common\Client\OcpiUnauthorizedException;
 use Chargemap\OCPI\Common\Server\Errors\OcpiInvalidPayloadClientError;
 use Chargemap\OCPI\Common\Utils\PayloadValidation;
-use Chargemap\OCPI\Versions\V2_1_1\Common\Factories\CdrFactory;
 use Chargemap\OCPI\Versions\V2_1_1\Common\Factories\TariffFactory;
 use Chargemap\OCPI\Versions\V2_1_1\Common\Models\Tariff;
 use Psr\Http\Message\ResponseInterface;
 
 class GetTariffsListingResponse extends AbstractResponse
 {
-    private ?GetTariffsListingRequest $nextRequest;
 
+    use ListingResponse;
+    
     /** @var Tariff[] */
     private array $tariffs = [];
 
@@ -47,20 +48,7 @@ class GetTariffsListingResponse extends AbstractResponse
             }
         }
 
-        $nextRequest = null;
-
-        $nextOffset = $request->getNextOffset($response);
-        $nextLimit = $request->getNextLimit($response);
-
-        if ($nextOffset !== null) {
-            $nextRequest = (clone $request)->withOffset($nextOffset);
-
-            if($nextLimit !== null) {
-                $nextRequest = $nextRequest->withLimit($nextLimit);
-            }
-        }
-
-        $return->nextRequest = $nextRequest;
+        $return->generateNextRequest($request, $response);
 
         return $return;
     }
@@ -73,7 +61,7 @@ class GetTariffsListingResponse extends AbstractResponse
 
     public function getNextRequest(): ?GetTariffsListingRequest
     {
-        return $this->nextRequest;
+        return $this->getStoredNextRequest();
     }
 
     /** @return string[] */

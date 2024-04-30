@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Chargemap\OCPI\Versions\V2_1_1\Client\Cpo\Locations\GetListing;
 
 use Chargemap\OCPI\Common\Client\Modules\ListingRequest;
+use Chargemap\OCPI\Common\Client\Modules\ListingRequestInterface;
 use Chargemap\OCPI\Common\Client\Modules\Locations\GetListing\GetLocationsListingRequest as BaseRequest;
 use Chargemap\OCPI\Common\Utils\DateTimeFormatter;
 use Chargemap\OCPI\Versions\V2_1_1\Client\VersionTrait;
@@ -15,6 +16,7 @@ use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\StreamFactoryInterface;
 
 class GetLocationsListingRequest extends BaseRequest
+    implements ListingRequestInterface
 {
     use VersionTrait;
     use ListingRequest;
