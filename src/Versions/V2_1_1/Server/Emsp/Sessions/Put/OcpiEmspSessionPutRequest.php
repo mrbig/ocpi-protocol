@@ -32,7 +32,7 @@ class OcpiEmspSessionPutRequest extends OcpiSessionUpdateRequest
         PayloadValidation::coerce('V2_1_1/eMSP/Sessions/sessionPutRequest.schema.json', $jsonBody);
     }
 
-    protected function buildSession(stdClass $jsonBody): Session
+    protected function buildSession(stdClass $jsonBody): ?Session
     {
         return SessionFactory::fromJson($jsonBody);
     }
