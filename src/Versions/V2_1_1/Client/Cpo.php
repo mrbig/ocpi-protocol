@@ -6,6 +6,7 @@ namespace Chargemap\OCPI\Versions\V2_1_1\Client;
 
 use Chargemap\OCPI\Common\Client\Modules\AbstractFeatures;
 use Chargemap\OCPI\Versions\V2_1_1\Client\Cpo\Cdrs;
+use Chargemap\OCPI\Versions\V2_1_1\Client\Cpo\Commands;
 use Chargemap\OCPI\Versions\V2_1_1\Client\Cpo\Locations;
 use Chargemap\OCPI\Versions\V2_1_1\Client\Cpo\Tariffs;
 use Chargemap\OCPI\Versions\V2_1_1\Client\Cpo\Tokens;
@@ -21,6 +22,8 @@ class Cpo extends AbstractFeatures
     private Tokens $tokens;
 
     private Cdrs $cdrs;
+
+    private Commands $commands;
 
     private Versions $versions;
 
@@ -67,6 +70,15 @@ class Cpo extends AbstractFeatures
         }
 
         return $this->cdrs;
+    }
+
+    public function commands(): Commands
+    {
+        if (!isset($this->commands)) {
+            $this->commands = new Commands($this->ocpiConfiguration);
+        }
+
+        return $this->commands;
     }
 
     public function versions(): Versions
