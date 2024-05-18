@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace Chargemap\OCPI\Versions\V2_1_1\Client\Cpo\Commands\Post;
 
 use Chargemap\OCPI\Common\Client\Modules\AbstractResponse;
-use Chargemap\OCPI\Versions\V2_2_1\Common\Factories\CommandResponseFactory;
-use Chargemap\OCPI\Versions\V2_2_1\Common\Models\CommandResponse;
+use Chargemap\OCPI\Versions\V2_1_1\Common\Factories\CommandResponseFactory;
+use Chargemap\OCPI\Versions\V2_1_1\Common\Models\CommandResponse;
 use Psr\Http\Message\ResponseInterface;
 
 class CommandResponseResponse extends AbstractResponse
