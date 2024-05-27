@@ -42,4 +42,15 @@ class EvIdUtilsTest extends TestCase
         $checksum = EvIdUtils::calcChecksum($input);
         $this->assertEquals($expected, $checksum);
     }
+
+    /**
+     * 
+     * @return void 
+     * @dataProvider provideTestCalcChecksum
+     */
+    public function testAddChecksum(string $input, string $expected): void
+    {
+        $checksum = EvIdUtils::addChecksum($input);
+        $this->assertEquals($input.'-'.$expected, $checksum);
+    }
 }

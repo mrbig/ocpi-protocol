@@ -102,6 +102,18 @@ class EvIdUtils
     }
 
     /**
+     * Calculate the EV-ID checksum and add it to the input as [input]-[checksum]
+     * @param string $input the input to process
+     * @return string the input with the checksum added, or the original string, if
+     *                the input is invalid
+     */
+    public static function addChecksum(string $input): string
+    {
+        $checksum = self::calcChecksum($input);
+        return is_null($checksum) ? $input : $input . '-' . $checksum;
+    }
+
+    /**
      * Convert the input to uppercase, and remove any - characters
      * @param string $input 
      * @return string 
