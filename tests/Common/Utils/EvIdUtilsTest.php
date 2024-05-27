@@ -28,7 +28,7 @@ class EvIdUtilsTest extends TestCase
             ['PT73902837ABCZ', 'Z'],
             ['DE83DUIEN83QGZ', 'D'],
             ['DE83DUIEN83ZGQ', 'M'],
-            ['DE8AA001234567', '0'],
+            ['DE8-AA-001234567', '0'],
         ];
     }
 
