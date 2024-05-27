@@ -114,6 +114,24 @@ class EvIdUtils
     }
 
     /**
+     * Check if the input has a valid checksum
+     * @param mixed $input the input to validate. Must contain 15 characters
+     * @param bool $strict if true, missing checksums will be considered invalid
+     * @return bool true if the checksum is valid, false otherwise
+     */
+    public static function isChecksumValid($input, bool $strict = false): bool
+    {
+        $input = self::normalizeInput($input);
+        if (!preg_match('/^([A-Za-z]{2})([A-Za-z0-9]{3})([A-Za-z0-9]{9})([A-Za-z0-9])?(?=$)/', $input, $matches)) {
+            return false;
+        }
+        if (!isset($matches[4])) {
+            return !$strict;
+        }
+        return self::calcChecksum($matches[1] . $matches[2] . $matches[3]) === $matches[4];
+    }
+
+    /**
      * Convert the input to uppercase, and remove any - characters
      * @param string $input 
      * @return string 
