@@ -226,7 +226,7 @@ class Location implements JsonSerializable
         return $this->relatedLocations;
     }
 
-    public function getParkingType(): ParkingType
+    public function getParkingType(): ?ParkingType
     {
         return $this->parkingType;
     }
