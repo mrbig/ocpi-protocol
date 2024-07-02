@@ -56,16 +56,24 @@ abstract class AbstractResponse
         }
         // Check for 1000+ status codes
         if ($jsonObject->status_code >= 3000) {
-            throw new OcpiServerError(
-                OcpiServerErrorStatusCode::from($jsonObject->status_code),
-                $jsonObject->status_message ?? 'Server error'
-            );
+            $message = $jsonObject->status_message ?? 'Server error';
+            if (OcpiServerErrorStatusCode::isValid($jsonObject->status_code)) {
+                $errorCode = OcpiServerErrorStatusCode::from($jsonObject->status_code);
+            } else {
+                $errorCode = OcpiServerErrorStatusCode::ERROR_SERVER_UNABLE_TO_USE();
+                $message .= ' [' . $jsonObject->status_code . ']';
+            }
+            throw new OcpiServerError($errorCode, $message);
         }
         if ($jsonObject->status_code >= 2000) {
-            throw new OcpiClientError(
-                OcpiClientErrorStatusCode::from($jsonObject->status_code),
-                $jsonObject->status_message ?? 'Client error'
-            );
+            $message = $jsonObject->status_message ?? 'Client error';
+            if (OcpiClientErrorStatusCode::isValid($jsonObject->status_code)) {
+                $errorCode = OcpiClientErrorStatusCode::from($jsonObject->status_code);
+            } else {
+                $errorCode = OcpiClientErrorStatusCode::ERROR_CLIENT_INVALID_PARAMETERS();
+                $message .= ' [' . $jsonObject->status_code . ']';
+            }
+            throw new OcpiClientError($errorCode, $message);
         }
         if ($schemaPath !== null) {
             PayloadValidation::coerce($schemaPath, $jsonObject);
