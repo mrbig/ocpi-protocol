@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Chargemap\OCPI\Versions\V2_1_1\Client\Cpo\Locations\GetListing;
+namespace Chargemap\OCPI\Versions\V2_1_1\Client\Cpo\Tariffs\GetListing;
 
 use Chargemap\OCPI\Common\Client\Modules\ListingRequest;
 use Chargemap\OCPI\Common\Client\Modules\ListingRequestInterface;
-use Chargemap\OCPI\Common\Client\Modules\Locations\GetListing\GetLocationsListingRequest as BaseRequest;
+use Chargemap\OCPI\Common\Client\Modules\Tariffs\GetListing\GetTariffsListingRequest as BaseRequest;
 use Chargemap\OCPI\Common\Utils\DateTimeFormatter;
 use Chargemap\OCPI\Versions\V2_1_1\Client\VersionTrait;
 use Chargemap\OCPI\Versions\V2_1_1\Common\Models\ModuleId;
@@ -15,7 +15,7 @@ use Psr\Http\Message\ServerRequestFactoryInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\StreamFactoryInterface;
 
-class GetLocationsListingRequest extends BaseRequest
+class GetTariffsListingRequest extends BaseRequest
     implements ListingRequestInterface
 {
     use VersionTrait;
@@ -30,11 +30,6 @@ class GetLocationsListingRequest extends BaseRequest
         return new self();
     }
 
-    public function getModule(): ModuleId
-    {
-        return ModuleId::LOCATIONS();
-    }
-
     public function withDateFrom(DateTime $dateFrom): self
     {
         $this->dateFrom = $dateFrom;
@@ -45,6 +40,11 @@ class GetLocationsListingRequest extends BaseRequest
     {
         $this->dateTo = $dateTo;
         return $this;
+    }
+
+    public function getModule(): ModuleId
+    {
+        return ModuleId::TARIFFS();
     }
 
     public function getServerRequestInterface(ServerRequestFactoryInterface $serverRequestFactory, ?StreamFactoryInterface $streamFactory): ServerRequestInterface

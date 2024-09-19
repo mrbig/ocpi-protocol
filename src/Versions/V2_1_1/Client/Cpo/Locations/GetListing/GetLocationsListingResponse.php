@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Chargemap\OCPI\Versions\V2_1_1\Client\Cpo\Locations\GetListing;
 
+use Chargemap\OCPI\Common\Client\Modules\ListingResponse;
 use Chargemap\OCPI\Common\Client\Modules\Locations\GetListing\GetLocationsListingResponse as BaseResponse;
 use Chargemap\OCPI\Common\Client\OcpiUnauthorizedException;
 use Chargemap\OCPI\Common\Server\Errors\OcpiInvalidPayloadClientError;
@@ -14,10 +15,13 @@ use Psr\Http\Message\ResponseInterface;
 
 class GetLocationsListingResponse extends BaseResponse
 {
-    private ?GetLocationsListingRequest $nextRequest;
+    use ListingResponse;
 
     /** @var Location[] */
     private array $locations = [];
+
+    /** @var string[] */
+    private array $errors = [];
 
     /**
      * @param GetLocationsListingRequest $request
@@ -36,26 +40,20 @@ class GetLocationsListingResponse extends BaseResponse
 
         $return = new self();
         foreach ($json->data ?? [] as $item) {
-            if (PayloadValidation::isValidJson('V2_1_1/CPO/Locations/location.schema.json', $item)) {
-                $return->locations[] = LocationFactory::fromJson($item);
-            }
-            //TODO throw validator errors at the end of the function
-        }
-
-        $nextRequest = null;
-
-        $nextOffset = $request->getNextOffset($response);
-        $nextLimit = $request->getNextLimit($response);
-
-        if ($nextOffset !== null) {
-            $nextRequest = (clone $request)->withOffset($nextOffset);
-
-            if ($nextLimit !== null) {
-                $nextRequest = $nextRequest->withLimit($nextLimit);
+            if (PayloadValidation::isValidJson('V2_1_1/CPO/Locations/location.schema.json', $item, $errors)) {
+                try {
+                    $return->locations[] = LocationFactory::fromJson($item);
+                } catch (OcpiInvalidPayloadClientError $e) {
+                    $return->errors[] = $e->getMessage();
+                }
+            } else {
+                $return->errors[] = $errors;
             }
         }
 
-        $return->nextRequest = $nextRequest;
+        $return->parseTotalCount($response);
+
+        $return->generateNextRequest($request, $response);
 
         return $return;
     }
@@ -68,6 +66,12 @@ class GetLocationsListingResponse extends BaseResponse
 
     public function getNextRequest(): ?GetLocationsListingRequest
     {
-        return $this->nextRequest;
+        return $this->getStoredNextRequest();
+    }
+
+    /** @return string[] */
+    public function getErrors(): array
+    {
+        return $this->errors;
     }
 }
