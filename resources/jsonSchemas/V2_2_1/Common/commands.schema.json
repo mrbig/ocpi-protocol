@@ -197,7 +197,7 @@
                         "NOT_SUPPORTED",
                         "REJECTED",
                         "ACCEPTED",
-                        "UNKOWN_SESSION"
+                        "UNKNOWN_SESSION"
                     ]
                 },
                 "timeout": {
