@@ -73,10 +73,14 @@ class AbstractFeatures
         return $uri;
     }
 
-    protected function addMessageIds(ServerRequestInterface $serverRequestInterface, AbstractRequest $request): ServerRequestInterface
+    protected function addMessageIds(ServerRequestInterface $serverRequestInterface, MessageIdInterface $request): ServerRequestInterface
     {
-        return $serverRequestInterface
-            ->withHeader('X-Request-ID', $request->getRequestId())
-            ->withHeader('X-Correlation-ID', $request->getCorrelationId());
+        if ($request->getRequestId() !== null) {
+            $serverRequestInterface = $serverRequestInterface->withHeader('X-Request-ID', $request->getRequestId());
+        }
+        if ($request->getCorrelationId() !== null) {
+            $serverRequestInterface = $serverRequestInterface->withHeader('X-Correlation-ID', $request->getCorrelationId());
+        }
+        return $serverRequestInterface;
     }
 }
