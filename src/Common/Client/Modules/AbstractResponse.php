@@ -51,7 +51,7 @@ abstract class AbstractResponse
         } catch (JsonException $exception) {
             throw new OcpiInvalidPayloadClientError('Received payload is not valid JSON');
         }
-        if (!$jsonObject->status_code) {
+        if (!property_exists($jsonObject, 'status_code')) {
             throw new OcpiInvalidPayloadClientError('Received payload is missing a status code');
         }
         // Check for 1000+ status codes
