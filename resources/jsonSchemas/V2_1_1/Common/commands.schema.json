@@ -151,7 +151,7 @@
                         "REJECTED",
                         "ACCEPTED",
                         "TIMEOUT",
-                        "UNKOWN_SESSION"
+                        "UNKNOWN_SESSION"
                     ]
                 }
             },
