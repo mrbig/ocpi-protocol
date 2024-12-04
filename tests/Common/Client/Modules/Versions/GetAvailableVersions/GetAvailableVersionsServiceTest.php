@@ -60,6 +60,7 @@ class GetAvailableVersionsServiceTest extends OcpiResponseTestCase
         $json = json_decode($payload, false, 512, JSON_THROW_ON_ERROR);
 
         $serverRequestInterface = $this->createMock(ServerRequestInterface::class);
+        $serverRequestInterface->method('withHeader')->willReturn($serverRequestInterface);
 
         $request = $this->createMock(GetAvailableVersionsRequest::class);
         $request->expects(TestCase::atLeastOnce())->method('getServerRequestInterface')->willReturn($serverRequestInterface);
