@@ -9,7 +9,6 @@ use Chargemap\OCPI\Common\Utils\PayloadValidation;
 use Chargemap\OCPI\Versions\V2_2_1\Common\Factories\PartialTokenFactory;
 use Chargemap\OCPI\Versions\V2_2_1\Common\Models\PartialToken;
 use Chargemap\OCPI\Versions\V2_2_1\Common\Models\TokenType;
-use Chargemap\OCPI\Versions\V2_2_1\Server\Receiver\Locations\Patch\UnsupportedPatchException;
 use Chargemap\OCPI\Versions\V2_2_1\Server\Receiver\Tokens\TokenRequestTrait;
 use Psr\Http\Message\ServerRequestInterface;
 use UnexpectedValueException;
@@ -29,10 +28,6 @@ class ReceiverTokenPatchRequest extends OcpiUpdateRequest
         $partialToken = PartialTokenFactory::fromJson($this->jsonBody);
         if ($partialToken === null) {
             throw new UnexpectedValueException('PartialToken cannot be null');
-        }
-
-        if ($partialToken->hasUid() && $partialToken->getUid() !== $tokenUid) {
-            throw new UnsupportedPatchException('Property id can not be patched at the moment');
         }
 
         $this->partialToken = $partialToken;

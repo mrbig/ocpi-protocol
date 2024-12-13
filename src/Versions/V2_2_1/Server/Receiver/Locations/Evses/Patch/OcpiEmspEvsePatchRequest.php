@@ -9,7 +9,6 @@ use Chargemap\OCPI\Versions\V2_2_1\Common\Factories\PartialEVSEFactory;
 use Chargemap\OCPI\Versions\V2_2_1\Common\Models\PartialEVSE;
 use Chargemap\OCPI\Versions\V2_2_1\Server\Receiver\Locations\Evses\BaseEvseUpdateRequest;
 use Chargemap\OCPI\Versions\V2_2_1\Server\Receiver\Locations\LocationRequestParams;
-use Chargemap\OCPI\Versions\V2_2_1\Server\Receiver\Locations\Patch\UnsupportedPatchException;
 use Psr\Http\Message\ServerRequestInterface;
 use UnexpectedValueException;
 
@@ -21,7 +20,6 @@ class OcpiEmspEvsePatchRequest extends BaseEvseUpdateRequest
      * OcpiEmspEvsePatchRequest constructor.
      * @param ServerRequestInterface $request
      * @param LocationRequestParams $params
-     * @throws UnsupportedPatchException
      */
     public function __construct(ServerRequestInterface $request, LocationRequestParams $params)
     {
@@ -31,10 +29,6 @@ class OcpiEmspEvsePatchRequest extends BaseEvseUpdateRequest
 
         if ($partialEvse === null) {
             throw new UnexpectedValueException('PartialConnector cannot be null');
-        }
-
-        if($partialEvse->hasUid() && $partialEvse->getUid() !== $params->getEvseUid()) {
-            throw new UnsupportedPatchException( 'Property uid can not be patched at the moment' );
         }
 
         $this->partialEvse = $partialEvse;

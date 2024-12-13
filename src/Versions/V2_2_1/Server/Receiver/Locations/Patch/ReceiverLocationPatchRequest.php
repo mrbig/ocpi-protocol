@@ -25,10 +25,6 @@ class ReceiverLocationPatchRequest extends LocationUpdateRequest
             throw new UnexpectedValueException('PartialLocation cannot be null');
         }
 
-        if($partialLocation->hasId() && $partialLocation->getId() !== $params->getLocationId()) {
-            throw new UnsupportedPatchException( 'Property id can not be patched at the moment' );
-        }
-
         $this->partialLocation = $partialLocation;
     }
 

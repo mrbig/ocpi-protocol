@@ -6,7 +6,6 @@ namespace Tests\Chargemap\OCPI\Versions\V2_2_1\Server\Receiver\Locations\Patch;
 
 use Chargemap\OCPI\Versions\V2_2_1\Server\Receiver\Locations\LocationRequestParams;
 use Chargemap\OCPI\Versions\V2_2_1\Server\Receiver\Locations\Patch\ReceiverLocationPatchRequest;
-use Chargemap\OCPI\Versions\V2_2_1\Server\Receiver\Locations\Patch\UnsupportedPatchException;
 use Tests\Chargemap\OCPI\OcpiTestCase;
 use Tests\Chargemap\OCPI\Versions\V2_2_1\Common\Factories\PartialLocationFactoryTest;
 
@@ -41,7 +40,6 @@ class RequestConstructionTest extends OcpiTestCase
      * @param string $countryCode
      * @param string $partyId
      * @param string $locationId
-     * @throws UnsupportedPatchException
      */
     public function testShouldConstructRequestWithFullPayload(string $filename, string $countryCode, string $partyId, string $locationId): void
     {
@@ -56,13 +54,5 @@ class RequestConstructionTest extends OcpiTestCase
         $location = $request->getPartialLocation();
 
         PartialLocationFactoryTest::assertPartialLocation($request->getJsonBody(), $location);
-    }
-
-    public function testShouldFailWithPatchId(): void
-    {
-        $serverRequestInterface = $this->createServerRequestInterface(__DIR__ . '/payloads/LocationPatchFullPayload.json');
-
-        $this->expectException(UnsupportedPatchException::class);
-        new ReceiverLocationPatchRequest($serverRequestInterface, new LocationRequestParams('FR', 'TNM', 'LOC2'));
     }
 }

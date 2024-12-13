@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Tests\Chargemap\OCPI\Versions\V2_2_1\Server\Emsp\Sessions\Patch;
 
-use Chargemap\OCPI\Versions\V2_2_1\Server\Receiver\Locations\Patch\UnsupportedPatchException;
 use Chargemap\OCPI\Versions\V2_2_1\Server\Receiver\Sessions\Patch\ReceiverSessionPatchRequest;
 use Tests\Chargemap\OCPI\OcpiTestCase;
 use Tests\Chargemap\OCPI\Versions\V2_2_1\Common\Factories\PartialSessionFactoryTest;
@@ -28,7 +27,6 @@ class RequestConstructionTest extends OcpiTestCase
     /**
      * @param string $filename
      * @dataProvider validParametersProvider()
-     * @throws UnsupportedPatchException
      */
     public function testShouldConstructRequestWithPayload(string $filename): void
     {
@@ -37,13 +35,5 @@ class RequestConstructionTest extends OcpiTestCase
         $request = new ReceiverSessionPatchRequest($serverRequestInterface, 'FR', 'TNM', $json->id ?? 'Default');
 
         PartialSessionFactoryTest::assertPartialSession($json, $request->getPartialSession());
-    }
-
-    public function testShouldFailWithPatchId(): void
-    {
-        $serverRequestInterface = $this->createServerRequestInterface(__DIR__ . '/payloads/SessionPatchFullPayload.json');
-
-        $this->expectException(UnsupportedPatchException::class);
-        new ReceiverSessionPatchRequest($serverRequestInterface, 'FR', 'TNM', '102');
     }
 }
