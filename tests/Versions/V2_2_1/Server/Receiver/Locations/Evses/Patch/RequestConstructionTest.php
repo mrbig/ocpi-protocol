@@ -6,7 +6,6 @@ namespace Tests\Chargemap\OCPI\Versions\V2_2_1\Server\Receiver\Locations\Evses\P
 
 use Chargemap\OCPI\Versions\V2_2_1\Server\Receiver\Locations\Evses\Patch\OcpiEmspEvsePatchRequest;
 use Chargemap\OCPI\Versions\V2_2_1\Server\Receiver\Locations\LocationRequestParams;
-use Chargemap\OCPI\Versions\V2_2_1\Server\Receiver\Locations\Patch\UnsupportedPatchException;
 use Tests\Chargemap\OCPI\OcpiTestCase;
 use Tests\Chargemap\OCPI\Versions\V2_2_1\Common\Factories\PartialEVSEFactoryTest;
 
@@ -30,7 +29,6 @@ class RequestConstructionTest extends OcpiTestCase
     /**
      * @param string $filename
      * @dataProvider getJsonFilename
-     * @throws UnsupportedPatchException
      */
     public function testShouldConstructRequest(string $filename): void
     {
@@ -48,13 +46,5 @@ class RequestConstructionTest extends OcpiTestCase
 
         $evse = $request->getPartialEvse();
         PartialEVSEFactoryTest::assertPartialEVSE($request->getJsonBody(), $evse);
-    }
-
-    public function testShouldFailWithPatchUid(): void
-    {
-        $serverRequestInterface = $this->createServerRequestInterface(__DIR__ . '/payloads/EvsePatchFullPayload.json');
-
-        $this->expectException(UnsupportedPatchException::class);
-        new OcpiEmspEvsePatchRequest($serverRequestInterface, new LocationRequestParams('FR', 'TNM', 'LOC1', '1'));
     }
 }

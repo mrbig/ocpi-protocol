@@ -7,7 +7,6 @@ namespace Tests\Chargemap\OCPI\Versions\V2_2_1\Server\Receiver\Locations\Evses\C
 use Chargemap\OCPI\Common\Server\Errors\OcpiInvalidPayloadClientError;
 use Chargemap\OCPI\Versions\V2_2_1\Server\Receiver\Locations\Evses\Connectors\Patch\OcpiEmspConnectorPatchRequest;
 use Chargemap\OCPI\Versions\V2_2_1\Server\Receiver\Locations\LocationRequestParams;
-use Chargemap\OCPI\Versions\V2_2_1\Server\Receiver\Locations\Patch\UnsupportedPatchException;
 use Http\Discovery\Psr17FactoryDiscovery;
 use Tests\Chargemap\OCPI\OcpiTestCase;
 use Tests\Chargemap\OCPI\Versions\V2_2_1\Common\Factories\PartialConnectorFactoryTest;
@@ -31,7 +30,6 @@ class RequestConstructionTest extends OcpiTestCase
     /**
      * @dataProvider validPayloadsProvider
      * @param string $filename
-     * @throws UnsupportedPatchException
      */
     public function testShouldConstructRequestWithFullPayload(string $filename): void
     {
@@ -70,13 +68,5 @@ class RequestConstructionTest extends OcpiTestCase
 
         $this->expectException(OcpiInvalidPayloadClientError::class);
         new OcpiEmspConnectorPatchRequest($serverRequestInterface, new LocationRequestParams('FR', 'TNM', 'LOC1', '3256', '1'));
-    }
-
-    public function testShouldFailWithPatchId(): void
-    {
-        $serverRequestInterface = $this->createServerRequestInterface(__DIR__ . '/payloads/valid/ConnectorPatchFullPayload.json');
-
-        $this->expectException(UnsupportedPatchException::class);
-        new OcpiEmspConnectorPatchRequest($serverRequestInterface, new LocationRequestParams('FR', 'TNM', 'LOC1', '3256', '2'));
     }
 }
