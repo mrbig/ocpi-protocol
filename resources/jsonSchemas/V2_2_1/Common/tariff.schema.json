@@ -268,7 +268,10 @@
                             "minimum": 0
                         },
                         "vat": {
-                            "type": "number",
+                            "type": [
+                                "number",
+                                "null"
+                            ],
                             "minimum": 0
                         },
                         "step_size": {

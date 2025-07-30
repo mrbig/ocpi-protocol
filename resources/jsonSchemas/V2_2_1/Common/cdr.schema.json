@@ -160,7 +160,10 @@
             }
         },
         "signed_data": {
-            "type": "object",
+            "type": [
+                "null",
+                "object"
+            ],
             "properties": {
                 "encoding_method": {
                     "type": "string",
