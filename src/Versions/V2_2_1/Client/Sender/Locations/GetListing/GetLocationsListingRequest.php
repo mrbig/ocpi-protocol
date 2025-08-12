@@ -23,6 +23,8 @@ class GetLocationsListingRequest extends BaseRequest
 
     private ?DateTime $dateTo;
 
+    private ?string $smartPaging;
+
     public static function builder(): self
     {
         return new self();
@@ -68,6 +70,10 @@ class GetLocationsListingRequest extends BaseRequest
 
         if (!empty($this->dateTo)) {
             $parameters['date_to'] = DateTimeFormatter::format($this->dateTo);
+        }
+
+        if (!empty($this->smartPaging)) {
+            $parameters['smart_paging'] = $this->smartPaging;
         }
 
         return http_build_query($parameters);
