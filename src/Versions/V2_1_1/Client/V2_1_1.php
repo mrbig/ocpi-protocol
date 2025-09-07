@@ -8,58 +8,25 @@ use Chargemap\OCPI\Common\Client\Modules\AbstractFeatures;
 
 class V2_1_1 extends AbstractFeatures
 {
-    private Credentials $credentials;
+    private Cpo $cpo;
 
-    private Locations $locations;
+    private Emsp $emsp;
 
-    private Tokens $tokens;
-
-    private Cdrs $cdrs;
-
-    private Versions $versions;
-
-    public function credentials(): Credentials
+    public function cpo(): Cpo
     {
-        if (!isset($this->credentials)) {
-            $this->credentials = new Credentials($this->ocpiConfiguration);
+        if (!isset($this->cpo)) {
+            $this->cpo = new Cpo($this->ocpiConfiguration);
         }
 
-        return $this->credentials;
+        return $this->cpo;
     }
 
-    public function locations(): Locations
+    public function emsp(): Emsp
     {
-        if (!isset($this->locations)) {
-            $this->locations = new Locations($this->ocpiConfiguration);
+        if (!isset($this->emsp)) {
+            $this->emsp = new Emsp($this->ocpiConfiguration);
         }
 
-        return $this->locations;
-    }
-
-    public function tokens(): Tokens
-    {
-        if (!isset($this->tokens)) {
-            $this->tokens = new Tokens($this->ocpiConfiguration);
-        }
-
-        return $this->tokens;
-    }
-
-    public function cdrs(): Cdrs
-    {
-        if (!isset($this->cdrs)) {
-            $this->cdrs = new Cdrs($this->ocpiConfiguration);
-        }
-
-        return $this->cdrs;
-    }
-
-    public function versions(): Versions
-    {
-        if(!isset($this->versions)) {
-            $this->versions = new Versions($this->ocpiConfiguration);
-        }
-
-        return $this->versions;
+        return $this->emsp;
     }
 }

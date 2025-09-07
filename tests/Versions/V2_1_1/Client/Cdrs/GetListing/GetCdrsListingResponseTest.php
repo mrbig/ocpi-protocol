@@ -3,9 +3,8 @@
 declare(strict_types=1);
 
 namespace Tests\Chargemap\OCPI\Versions\V2_1_1\Client\Cdrs\GetListing;
-
-use Chargemap\OCPI\Versions\V2_1_1\Client\Cdrs\GetListing\GetCdrsListingRequest;
-use Chargemap\OCPI\Versions\V2_1_1\Client\Cdrs\GetListing\GetCdrsListingResponse;
+use Chargemap\OCPI\Versions\V2_1_1\Client\Cpo\Cdrs\GetListing\GetCdrsListingRequest;
+use Chargemap\OCPI\Versions\V2_1_1\Client\Cpo\Cdrs\GetListing\GetCdrsListingResponse;
 use Http\Discovery\Psr17FactoryDiscovery;
 use PHPUnit\Framework\TestCase;
 use Tests\Chargemap\OCPI\Versions\V2_1_1\Common\Factories\CdrFactoryTest;

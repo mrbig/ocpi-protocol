@@ -10,18 +10,19 @@ use Chargemap\OCPI\Versions\V2_1_1\Common\Models\PartialSession;
 use Chargemap\OCPI\Versions\V2_1_1\Server\Emsp\Locations\Patch\UnsupportedPatchException;
 use Chargemap\OCPI\Versions\V2_1_1\Server\Emsp\Sessions\OcpiSessionUpdateRequest;
 use Psr\Http\Message\ServerRequestInterface;
+use stdClass;
 use UnexpectedValueException;
 
 class OcpiEmspSessionPatchRequest extends OcpiSessionUpdateRequest
 {
-    private PartialSession $partialSession;
+    protected PartialSession $partialSession;
 
     public function __construct(ServerRequestInterface $request, string $countryCode, string $partyId, string $sessionId)
     {
         parent::__construct($request, $countryCode, $partyId, $sessionId);
-        PayloadValidation::coerce('V2_1_1/eMSP/Server/Sessions/sessionPatchRequest.schema.json', $this->jsonBody);
+        $this->validatePayload($this->jsonBody);
 
-        $partialSession = PartialSessionFactory::fromJson($this->jsonBody);
+        $partialSession = $this->buildSession($this->jsonBody);
         if ($partialSession === null) {
             throw new UnexpectedValueException('PartialSession cannot be null');
         }
@@ -31,6 +32,16 @@ class OcpiEmspSessionPatchRequest extends OcpiSessionUpdateRequest
         }
 
         $this->partialSession = $partialSession;
+    }
+
+    protected function validatePayload(stdClass $jsonBody): void
+    {
+        PayloadValidation::coerce('V2_1_1/eMSP/Sessions/sessionPatchRequest.schema.json', $jsonBody);
+    }
+
+    protected function buildSession(stdClass $jsonBody): PartialSession
+    {
+        return PartialSessionFactory::fromJson($jsonBody);
     }
 
     public function getPartialSession(): PartialSession

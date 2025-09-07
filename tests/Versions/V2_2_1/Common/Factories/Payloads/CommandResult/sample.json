@@ -1,0 +1,7 @@
+{
+    "result": "ACCEPTED",
+    "message": [
+        {"language": "EN", "text": "All ok"},
+        {"language": "DE", "text": "Alles gut"}
+    ]
+}

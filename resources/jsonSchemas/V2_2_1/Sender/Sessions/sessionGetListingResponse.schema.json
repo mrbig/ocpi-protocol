@@ -1,0 +1,37 @@
+{
+    "title": "V2.2.1\\Sender\\Sessions\\GetListing",
+    "properties": {
+        "status_code": {
+            "$ref": "../../Common/common.schema.json#/definitions/status_code"
+        },
+        "status_message": {
+            "oneOf": [
+                {
+                    "type": "null"
+                },
+                {
+                    "$ref": "../../Common/common.schema.json#/definitions/status_message"
+                }
+            ]
+        },
+        "data": {
+            "type": [
+                "array",
+                "null"
+            ],
+            "items": {
+                "$comment": "This should support partially valid Sessions so validation is done in the client for each object independently",
+                "type": "object"
+            },
+            "additionalProperties": false
+        },
+        "timestamp": {
+            "$ref": "../../Common/common.schema.json#/definitions/timestamp"
+        }
+    },
+    "required": [
+        "status_code",
+        "timestamp"
+    ],
+    "additionalProperties": false
+}

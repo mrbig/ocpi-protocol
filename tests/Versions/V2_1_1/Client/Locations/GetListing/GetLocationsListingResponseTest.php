@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace Tests\Chargemap\OCPI\Versions\V2_1_1\Client\Locations\GetListing;
 
 use Chargemap\OCPI\Common\Client\OcpiUnauthorizedException;
-use Chargemap\OCPI\Versions\V2_1_1\Client\Locations\GetListing\GetLocationsListingRequest;
-use Chargemap\OCPI\Versions\V2_1_1\Client\Locations\GetListing\GetLocationsListingResponse;
+use Chargemap\OCPI\Versions\V2_1_1\Client\Cpo\Locations\GetListing\GetLocationsListingRequest;
+use Chargemap\OCPI\Versions\V2_1_1\Client\Cpo\Locations\GetListing\GetLocationsListingResponse;
 use Http\Discovery\Psr17FactoryDiscovery;
 use PHPUnit\Framework\TestCase;
 use Tests\Chargemap\OCPI\Versions\V2_1_1\Common\Factories\LocationFactoryTest;
@@ -44,10 +44,11 @@ class GetLocationsListingResponseTest extends TestCase
                 Psr17FactoryDiscovery::findStreamFactory()->createStream($payload)
             );
 
-        $locations = GetLocationsListingResponse::from((new GetLocationsListingRequest())
+        $response = GetLocationsListingResponse::from((new GetLocationsListingRequest())
             ->withOffset(0)
-            ->withLimit(10), $serverResponse)
-            ->getLocations();
+            ->withLimit(10), $serverResponse);
+        $locations = $response->getLocations();
+        $this->assertEquals(count($json->data), $response->getTotalCount());
 
         foreach ($json->data as $index => $jsonLocation) {
             LocationFactoryTest::assertLocation($jsonLocation, $locations[$index]);
@@ -85,11 +86,12 @@ class GetLocationsListingResponseTest extends TestCase
                 Psr17FactoryDiscovery::findStreamFactory()->createStream($payload)
             );
 
-        $locations = GetLocationsListingResponse::from((new GetLocationsListingRequest())
+        $response = GetLocationsListingResponse::from((new GetLocationsListingRequest())
             ->withOffset(0)
-            ->withLimit(10), $serverResponse)
-            ->getLocations();
+            ->withLimit(10), $serverResponse);;
 
-        $this->assertCount(1,$locations);
+        $this->assertCount(1, $response->getLocations());
+
+        $this->assertCount(1, $response->getErrors());
     }
 }

@@ -1,0 +1,22 @@
+{
+    "status_code": 1000,
+    "status_message": "Success",
+    "timestamp": "2021-03-19T15:35:28Z",
+    "data": {
+        "country_code": "FR",
+        "party_id": "FR1",
+        "uid": "012345678",
+        "type": "RFID",
+        "contract_id": "DE8ACC12E46L89",
+        "visual_number": "DF000-2001-8999",
+        "issuer": "TheNewMotion",
+        "group_id": "vip1",
+        "valid": true,
+        "whitelist": "ALWAYS",
+        "energy_contract": {
+            "supplier_name": "green energy co",
+            "contract_id": "12345"
+        },
+        "last_updated": "2015-06-29T22:39:09Z"
+    }
+}

@@ -1,0 +1,349 @@
+{
+    "title": "V2.2.1\\CDR",
+    "type": "object",
+    "properties": {
+        "country_code": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 2
+        },
+        "party_id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 3
+        },
+        "id": {
+            "type": "string",
+            "minLength": 1,
+            "max_length": 36
+        },
+        "start_date_time": {
+            "$ref": "common.schema.json#/definitions/timestamp"
+        },
+        "end_date_time": {
+            "$ref": "common.schema.json#/definitions/timestamp"
+        },
+        "session_id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 36
+        },
+        "cdr_token": {
+            "$ref": "common.schema.json#/definitions/cdr_token"
+        },
+        "auth_method": {
+            "type": "string",
+            "enum": [
+                "AUTH_REQUEST",
+                "COMMAND",
+                "WHITELIST"
+            ]
+        },
+        "authorization_reference": {
+            "type": [
+                "string",
+                "null"
+            ],
+            "minLength": 1,
+            "maxLength": 36
+        },
+        "cdr_location": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 39
+                },
+                "name": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "minLength": 1,
+                    "maxLength": 255
+                },
+                "address": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 45
+                },
+                "city": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 45
+                },
+                "postal_code": {
+                    "type": ["null", "string"],
+                    "minLength": 1,
+                    "maxLength": 10
+                },
+                "state": {
+                    "type": ["null", "string"],
+                    "minLength": 1,
+                    "maxLength": 20
+                },
+                "country": {
+                    "type": "string",
+                    "minLength": 3,
+                    "maxLength": 3
+                },
+                "coordinates": {
+                    "$ref": "common.schema.json#/definitions/geo_location"
+                },
+                "evse_uid": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 36
+                },
+                "evse_id": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 48
+                },
+                "connector_id": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 36
+                },
+                "connector_standard": {
+                    "$ref": "connector.schema.json#/properties/standard"
+                },
+                "connector_format": {
+                    "$ref": "connector.schema.json#/properties/format"
+                },
+                "connector_power_type": {
+                    "$ref": "connector.schema.json#/properties/power_type"
+                }
+            },
+            "required": [
+                "id",
+                "address",
+                "city",
+                "country",
+                "coordinates",
+                "evse_uid",
+                "evse_id",
+                "connector_id",
+                "connector_standard",
+                "connector_format",
+                "connector_power_type"
+            ]
+        },
+        "meter_id": {
+            "type": [
+                "string",
+                "null"
+            ],
+            "minLength": 1,
+            "maxLength": 255
+        },
+        "currency": {
+            "type": "string",
+            "minLength": 3,
+            "maxLength": 3
+        },
+        "tariffs": {
+            "type": [
+                "array",
+                "null"
+            ],
+            "items": {
+                "$ref": "tariff.schema.json"
+            }
+        },
+        "charging_periods": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+                "$ref": "common.schema.json#/definitions/charging_period"
+            }
+        },
+        "signed_data": {
+            "type": [
+                "null",
+                "object"
+            ],
+            "properties": {
+                "encoding_method": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 36
+                },
+                "encoding_method_version": {
+                    "type": [
+                        "null",
+                        "integer"
+                    ]
+                },
+                "public_key": {
+                    "type": [
+                        "null",
+                        "string"
+                    ],
+                    "minLength": 1,
+                    "maxLength": 512
+                },
+                "signed_values": {
+                    "type": "array",
+                    "minItems": 1,
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "nature": {
+                                "type": "string",
+                                "minLength": 1,
+                                "maxLength": 32
+                            },
+                            "plain_data": {
+                                "type": "string",
+                                "minLength": 1,
+                                "maxLength": 512
+                            },
+                            "signed_data": {
+                                "type": "string",
+                                "minLength": 1,
+                                "maxLength": 5000
+                            }
+                        },
+                        "required": [
+                            "nature",
+                            "plain_data",
+                            "signed_data"
+                        ]
+                    }
+                },
+                "url": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 412
+                }
+            },
+            "required": [
+                "encoding_method",
+                "signed_values"
+            ]
+        },
+        "total_cost": {
+            "$ref": "common.schema.json#/definitions/price"
+        },
+        "total_fixed_cost": {
+            "oneOf": [
+                {
+                    "type": "null"
+                },
+                {
+                    "$ref": "common.schema.json#/definitions/price"
+                }
+            ]
+        },
+        "total_energy": {
+            "type": "number"
+        },
+        "total_energy_cost": {
+            "oneOf": [
+                {
+                    "type": "null"
+                },
+                {
+                    "$ref": "common.schema.json#/definitions/price"
+                }
+            ]
+        },
+        "total_time": {
+            "type": "number"
+        },
+        "total_time_cost": {
+            "oneOf": [
+                {
+                    "type": "null"
+                },
+                {
+                    "$ref": "common.schema.json#/definitions/price"
+                }
+            ]
+        },
+        "total_parking_time": {
+            "type": [
+                "number",
+                "null"
+            ]
+        },
+        "total_parking_cost": {
+            "oneOf": [
+                {
+                    "type": "null"
+                },
+                {
+                    "$ref": "common.schema.json#/definitions/price"
+                }
+            ]
+        },
+        "total_reservation_cost": {
+            "oneOf": [
+                {
+                    "type": "null"
+                },
+                {
+                    "$ref": "common.schema.json#/definitions/price"
+                }
+            ]
+        },
+        "remark": {
+            "type": [
+                "string",
+                "null"
+            ],
+            "minLength": 1,
+            "maxLength": 255
+        },
+        "invoice_reference_id": {
+            "type": [
+                "string",
+                "null"
+            ],
+            "minLength": 1,
+            "maxLength": 39
+        },
+        "credit": {
+            "type": [
+                "boolean",
+                "null"
+            ]
+        },
+        "credit_reference_id": {
+            "type": [
+                "string",
+                "null"
+            ],
+            "minLength": 1,
+            "maxLength": 39
+        },
+        "home_charging_compensation": {
+            "type": [
+                "boolean",
+                "null"
+            ]
+        },
+        "last_updated": {
+            "$ref": "common.schema.json#/definitions/timestamp"
+        }
+    },
+    "required": [
+        "country_code",
+        "party_id",
+        "id",
+        "start_date_time",
+        "end_date_time",
+        "cdr_token",
+        "auth_method",
+        "cdr_location",
+        "currency",
+        "charging_periods",
+        "total_cost",
+        "total_energy",
+        "total_time",
+        "last_updated"
+    ],
+    "additionalProperties": false
+}

@@ -21,14 +21,16 @@ class LocationReferences implements JsonSerializable
         $this->locationId = $locationId;
     }
 
-    public function addEvseUid(string $evseUid): void
+    public function addEvseUid(string $evseUid): self
     {
         $this->evseUids[] = $evseUid;
+        return $this;
     }
 
-    public function addConnectorId($connectorId): void
+    public function addConnectorId($connectorId): self
     {
         $this->connectorIds[] = $connectorId;
+        return $this;
     }
 
     public function getLocationId(): string

@@ -1,0 +1,56 @@
+{
+  "country_code": "FR",
+  "party_id": "FRA",
+  "id": "101",
+  "start_date_time": "2015-06-29T22:39:09Z",
+  "end_date_time": "2015-06-29T22:51:09Z",
+  "kwh": 0.00,
+  "cdr_token": {
+    "country_code": "FR",
+    "party_id": "FRA",
+    "type": "RFID",
+    "uid": "user1",
+    "contract_id": "contract1"
+  },
+  "auth_method": "AUTH_REQUEST",
+  "authorization_reference": "ref1",
+  "location_id": "location_2",
+  "evse_uid": "evse1",
+  "connector_id": "connector1",
+  "meter_id": "random id",
+  "currency": "EUR",
+  "charging_periods": [
+    {
+      "start_date_time": "2015-06-29T22:39:09Z",
+      "dimensions": [
+        {
+          "type": "ENERGY",
+          "volume": 123
+        },
+        {
+          "type": "TIME",
+          "volume": 213
+        }
+      ]
+    },
+    {
+      "start_date_time": "2015-07-30T22:39:09Z",
+      "dimensions": [
+        {
+          "type": "MAX_CURRENT",
+          "volume": 5
+        },
+        {
+          "type": "PARKING_TIME",
+          "volume": 3
+        }
+      ]
+    }
+  ],
+  "total_cost": {
+    "excl_vat": 2.50,
+    "incl_vat": 3.0
+  },
+  "status": "PENDING",
+  "last_updated": "2015-06-29T22:39:09Z"
+}

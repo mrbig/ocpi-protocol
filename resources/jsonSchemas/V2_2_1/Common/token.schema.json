@@ -1,0 +1,115 @@
+{
+    "title": "V2.2.1\\Token",
+    "type": "object",
+    "properties": {
+        "country_code": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 2
+        },
+        "party_id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 3
+        },
+        "uid": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 36
+        },
+        "type": {
+            "type": "string",
+            "enum": [
+                "AD_HOC_USER",
+                "APP_USER",
+                "RFID",
+                "OTHER"
+            ]
+        },
+        "contract_id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 36
+        },
+        "visual_number": {
+            "type": [
+                "string",
+                "null"
+            ],
+            "minLength": 0,
+            "maxLength": 64
+        },
+        "issuer": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 64
+        },
+        "group_id": {
+            "type": [
+                "string",
+                "null"
+            ],
+            "minLength": 0,
+            "maxLength": 36
+        },
+        "valid": {
+            "type": "boolean"
+        },
+        "whitelist": {
+            "type": "string",
+            "enum": [
+                "ALWAYS",
+                "ALLOWED",
+                "ALLOWED_OFFLINE",
+                "NEVER"
+            ]
+        },
+        "language": {
+            "type": [
+                "string",
+                "null"
+            ],
+            "minLength": 0,
+            "maxLength": 2
+        },
+        "default_profile_type": {
+            "oneOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "$ref": "common.schema.json#/definitions/profile_type"
+                }
+            ]
+        },
+        "energy_contract": {
+            "oneOf": [
+                {
+                    "type": "null"
+                },
+                {
+                    "type": "object",
+                    "properties": {
+                        "supplier_name": {
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 64
+                        },
+                        "contract_id": {
+                            "type": [
+                                "string",
+                                "null"
+                            ],
+                            "minLength": 1,
+                            "maxLength": 64
+                        }
+                    }
+                }
+            ]
+        },
+        "last_updated": {
+            "$ref": "common.schema.json#/definitions/timestamp"
+        }
+    },
+    "additionalProperties": false
+}

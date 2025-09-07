@@ -28,19 +28,29 @@ final class PayloadValidation
         }
     }
 
-    public static function isValidJson(string $schemaPath,stdClass $json): bool
+    public static function isValidJson(string $schemaPath,stdClass $json, ?array &$errors = null): bool
     {
         $jsonSchemaValidation = self::validator($schemaPath,$json);
+        $valid = $jsonSchemaValidation->isValid();
+        if (!$valid) {
+            $errors = [];
+            foreach ($jsonSchemaValidation->getErrors() as $error) {
+                $errors[] = "property: " . $error['property'] . ', error: ' . $error['message'] . '. ';
+            }
+        }
         return $jsonSchemaValidation->isValid();
     }
 
     private static function validator(string $schemaPath, stdClass $json): Validator
     {
         $jsonSchemaValidation = new Validator();
-        $schemasPath = __DIR__ . '/../../../resources/jsonSchemas/';
+        if ($schemaPath[0] <> '/') {
+            $schemasPath = realpath(__DIR__ . '/../../../resources/jsonSchemas/');
+            $schemaPath = $schemasPath . DIRECTORY_SEPARATOR . $schemaPath;
+        }
         $jsonSchemaValidation->coerce(
             $json,
-            (object)['$ref' => 'file://' . realpath($schemasPath) . DIRECTORY_SEPARATOR . $schemaPath]
+            (object)['$ref' => 'file://' . $schemaPath]
         );
         return $jsonSchemaValidation;
     }

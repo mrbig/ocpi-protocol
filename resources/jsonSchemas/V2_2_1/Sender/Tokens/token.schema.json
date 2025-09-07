@@ -1,0 +1,20 @@
+{
+  "title": "V2.2.1\\Sender\\Tokens\\Token",
+  "oneOf": [
+    {
+      "$ref": "../../Common/token.schema.json",
+      "required": [
+        "country_code",
+        "party_id",
+        "uid",
+        "type",
+        "contract_id",
+        "issuer",
+        "valid",
+        "whitelist",
+        "last_updated"
+      ],
+      "additionalProperties": false
+    }
+  ]
+}

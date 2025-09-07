@@ -1,6 +1,15 @@
 # OCPI Protocol #
 Library to handle OCPI. Compatible with PSRs.
 
+## DISCLAIMER ##
+
+This fork is of chargemap/ocpi-protocol upgraded to OCPI V2.2.1.
+
+This is by no means feature complete, and maybe never will. Currently the most common
+modules for eMSP and CPO servers are both available, and many of the client classes.
+
+If you miss some classes then please feel free to add them or contact me.
+
 ## Functionality ##
 Library provides OCPI request/response classes for eMSP interfaces, models, factories and errors.
 Listing requests/responses are also supported for GET routes.

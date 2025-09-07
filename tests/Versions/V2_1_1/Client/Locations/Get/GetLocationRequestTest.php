@@ -2,13 +2,13 @@
 
 namespace Tests\Chargemap\OCPI\Versions\V2_1_1\Client\Locations\Get;
 
-use Chargemap\OCPI\Versions\V2_1_1\Client\Locations\Get\GetLocationRequest;
+use Chargemap\OCPI\Versions\V2_1_1\Client\Cpo\Locations\Get\GetLocationRequest;
 use Http\Discovery\Psr17FactoryDiscovery;
 use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \Chargemap\OCPI\Versions\V2_1_1\Client\Locations\Get\GetLocationRequest
+ * @covers \Chargemap\OCPI\Versions\V2_1_1\Client\Cpo\Locations\Get\GetLocationRequest
  */
 class GetLocationRequestTest extends TestCase
 {

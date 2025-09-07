@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Tests\Chargemap\OCPI\Versions\V2_1_1\Client\Tokens\Put;
 
-use Chargemap\OCPI\Versions\V2_1_1\Client\Tokens\Put\PutTokenRequest;
+use Chargemap\OCPI\Versions\V2_1_1\Client\Cpo\Tokens\Put\PutTokenRequest;
 use Chargemap\OCPI\Versions\V2_1_1\Common\Factories\TokenFactory;
 use Http\Discovery\Psr17FactoryDiscovery;
 use InvalidArgumentException;
@@ -59,7 +59,7 @@ class PutTokenRequestTest extends TestCase
         $this->assertSame('PUT', $requestInterface->getMethod());
         $requestBody = json_decode($requestInterface->getBody()->getContents());
         $this->assertEquals($payload, $requestBody);
-        OcpiTestCase::coerce('V2_1_1/eMSP/Client/Tokens/tokenPutRequest.schema.json', $requestBody);
+        OcpiTestCase::coerce('V2_1_1/CPO/Tokens/tokenPutRequest.schema.json', $requestBody);
     }
 
     public function invalidParametersProvider(): iterable

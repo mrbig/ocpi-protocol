@@ -1,0 +1,78 @@
+{
+  "country_code": "FR",
+  "party_id": "FRA",
+  "id": "2dafe2cf-cbd7-4430-9a1a-c9b01abac372",
+  "start_date_time": "2019-11-03T11:55:59Z",
+  "end_date_time": "2019-11-04T06:03:33Z",
+  "session_id": "session-1234",
+  "cdr_token": {
+    "country_code": "FR",
+    "party_id": "FRA",
+    "uid": "012345678",
+    "type": "RFID",
+    "contract_id": "DE8ACC12E46L89"
+  },
+  "auth_method": "AUTH_REQUEST",
+  "authorization_reference": "auth-ref-1234",
+  "cdr_location": {
+    "id": "FR*55C*P78000*VER*CHANTIERS",
+    "name": "RUE DES CHANTIERS VERSAILLES",
+    "address": "Rue Des Chantiers",
+    "city": "Versailles",
+    "postal_code": "78000",
+    "state": "FR",
+    "country": "FRA",
+    "coordinates": {
+      "latitude": "48.796610",
+      "longitude": "2.136693"
+    },
+    "evse_uid": "3256",
+    "evse_id": "BE-BEC-E041503003",
+    "connector_id": "1",
+    "connector_standard": "IEC_62196_T2",
+    "connector_format": "SOCKET",
+    "connector_power_type": "AC_1_PHASE"
+  },
+  "meter_id": "meter-1234",
+  "currency": "EUR",
+  "charging_periods": [
+    {
+      "start_date_time": "2019-11-03T11:55:59Z",
+      "dimensions": [
+        {
+          "type": "TIME",
+          "volume": 18.1261
+        }
+      ]
+    }
+  ],
+  "signed_data": {
+    "encoding_method": "encodingmethod",
+    "encoding_method_version": 2,
+    "public_key": "rsa-public-key",
+    "signed_values": [
+      {
+        "nature": "start",
+        "plain_data": "lorem ipsum",
+        "signed_data": "encoded lorem ipsum"
+      },
+      {
+        "nature": "end",
+        "plain_data": "lorem ipsum",
+        "signed_data": "encoded lorem ipsum"
+      }
+    ],
+    "url": "http://example.com"
+  },
+  "total_cost": {
+    "excl_vat": 4.00,
+    "incl_vat": 4.40
+  },
+  "total_energy": 15.342,
+  "total_time": 1.973,
+  "total_time_cost": {
+    "excl_vat": 4.00,
+    "incl_vat": 4.40
+  },
+  "last_updated": "2019-11-04T06:03:35Z"
+}

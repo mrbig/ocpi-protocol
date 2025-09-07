@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Tests\Chargemap\OCPI\Versions\V2_1_1\Client\Tokens\Patch;
 
-use Chargemap\OCPI\Versions\V2_1_1\Client\Tokens\Patch\PatchTokenRequest;
+use Chargemap\OCPI\Versions\V2_1_1\Client\Cpo\Tokens\Patch\PatchTokenRequest;
 use Chargemap\OCPI\Versions\V2_1_1\Common\Factories\PartialTokenFactory;
 use Http\Discovery\Psr17FactoryDiscovery;
 use InvalidArgumentException;
@@ -51,7 +51,7 @@ class PatchTokenRequestTest extends TestCase
         $this->assertSame('PATCH', $requestInterface->getMethod());
         $requestBody = json_decode($requestInterface->getBody()->getContents());
         $this->assertEquals($payload, $requestBody);
-        OcpiTestCase::coerce('V2_1_1/eMSP/Client/Tokens/tokenPatchRequest.schema.json', $requestBody);
+        OcpiTestCase::coerce('V2_1_1/CPO/Tokens/tokenPatchRequest.schema.json', $requestBody);
     }
 
     public function invalidParametersProvider(): iterable

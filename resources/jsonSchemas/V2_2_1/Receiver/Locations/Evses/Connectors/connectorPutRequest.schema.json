@@ -1,0 +1,18 @@
+{
+    "title": "V2.2.1\\Receiver\\Locations\\Evses\\Connectors\\Put",
+    "oneOf": [
+        {
+            "$ref": "../../../../Common/connector.schema.json",
+            "required": [
+                "id",
+                "standard",
+                "format",
+                "power_type",
+                "max_voltage",
+                "max_amperage",
+                "last_updated"
+            ],
+            "additionalProperties": false
+        }
+    ]
+}

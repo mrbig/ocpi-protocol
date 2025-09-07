@@ -1,0 +1,216 @@
+{
+    "title": "V2.2.1\\Location",
+    "type": "object",
+    "properties": {
+        "country_code": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 2
+        },
+        "party_id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 3
+        },
+        "id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 39
+        },
+        "publish": {
+            "type": "boolean"
+        },
+        "publish_allowed_to": {
+            "type": [
+                "array",
+                "null"
+            ],
+            "items": {
+                "$ref": "common.schema.json#definitions/publish_token"
+            }
+        },
+        "name": {
+            "type": [
+                "string",
+                "null"
+            ],
+            "minLength": 1,
+            "maxLength": 255
+        },
+        "address": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 45
+        },
+        "city": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 45
+        },
+        "postal_code": {
+            "type": ["null", "string"],
+            "minLength": 1,
+            "maxLength": 10
+        },
+        "state": {
+            "type": ["null", "string"],
+            "minLength": 1,
+            "maxLength": 20
+        },
+        "country": {
+            "type": "string",
+            "minLength": 3,
+            "maxLength": 3
+        },
+        "coordinates": {
+            "$ref": "common.schema.json#/definitions/geo_location"
+        },
+        "related_locations": {
+            "oneOf": [
+                {
+                    "type": "null"
+                },
+                {
+                    "$ref": "common.schema.json#/definitions/related_locations"
+                }
+            ]
+        },
+        "parking_type": {
+            "type": "string",
+            "enum": [
+                "ALONG_MOTORWAY",
+                "PARKING_GARAGE",
+                "PARKING_LOT",
+                "ON_DRIVEWAY",
+                "ON_STREET",
+                "UNDERGROUND_GARAGE"
+            ]
+        },
+        "evses": {
+            "type": [
+                "array",
+                "null"
+            ],
+            "items": {
+                "$ref": "evse.schema.json"
+            }
+        },
+        "directions": {
+            "type": [
+                "array",
+                "null"
+            ],
+            "items": {
+                "$ref": "common.schema.json#/definitions/display_text"
+            }
+        },
+        "operator": {
+            "oneOf": [
+                {
+                    "type": "null"
+                },
+                {
+                    "$ref": "common.schema.json#/definitions/business_details"
+                }
+            ]
+        },
+        "suboperator": {
+            "oneOf": [
+                {
+                    "type": "null"
+                },
+                {
+                    "$ref": "common.schema.json#/definitions/business_details"
+                }
+            ]
+        },
+        "owner": {
+            "oneOf": [
+                {
+                    "type": "null"
+                },
+                {
+                    "$ref": "common.schema.json#/definitions/business_details"
+                }
+            ]
+        },
+        "facilities": {
+            "type": [
+                "array",
+                "null"
+            ],
+            "items": {
+                "type": "string",
+                "enum": [
+                    "HOTEL",
+                    "RESTAURANT",
+                    "CAFE",
+                    "MALL",
+                    "SUPERMARKET",
+                    "SPORT",
+                    "RECREATION_AREA",
+                    "NATURE",
+                    "MUSEUM",
+                    "BIKE_SHARING",
+                    "BUS_STOP",
+                    "TAXI_STAND",
+                    "TRAM_STOP",
+                    "TRAIN_STATION",
+                    "METRO_STATION",
+                    "AIRPORT",
+                    "PARKING_LOT",
+                    "CARPOOL_PARKING",
+                    "FUEL_STATION",
+                    "WIFI"
+                ]
+            }
+        },
+        "time_zone": {
+            "type": [
+                "string",
+                "null"
+            ],
+            "minLength": 1,
+            "maxLength": 255
+        },
+        "opening_times": {
+            "oneOf": [
+                {
+                    "type": "null"
+                },
+                {
+                    "$ref": "common.schema.json#/definitions/hours"
+                }
+            ]
+        },
+        "charging_when_closed": {
+            "type": [
+                "boolean",
+                "null"
+            ]
+        },
+        "images": {
+            "type": [
+                "array",
+                "null"
+            ],
+            "items": {
+                "$ref": "common.schema.json#/definitions/image"
+            }
+        },
+        "energy_mix": {
+            "oneOf": [
+                {
+                    "type": "null"
+                },
+                {
+                    "$ref": "common.schema.json#/definitions/energy_mix"
+                }
+            ]
+        },
+        "last_updated": {
+            "$ref": "common.schema.json#/definitions/timestamp"
+        }
+    },
+    "additionalProperties": false
+}

@@ -1,0 +1,12 @@
+{
+  "id": "1234567",
+  "standard": "DOMESTIC_E",
+  "format": "SOCKET",
+  "power_type": "AC_1_PHASE",
+  "max_voltage": 230,
+  "max_amperage": 13,
+  "max_electric_power": 4400,
+  "tariff_ids": ["tariff_id1"],
+  "terms_and_conditions": null,
+  "last_updated": "2020-06-16T17:31:23Z"
+}

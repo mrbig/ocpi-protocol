@@ -1,0 +1,12 @@
+{
+  "id": "5a311b4d3f033",
+  "standard": "IEC_62196_T2",
+  "format": "SOCKET",
+  "power_type": "AC_3_PHASE",
+  "max_voltage": 230,
+  "max_amperage": 32,
+  "max_electric_power": 4400,
+  "tariff_ids": ["tariff_id1", "tariff_2"],
+  "terms_and_conditions": null,
+  "last_updated": "2020-06-16T17:31:23Z"
+}

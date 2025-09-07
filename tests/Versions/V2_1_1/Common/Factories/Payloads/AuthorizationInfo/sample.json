@@ -1,0 +1,10 @@
+{
+    "allowed": "ALLOWED",
+    "location": {
+        "location_id": "123456"
+    },
+    "info": {
+        "language": "EN",
+        "text": "lorem ipsum"
+    }
+}

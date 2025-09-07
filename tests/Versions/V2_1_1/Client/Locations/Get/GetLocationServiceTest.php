@@ -3,15 +3,15 @@
 namespace Tests\Chargemap\OCPI\Versions\V2_1_1\Client\Locations\Get;
 
 use Chargemap\OCPI\Common\Client\OcpiUnauthorizedException;
-use Chargemap\OCPI\Versions\V2_1_1\Client\Locations\Get\GetLocationRequest;
-use Chargemap\OCPI\Versions\V2_1_1\Client\Locations\Get\GetLocationResponse;
-use Chargemap\OCPI\Versions\V2_1_1\Client\Locations\Get\GetLocationService;
+use Chargemap\OCPI\Versions\V2_1_1\Client\Cpo\Locations\Get\GetLocationRequest;
+use Chargemap\OCPI\Versions\V2_1_1\Client\Cpo\Locations\Get\GetLocationResponse;
+use Chargemap\OCPI\Versions\V2_1_1\Client\Cpo\Locations\Get\GetLocationService;
 use Http\Discovery\Psr17FactoryDiscovery;
 use JsonException;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \Chargemap\OCPI\Versions\V2_1_1\Client\Locations\Get\GetLocationService
+ * @covers \Chargemap\OCPI\Versions\V2_1_1\Client\Cpo\Locations\Get\GetLocationService
  */
 class GetLocationServiceTest extends TestCase
 {

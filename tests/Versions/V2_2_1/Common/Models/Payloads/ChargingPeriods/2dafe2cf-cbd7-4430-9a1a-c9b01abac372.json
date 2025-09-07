@@ -1,0 +1,10 @@
+{
+  "start_date_time": "2019-11-03T11:55:59.000Z",
+  "dimensions": [
+    {
+      "type": "TIME",
+      "volume": 18.1261
+    }
+  ],
+  "tariff_id": "tariff#1"
+}

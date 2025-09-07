@@ -1,0 +1,28 @@
+{
+    "data": [
+        {
+            "country_code": "FR",
+            "party_id": "FR1",
+            "uid": "012345678",
+            "type": "RFID",
+            "contract_id": "DE8ACC12E46L89",
+            "issuer": "TheNewMotion",
+            "valid": true,
+            "whitelist": "ALWAYS",
+            "last_updated": "2015-06-29T22:39:09Z"
+        },
+        {
+            "country_code": "FR",
+            "party_id": "FR1",
+            "uid": "012345678",
+            "type": "RFID",
+            "contract_id": "DE8ACC12E46L89",
+            "visual_number": "DF000-2001-8999",
+            "issuer": "TheNewMotion",
+            "valid": true,
+            "whitelist": "ALWAYS",
+            "language": "FR",
+            "last_updated": "2015-06-29T22:39:09Z"
+        }
+    ]
+}

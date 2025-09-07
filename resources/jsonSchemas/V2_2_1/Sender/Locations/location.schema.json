@@ -1,0 +1,20 @@
+{
+  "title": "V2.2.1\\Sender\\Locations\\Location",
+  "oneOf": [
+    {
+      "$ref": "../../Common/location.schema.json",
+      "required": [
+        "country_code",
+        "party_id",
+        "id",
+        "publish",
+        "address",
+        "city",
+        "country",
+        "coordinates",
+        "last_updated"
+      ],
+      "additionalProperties": false
+    }
+  ]
+}

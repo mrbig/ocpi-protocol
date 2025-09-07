@@ -1,0 +1,18 @@
+{
+    "response_url": "https://example.org",
+    "token": {
+        "uid": "bdf21bce-fc97-11e8-8eb2-f2801f1b9fd1",
+        "type": "RFID",
+        "auth_id": "DE8ACC12E46L89",
+        "visual_number": "12345",
+        "issuer": "TheNewMotion",
+        "valid": true,
+        "whitelist": "ALLOWED",
+        "language": "EN",
+        "last_updated": "2018-12-10T17:16:15Z"
+    },
+    "expiry_date": "2018-12-11T17:16:15Z",
+    "reservation_id": "ID1234",
+    "location_id": "DE-TST#LOC1",
+    "evse_uid": "DE-TST#EVSE1"
+}

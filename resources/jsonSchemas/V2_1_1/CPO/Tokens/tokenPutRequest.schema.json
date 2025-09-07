@@ -1,0 +1,18 @@
+{
+    "title": "V2.2.1\\CPO\\Tokens\\Put",
+    "oneOf": [
+        {
+            "$ref": "../../Common/token.schema.json",
+            "required": [
+                "uid",
+                "type",
+                "auth_id",
+                "issuer",
+                "valid",
+                "whitelist",
+                "last_updated"
+            ],
+            "additionalProperties": false
+        }
+    ]
+}

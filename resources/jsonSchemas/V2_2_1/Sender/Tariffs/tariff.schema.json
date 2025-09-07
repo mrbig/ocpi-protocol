@@ -1,0 +1,17 @@
+{
+  "title": "V2.2.1\\Sender\\Tariffs\\Tariff",
+  "oneOf": [
+    {
+      "$ref": "../../Common/tariff.schema.json",
+      "required": [
+        "country_code",
+        "party_id",
+        "id",
+        "currency",
+        "elements",
+        "last_updated"
+      ],
+      "additionalProperties": false
+    }
+  ]
+}

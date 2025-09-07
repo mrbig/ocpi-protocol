@@ -9,6 +9,7 @@ use Chargemap\OCPI\Common\Server\Errors\OcpiNotEnoughInformationClientError;
 use Chargemap\OCPI\Common\Server\OcpiBaseRequest;
 use Chargemap\OCPI\Common\Server\OcpiUpdateRequest;
 use Http\Discovery\Psr17FactoryDiscovery;
+use InvalidArgumentException;
 use ReflectionClass;
 use Tests\Chargemap\OCPI\OcpiTestCase;
 
@@ -36,9 +37,14 @@ class OcpiBaseRequestTest extends OcpiTestCase
         $reflectedClass = new ReflectionClass(OcpiBaseRequest::class);
         $constructor = $reflectedClass->getConstructor();
 
-        $serverRequestInterface = Psr17FactoryDiscovery::findServerRequestFactory()
-            ->createServerRequest('GET', 'randomUrl')
-            ->withHeader('Authorization', $token);
+        try {
+            $serverRequestInterface = Psr17FactoryDiscovery::findServerRequestFactory()
+                ->createServerRequest('GET', 'randomUrl')
+                ->withHeader('Authorization', $token);
+        } catch (InvalidArgumentException $e) {
+            $this->markTestSkipped('Header format already checked by PSR-7 implementation: ' . $e->getMessage());
+            return;
+        }
 
         $this->expectException(OcpiInvalidTokenClientError::class);
         $constructor->invoke($mock, $serverRequestInterface);

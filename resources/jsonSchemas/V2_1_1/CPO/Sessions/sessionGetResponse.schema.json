@@ -1,0 +1,47 @@
+{
+    "title": "V2.1.1\\CPO\\Sessions\\Get",
+    "properties": {
+        "status_code": {
+            "$ref": "../../Common/common.schema.json#/definitions/status_code"
+        },
+        "status_message": {
+            "oneOf": [
+                {
+                    "type": "null"
+                },
+                {
+                    "$ref": "../../Common/common.schema.json#/definitions/status_message"
+                }
+            ]
+        },
+        "data": {
+            "type": [
+                "array",
+                "null"
+            ],
+            "items": {
+                "$ref": "../../Common/session.schema.json",
+                "required": [
+                    "id",
+                    "start_datetime",
+                    "kwh",
+                    "auth_id",
+                    "auth_method",
+                    "location",
+                    "currency",
+                    "status",
+                    "last_updated"
+                ],
+                "additionalProperties": false
+            }
+        },
+        "timestamp": {
+            "$ref": "../../Common/common.schema.json#/definitions/timestamp"
+        }
+    },
+    "required": [
+        "status_code",
+        "timestamp"
+    ],
+    "additionalProperties": false
+}

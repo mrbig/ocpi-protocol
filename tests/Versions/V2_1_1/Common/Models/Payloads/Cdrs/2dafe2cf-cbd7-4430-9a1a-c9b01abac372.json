@@ -1,7 +1,7 @@
 {
   "id": "2dafe2cf-cbd7-4430-9a1a-c9b01abac372",
-  "start_date_time": "2019-11-03T11:55:59Z",
-  "stop_date_time": "2019-11-04T06:03:33Z",
+  "start_date_time": "2019-11-03T11:55:59.000Z",
+  "stop_date_time": "2019-11-04T06:03:33.000Z",
   "auth_id": "FR-CMP-C10316270",
   "auth_method": "AUTH_REQUEST",
   "location": {
@@ -34,21 +34,21 @@
             "power_type": "AC_1_PHASE",
             "voltage": 230,
             "amperage": 32,
-            "last_updated": "2019-10-29T11:03:39Z"
+            "last_updated": "2019-10-29T11:03:39.000Z"
           }
         ],
-        "last_updated": "2019-10-28T14:42:06Z"
+        "last_updated": "2019-10-28T14:42:06.000Z"
       }
     ],
     "opening_times": {
       "twentyfourseven": true
     },
-    "last_updated": "2019-10-29T14:05:56Z"
+    "last_updated": "2019-10-29T14:05:56.000Z"
   },
   "currency": "EUR",
   "charging_periods": [
     {
-      "start_date_time": "2019-11-03T11:55:59Z",
+      "start_date_time": "2019-11-03T11:55:59.000Z",
       "dimensions": [
         {
           "type": "TIME",
@@ -60,5 +60,5 @@
   "total_cost": 0,
   "total_energy": 54.3330,
   "total_time": 18.1261,
-  "last_updated": "2019-11-04T06:03:35Z"
+  "last_updated": "2019-11-04T06:03:35.000Z"
 }

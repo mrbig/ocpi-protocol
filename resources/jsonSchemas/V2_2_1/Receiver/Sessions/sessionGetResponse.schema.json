@@ -1,0 +1,45 @@
+{
+    "title": "V2.2.1\\Emsp\\Server\\Sessions\\Get",
+    "properties": {
+        "data": {
+            "$ref": "../../Common/session.schema.json",
+            "required": [
+                "country_code",
+                "party_id",
+                "id",
+                "start_date_time",
+                "kwh",
+                "cdr_token",
+                "auth_method",
+                "location_id",
+                "evse_uid",
+                "connector_id",
+                "currency",
+                "status",
+                "last_updated"
+            ]
+        },
+        "status_code": {
+            "$ref": "../../Common/common.schema.json#/definitions/status_code"
+        },
+        "status_message": {
+            "oneOf": [
+                {
+                    "type": "null"
+                },
+                {
+                    "$ref": "../../Common/common.schema.json#/definitions/status_message"
+                }
+            ]
+        },
+        "timestamp": {
+            "$ref": "../../Common/common.schema.json#/definitions/timestamp"
+        }
+    },
+    "required": [
+        "data",
+        "status_code",
+        "timestamp"
+    ],
+    "additionalProperties": false
+}

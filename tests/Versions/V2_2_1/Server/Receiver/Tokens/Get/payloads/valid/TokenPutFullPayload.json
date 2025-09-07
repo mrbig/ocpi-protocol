@@ -1,0 +1,18 @@
+{
+  "country_code": "FR",
+  "party_id": "FR1",
+  "uid": "012345678",
+  "visual_number": "foobarbaz",
+  "type": "RFID",
+  "contract_id": "DE8ACC12E46L89",
+  "issuer": "TheNewMotion",
+  "group_id": "FR*FR1*grp1",
+  "valid": true,
+  "whitelist": "ALWAYS",
+  "default_profile_type": "GREEN",
+  "energy_contract": {
+    "supplier_name": "Green Energy Ltd",
+    "contract_id": "contract1"
+  },
+  "last_updated": "2015-06-29T22:39:09Z"
+}

@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Tests\Chargemap\OCPI\Versions\V2_1_1\Client\Tokens\Get;
 
 use Chargemap\OCPI\Common\Server\Errors\OcpiInvalidPayloadClientError;
-use Chargemap\OCPI\Versions\V2_1_1\Client\Tokens\Get\GetTokenResponse;
+use Chargemap\OCPI\Versions\V2_1_1\Client\Cpo\Tokens\Get\GetTokenResponse;
 use DateTime;
 use Http\Discovery\Psr17FactoryDiscovery;
 use PHPUnit\Framework\TestCase;

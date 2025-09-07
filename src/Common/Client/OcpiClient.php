@@ -9,6 +9,7 @@ use Chargemap\OCPI\Common\Client\Modules\Locations;
 use Chargemap\OCPI\Common\Client\Modules\Tokens;
 use Chargemap\OCPI\Common\Client\Modules\Versions;
 use Chargemap\OCPI\Versions\V2_1_1\Client\V2_1_1;
+use Chargemap\OCPI\Versions\V2_2_1\Client\V2_2_1;
 
 class OcpiClient
 {
@@ -30,6 +31,11 @@ class OcpiClient
     public function V2_1_1(): V2_1_1
     {
         return new V2_1_1($this->configuration);
+    }
+
+    public function V2_2_1(): V2_2_1
+    {
+        return new V2_2_1($this->configuration);
     }
 
     public function versions(): Versions

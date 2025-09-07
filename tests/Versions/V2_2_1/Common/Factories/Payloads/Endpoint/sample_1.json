@@ -1,0 +1,5 @@
+{
+  "identifier": "credentials",
+  "role": "SENDER",
+  "url": "https://example.com/ocpi/ocpi/cpo/2.2.1/credentials"
+}

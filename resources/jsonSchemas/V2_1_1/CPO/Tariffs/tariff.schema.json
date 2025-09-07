@@ -1,0 +1,15 @@
+{
+  "title": "V2.1.1\\CPO\\Tariffs\\Tariff",
+  "oneOf": [
+    {
+      "$ref": "../../Common/tariff.schema.json",
+      "required": [
+        "id",
+        "currency",
+        "elements",
+        "last_updated"
+      ],
+      "additionalProperties": false
+    }
+  ]
+}

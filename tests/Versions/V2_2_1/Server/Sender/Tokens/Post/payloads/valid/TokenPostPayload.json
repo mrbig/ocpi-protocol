@@ -1,0 +1,7 @@
+{
+  "location_id": "location_tartenpion",
+  "evse_uids": [
+    "evse_uid_1",
+    "evse_uid_2"
+  ]
+}

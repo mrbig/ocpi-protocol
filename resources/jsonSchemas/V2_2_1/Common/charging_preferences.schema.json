@@ -1,0 +1,25 @@
+{
+    "title": "V2.2.1\\Common\\ChargingPreferences",
+    "type": "object",
+    "properties": {
+        "profile_type": {
+            "$ref": "common.schema.json#/definitions/profile_type"
+        },
+        "departure_time": {
+            "$ref": "common.schema.json#/definitions/timestamp"
+        },
+        "energy_needed": {
+            "type": [
+                "number",
+                "null"
+            ]
+        },
+        "discharge_allowed": {
+            "type": [
+                "boolean",
+                "null"
+            ]
+        }
+    },
+    "additionalProperties": false
+}

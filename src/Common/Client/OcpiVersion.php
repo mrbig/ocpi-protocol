@@ -13,6 +13,9 @@ use UnexpectedValueException;
  * @method static self V2_0()
  * @method static self V2_1_0()
  * @method static self V2_1_1()
+ * @method static self V2_2()
+ * @method static self V2_2_0()
+ * @method static self V2_2_1()
  */
 class OcpiVersion extends Enum
 {
@@ -20,13 +23,19 @@ class OcpiVersion extends Enum
     public const V2_0 = 'V2_0';
     public const V2_1_0 = 'V2_1_0';
     public const V2_1_1 = 'V2_1_1';
+    public const V2_2   = 'V2_2';
+    public const V2_2_0 = 'V2_2_0';
+    public const V2_2_1 = 'V2_2_1';
 
     /** @var array<string,int>  */
     private static array $scores = [
         self::V1_9 => 0,
         self::V2_0 => 1,
         self::V2_1_0 => 2,
-        self::V2_1_1 => 3
+        self::V2_1_1 => 3,
+        self::V2_2   => 4,
+        self::V2_2_0 => 4,
+        self::V2_2_1 => 5,
     ];
 
     public static function fromVersionNumber(string $versionNumber): self
@@ -40,6 +49,12 @@ class OcpiVersion extends Enum
                 return self::V2_1_0();
             case '2.1.1':
                 return self::V2_1_1();
+            case '2.2':
+                return self::V2_2();
+            case '2.2.0':
+                return self::V2_2_0();
+            case '2.2.1':
+                return self::V2_2_1();
         }
 
         throw new InvalidArgumentException(sprintf('Unable to parse version %s', $versionNumber));

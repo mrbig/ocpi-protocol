@@ -93,6 +93,7 @@ class Hours implements JsonSerializable
         if ($this->twentyFourSeven) {
             $return['twentyfourseven'] = $this->twentyFourSeven;
         } else {
+            $return['twentyfourseven'] = false;
             $return['regular_hours'] = $this->regularHours;
         }
 

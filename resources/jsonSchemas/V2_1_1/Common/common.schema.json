@@ -40,7 +40,49 @@
         },
         "timestamp": {
             "type": "string",
-            "pattern": "^([0-9]{4})-(1[0-2]|0[0-9])-([0-2][0-9]|3[0-1])T([0-1][0-9]|2[0-4]):[0-5][0-9]:[0-5][0-9](Z|[-+](0[0-9]|1[0-4]):[0-5][0-9])?$"
+            "pattern": "^([0-9]{4})-(1[0-2]|0[0-9])-([0-2][0-9]|3[0-1])T([0-1][0-9]|2[0-4]):[0-5][0-9]:[0-5][0-9](\\.[\\d]{1,9})?(Z|[-+](0[0-9]|1[0-4]):[0-5][0-9])?$"
+        },
+        "allowed_type": {
+            "type": "string",
+            "enum": [
+                "ALLOWED",
+                "BLOCKED",
+                "EXPIRED",
+                "NO_CREDIT",
+                "NOT_ALLOWED"
+            ]
+        },
+        "authorization_info": {
+            "type": "object",
+            "properties": {
+                "allowed": {
+                    "$ref": "#/definitions/allowed_type"
+                },
+                "location": {
+                    "oneOf": [
+                        {
+                            "type": "null"
+                        },
+                        {
+                            "$ref":"#/definitions/location_references"
+                        }
+                    ]
+                },
+                "info": {
+                    "oneOf": [
+                        {
+                            "type": "null"
+                        },
+                        {
+                            "$ref":"#/definitions/display_text"
+                        }
+                    ]
+                }
+            },
+            "required": [
+                "allowed"
+            ],
+            "additionalProperties": false
         },
         "business_details": {
             "type": "object",

@@ -1,0 +1,10 @@
+{
+    "title": "V2.1.1\\Emsp\\Tariffs\\Patch",
+    "oneOf": [
+        {
+            "$ref": "../../Common/tariff.schema.json",
+            "minProperties": 1,
+            "additionalProperties": false
+        }
+    ]
+}

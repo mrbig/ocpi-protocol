@@ -1,0 +1,7 @@
+{
+    "response_url": "https://example.org",
+    "location_id": "DE-TST#LOC1",
+    "evse_uid": "DE-TST#EVSE1",
+    "connector_id": "DE-TST#EVSE1#CONN1",
+    "authorization_reference": "ref$1"
+}
