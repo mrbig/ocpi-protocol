@@ -88,8 +88,8 @@ class ChargingPeriodTest extends TestCase
         if ($chargingPeriod === null) {
             Assert::assertNull($json);
         } else {
-            Assert::assertEquals(DateTimeFormatter::format($chargingPeriod->getStartDate()), $json->start_date_time);
-            Assert::assertSame(count($chargingPeriod->getCdrDimensions()), count($json->dimensions));
+            Assert::assertEquals($json->start_date_time, DateTimeFormatter::format($chargingPeriod->getStartDate()));
+            Assert::assertSame(count($json->dimensions), count($chargingPeriod->getCdrDimensions()));
             foreach ($chargingPeriod->getCdrDimensions() as $index => $dimension) {
                 CdrDimensionTest::assertJsonSerialization($dimension, $json->dimensions[$index],);
             }

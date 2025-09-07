@@ -25,6 +25,6 @@ class DateTimeFormatter
         // As DateTime::ISO8601 exports with +00:00 and from the OCPI documentation, it is not the same as Zulu Time
         // (I think it's due to the DST maybe? but the OCPI documentation recommends using zulu time, so...)
         // See https://github.com/ocpi/ocpi/blob/master/releases/2.1.1/types.md#12-datetime-type for more information
-        return $date->format('Y-m-d\TH:i:s\Z');
+        return $date->format('Y-m-d\TH:i:s.v\Z');
     }
 }

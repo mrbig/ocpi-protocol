@@ -21,12 +21,12 @@ class DateTimeFormatterTest extends TestCase
         ];
 
         yield 'UTC date' => [
-            'expectation' => '2020-08-07T11:30:00Z',
+            'expectation' => '2020-08-07T11:30:00.000Z',
             'dateTime' => new DateTime('2020-08-07 11:30:00', new DateTimeZone('UTC')),
         ];
 
         yield 'Non-UTC date' => [
-            'expectation' => '2020-08-07T11:30:00Z',
+            'expectation' => '2020-08-07T11:30:00.000Z',
             'dateTime' => new DateTime('2020-08-07 13:30:00', new DateTimeZone('Europe/Paris')),
         ];
     }
