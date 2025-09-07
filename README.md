@@ -3,14 +3,12 @@ Library to handle OCPI. Compatible with PSRs.
 
 ## DISCLAIMER ##
 
-This fork is my attempt to upgrade this project to OCPI V2.2.1.
+This fork is of chargemap/ocpi-protocol upgraded to OCPI V2.2.1.
 
-This is by no means feature complete, and maybe never will because I will be
-focused on the CPO role, and possibly ignore eMSP wherever not needed.
+This is by no means feature complete, and maybe never will. Currently the most common
+modules for eMSP and CPO servers are both available, and many of the client classes.
 
-If you want to use use the eMSP role please consider helping out with
-upgrading. Or you could use the original repo at https://github.com/ChargeMap/ocpi-protocol
-with version 2.1.1 wich is pretty much feature complete.
+If you miss some classes then please feel free to add them or contact me.
 
 ## Functionality ##
 Library provides OCPI request/response classes for eMSP interfaces, models, factories and errors.
