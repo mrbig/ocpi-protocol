@@ -2,8 +2,8 @@
   "country_code": "BE",
   "party_id": "BEC",
   "id": "12345",
-  "start_date_time": "2015-06-29T21:39:09Z",
-  "end_date_time": "2015-06-29T23:37:32Z",
+  "start_date_time": "2015-06-29T21:39:09.000Z",
+  "end_date_time": "2015-06-29T23:37:32.000Z",
   "cdr_token": {
     "country_code": "BE",
     "party_id": "BEC",
@@ -47,8 +47,8 @@
         "excl_vat": 100,
         "incl_vat": 119
       },
-      "start_date_time": "2015-02-01T14:15:01Z",
-      "end_date_time": "2015-02-01T14:15:01Z",
+      "start_date_time": "2015-02-01T14:15:01.000Z",
+      "end_date_time": "2015-02-01T14:15:01.000Z",
       "elements": [
         {
           "price_components": [
@@ -60,12 +60,12 @@
           ]
         }
       ],
-      "last_updated": "2015-02-02T14:15:01Z"
+      "last_updated": "2015-02-02T14:15:01.000Z"
     }
   ],
   "charging_periods": [
     {
-      "start_date_time": "2015-06-29T21:39:09Z",
+      "start_date_time": "2015-06-29T21:39:09.000Z",
       "dimensions": [
         {
           "type": "TIME",
@@ -80,5 +80,5 @@
   },
   "total_energy": 15.342,
   "total_time": 1.973,
-  "last_updated": "2015-06-29T22:01:13Z"
+  "last_updated": "2015-06-29T22:01:13.000Z"
 }

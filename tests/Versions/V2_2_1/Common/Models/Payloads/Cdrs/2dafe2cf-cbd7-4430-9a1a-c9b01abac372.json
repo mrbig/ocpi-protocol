@@ -2,8 +2,8 @@
   "country_code": "FR",
   "party_id": "FRA",
   "id": "2dafe2cf-cbd7-4430-9a1a-c9b01abac372",
-  "start_date_time": "2019-11-03T11:55:59Z",
-  "end_date_time": "2019-11-04T06:03:33Z",
+  "start_date_time": "2019-11-03T11:55:59.000Z",
+  "end_date_time": "2019-11-04T06:03:33.000Z",
   "session_id": "session-1234",
   "cdr_token": {
     "country_code": "FR",
@@ -37,7 +37,7 @@
   "currency": "EUR",
   "charging_periods": [
     {
-      "start_date_time": "2019-11-03T11:55:59Z",
+      "start_date_time": "2019-11-03T11:55:59.000Z",
       "dimensions": [
         {
           "type": "TIME",
@@ -74,5 +74,5 @@
     "excl_vat": 4.00,
     "incl_vat": 4.40
   },
-  "last_updated": "2019-11-04T06:03:35Z"
+  "last_updated": "2019-11-04T06:03:35.000Z"
 }

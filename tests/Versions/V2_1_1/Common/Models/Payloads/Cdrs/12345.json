@@ -1,7 +1,7 @@
 {
   "id": "12345",
-  "start_date_time": "2015-06-29T21:39:09Z",
-  "stop_date_time": "2015-06-29T23:37:32Z",
+  "start_date_time": "2015-06-29T21:39:09.000Z",
+  "stop_date_time": "2015-06-29T23:37:32.000Z",
   "auth_id": "DE8ACC12E46L89",
   "auth_method": "WHITELIST",
   "location": {
@@ -30,13 +30,13 @@
             "voltage": 230,
             "amperage": 64,
             "tariff_id": "11",
-            "last_updated": "2015-06-29T21:39:01Z"
+            "last_updated": "2015-06-29T21:39:01.000Z"
           }
         ],
-        "last_updated": "2015-06-29T21:39:01Z"
+        "last_updated": "2015-06-29T21:39:01.000Z"
       }
     ],
-    "last_updated": "2015-06-29T21:39:01Z"
+    "last_updated": "2015-06-29T21:39:01.000Z"
   },
   "currency": "EUR",
   "tariffs": [
@@ -54,12 +54,12 @@
           ]
         }
       ],
-      "last_updated": "2015-02-02T14:15:01Z"
+      "last_updated": "2015-02-02T14:15:01.000Z"
     }
   ],
   "charging_periods": [
     {
-      "start_date_time": "2015-06-29T21:39:09Z",
+      "start_date_time": "2015-06-29T21:39:09.000Z",
       "dimensions": [
         {
           "type": "TIME",
@@ -71,5 +71,5 @@
   "total_cost": 4.00,
   "total_energy": 15.342,
   "total_time": 1.973,
-  "last_updated": "2015-06-29T22:01:13Z"
+  "last_updated": "2015-06-29T22:01:13.000Z"
 }
