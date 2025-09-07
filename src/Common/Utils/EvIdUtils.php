@@ -219,7 +219,7 @@ class EvIdUtils
      * @param int $revDigit the reverse digit to search for
      * @return string the key of the found element
      */
-    public function array_search_multi(int $revDigit): ?string
+    public static function array_search_multi(int $revDigit): ?string
     {
         $key = null;
         foreach (self::$list_alpha as $key => $value) {
