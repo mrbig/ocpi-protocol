@@ -13,6 +13,20 @@ trait ListingRequest
 
     private ?int $limit;
 
+    // The smartPaging parameter is used for Plugsurfing-specific integration
+    private ?string $smartPaging;
+    
+    public function withSmartPaging(string $smartPaging): self
+    {
+        $this->smartPaging = $smartPaging;
+        return $this;
+    }
+
+    public function getSmartPaging(): ?string
+    {
+        return $this->smartPaging;
+    }
+
     public function withOffset(int $offset): self
     {
         $this->offset = $offset;
