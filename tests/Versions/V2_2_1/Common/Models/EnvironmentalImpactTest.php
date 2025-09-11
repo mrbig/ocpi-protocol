@@ -18,7 +18,7 @@ class EnvironmentalImpactTest
         if ($environmentalImpact === null) {
             Assert::assertNull($json);
         } else {
-            Assert::assertSame($environmentalImpact->getSource()->getValue(), $json->source);
+            Assert::assertSame($environmentalImpact->getCategory()->getValue(), $json->category);
             Assert::assertSame($environmentalImpact->getAmount(), (float)$json->amount);
         }
     }

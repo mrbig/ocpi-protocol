@@ -16,7 +16,7 @@ class EnvironmentalImpactFactory
         }
 
         return new EnvironmentalImpact(
-            new EnvironmentalImpactCategory($json->source),
+            new EnvironmentalImpactCategory($json->category),
             $json->amount
         );
     }

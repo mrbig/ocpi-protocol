@@ -468,7 +468,7 @@
                     "items": {
                         "type": "object",
                         "properties": {
-                            "source": {
+                            "category": {
                                 "type": "string",
                                 "enum": [
                                     "NUCLEAR_WASTE",
@@ -480,7 +480,7 @@
                             }
                         },
                         "required": [
-                            "source",
+                            "category",
                             "amount"
                         ],
                         "additionalProperties": false
