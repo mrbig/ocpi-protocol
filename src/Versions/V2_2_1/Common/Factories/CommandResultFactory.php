@@ -20,7 +20,7 @@ class CommandResultFactory
             CommandResultType::from($json->result)
         );
 
-        if (property_exists($json, 'message')) {
+        if (property_exists($json, 'message') && $json->message !== null) {
             foreach (DisplayTextFactory::arrayFromJsonArray($json->message) as $message) {
                 $result->addMessage($message);
             }
