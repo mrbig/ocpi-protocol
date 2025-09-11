@@ -42,7 +42,7 @@ class EnvironmentalImpactFactoryTest extends TestCase
         if($json === null) {
             Assert::assertNull($environmentalImpact);
         } else {
-            Assert::assertEquals(new EnvironmentalImpactCategory($json->source), $environmentalImpact->getSource());
+            Assert::assertEquals(new EnvironmentalImpactCategory($json->category), $environmentalImpact->getCategory());
             Assert::assertSame(floatval($json->amount), $environmentalImpact->getAmount());
         }
     }

@@ -8,19 +8,19 @@ use JsonSerializable;
 
 class EnvironmentalImpact implements JsonSerializable
 {
-    private EnvironmentalImpactCategory $source;
+    private EnvironmentalImpactCategory $category;
 
     private float $amount;
 
-    public function __construct(EnvironmentalImpactCategory $source, float $amount)
+    public function __construct(EnvironmentalImpactCategory $category, float $amount)
     {
-        $this->source = $source;
+        $this->category = $category;
         $this->amount = $amount;
     }
 
-    public function getSource(): EnvironmentalImpactCategory
+    public function getCategory(): EnvironmentalImpactCategory
     {
-        return $this->source;
+        return $this->category;
     }
 
     public function getAmount(): float
@@ -31,7 +31,7 @@ class EnvironmentalImpact implements JsonSerializable
     public function jsonSerialize(): array
     {
         return [
-            'source' => $this->source,
+            'category' => $this->category,
             'amount' => $this->amount,
         ];
     }
