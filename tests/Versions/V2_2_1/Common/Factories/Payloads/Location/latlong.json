@@ -1,0 +1,55 @@
+{
+  "country_code": "FR",
+  "party_id": "FR1",
+  "id": "LOC1",
+  "publish": true,
+  "name": "Gent Zuid",
+  "address": "F.Rooseveltlaan 3A",
+  "city": "Gent",
+  "postal_code": "9000",
+  "country": "BEL",
+  "coordinates": {
+    "latitude": "3.72994",
+    "longitude": "51.04759"
+  },
+  "parking_type": "ON_STREET",
+  "related_locations": [
+    {
+      "latitude": "3.7299441",
+      "longitude": "51.0475991",
+      "name": {
+        "language": "en",
+        "text": "Nice place"
+      }
+    },
+    {
+      "latitude": "3.729944",
+      "longitude": "51.047599",
+      "name": {
+        "language": "en",
+        "text": "Beautiful place"
+      }
+    }
+  ],
+  "evses": [
+  ],
+  "directions": [
+  ],
+  "operator": {
+    "name": "BeCharged"
+  },
+  "suboperator": {
+    "name": "BeCharged2"
+  },
+  "owner": {
+    "name": "BeCharged3"
+  },
+  "time_zone": "Europe/Paris",
+  "opening_times": {
+    "twentyfourseven": true
+  },
+  "charging_when_closed": false,
+  "images": [
+  ],
+  "last_updated": "2015-06-29T20:39:09Z"
+}
