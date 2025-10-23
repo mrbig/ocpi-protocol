@@ -206,11 +206,11 @@
     ],
     "environ_impact": [
       {
-        "source": "NUCLEAR_WASTE",
+        "category": "NUCLEAR_WASTE",
         "amount": 500
       },
       {
-        "source": "CARBON_DIOXIDE",
+        "category": "CARBON_DIOXIDE",
         "amount": 1000
       }
     ]
