@@ -50,7 +50,7 @@ class GetLocationsListingRequest extends BaseRequest
         return $serverRequestFactory->createServerRequest('GET', '?' . $this->getQueryString());
     }
 
-    private function getQueryString(): string
+    protected function getQueryString(): string
     {
         $parameters = [];
 
