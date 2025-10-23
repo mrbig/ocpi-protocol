@@ -5,28 +5,15 @@ declare(strict_types=1);
 namespace Tests\Chargemap\OCPI\Versions\V2_2_1\Common\Models;
 
 use Chargemap\OCPI\Common\Utils\DateTimeFormatter;
-use Chargemap\OCPI\Versions\V2_2_1\Common\Factories\PartialSessionFactory;
-use Chargemap\OCPI\Versions\V2_2_1\Common\Factories\SessionFactory;
-use Chargemap\OCPI\Versions\V2_2_1\Common\Models\AuthMethod;
-use Chargemap\OCPI\Versions\V2_2_1\Common\Models\CdrDimension;
-use Chargemap\OCPI\Versions\V2_2_1\Common\Models\CdrDimensionType;
-use Chargemap\OCPI\Versions\V2_2_1\Common\Models\CdrToken;
-use Chargemap\OCPI\Versions\V2_2_1\Common\Models\ChargingPeriod;
-use Chargemap\OCPI\Versions\V2_2_1\Common\Models\Price;
-use Chargemap\OCPI\Versions\V2_2_1\Common\Models\Session;
-use Chargemap\OCPI\Versions\V2_2_1\Common\Models\SessionStatus;
 use Chargemap\OCPI\Versions\V2_2_1\Common\Models\Tariff;
 use Chargemap\OCPI\Versions\V2_2_1\Common\Models\TariffType;
-use Chargemap\OCPI\Versions\V2_2_1\Common\Models\TokenType;
-use DateTime;
 use PHPUnit\Framework\Assert;
-use PHPUnit\Framework\TestCase;
 use stdClass;
 
 /**
  * @covers \Chargemap\OCPI\Versions\V2_2_1\Common\Models\Tariff
  */
-class TariffTest extends TestCase
+class TariffTest
 {
     public static function assertJsonSerialization(?Tariff $tariff, ?stdClass $json): void
     {
