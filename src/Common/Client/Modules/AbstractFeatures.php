@@ -47,6 +47,7 @@ class AbstractFeatures
         $uri = self::forgeUri($endpointUri, $serverRequestInterface->getUri());
 
         $serverRequestInterface = $this->addMessageIds($serverRequestInterface, $request);
+        $serverRequestInterface = $this->addRoutingHeaders($serverRequestInterface, $request);
         return $this->addAuthorization($serverRequestInterface->withUri($uri));
     }
 
@@ -81,6 +82,23 @@ class AbstractFeatures
         if ($request->getCorrelationId() !== null) {
             $serverRequestInterface = $serverRequestInterface->withHeader('X-Correlation-ID', $request->getCorrelationId());
         }
+        return $serverRequestInterface;
+    }
+
+    protected function addRoutingHeaders(ServerRequestInterface $serverRequestInterface, AbstractRequest $request)
+    {
+        if ($request->getRoutingToCountryCode() !== null && $request->getRoutingToPartyId() !== null) {
+            $serverRequestInterface = $serverRequestInterface
+                ->withHeader('OCPI-to-country-code', $request->getRoutingToCountryCode())
+                ->withHeader('OCPI-to-party-id', $request->getRoutingToPartyId());
+        }
+
+        if ($request->getRoutingFromCountryCode() !== null && $request->getRoutingFromPartyId() !== null) {
+            $serverRequestInterface = $serverRequestInterface
+                ->withHeader('OCPI-from-country-code', $request->getRoutingFromCountryCode())
+                ->withHeader('OCPI-from-party-id', $request->getRoutingFromPartyId());
+        }
+
         return $serverRequestInterface;
     }
 }
