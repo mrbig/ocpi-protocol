@@ -38,7 +38,7 @@ class PostCommandResultService extends AbstractFeatures
      * We override this method to explicitly use the response url from the request
      * @throws OcpiEndpointNotFoundException
      */
-    protected function getServerRequestInterface(PostCommandResultRequest $request): ServerRequestInterface
+    protected function getServerRequestInterface(AbstractRequest $request): ServerRequestInterface
     {
         $uriFactory = Psr17FactoryDiscovery::findUriFactory();
 

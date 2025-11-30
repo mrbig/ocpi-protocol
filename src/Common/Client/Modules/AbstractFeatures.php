@@ -33,7 +33,7 @@ class AbstractFeatures
     /**
      * @throws OcpiEndpointNotFoundException
      */
-    private function getServerRequestInterface(AbstractRequest $request): ServerRequestInterface
+    protected function getServerRequestInterface(AbstractRequest $request): ServerRequestInterface
     {
         $uriFactory = Psr17FactoryDiscovery::findUriFactory();
 
