@@ -15,6 +15,11 @@ abstract class AbstractRequest implements MessageIdInterface
     use HasMessageIds;
     protected string $requestId;
     protected string $correlationId;
+    protected string $routingToCountryCode;
+    protected string $routingToPartyId;
+    protected string $routingFromCountryCode;
+    protected string $routingFromPartyId;
+
 
     public function getRequestId(): string
     {
@@ -37,6 +42,39 @@ abstract class AbstractRequest implements MessageIdInterface
     {
         $this->correlationId = $correlationId;
     }
+
+    public function setRoutingTo(string $countryCode, string $partyId): void
+    {
+        $this->routingToCountryCode = $countryCode;
+        $this->routingToPartyId = $partyId;
+    }
+
+    public function setRoutingFrom(string $countryCode, string $partyId): void
+    {
+        $this->routingFromCountryCode = $countryCode;
+        $this->routingFromPartyId = $partyId;
+    }
+
+    public function getRoutingToCountryCode(): ?string
+    {
+        return $this->routingToCountryCode ?? null;
+    }
+
+    public function getRoutingToPartyId(): ?string
+    {
+        return $this->routingToPartyId ?? null;
+    }
+
+    public function getRoutingFromCountryCode(): ?string
+    {
+        return $this->routingFromCountryCode ?? null;
+    }
+
+    public function getRoutingFromPartyId(): ?string
+    {
+        return $this->routingFromPartyId ?? null;
+    }
+
     abstract public function getModule(): BaseModuleId;
 
     abstract public function getVersion(): OcpiVersion;
