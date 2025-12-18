@@ -51,7 +51,7 @@ class TariffFactory
             new DateTime($json->last_updated)
         );
 
-        if (property_exists($json, 'tariff_alt_text')) {
+        if (property_exists($json, 'tariff_alt_text') && $json->tariff_alt_text !== null) {
             foreach ((array)DisplayTextFactory::arrayFromJsonArray($json->tariff_alt_text) as $displayText) {
                 $tariff->addTariffAltText($displayText);
             }

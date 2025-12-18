@@ -22,7 +22,7 @@ class SignedDataFactory
             $json->url ?? null
         );
 
-        if (property_exists($json, 'signed_values')) {
+        if (property_exists($json, 'signed_values') && $json->signed_values !== null) {
             foreach ($json->signed_values as $svJson) {
                 $signedValue = SignedValueFactory::fromJson($svJson);
                 if ($signedValue) {
