@@ -1,0 +1,7 @@
+{
+    "encoding_method": "encodingmethod",
+    "encoding_method_version": 2,
+    "public_key": "rsa-public-key",
+    "signed_values": null,
+    "url": "http://example.com"
+  }

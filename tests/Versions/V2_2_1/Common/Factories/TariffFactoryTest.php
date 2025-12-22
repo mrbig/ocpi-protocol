@@ -2,13 +2,41 @@
 
 namespace Tests\Chargemap\OCPI\Versions\V2_2_1\Common\Factories;
 
+use Chargemap\OCPI\Versions\V2_2_1\Common\Factories\TariffFactory;
 use Chargemap\OCPI\Versions\V2_2_1\Common\Models\Tariff;
 use DateTime;
 use PHPUnit\Framework\Assert;
+use PHPUnit\Framework\TestCase;
 use stdClass;
 
-class TariffFactoryTest
+class TariffFactoryTest extends TestCase
 {
+
+    public function getFromJsonData(): iterable
+    {
+        foreach (scandir(__DIR__ . '/Payloads/Tariff/') as $filename) {
+            if ($filename !== '.' && $filename !== '..') {
+                yield $filename => [
+                    'payload' => file_get_contents(__DIR__ . '/Payloads/Tariff/' . $filename),
+                ];
+            }
+        }
+    }
+
+    /**
+     * @param string $payload
+     * @throws \JsonException
+     * @dataProvider getFromJsonData()
+     */
+    public function testFromJson(string $payload): void
+    {
+        $json = json_decode($payload, false, 512, JSON_THROW_ON_ERROR);
+
+        $tariff = TariffFactory::fromJson($json);
+
+        self::assertTariff($json, $tariff);
+    }
+
     public static function assertTariff(?stdClass $json,?Tariff $tariff):void
     {
         if($json === null) {
@@ -24,6 +52,9 @@ class TariffFactoryTest
             Assert::assertSame($json->tariff_alt_url ?? null,$tariff->getTariffAltUrl());
             foreach ($tariff->getElements() as $index => $tariffElement){
                 TariffElementFactoryTest::assertTariffElement($json->elements[$index],$tariffElement);
+            }
+            foreach ($tariff->getTariffAltText() as $index => $displayText){
+                DisplayTextFactoryTest::assertDisplayText($json->tariff_alt_text[$index],$displayText);
             }
             EnergyMixFactoryTest::assertEnergyMix($json->energy_mix ?? null,$tariff->getEnergyMix());
             Assert::assertEquals(new DateTime($json->last_updated), $tariff->getLastUpdated());

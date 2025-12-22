@@ -50,7 +50,7 @@ class SignedDataFactoryTest extends TestCase
             foreach ($signedData->getSignedValues() as $index => $signedValue) {
                 self::assertSignedValue($json->signed_values[$index], $signedValue);
             }
-            Assert::assertSame(count($json->signed_values), count($signedData->getSignedValues()));
+            Assert::assertSame(count($json->signed_values ?? []), count($signedData->getSignedValues()));
             Assert::assertEquals($json->url ?? null, $signedData->getUrl());
         }
     }

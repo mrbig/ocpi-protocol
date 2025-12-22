@@ -1,0 +1,30 @@
+{
+  "country_code": "BE",
+  "party_id": "BEC",
+  "id": "12",
+  "currency": "EUR",
+  "type": "REGULAR",
+  "tariff_alt_text": null,
+  "tariff_alt_url": "https://google.com",
+  "elements": [
+    {
+      "price_components": [
+        {
+          "type": "TIME",
+          "price": 2.00,
+          "step_size": 300
+        }
+      ]
+    },
+    {
+      "price_components": [
+        {
+          "type": "TIME",
+          "price": 2.00,
+          "step_size": 300
+        }
+      ]
+    }
+  ],
+  "last_updated": "2015-02-02T14:15:01Z"
+}

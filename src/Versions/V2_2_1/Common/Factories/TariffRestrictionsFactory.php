@@ -33,7 +33,7 @@ class TariffRestrictionsFactory
             isset($json->reservation) ? new ReservationRestrictionType($json->reservation) : null
         );
 
-        if (property_exists($json, 'day_of_week')) {
+        if (property_exists($json, 'day_of_week') && $json->day_of_week !== null) {
             foreach ($json->day_of_week as $jsonDayOfWeek) {
                 $tariffRestrictions->addDayOfWeek(
                     new DayOfWeek($jsonDayOfWeek)
