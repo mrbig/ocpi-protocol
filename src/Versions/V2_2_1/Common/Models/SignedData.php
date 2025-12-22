@@ -15,7 +15,7 @@ class SignedData implements JsonSerializable
     private string $publicKey;
 
     /** @var SignedValue[] */
-    private array $signedValues;
+    private array $signedValues = [];
 
     private ?string $url;
 
