@@ -2,12 +2,40 @@
 
 namespace Tests\Chargemap\OCPI\Versions\V2_2_1\Common\Factories;
 
+use Chargemap\OCPI\Versions\V2_2_1\Common\Factories\TariffRestrictionsFactory;
 use Chargemap\OCPI\Versions\V2_2_1\Common\Models\TariffRestrictions;
 use PHPUnit\Framework\Assert;
+use PHPUnit\Framework\TestCase;
 use stdClass;
 
-class TariffRestrictionsFactoryTest
+class TariffRestrictionsFactoryTest extends TestCase
 {
+
+    public function getFromJsonData(): iterable
+    {
+        foreach (scandir(__DIR__ . '/Payloads/TariffRestrictions/') as $filename) {
+            if ($filename !== '.' && $filename !== '..') {
+                yield $filename => [
+                    'payload' => file_get_contents(__DIR__ . '/Payloads/TariffRestrictions/' . $filename),
+                ];
+            }
+        }
+    }
+
+    /**
+     * @param string $payload
+     * @throws \JsonException
+     * @dataProvider getFromJsonData()
+     */
+    public function testFromJson(string $payload): void
+    {
+        $json = json_decode($payload, false, 512, JSON_THROW_ON_ERROR);
+
+        $tariffRestrictions = TariffRestrictionsFactory::fromJson($json);
+
+        self::assertTariffRestrictions($json, $tariffRestrictions);
+    }
+
     public static function assertTariffRestrictions(?stdClass $json, ?TariffRestrictions $tariffRestrictions): void
     {
         if($json === null){
