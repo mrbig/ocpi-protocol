@@ -5,10 +5,6 @@ declare(strict_types=1);
 namespace Chargemap\OCPI\Versions\V2_2_1\Common\Factories;
 
 use Chargemap\OCPI\Versions\V2_2_1\Common\Models\EnergyMix;
-use Chargemap\OCPI\Versions\V2_2_1\Common\Models\EnergySource;
-use Chargemap\OCPI\Versions\V2_2_1\Common\Models\EnergySourceCategory;
-use Chargemap\OCPI\Versions\V2_2_1\Common\Models\EnvironmentalImpact;
-use Chargemap\OCPI\Versions\V2_2_1\Common\Models\EnvironmentalImpactCategory;
 use stdClass;
 
 class EnergyMixFactory
