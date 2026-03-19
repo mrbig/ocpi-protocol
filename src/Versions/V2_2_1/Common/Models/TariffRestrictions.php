@@ -150,10 +150,11 @@ class TariffRestrictions implements JsonSerializable
 
     public function jsonSerialize(): array
     {
-        $return = [
-            'day_of_week' => $this->daysOfWeek,
-        ];
+        $return = [];
 
+        if (!empty($this->daysOfWeek)) {
+             $return['day_of_week'] = $this->daysOfWeek;
+        }
         if ($this->startTime !== null) {
             $return['start_time'] = $this->startTime;
         }
