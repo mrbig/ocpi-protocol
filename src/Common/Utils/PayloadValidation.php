@@ -11,6 +11,12 @@ use stdClass;
 final class PayloadValidation
 {
     /**
+     * @var string[]|null Additional root directories searched (in order) before the built-in schema root.
+     *     By setting PayloadValidation::$schemaRoots to an array of directories, you can extend validation logic.
+     */
+    public static ?array $schemaRoots = null;
+
+    /**
      * @param string $schemaPath
      * @param stdClass $object
      * @throws OcpiInvalidPayloadClientError
@@ -45,8 +51,21 @@ final class PayloadValidation
     {
         $jsonSchemaValidation = new Validator();
         if ($schemaPath[0] <> '/') {
-            $schemasPath = realpath(__DIR__ . '/../../../resources/jsonSchemas/');
-            $schemaPath = $schemasPath . DIRECTORY_SEPARATOR . $schemaPath;
+            $resolvedPath = null;
+            if (!empty(self::$schemaRoots)) {
+                foreach (self::$schemaRoots as $root) {
+                    $candidate = rtrim($root, DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR . $schemaPath;
+                    if (file_exists($candidate)) {
+                        $resolvedPath = $candidate;
+                        break;
+                    }
+                }
+            }
+            if ($resolvedPath === null) {
+                $schemasPath = realpath(__DIR__ . '/../../../resources/jsonSchemas/');
+                $resolvedPath = $schemasPath . DIRECTORY_SEPARATOR . $schemaPath;
+            }
+            $schemaPath = $resolvedPath;
         }
         $jsonSchemaValidation->coerce(
             $json,
