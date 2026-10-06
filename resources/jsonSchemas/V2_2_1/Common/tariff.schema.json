@@ -236,8 +236,12 @@
                             }
                         },
                         "reservation": {
-                            "type": "string",
+                            "type": [
+                              "string",
+                              "null"
+                            ],
                             "enum": [
+                                null,
                                 "RESERVATION",
                                 "RESERVATION_EXPIRES"
                             ]
